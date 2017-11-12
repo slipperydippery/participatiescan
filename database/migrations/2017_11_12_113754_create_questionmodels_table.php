@@ -15,8 +15,8 @@ class CreateQuestionmodelsTable extends Migration
     {
         Schema::create('questionmodels', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('partmodel_id')->unsigned();
-            $table->foreign('partmodel_id')->references('id')->on('partmodels')->onDelete('cascade');
+            $table->integer('thememodel_id')->unsigned();
+            $table->foreign('thememodel_id')->references('id')->on('thememodels')->onDelete('cascade');
             $table->integer('scanmodel_id')->unsigned();
             $table->foreign('scanmodel_id')->references('id')->on('scanmodels')->onDelete('cascade');
             $table->timestamps();

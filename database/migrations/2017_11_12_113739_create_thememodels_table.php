@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePartmodelsTable extends Migration
+class CreateThememodelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePartmodelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('partmodels', function (Blueprint $table) {
+        Schema::create('thememodels', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('scanmodel_id')->unsigned();
             $table->foreign('scanmodel_id')->references('id')->on('scanmodels')->onDelete('cascade');
@@ -28,6 +28,6 @@ class CreatePartmodelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partmodels');
+        Schema::dropIfExists('thememodels');
     }
 }

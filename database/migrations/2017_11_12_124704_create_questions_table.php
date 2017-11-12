@@ -17,8 +17,8 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
             $table->integer('scan_id')->unsigned();
             $table->foreign('scan_id')->references('id')->on('scans')->onDelete('cascade');
-            $table->integer('part_id')->unsigned();
-            $table->foreign('part_id')->references('id')->on('parts')->onDelete('cascade');
+            $table->integer('theme_id')->unsigned();
+            $table->foreign('theme_id')->references('id')->on('themes')->onDelete('cascade');
             $table->timestamps();
         });
     }
