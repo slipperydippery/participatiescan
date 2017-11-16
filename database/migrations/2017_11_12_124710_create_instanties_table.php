@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAnswersTable extends Migration
+class CreateInstantiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $table) {
+        Schema::create('instanties', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('answer');
+            $table->string('title');
+            $table->text('body');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('scan_id')->unsigned();
             $table->foreign('scan_id')->references('id')->on('scans')->onDelete('cascade');
-            $table->integer('question_id')->unsigned();
-            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
+            $table->integer('instantiemodel_id')->unsigned();
+            $table->foreign('instantiemodel_id')->references('id')->on('instantiemodels')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ class CreateAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
+        Schema::dropIfExists('instanties');
     }
 }

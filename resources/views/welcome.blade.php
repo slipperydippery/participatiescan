@@ -89,6 +89,24 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+
+                <div class="tester">
+                    {{ $scanmodel->title }} <br>
+                    <ul>
+                        @foreach( $scanmodel->themes as $theme )
+                            <li>
+                                {{ $theme->title }}
+                                <ul>
+                                    @foreach( $theme->questions as $question )
+                                    <li>
+                                        {{ $question->body  }}
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         </div>
     </body>

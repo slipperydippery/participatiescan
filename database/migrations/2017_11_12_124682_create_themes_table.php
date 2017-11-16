@@ -15,8 +15,11 @@ class CreateThemesTable extends Migration
     {
         Schema::create('themes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('scan_id')->unsigned();
-            $table->foreign('scan_id')->references('id')->on('scans')->onDelete('cascade');
+            $table->string('title');
+            $table->text('short');
+            $table->text('body');
+            $table->integer('scanmodel_id')->unsigned();
+            $table->foreign('scanmodel_id')->references('id')->on('scanmodels')->onDelete('cascade');
             $table->timestamps();
         });
     }

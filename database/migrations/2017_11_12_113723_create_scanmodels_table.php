@@ -15,6 +15,9 @@ class CreateScanmodelsTable extends Migration
     {
         Schema::create('scanmodels', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->text('short');
+            $table->text('body');
             $table->timestamps();
         });
     }

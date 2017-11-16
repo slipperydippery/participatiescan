@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Questionmodel extends Model
+class Instantiemodel extends Model
 {
     //
 }

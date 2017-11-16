@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGroupsTable extends Migration
+class CreateInstantieUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('instantie_user', function (Blueprint $table) {
+            $table->integer('instantie_id')->unsigned();
+            $table->foreign('instantie_id')->references('id')->on('instanties')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('scanmodel_id')->unsigned();
-            $table->foreign('scanmodel_id')->references('id')->on('scanmodels')->onDelete('cascade');
-            $table->timestamps();
+            $table->primary(['instantie_id', 'user_id']);
         });
     }
 
@@ -30,6 +29,6 @@ class CreateGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('groups');
+        Schema::dropIfExists('instantie_user');
     }
 }

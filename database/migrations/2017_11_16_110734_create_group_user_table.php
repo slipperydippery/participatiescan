@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInstantiesTable extends Migration
+class CreateGroupUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateInstantiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('instanties', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('group_user', function (Blueprint $table) {
+            $table->integer('group_id')->unsigned();
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('scan_id')->unsigned();
-            $table->foreign('scan_id')->references('id')->on('scans')->onDelete('cascade');
-            $table->timestamps();
+            $table->primary(['group_id', 'user_id']);
         });
     }
 
@@ -30,6 +29,6 @@ class CreateInstantiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instanties');
+        Schema::dropIfExists('group_user');
     }
 }
