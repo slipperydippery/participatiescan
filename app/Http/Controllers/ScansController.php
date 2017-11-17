@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Scan;
+use App\Instantie;
+use App\Instantiemodel;
 use Illuminate\Http\Request;
 
 class ScansController extends Controller
@@ -23,7 +26,8 @@ class ScansController extends Controller
      */
     public function create()
     {
-        //
+        $instantiemodels = Instantiemodel::pluck('title', 'id');
+        return view('scan.create', compact('instantiemodels'));
     }
 
     /**
@@ -34,7 +38,22 @@ class ScansController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = \Auth::user();
+
+        $scan = Scan::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'user_id' => $user->id,
+            'scanmodel_id' => $request->scanmodel_id,
+        ]);
+
+        $instantie = Instantie::create([
+            'user_id' => $user->id,
+            'scan_id' => $scan->id,
+            'instantiemodel_id' => $request->instantiemodel_id,
+        ]);
+
+        return $scan;
     }
 
     /**

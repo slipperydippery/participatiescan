@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ScanmodelsTableSeeder::class);
         $this->call(ThemesTableSeeder::class);
         $this->call(QuestionsTableSeeder::class);
+        $this->call(InstantiemodelsTableSeeder::class);
     }
 }
