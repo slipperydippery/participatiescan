@@ -16,6 +16,10 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('scan-header', require('./components/ScanHeader.vue'));
+Vue.component('scan-container', require('./components/ScanContainer.vue'));
+Vue.component('theme-section', require('./components/ThemeSection.vue'));
+Vue.component('single-question', require('./components/SingleQuestion.vue'));
 
 const app = new Vue({
     el: '#app'

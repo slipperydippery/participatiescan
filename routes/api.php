@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/scan/{scan}', 'ApiScansController@show');
+Route::get('/scan/{scan}/themes', 'ApiScansController@indexthemes');
+Route::get('/scan/{scan}/answers', 'ApiScansController@indexanswers');
+Route::get('/scan/{scan}/theme/{theme}/questions', 'ApiScansController@indexquestions');

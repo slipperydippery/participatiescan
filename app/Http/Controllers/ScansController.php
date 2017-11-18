@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Scan;
+use App\Answer;
+use App\Question;
 use App\Instantie;
+use App\Scanmodel;
 use App\Instantiemodel;
 use Illuminate\Http\Request;
 
@@ -53,7 +56,18 @@ class ScansController extends Controller
             'instantiemodel_id' => $request->instantiemodel_id,
         ]);
 
-        return $scan;
+        $scanmodel = Scanmodel::findOrFail($request->scanmodel_id);
+        foreach($scanmodel->themes as $theme) {
+            foreach($theme->questions as $question) {
+                Answer::create([
+                    'user_id' => $user->id,
+                    'scan_id' => $scan->id,
+                    'question_id' => $question->id
+                ]);
+            }
+        }
+
+        return redirect()->route('scan.show', $scan);
     }
 
     /**
@@ -62,9 +76,10 @@ class ScansController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Scan $scan)
     {
-        //
+        $scanmodel = $scan->scanmodel->with('themes.questions')->first();
+        return view('scan.show', compact('scan', 'scanmodel'));
     }
 
     /**
