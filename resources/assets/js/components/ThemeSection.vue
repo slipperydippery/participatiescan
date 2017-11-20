@@ -1,7 +1,8 @@
 <template>
     <div class="theme">
         <h2>{{ theme.title }}</h2>
-        <input type="text" v-model="scan.title">
+        <h4> {{ store.workscan.title }} </h4>
+        <input type="text" v-model="store.workscan.title">
         <single-question
             v-for="question in theme.questions"
             :question="question"
@@ -13,14 +14,16 @@
 </template>
 
 <script>
+    import {store} from '../app.js';
+    
     export default {
         props: [
-            'scan',
             'theme'
         ],
 
         data() {
             return {
+                store,
             }
         },
 

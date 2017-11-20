@@ -968,8 +968,11 @@ module.exports = __webpack_require__(42);
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "store", function() { return store; });
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -980,6 +983,10 @@ module.exports = __webpack_require__(42);
 __webpack_require__(11);
 
 window.Vue = __webpack_require__(35);
+
+var store = {
+  workscan: {}
+};
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -42881,6 +42888,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_js__ = __webpack_require__(10);
 //
 //
 //
@@ -42895,12 +42903,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['scan', 'theme'],
+    props: ['theme'],
 
     data: function data() {
-        return {};
+        return {
+            store: __WEBPACK_IMPORTED_MODULE_0__app_js__["store"]
+        };
     },
     mounted: function mounted() {},
 
@@ -42924,23 +42937,25 @@ var render = function() {
     [
       _c("h2", [_vm._v(_vm._s(_vm.theme.title))]),
       _vm._v(" "),
+      _c("h4", [_vm._v(" " + _vm._s(_vm.store.workscan.title) + " ")]),
+      _vm._v(" "),
       _c("input", {
         directives: [
           {
             name: "model",
             rawName: "v-model",
-            value: _vm.scan.title,
-            expression: "scan.title"
+            value: _vm.store.workscan.title,
+            expression: "store.workscan.title"
           }
         ],
         attrs: { type: "text" },
-        domProps: { value: _vm.scan.title },
+        domProps: { value: _vm.store.workscan.title },
         on: {
           input: function($event) {
             if ($event.target.composing) {
               return
             }
-            _vm.$set(_vm.scan, "title", $event.target.value)
+            _vm.$set(_vm.store.workscan, "title", $event.target.value)
           }
         }
       }),
@@ -43112,6 +43127,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_js__ = __webpack_require__(10);
 //
 //
 //
@@ -43127,23 +43143,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['scan', 'scanmodel'],
 
     data: function data() {
         return {
+            store: __WEBPACK_IMPORTED_MODULE_0__app_js__["store"],
             answers: []
         };
     },
     mounted: function mounted() {
         this.getAnswers();
+        __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].workscan = this.scan;
     },
+    ready: function ready() {},
 
 
     computed: {},
@@ -43172,19 +43188,15 @@ var render = function() {
     "div",
     { staticClass: "root" },
     [
-      _c("h1", [_vm._v(" " + _vm._s(_vm.scan.title) + " ")]),
-      _vm._v(" "),
+      _vm._v(
+        "\n    " +
+          _vm._s(_vm.store.workscan.title) +
+          "\n    " +
+          _vm._s(_vm.scan) +
+          "\n    "
+      ),
       _vm._l(_vm.scanmodel.themes, function(theme) {
-        return _c("theme-section", {
-          key: theme.id,
-          attrs: { theme: theme, scan: _vm.scan }
-        })
-      }),
-      _vm._v(" "),
-      _vm._l(_vm.answers, function(answer) {
-        return _c("div", {}, [
-          _vm._v("\n        " + _vm._s(answer.id) + "\n    ")
-        ])
+        return _c("theme-section", { key: theme.id, attrs: { theme: theme } })
       })
     ],
     2

@@ -1,38 +1,40 @@
 <template>
     <div class="root">
-        <h1> {{ scan.title }} </h1>
-
+        {{ store.workscan.title }}
+        {{ scan }}
         <theme-section
             v-for="theme in scanmodel.themes"
             :theme="theme"
             :key="theme.id"
-            :scan="scan"
         >
         </theme-section>
-
-        <div class="" v-for="answer in answers">
-            {{ answer.id }}
-        </div>
 
     </div>
 
 </template>
 
 <script>
+    import {store} from '../app.js';
+
     export default {
         props: [
             'scan',
-            'scanmodel'
+            'scanmodel',
         ],
 
         data() {
             return {
-                answers: []
+                store,
+                answers: [],
             }
         },
 
         mounted() {
             this.getAnswers();
+            store.workscan = this.scan;
+        },
+
+        ready() {   
         },
 
         computed: {
