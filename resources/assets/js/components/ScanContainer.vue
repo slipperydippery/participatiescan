@@ -1,7 +1,11 @@
 <template>
     <div class="root">
-        {{ store.workscan.title }}
-        {{ scan }}
+        <h1>{{ store.scan.title }}</h1>
+        <scan-progress
+            :scanmodel="scanmodel"
+        >
+        </scan-progress>
+
         <theme-section
             v-for="theme in scanmodel.themes"
             :theme="theme"
@@ -18,7 +22,7 @@
 
     export default {
         props: [
-            'scan',
+            'workscan',
             'scanmodel',
         ],
 
@@ -31,7 +35,7 @@
 
         mounted() {
             this.getAnswers();
-            store.workscan = this.scan;
+            store.scan = this.workscan;
         },
 
         ready() {   
@@ -44,7 +48,7 @@
         methods: {
             getAnswers: function() {
                 var home = this;
-                axios.get('/api/scan/' + home.scan.id + '/answers')
+                axios.get('/api/scan/' + home.workscan.id + '/answers')
                     .then(function(response){
                         home.answers = response.data;
                     })

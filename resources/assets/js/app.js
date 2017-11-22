@@ -10,7 +10,26 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 export let store = {
-	workscan: {}
+	scan:
+		{answers: [
+			 { "id": 1, "answer": null},
+			 { "id": 2, "answer": null},
+			 { "id": 3, "answer": null},
+			 { "id": 4, "answer": null},
+			 { "id": 5, "answer": null},
+			 { "id": 6, "answer": null},
+			 { "id": 7, "answer": null},
+			 { "id": 8, "answer": null},
+			 { "id": 9, "answer": null},
+			 { "id": 10, "answer": null},
+			 { "id": 11, "answer": null},
+			 { "id": 12, "answer": null},
+			 { "id": 13, "answer": null},
+			 { "id": 14, "answer": null},
+			 { "id": 15, "answer": null},
+			]
+		},
+
 };
 
 /**
@@ -20,8 +39,10 @@ export let store = {
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+
 Vue.component('scan-header', require('./components/ScanHeader.vue'));
 Vue.component('scan-container', require('./components/ScanContainer.vue'));
+Vue.component('scan-progress', require('./components/ScanProgress.vue'));
 Vue.component('theme-section', require('./components/ThemeSection.vue'));
 Vue.component('single-question', require('./components/SingleQuestion.vue'));
 

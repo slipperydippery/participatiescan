@@ -17,6 +17,8 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('body');
+            $table->text('weergave_succesfactor');
+            $table->text('norm');
             $table->integer('theme_id')->unsigned();
             $table->foreign('theme_id')->references('id')->on('themes')->onDelete('cascade');
             $table->timestamps();

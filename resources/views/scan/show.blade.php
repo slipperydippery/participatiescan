@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
 			<div id="app">	
 				<scan-container
-					:scan=" {{ $scan }} "
+					:workscan=" {{ $scan }} "
 					:scanmodel=" {{ $scanmodel }} "
 				>
 				</scan-container>

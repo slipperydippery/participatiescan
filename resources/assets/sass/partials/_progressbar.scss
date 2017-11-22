@@ -1,0 +1,19 @@
+.progress--theme {
+	margin: 0;
+	padding: 1rem 0;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-evenly;
+}
+
+.progress--question {
+	background: white;
+	border-radius: 50%;
+	width: 1rem;
+	height: 1rem;
+	cursor: pointer;
+}
+
+.questioncomplete {
+	background: black;
+}

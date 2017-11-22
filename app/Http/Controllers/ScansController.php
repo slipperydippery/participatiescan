@@ -80,7 +80,6 @@ class ScansController extends Controller
     {
         $scanmodel = $scan->scanmodel->with('themes.questions')->first();
         $scan = $scan->with('answers')->first();
-        // return $scan;
         return view('scan.show', compact('scan', 'scanmodel'));
     }
 
