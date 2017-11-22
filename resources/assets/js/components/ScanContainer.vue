@@ -10,6 +10,7 @@
             v-for="theme in scanmodel.themes"
             :theme="theme"
             :key="theme.id"
+            v-if=" Math.ceil(store.scan.activequestion / 5) == theme.id "
         >
         </theme-section>
 
@@ -42,7 +43,6 @@
         },
 
         computed: {
-
         },
 
         methods: {

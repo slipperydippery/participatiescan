@@ -10,6 +10,7 @@
         >
         <span class="question--answer" v-if=" store.scan.answers[question.id - 1].answer " >{{ store.scan.answers[question.id - 1].answer }}</span>
         <span class="question--answer" v-else >-</span>
+        <button @click=" nextQuestion " >Volgende vraag:</button>
     </div>
 
 </template>
@@ -37,16 +38,7 @@
 
         methods: {
             onChange: function () {
-                console.log('changed');
-                // axios.post('/api/scan/' + this.store.scan.id + '/withanswers', {
-                //       scan: this.store.scan
-                //     })
-                //     .then(response => {})
-                //     .catch(e => {
-                //       this.errors.push(e)
-                //     })
                 var home = this;
-                console.log(home.store.scan.id);
                 axios.post('/api/answer/' + home.question.id, {
                     answer: store.scan.answers[home.question.id - 1]
                 })
@@ -56,7 +48,16 @@
                 })
             },
 
-
+            nextQuestion: function () {
+                this.store.scan.activequestion ++;
+                axios.post('/api/scan/' + this.store.scan.id, {
+                    scan: store.scan
+                })
+                .then( response =>{} )
+                .catch( e => {
+                    this.errors.push( e )
+                } )
+            },
         }
     }
 </script>

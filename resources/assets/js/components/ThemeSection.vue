@@ -5,7 +5,7 @@
             v-for="question in theme.questions"
             :question="question"
             :key="question.id"
-            v-if="store.scan.answers"
+            v-if="store.scan.answers && store.scan.activequestion == question.id"
         >
         </single-question>
     </div>
@@ -30,7 +30,6 @@
         },
 
         computed: {
-
         },
 
         methods: {

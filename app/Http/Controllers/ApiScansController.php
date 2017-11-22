@@ -14,6 +14,18 @@ class ApiScansController extends Controller
 		// return $scan->scanmodel->get();		
     	return Scanmodel::with('themes.questions')->findOrFail($scan->scanmodel->id)->get();
 	}
+
+	public function store(Request $request)
+	{
+		$scan = Scan::findOrFail($request->scan['id']);
+		$scan->title = $request->scan['title'];
+		$scan->description = $request->scan['description'];
+		$scan->activequestion = $request->scan['activequestion'];
+		$scan->group_id = $request->scan['group_id'];
+		$scan->save();
+		return $request;	
+	}
+
     public function indexthemes(Scan $scan)
     {
     	return $scan->scanmodel->themes->with('questions')->get();

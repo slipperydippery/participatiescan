@@ -43293,6 +43293,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -43343,7 +43344,9 @@ var render = function() {
       _c("scan-progress", { attrs: { scanmodel: _vm.scanmodel } }),
       _vm._v(" "),
       _vm._l(_vm.scanmodel.themes, function(theme) {
-        return _c("theme-section", { key: theme.id, attrs: { theme: theme } })
+        return Math.ceil(_vm.store.scan.activequestion / 5) == theme.id
+          ? _c("theme-section", { key: theme.id, attrs: { theme: theme } })
+          : _vm._e()
       })
     ],
     2
@@ -43446,7 +43449,7 @@ exports = module.exports = __webpack_require__(11)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -43506,6 +43509,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -43522,7 +43526,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {},
 
-    methods: {}
+    methods: {
+        gotoQuestion: function gotoQuestion(questionid) {
+            var _this = this;
+
+            this.store.scan.activequestion = questionid;
+            axios.post('/api/scan/' + this.store.scan.id, {
+                scan: __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan
+            }).then(function (response) {}).catch(function (e) {
+                _this.errors.push(e);
+            });
+        }
+    }
 });
 
 /***/ }),
@@ -43548,9 +43563,16 @@ var render = function() {
             return _c("div", {
               staticClass: "progress--question",
               class: {
-                questioncomplete: _vm.store.scan.answers[question.id - 1].answer
+                questioncomplete:
+                  _vm.store.scan.answers[question.id - 1].answer,
+                active: _vm.store.scan.activequestion == question.id
               },
-              attrs: { title: question.title }
+              attrs: { title: question.title },
+              on: {
+                click: function($event) {
+                  _vm.gotoQuestion(question.id)
+                }
+              }
             })
           })
         )
@@ -43671,7 +43693,8 @@ var render = function() {
       _c("h2", [_vm._v(_vm._s(_vm.theme.title))]),
       _vm._v(" "),
       _vm._l(_vm.theme.questions, function(question) {
-        return _vm.store.scan.answers
+        return _vm.store.scan.answers &&
+          _vm.store.scan.activequestion == question.id
           ? _c("single-question", {
               key: question.id,
               attrs: { question: question }
@@ -43807,6 +43830,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -43827,23 +43851,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         onChange: function onChange() {
-            console.log('changed');
-            // axios.post('/api/scan/' + this.store.scan.id + '/withanswers', {
-            //       scan: this.store.scan
-            //     })
-            //     .then(response => {})
-            //     .catch(e => {
-            //       this.errors.push(e)
-            //     })
             var home = this;
-            console.log(home.store.scan.id);
             axios.post('/api/answer/' + home.question.id, {
                 answer: __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.answers[home.question.id - 1]
             }).then(function (response) {}).catch(function (e) {
                 home.errors.push(e);
             });
-        }
+        },
 
+        nextQuestion: function nextQuestion() {
+            var _this = this;
+
+            this.store.scan.activequestion++;
+            axios.post('/api/scan/' + this.store.scan.id, {
+                scan: __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan
+            }).then(function (response) {}).catch(function (e) {
+                _this.errors.push(e);
+            });
+        }
     }
 });
 
@@ -43891,7 +43916,11 @@ var render = function() {
       ? _c("span", { staticClass: "question--answer" }, [
           _vm._v(_vm._s(_vm.store.scan.answers[_vm.question.id - 1].answer))
         ])
-      : _c("span", { staticClass: "question--answer" }, [_vm._v("-")])
+      : _c("span", { staticClass: "question--answer" }, [_vm._v("-")]),
+    _vm._v(" "),
+    _c("button", { on: { click: _vm.nextQuestion } }, [
+      _vm._v("Volgende vraag:")
+    ])
   ])
 }
 var staticRenderFns = []
