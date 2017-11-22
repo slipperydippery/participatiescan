@@ -28,4 +28,18 @@ class ApiScansController extends Controller
     {
     	return $scan->answers;
     }
+
+    public function storewithanswers(Request $request, Scan $scan)
+    {
+    	// foreach($request->body as $answer){
+    	// 	return $answer;
+    	// }
+    	return $request->body->answers;
+    	return $request->body;
+    }
+
+    public function postanswer(Request $request, Scan $scan)
+    {
+    	return $request;
+    }
 }

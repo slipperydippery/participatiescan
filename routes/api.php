@@ -18,6 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/scan/{scan}', 'ApiScansController@show');
+Route::post('/scan/{scan}/withanswers', 'ApiScansController@storewithanswers');
 Route::get('/scan/{scan}/themes', 'ApiScansController@indexthemes');
 Route::get('/scan/{scan}/answers', 'ApiScansController@indexanswers');
+Route::post('/scan/{scan}/answers/{answer}', 'ApiScansController@postanswer');
+Route::post('/answer/{answer}', 'ApiAnswersController@store');
 Route::get('/scan/{scan}/theme/{theme}/questions', 'ApiScansController@indexquestions');

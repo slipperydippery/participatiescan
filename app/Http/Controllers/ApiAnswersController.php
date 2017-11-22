@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Scan;
 use App\Answer;
-use App\Question;
-use App\Instantie;
-use App\Scanmodel;
-use App\Instantiemodel;
 use Illuminate\Http\Request;
 
-class ScansController extends Controller
+class ApiAnswersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,8 +24,7 @@ class ScansController extends Controller
      */
     public function create()
     {
-        $instantiemodels = Instantiemodel::pluck('title', 'id');
-        return view('scan.create', compact('instantiemodels'));
+        //
     }
 
     /**
@@ -41,34 +35,9 @@ class ScansController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
-        $user = \Auth::user();
-
-        $scan = Scan::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'user_id' => $user->id,
-            'scanmodel_id' => $request->scanmodel_id,
-        ]);
-
-        $instantie = Instantie::create([
-            'user_id' => $user->id,
-            'scan_id' => $scan->id,
-            'instantiemodel_id' => $request->instantiemodel_id,
-        ]);
-
-        $scanmodel = Scanmodel::findOrFail($request->scanmodel_id);
-        foreach($scanmodel->themes as $theme) {
-            foreach($theme->questions as $question) {
-                Answer::create([
-                    'user_id' => $user->id,
-                    'scan_id' => $scan->id,
-                    'question_id' => $question->id
-                ]);
-            }
-        }
-
-        return redirect()->route('scan.show', $scan);
+        $answer = Answer::findOrFail($request->answer['id']);
+        $answer->answer = $request->answer['answer'];
+        $answer->save();
     }
 
     /**
@@ -77,11 +46,9 @@ class ScansController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Scan $scan)
+    public function show($id)
     {
-        $scanmodel = $scan->scanmodel->with('themes.questions')->first();
-        $scan = $scan->with('answers')->first();
-        return view('scan.show', compact('scan', 'scanmodel'));
+        //
     }
 
     /**

@@ -3,9 +3,10 @@
         <h3>{{ question.title }}</h3>
         <p>{{ question.body }}</p>
         <input type="range" 
-            min="0" max="10"
+            min="0" max="100"
             v-if="store.scan.answers "
             v-model="store.scan.answers[question.id - 1].answer" 
+            v-on:change="onChange"
         >
         <span class="question--answer" v-if=" store.scan.answers[question.id - 1].answer " >{{ store.scan.answers[question.id - 1].answer }}</span>
         <span class="question--answer" v-else >-</span>
@@ -28,12 +29,33 @@
         },
 
         mounted() {
+            // this.onChange();
         },
 
         computed: {
         },
 
         methods: {
+            onChange: function () {
+                console.log('changed');
+                // axios.post('/api/scan/' + this.store.scan.id + '/withanswers', {
+                //       scan: this.store.scan
+                //     })
+                //     .then(response => {})
+                //     .catch(e => {
+                //       this.errors.push(e)
+                //     })
+                var home = this;
+                console.log(home.store.scan.id);
+                axios.post('/api/answer/' + home.question.id, {
+                    answer: store.scan.answers[home.question.id - 1]
+                })
+                .then(response => {})
+                .catch(e => {
+                    home.errors.push(e)
+                })
+            },
+
 
         }
     }
@@ -45,4 +67,4 @@
         margin: 0 auto;
         font-size: 2rem;
     }
-</style>
+</style> 
