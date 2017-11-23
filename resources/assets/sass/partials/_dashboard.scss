@@ -1,0 +1,29 @@
+.dashboard--item {
+	display: flex;
+	flex-flow: column nowrap;
+	border: 1px solid #DEDEDE;
+	background: white;
+	margin: 2rem 0;
+	padding: 1.5rem 2rem;
+	height: 18rem;
+
+	.dashboard--item--head {
+		color: $themecolor;
+		text-transform: uppercase;
+		font-weight: 800;
+	}
+
+	.dashboard--item--body {
+		// height: 13rem;
+		flex-grow: 1;
+		overflow: hidden;
+		img {
+			display: block;
+			margin: 0 auto;
+			padding: 1rem;
+		}
+	}
+}
+.dashboard--item--doubleheight {
+	height: 38rem;
+}

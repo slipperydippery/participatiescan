@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace participatiescan;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,21 +8,21 @@ class Scanmodel extends Model
 {
 	public function scans()
 	{
-		return $this->hasMany('App\Scan');
+		return $this->hasMany('participatiescan\Scan');
 	}
 
     public function themes()
     {
-    	return $this->hasMany('App\Theme');
+    	return $this->hasMany('participatiescan\Theme');
     }
 
     public function instantiemodels()
     {
-    	return $this->hasMany('App\Instantiemodel');
+    	return $this->hasMany('participatiescan\Instantiemodel');
     }
 
     public function groups()
     {
-    	return $this->hasMany('App\Group');
+    	return $this->hasMany('participatiescan\Group');
     }
 }

@@ -43686,6 +43686,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -43715,9 +43717,19 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "scan--theme row" },
+    { staticClass: "scan--theme" },
     [
-      _c("h2", [_vm._v(_vm._s(_vm.theme.title))]),
+      _c("div", { staticClass: "row" }, [
+        _c("h2", { staticClass: "theme--head" }, [
+          _c("span", { staticClass: "theme--head--number" }, [
+            _vm._v("Thema " + _vm._s(_vm.theme.id) + ":")
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "theme--head--title" }, [
+            _vm._v(_vm._s(_vm.theme.title))
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _vm._l(_vm.theme.questions, function(question) {
         return _vm.store.scan.answers &&
@@ -43916,7 +43928,17 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "question" }, [
-    _c("div", {}, [_c("h3", [_vm._v(_vm._s(_vm.question.title))])]),
+    _c("div", {}, [
+      _c("h3", { staticClass: "question--head" }, [
+        _c("span", { staticClass: "question--head--number" }, [
+          _vm._v("Vraag " + _vm._s((_vm.question.id - 1) % 5 + 1) + ":")
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "question--head--title" }, [
+          _vm._v(_vm._s(_vm.question.title))
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c("div", {}, [_c("p", [_vm._v(_vm._s(_vm.question.body))])]),
     _vm._v(" "),

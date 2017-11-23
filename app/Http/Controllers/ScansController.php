@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace participatiescan\Http\Controllers;
 
-use App\Scan;
-use App\Answer;
-use App\Question;
-use App\Instantie;
-use App\Scanmodel;
-use App\Instantiemodel;
+use participatiescan\Scan;
+use participatiescan\Answer;
+use participatiescan\Question;
+use participatiescan\Instantie;
+use participatiescan\Scanmodel;
+use participatiescan\Instantiemodel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ScansController extends Controller
 {
@@ -19,7 +20,8 @@ class ScansController extends Controller
      */
     public function index()
     {
-        //
+        $scans = Auth::user()->scans;
+        return view('scan.index', compact('scans'));
     }
 
     /**

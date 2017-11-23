@@ -1,0 +1,30 @@
+.content--welcome {
+	text-align:center;
+}
+
+h1.title {
+	font-size: 6rem;
+
+	span.title--participatie {
+		color: black;
+	}
+
+	span.title--dot {
+		font-size: 12rem;
+		line-height: 6rem;
+		color: $themecolor;
+	}
+
+	span.title--scan {
+		color: #5E5E5E;
+	}
+}
+
+h2.subtitle {
+	color: #666666;
+	font-size: 4rem;
+}
+
+.mainbutton {
+	margin: 4rem 0 8rem;
+}

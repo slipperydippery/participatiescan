@@ -1,7 +1,7 @@
 <template>
     <div class="question">
         <div class="">
-            <h3>{{ question.title }}</h3>
+            <h3 class="question--head"><span class="question--head--number">Vraag {{ (question.id - 1 ) % 5 + 1 }}:</span> <span class="question--head--title">{{ question.title }}</span></h3>
         </div>
         <div class="">
             <p>{{ question.body }}</p>

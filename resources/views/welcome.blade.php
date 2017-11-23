@@ -22,10 +22,21 @@
                 </div>
             @endif
 
-            <div class="content">
-
-
+            <div class="content content--welcome">
+                <h1 class="title"><span class="title--participatie">Participatie</span><span class="title--">.</span><span class="title--scan">scan</span></h1>
+                <h2 class="subtitle">Zet jouw kennis in. Verbeter de participatie van jongeren met een kwetsbare positie.</h2>
                 
+                <a href=" {{ route('startscan') }} " class="btn mainbutton">Doe de scan</a>
+            
+                <h3 class="title--section">In hoeverre voldoet jouw organisatie aan belangrijke succesfactoren?</h3>
+
+                <div class="row">
+                    @foreach($scanmodel->themes as $theme)
+                        <div class="col-sm-4"> 
+                            <a href="#" class="btn themebutton themecolor-{{ $theme->id }}"> {{ $theme->title }} </a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </body>

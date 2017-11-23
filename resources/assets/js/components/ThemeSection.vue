@@ -1,6 +1,8 @@
 <template>
-    <div class="scan--theme row">
-        <h2>{{ theme.title }}</h2>
+    <div class="scan--theme">
+        <div class="row">
+            <h2 class="theme--head"><span class="theme--head--number">Thema {{ theme.id }}:</span> <span class="theme--head--title">{{ theme.title }}</span></h2>
+        </div>
         <single-question
             v-for="question in theme.questions"
             :question="question"

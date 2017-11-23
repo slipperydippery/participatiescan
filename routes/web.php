@@ -6,6 +6,7 @@ Auth::routes();
 // });
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
+Route::get('/startscan', 'PagesController@startscan')->name('startscan');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('scanmodel', 'ScanmodelsController');

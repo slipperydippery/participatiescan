@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace participatiescan;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,11 +12,11 @@ class Scan extends Model
 
     public function scanmodel()
     {
-    	return $this->belongsTo('App\Scanmodel');
+    	return $this->belongsTo('participatiescan\Scanmodel');
     }
 
     public function answers()
     {
-    	return $this->hasMany('App\Answer');
+    	return $this->hasMany('participatiescan\Answer');
     }
 }

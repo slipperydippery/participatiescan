@@ -8361,15 +8361,15 @@ button.close {
 }
 
 .themecolor-1 {
-  background: #5F68BC;
+  background: #5F68BC !important;
 }
 
 .themecolor-2 {
-  background: #BD6498;
+  background: #BD6498 !important;
 }
 
 .themecolor-3 {
-  background: #5BBAB4;
+  background: #5BBAB4 !important;
 }
 
 html,
@@ -8380,6 +8380,11 @@ body {
   font-weight: 100;
   height: 100vh;
   margin: 0;
+}
+
+#app {
+  min-height: 100vh;
+  background: #eeeeee;
 }
 
 .full-height {
@@ -8406,6 +8411,91 @@ body {
   position: absolute;
   right: 10px;
   top: 18px;
+}
+
+.content--welcome {
+  text-align: center;
+}
+
+h1.title {
+  font-size: 6rem;
+}
+
+h1.title span.title--participatie {
+  color: black;
+}
+
+h1.title span.title--dot {
+  font-size: 12rem;
+  line-height: 6rem;
+  color: #117B94;
+}
+
+h1.title span.title--scan {
+  color: #5E5E5E;
+}
+
+h2.subtitle {
+  color: #666666;
+  font-size: 4rem;
+}
+
+.mainbutton {
+  margin: 4rem 0 8rem;
+}
+
+.dashboard--item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  border: 1px solid #DEDEDE;
+  background: white;
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  height: 18rem;
+}
+
+.dashboard--item .dashboard--item--head {
+  color: #117B94;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.dashboard--item .dashboard--item--body {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  overflow: hidden;
+}
+
+.dashboard--item .dashboard--item--body img {
+  display: block;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.dashboard--item--doubleheight {
+  height: 38rem;
+}
+
+h2.theme--head span.theme--head--number {
+  color: #666666;
+}
+
+h2.theme--head span.theme--head--title {
+  color: black;
+}
+
+h3.question--head span.question--head--number {
+  color: black;
+}
+
+h3.question--head span.question--head--title {
+  color: black;
 }
 
 .question--answer {
@@ -8554,11 +8644,32 @@ input[type=range]:focus::-ms-fill-upper {
   background: rgba(135, 135, 255, 0);
 }
 
-button {
+button,
+.btn {
   background: #117B94;
   border: none;
   color: white;
   padding: 1rem 3rem;
   font-size: 1.6rem;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+button:hover,
+.btn:hover {
+  color: white;
+  -webkit-box-shadow: inset 0px 0px 5px black;
+          box-shadow: inset 0px 0px 5px black;
+}
+
+.mainbutton {
+  font-size: 2.5rem;
+}
+
+.themebutton {
+  width: 100%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  text-transform: uppercase;
 }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace participatiescan;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,6 +8,6 @@ class Question extends Model
 {
     public function themes()
     {
-    	return $this->belongsTo('App\Theme');
+    	return $this->belongsTo('participatiescan\Theme');
     }
 }

@@ -2,6 +2,24 @@
 
 }
 
+h2.theme--head{
+	span.theme--head--number {
+		color: #666666;
+	}
+	span.theme--head--title {
+		color: black;
+	}
+}
+
+h3.question--head {
+	span.question--head--number {
+		color: black;
+	}
+	span.question--head--title {
+		color: black;
+	}
+}
+
 .question--answer {
 	display: block;
 	text-align: center;
