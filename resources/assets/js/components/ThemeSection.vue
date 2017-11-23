@@ -1,5 +1,5 @@
 <template>
-    <div class="theme">
+    <div class="scan--theme row">
         <h2>{{ theme.title }}</h2>
         <single-question
             v-for="question in theme.questions"

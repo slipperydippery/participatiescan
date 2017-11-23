@@ -43294,6 +43294,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -43337,9 +43339,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "root" },
+    { staticClass: "scan--container" },
     [
-      _c("h1", [_vm._v(_vm._s(_vm.store.scan.title))]),
+      _c("div", { staticClass: "scan--title row" }, [
+        _c("h1", [_vm._v(_vm._s(_vm.store.scan.title))])
+      ]),
       _vm._v(" "),
       _c("scan-progress", { attrs: { scanmodel: _vm.scanmodel } }),
       _vm._v(" "),
@@ -43449,7 +43453,7 @@ exports = module.exports = __webpack_require__(11)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -43508,8 +43512,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -43548,37 +43550,34 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "scan--progress" }, [
-    _c(
-      "div",
-      { staticClass: "row" },
-      _vm._l(_vm.scanmodel.themes, function(theme) {
-        return _c(
-          "div",
-          {
-            staticClass: "col-sm-4 progress--theme",
-            class: "themecolor-" + theme.id
-          },
-          _vm._l(theme.questions, function(question) {
-            return _c("div", {
-              staticClass: "progress--question",
-              class: {
-                questioncomplete:
-                  _vm.store.scan.answers[question.id - 1].answer,
-                active: _vm.store.scan.activequestion == question.id
-              },
-              attrs: { title: question.title },
-              on: {
-                click: function($event) {
-                  _vm.gotoQuestion(question.id)
-                }
+  return _c(
+    "div",
+    { staticClass: "scan--progress row" },
+    _vm._l(_vm.scanmodel.themes, function(theme) {
+      return _c(
+        "div",
+        {
+          staticClass: "col-sm-4 progress--theme",
+          class: "themecolor-" + theme.id
+        },
+        _vm._l(theme.questions, function(question) {
+          return _c("div", {
+            staticClass: "progress--question",
+            class: {
+              questioncomplete: _vm.store.scan.answers[question.id - 1].answer,
+              active: _vm.store.scan.activequestion == question.id
+            },
+            attrs: { title: question.title },
+            on: {
+              click: function($event) {
+                _vm.gotoQuestion(question.id)
               }
-            })
+            }
           })
-        )
-      })
-    )
-  ])
+        })
+      )
+    })
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -43688,7 +43687,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "theme" },
+    { staticClass: "scan--theme row" },
     [
       _c("h2", [_vm._v(_vm._s(_vm.theme.title))]),
       _vm._v(" "),
@@ -43802,7 +43801,7 @@ exports = module.exports = __webpack_require__(11)(undefined);
 
 
 // module
-exports.push([module.i, "\n.question--answer {\n    display: inline-block;\n    margin: 0 auto;\n    font-size: 2rem;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -43814,6 +43813,14 @@ exports.push([module.i, "\n.question--answer {\n    display: inline-block;\n    
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_js__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -43881,45 +43888,51 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "question" }, [
-    _c("h3", [_vm._v(_vm._s(_vm.question.title))]),
+    _c("div", {}, [_c("h3", [_vm._v(_vm._s(_vm.question.title))])]),
     _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.question.body))]),
+    _c("div", {}, [_c("p", [_vm._v(_vm._s(_vm.question.body))])]),
     _vm._v(" "),
-    _vm.store.scan.answers
-      ? _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.store.scan.answers[_vm.question.id - 1].answer,
-              expression: "store.scan.answers[question.id - 1].answer"
+    _c("div", {}, [
+      _vm.store.scan.answers
+        ? _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.store.scan.answers[_vm.question.id - 1].answer,
+                expression: "store.scan.answers[question.id - 1].answer"
+              }
+            ],
+            attrs: { type: "range", min: "0", max: "100" },
+            domProps: {
+              value: _vm.store.scan.answers[_vm.question.id - 1].answer
+            },
+            on: {
+              change: _vm.onChange,
+              __r: function($event) {
+                _vm.$set(
+                  _vm.store.scan.answers[_vm.question.id - 1],
+                  "answer",
+                  $event.target.value
+                )
+              }
             }
-          ],
-          attrs: { type: "range", min: "0", max: "100" },
-          domProps: {
-            value: _vm.store.scan.answers[_vm.question.id - 1].answer
-          },
-          on: {
-            change: _vm.onChange,
-            __r: function($event) {
-              _vm.$set(
-                _vm.store.scan.answers[_vm.question.id - 1],
-                "answer",
-                $event.target.value
-              )
-            }
-          }
-        })
-      : _vm._e(),
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.store.scan.answers[_vm.question.id - 1].answer
+        ? _c("span", { staticClass: "question--answer" }, [
+            _vm._v(_vm._s(_vm.store.scan.answers[_vm.question.id - 1].answer))
+          ])
+        : _c("span", { staticClass: "question--answer" }, [_vm._v("-")])
+    ]),
     _vm._v(" "),
-    _vm.store.scan.answers[_vm.question.id - 1].answer
-      ? _c("span", { staticClass: "question--answer" }, [
-          _vm._v(_vm._s(_vm.store.scan.answers[_vm.question.id - 1].answer))
-        ])
-      : _c("span", { staticClass: "question--answer" }, [_vm._v("-")]),
-    _vm._v(" "),
-    _c("button", { on: { click: _vm.nextQuestion } }, [
-      _vm._v("Volgende vraag:")
+    _c("div", {}, [
+      _c(
+        "button",
+        { staticClass: " nextquestion ", on: { click: _vm.nextQuestion } },
+        [_vm._v("Volgende vraag:")]
+      )
     ])
   ])
 }

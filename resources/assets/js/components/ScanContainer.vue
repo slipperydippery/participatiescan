@@ -1,6 +1,8 @@
 <template>
-    <div class="root">
-        <h1>{{ store.scan.title }}</h1>
+    <div class="scan--container">
+        <div class="scan--title row">
+            <h1>{{ store.scan.title }}</h1>
+        </div>
         <scan-progress
             :scanmodel="scanmodel"
         >

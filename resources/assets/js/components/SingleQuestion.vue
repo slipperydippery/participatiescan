@@ -1,16 +1,24 @@
 <template>
     <div class="question">
-        <h3>{{ question.title }}</h3>
-        <p>{{ question.body }}</p>
-        <input type="range" 
-            min="0" max="100"
-            v-if="store.scan.answers "
-            v-model="store.scan.answers[question.id - 1].answer" 
-            v-on:change="onChange"
-        >
-        <span class="question--answer" v-if=" store.scan.answers[question.id - 1].answer " >{{ store.scan.answers[question.id - 1].answer }}</span>
-        <span class="question--answer" v-else >-</span>
-        <button @click=" nextQuestion " >Volgende vraag:</button>
+        <div class="">
+            <h3>{{ question.title }}</h3>
+        </div>
+        <div class="">
+            <p>{{ question.body }}</p>
+        </div>
+        <div class="">
+            <input type="range" 
+                min="0" max="100"
+                v-if="store.scan.answers "
+                v-model="store.scan.answers[question.id - 1].answer" 
+                v-on:change="onChange"
+            >
+            <span class="question--answer" v-if=" store.scan.answers[question.id - 1].answer " >{{ store.scan.answers[question.id - 1].answer }}</span>
+            <span class="question--answer" v-else >-</span>
+        </div>
+        <div class="">
+            <button class=" nextquestion " @click=" nextQuestion " >Volgende vraag:</button>
+        </div>
     </div>
 
 </template>
@@ -63,9 +71,5 @@
 </script>
 
 <style>
-    .question--answer {
-        display: inline-block;
-        margin: 0 auto;
-        font-size: 2rem;
-    }
+
 </style> 
