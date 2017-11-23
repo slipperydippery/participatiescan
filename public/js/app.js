@@ -43453,7 +43453,7 @@ exports = module.exports = __webpack_require__(11)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -43512,6 +43512,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -43521,6 +43523,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             store: __WEBPACK_IMPORTED_MODULE_0__app_js__["store"]
+            // colorvalue: '#d8d8d8',
         };
     },
     mounted: function mounted() {},
@@ -43529,6 +43532,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {},
 
     methods: {
+        colorvalue: function colorvalue(value) {
+            if (value == null) {
+                return '#f1f1f1';
+            }
+            if (value < 50) {
+                var green = value * 5;
+                var blue = value * 5;
+                var red = 250;
+            } else {
+                var green = 250;
+                var red = (50 - (value - 50)) * 5;
+                var blue = (50 - (value - 50)) * 5;
+            }
+            var color = 'rgba(' + red + ',' + green + ',' + blue + ',1)';
+            return color;
+        },
+
         gotoQuestion: function gotoQuestion(questionid) {
             var _this = this;
 
@@ -43567,7 +43587,15 @@ var render = function() {
               questioncomplete: _vm.store.scan.answers[question.id - 1].answer,
               active: _vm.store.scan.activequestion == question.id
             },
-            attrs: { title: question.title },
+            style: {
+              background: _vm.colorvalue(
+                _vm.store.scan.answers[question.id - 1].answer
+              )
+            },
+            attrs: {
+              id: "progressquestion_" + question.id,
+              title: question.title
+            },
             on: {
               click: function($event) {
                 _vm.gotoQuestion(question.id)
