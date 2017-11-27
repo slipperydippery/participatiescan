@@ -1,8 +1,8 @@
 <?php
 
-namespace participatiescan\Http\Controllers;
+namespace App\Http\Controllers;
 
-use participatiescan\Answer;
+use App\Answer;
 use Illuminate\Http\Request;
 
 class ApiAnswersController extends Controller

@@ -7,9 +7,19 @@ html, body {
     margin: 0;
 }
 
+.container--cms {
+    background: #eeeeee;
+}
+
+.navbar-nav {
+    img {
+        height: 2rem;
+    }
+}
+
 #app {
     min-height: 100vh;
-    background: #eeeeee;
+    // background: #eeeeee;
 }
 
 .full-height {
@@ -30,7 +40,11 @@ html, body {
     position: absolute;
     right: 10px;
     top: 18px;
+    border-bottom: 1px solid grey;
 }
 
+.page--head {
+    margin-bottom: 3rem;
+}
 
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace participatiescan\Http\Controllers;
+namespace App\Http\Controllers;
 
-use participatiescan\Scan;
-use participatiescan\Theme;
-use participatiescan\Scanmodel;
+use App\Scan;
+use App\Theme;
+use App\Scanmodel;
 use Illuminate\Http\Request;
 
 class ApiScansController extends Controller

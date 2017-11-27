@@ -1,43 +1,83 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="{{ URL::asset('/css/app.css') }}" rel="stylesheet">
+@extends('layouts.app')
 
-        <title>Participatiescan</title>
-
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content content--welcome">
-                <h1 class="title"><span class="title--participatie">Participatie</span><span class="title--">.</span><span class="title--scan">scan</span></h1>
+@section('content')
+    <div class="content content--welcome">
+        <section class="content--abovethefold">
+            <div class="row container">
+                <h1 class="title"><span class="title--participatie">Participatie</span><span class="title--dot">.</span><span class="title--scan">scan</span></h1>
                 <h2 class="subtitle">Zet jouw kennis in. Verbeter de participatie van jongeren met een kwetsbare positie.</h2>
-                
-                <a href=" {{ route('startscan') }} " class="btn mainbutton">Doe de scan</a>
-            
-                <h3 class="title--section">In hoeverre voldoet jouw organisatie aan belangrijke succesfactoren?</h3>
-
-                <div class="row">
-                    @foreach($scanmodel->themes as $theme)
-                        <div class="col-sm-4"> 
-                            <a href="#" class="btn themebutton themecolor-{{ $theme->id }}"> {{ $theme->title }} </a>
-                        </div>
-                    @endforeach
+                <div class="featuredimg--container">
+                    <img src="/img/brainstorm meeting.svg" alt="" class="featuredimg">
+                    <div class="mainbutton--container">
+                        <a href=" {{ route('startscan') }} " class="btn mainbutton">Doe de scan</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </body>
-</html>
+        </section>
+        
+
+        <section class="content--fullwidthback">
+            <div class="row container">
+                <div class="col-sm-4">
+                    <div class="infoblock">
+                        <img src="/img/scoreboard.svg" alt="">
+                        <span>Hoe scoort jouw organisatie op 15 belangrijke succesfactoren?</span>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="infoblock">
+                        <img src="/img/scales.svg" alt="">
+                        <span>Hoe vergelijkt jouw score met die van andere deelnemers en professionals?</span>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="infoblock">
+                        <img src="/img/regionh.svg" alt="">
+                        <span>Bespreek verbeteracties met partners uit jouw regio</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section>
+            <div class="row container">
+                <div class="col-sm-12">
+                    
+                    <h3 class="title--section">In hoeverre voldoet jouw organisatie aan belangrijke succesfactoren?</h3>
+                </div>
+            </div>
+            <div class="row container">
+                @foreach($scanmodel->themes as $theme)
+                    <div class="col-sm-4"> 
+                        <a href="#" class="btn themebutton themecolor-{{ $theme->id }}"> {{ $theme->title }} </a>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+
+        <section class="">
+            <div class="row container">
+                <div class="col-sm-4">
+                    <div class="infoblock">
+                        <h4>Films</h4>
+                        <img src="/img/movie.svg" alt="">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="infoblock">
+                        <h4>Participatiealmanak</h4>
+                        <img src="/img/books.svg" alt="">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="infoblock">
+                        <h4>Cijfers uit jouw regio</h4>
+                        <img src="/img/nederland.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+@endsection
+
+

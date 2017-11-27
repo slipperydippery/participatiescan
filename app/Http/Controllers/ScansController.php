@@ -1,13 +1,13 @@
 <?php
 
-namespace participatiescan\Http\Controllers;
+namespace App\Http\Controllers;
 
-use participatiescan\Scan;
-use participatiescan\Answer;
-use participatiescan\Question;
-use participatiescan\Instantie;
-use participatiescan\Scanmodel;
-use participatiescan\Instantiemodel;
+use App\Scan;
+use App\Answer;
+use App\Question;
+use App\Instantie;
+use App\Scanmodel;
+use App\Instantiemodel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

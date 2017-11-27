@@ -1,0 +1,26 @@
+.infoblock {
+	margin: 2rem 0;
+	border: 1px solid #DEDEDE;
+	background: white;
+	padding: 1rem 2rem;
+	img {
+		width: 100%;
+	}
+	span {
+		height: 9rem;
+		display: block;
+		font-size: 2rem;
+	}
+	h4 {
+		color: $themecolor;
+		text-transform: uppercase;
+		text-align: left;
+		font-weight: 600;
+		font-size: 1.4rem;
+	}
+}
+
+.content--fullwidthback {
+	background: #efefef;
+	width: 100vw;
+}

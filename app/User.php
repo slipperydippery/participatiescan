@@ -1,6 +1,6 @@
 <?php
 
-namespace participatiescan;
+namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -29,6 +29,11 @@ class User extends Authenticatable
 
     public function scans()
     {
-        return $this->hasMany('participatiescan\Scan');
+        return $this->hasMany('App\Scan');
+    }
+
+    public function groups()
+    {
+        return $this->hasMany('App\Group');
     }
 }

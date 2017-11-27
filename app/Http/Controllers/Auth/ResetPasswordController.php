@@ -1,8 +1,8 @@
 <?php
 
-namespace participatiescan\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth;
 
-use participatiescan\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller

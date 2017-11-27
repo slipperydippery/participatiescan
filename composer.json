@@ -23,7 +23,7 @@
             "database/factories"
         ],
         "psr-4": {
-            "participatiescan\\": "app/"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {

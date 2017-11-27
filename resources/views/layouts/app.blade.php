@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Participatie.scan
                     </a>
                 </div>
 
@@ -41,10 +41,14 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                        <!-- Functional links -->
+                        <li><a href=" {{ route('home') }} "><img src="/img/dashboard.svg" alt=""></a></li>
+                        <li><a href="#"><img src="/img/manual2.svg" alt=""></a></li>
+                        <li><a href="#"><img src="/img/share.svg" alt=""></a></li>
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">Log in</a></li>
+                            <li><a href="{{ route('register') }}">Registreer</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">

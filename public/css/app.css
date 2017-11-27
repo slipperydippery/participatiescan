@@ -1,15 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
 
-.links > a {
-  color: #636b6f;
-  padding: 0 25px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .1rem;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -8372,6 +8362,57 @@ button.close {
   background: #5BBAB4 !important;
 }
 
+.links > a {
+  color: #636b6f;
+  padding: 0 25px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+label {
+  color: #117B94;
+}
+
+.fineprint {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.infoblock {
+  margin: 2rem 0;
+  border: 1px solid #DEDEDE;
+  background: white;
+  padding: 1rem 2rem;
+}
+
+.infoblock img {
+  width: 100%;
+}
+
+.infoblock span {
+  height: 9rem;
+  display: block;
+  font-size: 2rem;
+}
+
+.infoblock h4 {
+  color: #117B94;
+  text-transform: uppercase;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.content--fullwidthback {
+  background: #efefef;
+  width: 100vw;
+}
+
 html,
 body {
   background-color: #fff;
@@ -8382,9 +8423,16 @@ body {
   margin: 0;
 }
 
+.container--cms {
+  background: #eeeeee;
+}
+
+.navbar-nav img {
+  height: 2rem;
+}
+
 #app {
   min-height: 100vh;
-  background: #eeeeee;
 }
 
 .full-height {
@@ -8411,13 +8459,28 @@ body {
   position: absolute;
   right: 10px;
   top: 18px;
+  border-bottom: 1px solid grey;
+}
+
+.page--head {
+  margin-bottom: 3rem;
 }
 
 .content--welcome {
   text-align: center;
+  overflow: hidden;
+}
+
+.content--welcome .container {
+  margin: 0 auto;
+}
+
+.content--welcome section {
+  margin: 2rem auto 6rem;
 }
 
 h1.title {
+  margin-top: 10rem;
   font-size: 6rem;
 }
 
@@ -8440,8 +8503,25 @@ h2.subtitle {
   font-size: 4rem;
 }
 
-.mainbutton {
-  margin: 4rem 0 8rem;
+.featuredimg--container {
+  position: relative;
+  margin: 4rem 0 0;
+}
+
+.featuredimg--container img.featuredimg {
+  clear: both;
+  width: 100%;
+}
+
+.featuredimg--container .mainbutton--container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.featuredimg--container .mainbutton--container .mainbutton {
+  margin: 0 auto;
 }
 
 .dashboard--item {
@@ -8466,6 +8546,7 @@ h2.subtitle {
 }
 
 .dashboard--item .dashboard--item--body {
+  height: 14rem;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -8474,8 +8555,8 @@ h2.subtitle {
 
 .dashboard--item .dashboard--item--body img {
   display: block;
+  height: 100%;
   margin: 0 auto;
-  padding: 1rem;
 }
 
 .dashboard--item--doubleheight {
@@ -8662,6 +8743,15 @@ button:hover,
           box-shadow: inset 0px 0px 5px black;
 }
 
+.btn--fullwidth {
+  width: 100%;
+  text-align: left;
+}
+
+.btn--secondary {
+  background: #BD6498;
+}
+
 .mainbutton {
   font-size: 2.5rem;
 }
@@ -8671,5 +8761,18 @@ button:hover,
   padding-top: 2rem;
   padding-bottom: 2rem;
   text-transform: uppercase;
+}
+
+input {
+  background: white;
+}
+
+.submit--choice {
+  display: block;
+  margin: 1.5rem 0;
+  width: 100%;
+  font-style: italic;
+  text-align: center;
+  font-size: 1.6rem;
 }
 

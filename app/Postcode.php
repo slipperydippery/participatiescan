@@ -1,6 +1,6 @@
 <?php
 
-namespace participatiescan;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 

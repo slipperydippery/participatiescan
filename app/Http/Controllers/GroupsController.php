@@ -1,8 +1,12 @@
 <?php
 
-namespace participatiescan\Http\Controllers;
+namespace App\Http\Controllers;
 
+use App\Group;
+use App\Postcode;
+use App\Scanmodel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GroupsController extends Controller
 {
@@ -23,7 +27,7 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        //
+        return view('group.create');
     }
 
     /**
@@ -34,7 +38,15 @@ class GroupsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $group = Group::create([
+            'title' => $request->title,
+            'user_id' => Auth::user()->id,
+            'scanmodel_id' => Scanmodel::findOrFail(1)->id,
+            'postcode_id' => Postcode::findOrFail(1)->id
+        ]);
+        $group->save();
+        
+        return redirect()->route('home');
     }
 
     /**

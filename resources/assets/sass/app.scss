@@ -1,6 +1,5 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-@import "partials/typography";
 
 // Variables
 @import "variables";
@@ -9,6 +8,8 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
 @import "partials/colors";
+@import "partials/typography";
+@import "partials/elements";
 @import "partials/layout";
 @import "partials/welcome";
 @import "partials/dashboard";
@@ -16,4 +17,5 @@
 @import "partials/progressbar";
 @import "partials/slider";
 @import "partials/buttons";
+@import "partials/forms";
 

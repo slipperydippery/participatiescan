@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => participatiescan\User::class,
+            'model' => App\User::class,
         ],
 
         // 'users' => [

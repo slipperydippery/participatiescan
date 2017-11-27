@@ -15,6 +15,7 @@ class CreatePostcodesTable extends Migration
     {
         Schema::create('postcodes', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('postcode');
             $table->timestamps();
         });
     }

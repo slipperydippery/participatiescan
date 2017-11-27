@@ -1,8 +1,16 @@
 .content--welcome {
 	text-align:center;
+	overflow: hidden;
+	.container {
+		margin: 0 auto;
+	}
+	section {
+		margin: 2rem auto 6rem;;
+	}
 }
 
 h1.title {
+    margin-top: 10rem;
 	font-size: 6rem;
 
 	span.title--participatie {
@@ -25,6 +33,21 @@ h2.subtitle {
 	font-size: 4rem;
 }
 
-.mainbutton {
-	margin: 4rem 0 8rem;
+
+.featuredimg--container {
+	position: relative;
+	margin: 4rem 0 0;
+	img.featuredimg {
+		clear: both;
+		width: 100%;
+	}
+	.mainbutton--container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		.mainbutton {
+			margin: 0 auto;
+		}
+	}
 }
