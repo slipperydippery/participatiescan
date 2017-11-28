@@ -69,6 +69,8 @@ class ScansController extends Controller
             }
         }
 
+        return view('scan.postcreate', compact('scan'));
+
         return redirect()->route('scan.show', $scan);
     }
 

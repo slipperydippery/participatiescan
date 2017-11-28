@@ -16,7 +16,7 @@ class CreateScansTable extends Migration
         Schema::create('scans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('activequestion')->nullable();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
