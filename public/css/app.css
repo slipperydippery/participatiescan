@@ -8413,6 +8413,14 @@ label {
   width: 100vw;
 }
 
+img.rowicon {
+  height: 2rem !important;
+}
+
+.autoscroll {
+  overflow-y: auto !important;
+}
+
 html,
 body {
   background-color: #fff;
@@ -8524,6 +8532,34 @@ h2.subtitle {
   margin: 0 auto;
 }
 
+.dashmessage {
+  display: block;
+  padding: .5rem 0;
+  margin: .2rem 0;
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+}
+
+.dashmessage .dashmessage--delete {
+  cursor: pointer;
+  padding: .5rem 1rem;
+  background: rgba(255, 0, 0, 0.5);
+  border-radius: .4rem;
+  color: white;
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+.dashmessage .dashmessage--message {
+  font-size: 1.6rem;
+  padding: 0 2rem;
+  font-weight: 500;
+}
+
+.dashmessage .dashmessage--message a {
+  color: black;
+}
+
 .dashboard--item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8535,7 +8571,7 @@ h2.subtitle {
   border: 1px solid #DEDEDE;
   background: white;
   margin: 2rem 0;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 0;
   height: 18rem;
 }
 
@@ -8543,14 +8579,13 @@ h2.subtitle {
   color: #117B94;
   text-transform: uppercase;
   font-weight: 800;
+  padding: 0 2rem;
 }
 
 .dashboard--item .dashboard--item--body {
   height: 14rem;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
   overflow: hidden;
+  padding: 0 2rem;
 }
 
 .dashboard--item .dashboard--item--body img {

@@ -54,4 +54,10 @@ class ApiScansController extends Controller
     {
     	return $request;
     }
+
+    public function getuser(Scan $scan)
+    {
+    	return $scan->user->get();
+    }
+
 }

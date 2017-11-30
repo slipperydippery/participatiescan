@@ -5,7 +5,12 @@
     <div class="row">
         <div class="col-sm-12 page--head">
             <h2>Je scan is aangemaakt!</h2>
-            <h3>Je scan is aangemaakt. Je kunt de scan meteen starten, of op een later tijdstip terugkomen.</h3>
+            <h3>Je scan is aangemaakt. 
+                <?php if($grouprequest == true) {
+                    echo('Er is een bericht naar de groepsbeheerder gestuurd. Zodra je bent geaccepteerd krijg je daarvan een melding.');
+                } ?> 
+            Je kunt de scan meteen bekijken, of op een later tijdstip terugkomen.</h3>
+
         </div>
         <div class="col-sm-12">
             <div class="row">

@@ -19,4 +19,19 @@ class Scan extends Model
     {
     	return $this->hasMany('App\Answer');
     }
+
+    public function group()
+    {
+    	return $this->belongsTo('App\Group');
+    }
+
+    public function user()
+    {
+    	return $this->belongsTo('App\User');
+    }
+
+    public function grouprequest()
+    {
+    	return $this->hasOne('App\Grouprequest');
+    }
 }

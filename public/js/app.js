@@ -501,8 +501,10 @@ __webpack_require__(14);
 window.Vue = __webpack_require__(38);
 
 var store = {
-	scan: { answers: [{ "id": 1, "answer": null }, { "id": 2, "answer": null }, { "id": 3, "answer": null }, { "id": 4, "answer": null }, { "id": 5, "answer": null }, { "id": 6, "answer": null }, { "id": 7, "answer": null }, { "id": 8, "answer": null }, { "id": 9, "answer": null }, { "id": 10, "answer": null }, { "id": 11, "answer": null }, { "id": 12, "answer": null }, { "id": 13, "answer": null }, { "id": 14, "answer": null }, { "id": 15, "answer": null }]
-	}
+	scan: {
+		answers: [{ "id": 1, "answer": null }, { "id": 2, "answer": null }, { "id": 3, "answer": null }, { "id": 4, "answer": null }, { "id": 5, "answer": null }, { "id": 6, "answer": null }, { "id": 7, "answer": null }, { "id": 8, "answer": null }, { "id": 9, "answer": null }, { "id": 10, "answer": null }, { "id": 11, "answer": null }, { "id": 12, "answer": null }, { "id": 13, "answer": null }, { "id": 14, "answer": null }, { "id": 15, "answer": null }]
+	},
+	pageboolean: false
 
 };
 
@@ -514,14 +516,23 @@ var store = {
 
 Vue.component('example-component', __webpack_require__(41));
 
+Vue.component('dashmessages', __webpack_require__(77));
+Vue.component('dashmessage', __webpack_require__(80));
+
 Vue.component('scan-header', __webpack_require__(44));
 Vue.component('scan-container', __webpack_require__(47));
 Vue.component('scan-progress', __webpack_require__(50));
 Vue.component('theme-section', __webpack_require__(56));
 Vue.component('single-question', __webpack_require__(59));
 
+Vue.component('groupmanager', __webpack_require__(73));
+
 var app = new Vue({
-	el: '#app'
+	el: '#app',
+	data: {
+		pageboolean: false
+	}
+
 });
 
 /***/ }),
@@ -44001,6 +44012,603 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(74)
+/* template */
+var __vue_template__ = __webpack_require__(75)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Groupmanager.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-677ee445", Component.options)
+  } else {
+    hotAPI.reload("data-v-677ee445", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_on_click_outside__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_on_click_outside___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_on_click_outside__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mixins: [__WEBPACK_IMPORTED_MODULE_0_vue_on_click_outside__["mixin"]],
+
+    props: ['workgroup'],
+    data: function data() {
+        return {
+            titleedit: false,
+            group: {},
+            scans: []
+        };
+    },
+    mounted: function mounted() {
+        this.getGroup();
+    },
+
+
+    methods: {
+        toggleTitle: function toggleTitle() {
+            this.titleedit = !this.titleedit;
+        },
+
+        getGroup: function getGroup() {
+            var home = this;
+            axios.get('/api/group/' + home.workgroup.id + '/show').then(function (response) {
+                console.log(response.data);
+                home.group = response.data;
+                // console.log(home.group);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+
+        getUsers: function getUsers() {
+            this.workscans.forEach(function (scan) {
+                axios.get('/api/scan/' + scan.id + '/user').then(function (response) {
+                    scan.user = response.data;
+                }).catch(function (error) {});
+            });
+            this.scans = this.workscans;
+        }
+    }
+});
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12 page--head" }, [
+        !_vm.titleedit
+          ? _c("h2", { on: { click: _vm.toggleTitle } }, [
+              _vm._v(_vm._s(_vm.group.title))
+            ])
+          : _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.group.title,
+                  expression: "group.title"
+                },
+                {
+                  name: "on-click-outside",
+                  rawName: "v-on-click-outside",
+                  value: _vm.toggleTitle,
+                  expression: " toggleTitle "
+                }
+              ],
+              attrs: { type: "text" },
+              domProps: { value: _vm.group.title },
+              on: {
+                keyup: function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key)
+                  ) {
+                    return null
+                  }
+                  _vm.toggleTitle($event)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.group, "title", $event.target.value)
+                }
+              }
+            }),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Dit is het overzicht van je groep")])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-sm-12" },
+        [
+          _c("p", [_vm._v("postcode arbeidsregio")]),
+          _vm._v(" "),
+          _c("h4", [_vm._v("mensen die aan je group meedoen:")]),
+          _vm._v(" "),
+          _vm._l(_vm.group.scans, function(scan) {
+            return _c(
+              "div",
+              {
+                on: {
+                  click: function($event) {
+                    scan.user.echo = "testerino"
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(scan.user.name) +
+                    "\n            "
+                )
+              ]
+            )
+          }),
+          _vm._v(" "),
+          _c("p", [_vm._v("Hallo, waarom nodig je geen mensen uit?")])
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-677ee445", module.exports)
+  }
+}
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function (global, factory) {
+	 true ? factory(exports) :
+	typeof define === 'function' && define.amd ? define(['exports'], factory) :
+	(factory((global['vue-on-click-outside'] = global['vue-on-click-outside'] || {})));
+}(this, (function (exports) { 'use strict';
+
+var registeredHandlers = [];
+var domListener = void 0;
+
+function on(el, event, callback) {
+  el.addEventListener(event, callback, false);
+  return { destroy: function destroy() {
+      return el.removeEventListener(event, callback, false);
+    } };
+}
+
+function dynamicStrategy(el, callback) {
+  var hasMouseOver = false;
+  var enterListener = on(el, 'mouseenter', function () {
+    hasMouseOver = true;
+  });
+  var leaveListener = on(el, 'mouseleave', function () {
+    hasMouseOver = false;
+  });
+
+  return {
+    el: el,
+    check: function check(event) {
+      if (!hasMouseOver) {
+        callback(event);
+      }
+    },
+    destroy: function destroy() {
+      enterListener.destroy();
+      leaveListener.destroy();
+    }
+  };
+}
+
+function staticStrategy(el, callback) {
+  return {
+    el: el,
+    check: function check(event) {
+      if (!el.contains(event.target)) {
+        callback(event);
+      }
+    },
+
+    destroy: function destroy() {}
+  };
+}
+
+function bind(el, binding) {
+  var callback = binding.value,
+      modifiers = binding.modifiers;
+
+  // unbind any existing listeners first
+
+  unbind(el);
+
+  if (!domListener) {
+    domListener = on(document.documentElement, 'click', function (event) {
+      registeredHandlers.forEach(function (handler) {
+        return handler.check(event);
+      });
+    });
+  }
+
+  setTimeout(function () {
+    registeredHandlers.push(modifiers.static ? staticStrategy(el, callback) : dynamicStrategy(el, callback));
+  }, 0);
+}
+
+function update(el, binding) {
+  if (binding.value !== binding.oldValue) {
+    bind(el, binding);
+  }
+}
+
+function unbind(el) {
+  var index = registeredHandlers.length - 1;
+
+  while (index >= 0) {
+    if (registeredHandlers[index].el === el) {
+      registeredHandlers[index].destroy();
+      registeredHandlers.splice(index, 1);
+    }
+
+    index -= 1;
+  }
+
+  if (registeredHandlers.length === 0 && domListener) {
+    domListener.destroy();
+    domListener = null;
+  }
+}
+
+var directive = {
+  bind: bind, unbind: unbind, update: update
+};
+
+var mixin = {
+  directives: { 'on-click-outside': directive }
+};
+
+exports.directive = directive;
+exports.mixin = mixin;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(78)
+/* template */
+var __vue_template__ = __webpack_require__(79)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Dashmessages.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-eb4a8256", Component.options)
+  } else {
+    hotAPI.reload("data-v-eb4a8256", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 78 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user'],
+
+    data: function data() {
+        return {
+            dashmessages: []
+        };
+    },
+    mounted: function mounted() {
+        this.getDashmessages();
+    },
+
+
+    methods: {
+        getDashmessages: function getDashmessages() {
+            var home = this;
+            axios.get('/api/dashmessage/user/' + home.user.id).then(function (response) {
+                home.dashmessages = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+
+        deleteMessage: function deleteMessage(message) {
+            var home = this;
+            axios.delete('/api/dashmessage/' + message.id).then(function (response) {
+                home.dashmessages.splice(home.dashmessages.indexOf(message), 1);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "dashmessages" },
+    _vm._l(_vm.dashmessages, function(message) {
+      return _c("div", { staticClass: "row dashmessage" }, [
+        _c("div", { staticClass: "col-sm-12 " }, [
+          _c(
+            "span",
+            {
+              staticClass: "dashmessage--delete",
+              on: {
+                click: function($event) {
+                  _vm.deleteMessage(message)
+                }
+              }
+            },
+            [_vm._v("x")]
+          ),
+          _vm._v(" "),
+          _c("span", {
+            staticClass: "dashmessage--message",
+            attrs: { title: "verwijder bericht" },
+            domProps: { innerHTML: _vm._s(message.message) }
+          })
+        ])
+      ])
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-eb4a8256", module.exports)
+  }
+}
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(81)
+/* template */
+var __vue_template__ = __webpack_require__(82)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Dashmessage.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ce0537e4", Component.options)
+  } else {
+    hotAPI.reload("data-v-ce0537e4", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 81 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['message'],
+
+    mounted: function mounted() {},
+
+
+    methods: {}
+});
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row dashmessage" }, [
+    _c("div", { staticClass: "col-sm-12 " }, [
+      _c("span", { staticClass: "dashmessage--delete" }, [_vm._v("x")]),
+      _vm._v(" "),
+      _c("span", {
+        staticClass: "dashmessage--message",
+        domProps: { innerHTML: _vm._s(_vm.message.message) }
+      })
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-ce0537e4", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

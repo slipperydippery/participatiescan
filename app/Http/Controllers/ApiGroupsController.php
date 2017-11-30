@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Group;
-use App\Postcode;
-use App\Scanmodel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class GroupsController extends Controller
+class ApiGroupsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +24,7 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        return view('group.create');
+        //
     }
 
     /**
@@ -38,15 +35,7 @@ class GroupsController extends Controller
      */
     public function store(Request $request)
     {
-        $group = Group::create([
-            'title' => $request->title,
-            'user_id' => Auth::user()->id,
-            'scanmodel_id' => Scanmodel::findOrFail(1)->id,
-            'postcode_id' => Postcode::findOrFail(1)->id
-        ]);
-        $group->save();
-        
-        return redirect()->route('home');
+        //
     }
 
     /**
@@ -57,8 +46,8 @@ class GroupsController extends Controller
      */
     public function show(Group $group)
     {
-        $group->with('scans.user');
-        return view('group.show', compact('group'));
+        return Group::with('scans.user')->findOrFail($group)->first();
+
     }
 
     /**

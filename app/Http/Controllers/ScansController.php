@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Scan;
+use App\Group;
 use App\Answer;
 use App\Question;
 use App\Instantie;
 use App\Scanmodel;
+use App\Dashmessage;
+use App\Grouprequest;
 use App\Instantiemodel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +35,8 @@ class ScansController extends Controller
     public function create()
     {
         $instantiemodels = Instantiemodel::pluck('title', 'id');
-        return view('scan.create', compact('instantiemodels'));
+        $groups = Group::pluck('title', 'id');
+        return view('scan.create', compact('instantiemodels', 'groups'));
     }
 
     /**
@@ -43,7 +47,7 @@ class ScansController extends Controller
      */
     public function store(Request $request)
     {
-        $user = \Auth::user();
+        $user = Auth::user();
 
         $scan = Scan::create([
             'title' => $request->title,
@@ -69,9 +73,23 @@ class ScansController extends Controller
             }
         }
 
-        return view('scan.postcreate', compact('scan'));
+        $grouprequest =  false;
 
-        return redirect()->route('scan.show', $scan);
+        if($request->has('group_bool')) {
+            $group = Group::findOrFail($request->group_id);
+            $grouprequest = $group;
+            //  send a message to group owner
+            Grouprequest::create([
+                'group_id' => $request->group_id,
+                'scan_id' => $scan->id,
+            ]);
+            Dashmessage::create([
+                'message' => '<a href="group/' . $group->id . '">' . $user->name . ' wil graag meedoen met de groep ' . $group->title . '</a>',
+                'user_id' => $group->user_id,
+            ]);
+        }
+
+        return view('scan.postcreate', compact('scan', 'grouprequest'));
     }
 
     /**

@@ -36,4 +36,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Group');
     }
+
+    public function invitations()
+    {
+        return $this->hasMany('App\Invitation');
+    }
+
+    public function dashmessages()
+    {
+        return $this->hasMany('App\Dashmessage');
+    }
 }

@@ -9,9 +9,10 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+
 export let store = {
-	scan:
-		{answers: [
+	scan: {
+			answers: [
 			 { "id": 1, "answer": null},
 			 { "id": 2, "answer": null},
 			 { "id": 3, "answer": null},
@@ -29,6 +30,7 @@ export let store = {
 			 { "id": 15, "answer": null},
 			]
 		},
+		pageboolean: false
 
 };
 
@@ -40,13 +42,22 @@ export let store = {
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
+Vue.component('dashmessages', require('./components/Dashmessages.vue'));
+Vue.component('dashmessage', require('./components/Dashmessage.vue'));
+
 Vue.component('scan-header', require('./components/ScanHeader.vue'));
 Vue.component('scan-container', require('./components/ScanContainer.vue'));
 Vue.component('scan-progress', require('./components/ScanProgress.vue'));
 Vue.component('theme-section', require('./components/ThemeSection.vue'));
 Vue.component('single-question', require('./components/SingleQuestion.vue'));
 
+Vue.component('groupmanager', require('./components/Groupmanager.vue'));
+
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+		pageboolean: false 
+    }
+
 });
 

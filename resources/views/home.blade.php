@@ -5,9 +5,12 @@
     <div class="row">
         <div class="col-md-12">
             <div class="page--title">
-                <h1 class="title">Dashboard</h1>
+                <h1 class="pagetitle">Dashboard</h1>
             </div>
         </div>
+    </div>
+        <dashmessages :user="{{ $user }}"></dashmessages>
+    <div class="row">
         <div class="col-md-4 dashboard--column">
             <a href=" {{ route('scan.create') }} ">
                 <div class="dashboard--item">
@@ -29,7 +32,7 @@
         <div class="col-md-4 dashboard--column">
             <div class="dashboard--item">
                 <div class="dashboard--item--head">Overzicht scans</div>
-                <div class="dashboard--item--body">
+                <div class="dashboard--item--body autoscroll">
                     @foreach($user->scans as $scan)
                         <?php 
                             $answercount = 0;
@@ -41,8 +44,13 @@
                         ?>
                         <div class="row">
                             <a href=" {{ route('scan.show', $scan) }} "><div class="col-sm-7">{{ $scan->title }}</div></a>
-                            <div class="col-sm-3"> <?= $answercount ?> /15 </div>
-                            <div class="col-sm-2">  </div>
+                            <div class="col-sm-3" title=" <?= $answercount; ?> van de 15 vragen zijn beantwoord  "> <?= $answercount; ?>/15 </div>
+                            @if(count($scan->group))
+                                <div class="col-sm-2"> <img src="/img/group.svg" title="Deze scan is onderdeel van groep '{{ $scan->group->title }}'" class="rowicon"> </div>
+                            @endif
+                            @if(count($scan->grouprequest))
+                                <div class="col-sm-2"> <img src="/img/grouppending.svg" title="Een verzoek is naar group '{{ $scan->grouprequest->group->title }}' verzonden" class="rowicon"> </div>
+                            @endif
                         </div>
                     @endforeach
                 </div>
@@ -51,7 +59,13 @@
                 <div class="dashboard--item--head">Overzicht groepen</div>
                 <div class="dashboard--item--body">
                     @foreach($user->groups as $group)
-                        {{ $group->title }}
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <a href=" {{ route('group.show', $group) }} ">{{ $group->title }}</a>
+                            </div>
+                            <div class="col-sm-3"> {{ $group->scans->count() }} </div>
+
+                        </div>
                     @endforeach
                 </div>
             </div>
