@@ -1,7 +1,7 @@
 <template>
     <div class="row dashmessage">
         <div class="col-sm-12 ">
-            <span class="dashmessage--delete">x</span>
+            <span class="dashmessage--delete" @click="">x</span>
             <span class="dashmessage--message" v-html="message.message">
             </span>
         </div>

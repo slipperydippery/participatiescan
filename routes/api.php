@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/group/{group}/show', 'ApiGroupsController@show');
+Route::get('/grouprequest/{group}', 'ApiGrouprequestsController@index');
 
 Route::get('/dashmessage/user/{user}/', 'ApiDashmessagesController@index');
 Route::delete('/dashmessage/{dashmessage}', 'ApiDashmessagesController@delete');

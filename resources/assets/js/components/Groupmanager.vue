@@ -12,6 +12,11 @@
                 <div class="" v-for="scan in group.scans" @click="scan.user.echo = 'testerino'">
                     {{ scan.user.name }}
                 </div>
+
+                <h4>mensen die aan je groep willen meedoen: </h4>
+                <div class="" v-for="grouprequest in group.grouprequests">
+                    {{ grouprequest.scan.user.name }}
+                </div>
                 <p>Hallo, waarom nodig je geen mensen uit?</p>
             </div>
         </div>
@@ -31,12 +36,14 @@
             return {
                 titleedit: false,
                 group: {},
-                scans: []
+                scans: [],
+                grouprequests: [],
             }
         },
 
         mounted() {
-            this.getGroup()
+            // this.getGroup();
+            this.getGrouprequests();
         },
 
         methods: {
@@ -57,16 +64,14 @@
                     })
             },
 
-            getUsers: function () {
-                this.workscans.forEach(function(scan) {
-                    axios.get('/api/scan/' + scan.id + '/user')
-                        .then(function(response){
-                            scan.user = response.data;
-                        })
-                        .catch(function(error){
-                        })
-                });
-                this.scans = this.workscans;
+            getGrouprequests: function () {
+                var home = this;
+                axios.get('/api/grouprequest/' + home.workgroup.id)
+                    .then(function(response){
+                        home.group = response.data;
+                    })
+                    .catch(function(error){
+                    })
             },
         }
     }

@@ -44097,6 +44097,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -44108,11 +44113,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             titleedit: false,
             group: {},
-            scans: []
+            scans: [],
+            grouprequests: []
         };
     },
     mounted: function mounted() {
-        this.getGroup();
+        // this.getGroup();
+        this.getGrouprequests();
     },
 
 
@@ -44132,13 +44139,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
 
-        getUsers: function getUsers() {
-            this.workscans.forEach(function (scan) {
-                axios.get('/api/scan/' + scan.id + '/user').then(function (response) {
-                    scan.user = response.data;
-                }).catch(function (error) {});
-            });
-            this.scans = this.workscans;
+        getGrouprequests: function getGrouprequests() {
+            var home = this;
+            axios.get('/api/grouprequest/' + home.workgroup.id).then(function (response) {
+                home.group = response.data;
+            }).catch(function (error) {});
         }
     }
 });
@@ -44223,6 +44228,18 @@ var render = function() {
                 )
               ]
             )
+          }),
+          _vm._v(" "),
+          _c("h4", [_vm._v("mensen die aan je groep willen meedoen: ")]),
+          _vm._v(" "),
+          _vm._l(_vm.group.grouprequests, function(grouprequest) {
+            return _c("div", {}, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(grouprequest.scan.user.name) +
+                  "\n            "
+              )
+            ])
           }),
           _vm._v(" "),
           _c("p", [_vm._v("Hallo, waarom nodig je geen mensen uit?")])
@@ -44591,7 +44608,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row dashmessage" }, [
     _c("div", { staticClass: "col-sm-12 " }, [
-      _c("span", { staticClass: "dashmessage--delete" }, [_vm._v("x")]),
+      _c(
+        "span",
+        {
+          staticClass: "dashmessage--delete",
+          on: { click: function($event) {} }
+        },
+        [_vm._v("x")]
+      ),
       _vm._v(" "),
       _c("span", {
         staticClass: "dashmessage--message",

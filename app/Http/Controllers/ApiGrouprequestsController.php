@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\Grouprequest;
 use Illuminate\Http\Request;
 
-class ApiGroupsController extends Controller
+class ApiGrouprequestsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class ApiGroupsController extends Controller
      */
     public function index(Group $group)
     {
-        return $group->grouprequests;
+        $group = Group::with('grouprequests.scan.user')->findOrFail($group)->first();
+        return $group;
     }
 
     /**
@@ -44,10 +46,9 @@ class ApiGroupsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Group $group)
+    public function show($id)
     {
-        return Group::with('scans.user')->findOrFail($group)->first();
-
+        //
     }
 
     /**
