@@ -1,0 +1,7 @@
+.row--table {
+	padding: .5rem 0;
+}
+
+.row--table:nth-of-type(2n) {
+	background: rgba(0,0,0,.05);
+}

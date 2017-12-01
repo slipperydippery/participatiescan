@@ -1,0 +1,12 @@
+.confirm--container {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	text-align: center;
+	.confirm {
+		display: inline-block;
+		background: white;
+		border: grey;
+		padding: 8rem;
+	}
+}

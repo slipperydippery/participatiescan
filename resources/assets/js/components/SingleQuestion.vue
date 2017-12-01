@@ -59,11 +59,11 @@
             nextQuestion: function () {
                 this.store.scan.activequestion ++;
                 axios.post('/api/scan/' + this.store.scan.id, {
-                    scan: store.scan
-                })
-                .then( response =>{} )
-                .catch( e => {
-                    this.errors.push( e )
+                        scan: store.scan
+                    })
+                    .then( response =>{} )
+                    .catch( e => {
+                        this.errors.push( e )
                 } )
             },
         }

@@ -34,4 +34,9 @@ class Scan extends Model
     {
     	return $this->hasOne('App\Grouprequest');
     }
+
+    public function instantie()
+    {
+    	return $this->hasOne('App\Instantie');
+    }
 }

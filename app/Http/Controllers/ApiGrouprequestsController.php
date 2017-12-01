@@ -2,86 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Scan;
 use App\Group;
+use App\Dashmessage;
 use App\Grouprequest;
 use Illuminate\Http\Request;
 
 class ApiGrouprequestsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Group $group)
     {
-        $group = Group::with('grouprequests.scan.user')->findOrFail($group)->first();
+        $group = Group::with('grouprequests.scan.user', 'scans.user', 'scans.instantie.instantiemodel', 'scans.answers')->findOrFail($group)->first();
         return $group;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function accept(Grouprequest $grouprequest)
     {
-        //
+        $scan = Scan::findOrFail($grouprequest->scan_id);
+        $group = Group::findOrFail($grouprequest->group_id);
+        $group->scans()->save($scan);
+        $grouprequest->delete();
+        return $grouprequest;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function deny(Grouprequest $grouprequest)
     {
-        //
+        $scan = Scan::findOrFail($grouprequest->scan_id);
+        $group = Group::findOrFail($grouprequest->group_id);
+        Dashmessage::create([
+            'message' => 'Helaas is je uitnodiging om mee te doen aan de groep <i>' . $group->title . '</i> geweigerd.',
+            'user_id' =>  $scan->user->id
+        ]);        
+        $grouprequest->delete();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

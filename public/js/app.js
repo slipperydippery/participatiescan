@@ -44102,6 +44102,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -44112,38 +44125,96 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             titleedit: false,
+            confirmdeletebox: false,
+            confirmscan: {},
             group: {},
             scans: [],
             grouprequests: []
         };
     },
     mounted: function mounted() {
-        // this.getGroup();
-        this.getGrouprequests();
+        this.getGroupAndRequests();
     },
 
 
+    computed: {},
+
     methods: {
         toggleTitle: function toggleTitle() {
+            if (this.titleedit) {
+                this.updateGroup();
+            }
             this.titleedit = !this.titleedit;
         },
 
-        getGroup: function getGroup() {
+        updateGroup: function updateGroup() {
+            var _this = this;
+
             var home = this;
-            axios.get('/api/group/' + home.workgroup.id + '/show').then(function (response) {
-                console.log(response.data);
+            axios.patch('/api/group/' + this.group.id, {
+                group: home.group
+            }).then(function (response) {}).catch(function (e) {
+                _this.errors.push(e);
+            });
+        },
+
+        getGroupAndRequests: function getGroupAndRequests() {
+            var home = this;
+            axios.get('/api/grouprequest/' + home.workgroup.id, {
+                group: home.group
+            }).then(function (response) {
                 home.group = response.data;
-                // console.log(home.group);
             }).catch(function (error) {
                 console.log(error);
             });
         },
 
-        getGrouprequests: function getGrouprequests() {
+        acceptGrouprequest: function acceptGrouprequest(grouprequest) {
             var home = this;
-            axios.get('/api/grouprequest/' + home.workgroup.id).then(function (response) {
-                home.group = response.data;
-            }).catch(function (error) {});
+            axios.get('/api/grouprequest/' + grouprequest.id + '/accept').then(function (response) {
+                home.group.grouprequests.splice(home.group.grouprequests.indexOf(grouprequest), 1);
+                home.group.scans.push(grouprequest.scan);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+
+        denyGrouprequest: function denyGrouprequest(grouprequest) {
+            var home = this;
+            axios.get('/api/grouprequest/' + grouprequest.id + '/deny').then(function (response) {
+                home.group.grouprequests.splice(home.group.grouprequests.indexOf(grouprequest), 1);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+
+        answerCount: function answerCount(scan) {
+            var answercount = 0;
+            scan.answers.forEach(function (answer) {
+                if (answer.answer != null) {
+                    answercount++;
+                }
+            });
+            return answercount;
+        },
+
+        confirm: function confirm(scan) {
+            this.confirmscan = scan;
+            this.confirmdeletebox = true;
+        },
+
+        canceldelete: function canceldelete() {
+            this.confirmscan = {};
+            this.confirmdeletebox = false;
+        },
+
+        confirmdelete: function confirmdelete() {
+            var home = this;
+            home.group.scans.splice(home.group.scans.indexOf(home.confirmscan), 1);
+            axios.get('/api/group/' + this.group.id + '/removescan/' + this.confirmscan.id).then(function (response) {}).catch(function (error) {
+                console.log(error);
+            });
+            this.confirmdeletebox = false;
         }
     }
 });
@@ -44156,97 +44227,181 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12 page--head" }, [
-        !_vm.titleedit
-          ? _c("h2", { on: { click: _vm.toggleTitle } }, [
-              _vm._v(_vm._s(_vm.group.title))
-            ])
-          : _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.group.title,
-                  expression: "group.title"
-                },
-                {
-                  name: "on-click-outside",
-                  rawName: "v-on-click-outside",
-                  value: _vm.toggleTitle,
-                  expression: " toggleTitle "
-                }
-              ],
-              attrs: { type: "text" },
-              domProps: { value: _vm.group.title },
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-sm-12 page--head" }, [
+      !_vm.titleedit
+        ? _c(
+            "h2",
+            {
+              staticClass: "hidden--container",
               on: {
-                keyup: function($event) {
-                  if (
-                    !("button" in $event) &&
-                    _vm._k($event.keyCode, "enter", 13, $event.key)
-                  ) {
-                    return null
-                  }
-                  _vm.toggleTitle($event)
-                },
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.group, "title", $event.target.value)
+                click: function($event) {
+                  _vm.titleedit = !_vm.titleedit
                 }
               }
-            }),
-        _vm._v(" "),
-        _c("h3", [_vm._v("Dit is het overzicht van je groep")])
-      ]),
+            },
+            [
+              _vm._v(_vm._s(_vm.group.title) + " "),
+              _c("img", {
+                staticClass: "icon icon--edit hidden--item",
+                attrs: { src: "/img/editicon.svg", alt: "" }
+              })
+            ]
+          )
+        : _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.group.title,
+                expression: "group.title"
+              },
+              {
+                name: "on-click-outside",
+                rawName: "v-on-click-outside",
+                value: _vm.toggleTitle,
+                expression: " toggleTitle "
+              }
+            ],
+            attrs: { type: "text" },
+            domProps: { value: _vm.group.title },
+            on: {
+              keyup: function($event) {
+                if (
+                  !("button" in $event) &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key)
+                ) {
+                  return null
+                }
+                _vm.toggleTitle($event)
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.group, "title", $event.target.value)
+              }
+            }
+          }),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-sm-12" },
-        [
-          _c("p", [_vm._v("postcode arbeidsregio")]),
-          _vm._v(" "),
-          _c("h4", [_vm._v("mensen die aan je group meedoen:")]),
-          _vm._v(" "),
-          _vm._l(_vm.group.scans, function(scan) {
-            return _c(
-              "div",
+      _c("h3", [_vm._v("Dit is het overzicht van je groep")])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "col-sm-12" },
+      [
+        _c("p", [_vm._v("postcode arbeidsregio")]),
+        _vm._v(" "),
+        _c("h4", [_vm._v("mensen die aan je group meedoen:")]),
+        _vm._v(" "),
+        _vm._l(_vm.group.scans, function(scan) {
+          return _c("div", { staticClass: "row row--table" }, [
+            _c("div", { staticClass: "col-sm-3" }, [
+              _vm._v(" " + _vm._s(scan.user.name) + " ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-3" }, [
+              _vm._v(" " + _vm._s(scan.user.email) + " ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-3" }, [
+              _vm._v(" " + _vm._s(scan.instantie.instantiemodel.title) + " ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-2" }, [
+              _vm._v(" " + _vm._s(_vm.answerCount(scan)) + "/15 ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-1" }, [
+              _c(
+                "span",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.confirm(scan)
+                    }
+                  }
+                },
+                [_vm._v("X")]
+              )
+            ])
+          ])
+        }),
+        _vm._v(" "),
+        _vm.confirmdeletebox
+          ? _c("div", { staticClass: "confirm--container" }, [
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "on-click-outside",
+                      rawName: "v-on-click-outside",
+                      value: _vm.canceldelete,
+                      expression: " canceldelete "
+                    }
+                  ],
+                  staticClass: "confirm"
+                },
+                [
+                  _c("p", [
+                    _vm._v("Weet je zeker dat je "),
+                    _c("strong", [_vm._v(_vm._s(_vm.confirmscan.user.name))]),
+                    _vm._v(" uit de groep wilt verwijderen?")
+                  ]),
+                  _vm._v(" "),
+                  _c("button", { on: { click: _vm.confirmdelete } }, [
+                    _vm._v("Ja")
+                  ]),
+                  _vm._v(" "),
+                  _c("button", { on: { click: _vm.canceldelete } }, [
+                    _vm._v("Nee")
+                  ])
+                ]
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("h4", [_vm._v("mensen die aan je groep willen meedoen: ")]),
+        _vm._v(" "),
+        _vm._l(_vm.group.grouprequests, function(grouprequest) {
+          return _c("div", {}, [
+            _vm._v(
+              "\n            " +
+                _vm._s(grouprequest.scan.user.name) +
+                "\n            "
+            ),
+            _c(
+              "span",
               {
                 on: {
                   click: function($event) {
-                    scan.user.echo = "testerino"
+                    _vm.acceptGrouprequest(grouprequest)
                   }
                 }
               },
-              [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(scan.user.name) +
-                    "\n            "
-                )
-              ]
+              [_vm._v("accepteren")]
+            ),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                on: {
+                  click: function($event) {
+                    _vm.denyGrouprequest(grouprequest)
+                  }
+                }
+              },
+              [_vm._v("verwijderen")]
             )
-          }),
-          _vm._v(" "),
-          _c("h4", [_vm._v("mensen die aan je groep willen meedoen: ")]),
-          _vm._v(" "),
-          _vm._l(_vm.group.grouprequests, function(grouprequest) {
-            return _c("div", {}, [
-              _vm._v(
-                "\n                " +
-                  _vm._s(grouprequest.scan.user.name) +
-                  "\n            "
-              )
-            ])
-          }),
-          _vm._v(" "),
-          _c("p", [_vm._v("Hallo, waarom nodig je geen mensen uit?")])
-        ],
-        2
-      )
-    ])
+          ])
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Hallo, waarom nodig je geen mensen uit?")])
+      ],
+      2
+    )
   ])
 }
 var staticRenderFns = []

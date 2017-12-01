@@ -8421,6 +8421,20 @@ img.rowicon {
   overflow-y: auto !important;
 }
 
+.hidden--container:hover .hidden--item {
+  opacity: 1;
+}
+
+.hidden--item {
+  opacity: 0;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+h2 .icon {
+  height: 20px;
+}
+
 html,
 body {
   background-color: #fff;
@@ -8809,5 +8823,27 @@ input {
   font-style: italic;
   text-align: center;
   font-size: 1.6rem;
+}
+
+.row--table {
+  padding: .5rem 0;
+}
+
+.row--table:nth-of-type(2n) {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.confirm--container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.confirm--container .confirm {
+  display: inline-block;
+  background: white;
+  border: grey;
+  padding: 8rem;
 }
 

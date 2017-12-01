@@ -32,3 +32,16 @@ img.rowicon {
 .autoscroll {
 	overflow-y: auto !important;
 }
+
+.hidden--container:hover .hidden--item {
+	opacity: 1;
+}
+
+.hidden--item {
+	opacity: 0;
+	transition: all .5s;
+}
+
+h2 .icon {
+	height: 20px;
+}

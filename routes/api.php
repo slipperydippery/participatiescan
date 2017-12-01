@@ -17,8 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::patch('/group/{group}', 'ApiGroupsController@update');
 Route::get('/group/{group}/show', 'ApiGroupsController@show');
+Route::get('/group/{group}/removescan/{scan}', 'ApiGroupsController@removescan');
 Route::get('/grouprequest/{group}', 'ApiGrouprequestsController@index');
+Route::get('/grouprequest/{grouprequest}/accept', 'ApiGrouprequestsController@accept');
+Route::get('/grouprequest/{grouprequest}/deny', 'ApiGrouprequestsController@deny');
 
 Route::get('/dashmessage/user/{user}/', 'ApiDashmessagesController@index');
 Route::delete('/dashmessage/{dashmessage}', 'ApiDashmessagesController@delete');

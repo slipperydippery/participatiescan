@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Scan;
 use App\Group;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class ApiGroupsController extends Controller
      */
     public function index(Group $group)
     {
-        return $group->grouprequests;
+        // return $group->grouprequests;
     }
 
     /**
@@ -68,9 +69,11 @@ class ApiGroupsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Group $group)
     {
-        //
+        $group->title = $request->group['title'];
+        $group->postcode_id = $request->group['postcode_id'];
+        $group->save();
     }
 
     /**
@@ -82,5 +85,12 @@ class ApiGroupsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function removescan(Group $group, Scan $scan)
+    {
+        $scan->group()->dissociate();
+        $scan->save();
+        return $group;
     }
 }
