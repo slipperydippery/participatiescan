@@ -6,17 +6,43 @@
 	img {
 		width: 100%;
 	}
-	span {
+	span.highlight {
 		height: 9rem;
 		display: block;
 		font-size: 2rem;
 	}
+
+	.infoblock--padded {
+		padding: 2rem 0 1rem ;
+	}
+
+	span.primary {
+		
+	}
+
+	span.secondary {
+		
+	}
+
 	h4 {
 		color: $themecolor;
 		text-transform: uppercase;
 		text-align: left;
 		font-weight: 600;
 		font-size: 1.4rem;
+	}
+	span.logged {
+		font-size: 1rem;
+		height: auto;
+		float: right;
+		font-weight: 900;
+		padding-bottom: 1rem;
+	}
+	span.logged--in {
+		color: $green;
+	}
+	span.logged--out {
+		color: red;
 	}
 }
 
@@ -44,4 +70,15 @@ img.rowicon {
 
 h2 .icon {
 	height: 20px;
+}
+
+
+span.center {
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+iframe.iframe--monitor {
+	margin: 5rem 0;
 }

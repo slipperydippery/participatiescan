@@ -1,12 +1,12 @@
 <template>
     <div class="scan--container">
-        <div class="scan--title row">
-            <h1>{{ store.scan.title }}</h1>
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="breadcrumb">Arbeidsregio...</span>
+                <h1 class="section--title" v-if="store.scan.group_id"> {{ store.scan.group.title }} </h1>                    
+                <h1 class="section--title" v-else> {{ store.scan.title }} </h1>                    
+            </div>
         </div>
-        <scan-progress
-            :scanmodel="scanmodel"
-        >
-        </scan-progress>
 
         <theme-section
             v-for="theme in scanmodel.themes"
@@ -16,6 +16,20 @@
         >
         </theme-section>
 
+        <scan-progress
+            :scanmodel="scanmodel"
+        >
+        </scan-progress>
+
+        <div class="prev-next-nav">
+
+            <a href="#" class="btn prev-next-nav--prev">
+                << vorige scherm
+            </a>
+            <a href=" # " class="btn prev-next-nav--next">
+                volgende scherm >>
+            </a>
+        </div>
     </div>
 
 </template>

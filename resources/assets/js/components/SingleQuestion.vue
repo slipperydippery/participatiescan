@@ -1,7 +1,10 @@
 <template>
     <div class="question">
-        <div class="">
-            <h3 class="question--head"><span class="question--head--number">Vraag {{ (question.id - 1 ) % 5 + 1 }}:</span> <span class="question--head--title">{{ question.title }}</span></h3>
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="page--title"><span class="theme--head--number">Thema {{ theme.id }}:</span> <span class="theme--head--title">{{ theme.title }}</span></h2>
+                <span class="page--clarification"><span class="question--head--number">Vraag {{ (question.id - 1 ) % 5 + 1 }}:</span> <span class="question--head--title">{{ question.title }}</span></span>
+            </div>
         </div>
         <div class="">
             <p>{{ question.body }}</p>
@@ -28,7 +31,8 @@
 
     export default {
         props: [
-            'question'
+            'question',
+            'theme'
         ],
 
         data() {
@@ -71,5 +75,8 @@
 </script>
 
 <style>
+.nextquestion {
+    display: none !important;
+}
 
 </style> 

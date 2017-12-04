@@ -5,7 +5,7 @@
         <section class="content--abovethefold">
             <div class="row container">
                 <h1 class="title"><span class="title--participatie">Participatie</span><span class="title--dot">.</span><span class="title--scan">scan</span></h1>
-                <h2 class="subtitle">Zet jouw kennis in. Verbeter de participatie van jongeren met een kwetsbare positie.</h2>
+                <h2 class="subtitle">Zet jouw kennis in. Verbeter de participatie van jongeren in een kwetsbare positie.</h2>
                 <div class="featuredimg--container">
                     <img src="/img/brainstorm meeting.svg" alt="" class="featuredimg">
                     <div class="mainbutton--container">
@@ -21,19 +21,19 @@
                 <div class="col-sm-4">
                     <div class="infoblock">
                         <img src="/img/scoreboard.svg" alt="">
-                        <span>Hoe scoort jouw organisatie op 15 belangrijke succesfactoren?</span>
+                        <span class="highlight">Waar staat jouw organisatie ten aanzien van 15 belangrijke succesfactoren?</span>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="infoblock">
                         <img src="/img/scales.svg" alt="">
-                        <span>Hoe vergelijkt jouw score met die van andere deelnemers en professionals?</span>
+                        <span class="highlight">Waar staan andere organisaties ten aanzien van 15 belangrijke succesfactoren?</span>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="infoblock">
                         <img src="/img/regionh.svg" alt="">
-                        <span>Bespreek verbeteracties met partners uit jouw regio</span>
+                        <span class="highlight">Ga aan tafel met partners uit jouw regio.</span>
                     </div>
                 </div>
             </div>

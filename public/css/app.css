@@ -8394,10 +8394,14 @@ label {
   width: 100%;
 }
 
-.infoblock span {
+.infoblock span.highlight {
   height: 9rem;
   display: block;
   font-size: 2rem;
+}
+
+.infoblock .infoblock--padded {
+  padding: 2rem 0 1rem;
 }
 
 .infoblock h4 {
@@ -8406,6 +8410,22 @@ label {
   text-align: left;
   font-weight: 600;
   font-size: 1.4rem;
+}
+
+.infoblock span.logged {
+  font-size: 1rem;
+  height: auto;
+  float: right;
+  font-weight: 900;
+  padding-bottom: 1rem;
+}
+
+.infoblock span.logged--in {
+  color: #0ead0e;
+}
+
+.infoblock span.logged--out {
+  color: red;
 }
 
 .content--fullwidthback {
@@ -8433,6 +8453,16 @@ img.rowicon {
 
 h2 .icon {
   height: 20px;
+}
+
+span.center {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+iframe.iframe--monitor {
+  margin: 5rem 0;
 }
 
 html,
@@ -8845,5 +8875,52 @@ input {
   background: white;
   border: grey;
   padding: 8rem;
+}
+
+.breadcrumb {
+  padding: 0;
+  background: none;
+  color: #0ead0e;
+  font-style: italic;
+  font-size: 1.7rem;
+}
+
+h1.section--title {
+  margin-top: 0;
+  font-size: 5rem;
+  color: #5C9FBB;
+}
+
+h2.page--title {
+  font-size: 1.7rem;
+  font-weight: 100;
+  color: #b3b3b3;
+  margin-bottom: 0;
+  margin-top: 0.6rem;
+}
+
+span.page--clarification {
+  font-size: 3rem;
+}
+
+.content--page img {
+  width: 100%;
+}
+
+.prev-next-nav {
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+  width: 100vw;
+}
+
+.prev-next-nav .prev-next-nav--prev {
+  float: left;
+  border-radius: 0;
+}
+
+.prev-next-nav .prev-next-nav--next {
+  float: right;
+  border-radius: 0;
 }
 

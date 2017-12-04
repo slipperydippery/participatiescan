@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-sm-12 page--head">
             <h2>Welkom bij de Participatiescan</h2>
-            <h3>Kom je alleen even kijken, of wil je een account aanmaken? Met een account kun je jouw resultaten vergelijken en delen met andere deelnemers.</h3>
+            <h3>De participatiescan doe je bij voorkeur door aan tafel te gaan met professionele partners uit jouw regio. Met een account kun je jouw resultaten vergelijken en delen met andere deelnemers. Maar je kunt ook eerst even kijken. Wat wil je doen?</h3>
         </div>
         <div class="col-md-12">
             <form class="form-horizontal" method="POST" action="{{ route('register') }}">

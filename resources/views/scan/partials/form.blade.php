@@ -12,15 +12,20 @@
 
 <!-- Welke instantie vertegenwoordigt u? Form Input -->
 <div class="form-group">
-    {!! Form::label('instantiemodel_id', 'Welke instantie vertegenwoordig je?:') !!}
+    {!! Form::label('instantiemodel_id', 'Welk soort organisatie vertegenwoordig je?:') !!}
     {!! Form::select('instantiemodel_id', $instantiemodels, null, ['class' => 'form-control']) !!}
 </div>
 
-
-
-<!-- Wil je de scan aan een group koppelen? Form Input -->
+<!-- Arbeidsregio Form Input -->
 <div class="form-group">
-    {!! Form::label('group_bool', 'Wil je de scan aan een group koppelen?:') !!} <br>
+	{!! Form::label('arbeidsregio', 'Arbeidsregio:') !!}
+	{!! Form::text('arbeidsregio', null, ['class' => 'form-control']) !!}
+</div>
+
+
+<!-- Wil je de scan aan een groep koppelen? Form Input -->
+<div class="form-group">
+    {!! Form::label('group_bool', 'Wil je de scan aan een groep koppelen?:') !!} <br>
     <input checked="checked" name="group_bool" type="checkbox" v-model="pageboolean">
 
 </div>

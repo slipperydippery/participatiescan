@@ -23,7 +23,7 @@ class CreateScansTable extends Migration
             $table->integer('group_id')->unsigned()->nullable();
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
             $table->integer('scanmodel_id')->unsigned();
-            $table->foreign('scanmodel_id')->references('id')->on('scanmodels')->onDelete('cascade');1
+            $table->foreign('scanmodel_id')->references('id')->on('scanmodels')->onDelete('cascade');
             $table->timestamps();
         });
     }
