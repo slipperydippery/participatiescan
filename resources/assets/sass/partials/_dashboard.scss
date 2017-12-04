@@ -53,3 +53,9 @@
 .dashboard--item--doubleheight {
 	height: 38rem;
 }
+
+.dashboard--item--doubleheight {
+	.dashboard--item--body {
+		height: 100%;
+	}
+}

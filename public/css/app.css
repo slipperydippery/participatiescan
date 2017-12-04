@@ -8642,6 +8642,10 @@ h2.subtitle {
   height: 38rem;
 }
 
+.dashboard--item--doubleheight .dashboard--item--body {
+  height: 100%;
+}
+
 h2.theme--head span.theme--head--number {
   color: #666666;
 }
