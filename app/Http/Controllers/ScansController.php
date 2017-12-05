@@ -54,6 +54,8 @@ class ScansController extends Controller
             'description' => $request->description,
             'user_id' => $user->id,
             'scanmodel_id' => $request->scanmodel_id,
+            'activetheme' => 1,
+            'activequestion' => 0,
         ]);
 
         $instantie = Instantie::create([

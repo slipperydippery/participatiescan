@@ -3,13 +3,13 @@
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="page--title"><span class="theme--head--number">Thema {{ theme.id }}:</span> <span class="theme--head--title">{{ theme.title }}</span></h2>
-                <span class="page--clarification"><span class="question--head--number">Vraag {{ (question.id - 1 ) % 5 + 1 }}:</span> <span class="question--head--title">{{ question.title }}</span></span>
+                <span class="page--clarification"><span class="">Vraag {{ (question.id - 1 ) % 5 + 1 }}:</span> <span class="highlight">{{ question.title }}</span></span>
             </div>
         </div>
         <div class="">
             <p>{{ question.body }}</p>
         </div>
-        <div class="">
+        <div class="rangeslider--container">
             <input type="range" 
                 min="0" max="100"
                 v-if="store.scan.answers "
@@ -18,9 +18,6 @@
             >
             <span class="question--answer" v-if=" store.scan.answers[question.id - 1].answer " >{{ store.scan.answers[question.id - 1].answer }}</span>
             <span class="question--answer" v-else >-</span>
-        </div>
-        <div class="">
-            <button class=" nextquestion " @click=" nextQuestion " >Volgende vraag:</button>
         </div>
     </div>
 
@@ -59,24 +56,10 @@
                     home.errors.push(e)
                 })
             },
-
-            nextQuestion: function () {
-                this.store.scan.activequestion ++;
-                axios.post('/api/scan/' + this.store.scan.id, {
-                        scan: store.scan
-                    })
-                    .then( response =>{} )
-                    .catch( e => {
-                        this.errors.push( e )
-                } )
-            },
         }
     }
 </script>
 
 <style>
-.nextquestion {
-    display: none !important;
-}
 
 </style> 

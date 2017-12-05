@@ -12,7 +12,9 @@ class ApiScansController extends Controller
 	public function show(Scan $scan)
 	{
 		// return $scan->scanmodel->get();		
-    	return Scanmodel::with('themes.questions')->findOrFail($scan->scanmodel->id)->get();
+    	// return Scanmodel::with('themes.questions')->findOrFail($scan->scanmodel->id)->get();
+
+        return Scan::with('answers', 'group.scans.answers', 'group.scans.user', 'group.scans.instantie.instantiemodel')->findOrFail($scan->id);
 	}
 
 	public function store(Request $request)
@@ -20,7 +22,9 @@ class ApiScansController extends Controller
 		$scan = Scan::findOrFail($request->scan['id']);
 		$scan->title = $request->scan['title'];
 		$scan->description = $request->scan['description'];
-		$scan->activequestion = $request->scan['activequestion'];
+        $scan->activequestion = $request->scan['activequestion'];
+		$scan->activetheme = $request->scan['activetheme'];
+        $scan->algemeenbeeld = $request->scan['algemeenbeeld'];
 		$scan->group_id = $request->scan['group_id'];
 		$scan->save();
 		return $request;	

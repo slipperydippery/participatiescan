@@ -27,10 +27,15 @@ class ScanpagesController extends Controller
     	return view('scan.algemeenbeeld', compact('scan'));
     }
 
+    public function algemeenbeeldresultaten(Scan $scan)
+    {
+        return view('scan.algemeenbeeldresultaten', compact('scan'));
+    }
+
     public function showscan(Scan $scan)
     {
         $scanmodel = $scan->scanmodel->with('themes.questions')->first();
-        $scan = Scan::with('answers')->findOrFail($scan->id);
+        $scan = Scan::with('answers', 'group.scans.answers', 'group.scans.user', 'group.scans.instantie.instantiemodel')->findOrFail($scan->id);
         return view('scan.show', compact('scan', 'scanmodel'));
     }
 }

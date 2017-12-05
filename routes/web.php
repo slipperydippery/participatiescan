@@ -19,4 +19,5 @@ Route::resource('postcode', 'PostcodesController');
 Route::get('/scan/{scan}/kennismaken', 'ScanpagesController@kennismaken')->name('scan.kennismaken')->middleware('auth');
 Route::get('/scan/{scan}/regioincijfers', 'ScanpagesController@regioincijfers')->name('scan.regioincijfers')->middleware('auth');
 Route::get('/scan/{scan}/algemeenbeeld', 'ScanpagesController@algemeenbeeld')->name('scan.algemeenbeeld')->middleware('auth');
+Route::get('/scan/{scan}/algemeenbeeldresultaten', 'ScanpagesController@algemeenbeeldresultaten')->name('scan.algemeenbeeldresultaten')->middleware('auth');
 Route::get('/scan/{scan}/showscan', 'ScanpagesController@showscan')->name('scan.showscan')->middleware('auth');

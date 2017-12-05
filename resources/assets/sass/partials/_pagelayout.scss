@@ -22,9 +22,14 @@ h2.page--title {
 
 span.page--clarification {
 	font-size: 3rem;
+	span.highlight {
+		color: $themecolor--light;
+		font-weight: 900;
+	}
 }
 
 .content--page {
+	margin-top: 4rem;
 	img {
 		width: 100%;
 	}
@@ -32,7 +37,7 @@ span.page--clarification {
 
 .prev-next-nav {
 	position: fixed;
-	bottom: 1rem;
+	bottom: 8vh;
 	left: 0;
 	width: 100vw;
 

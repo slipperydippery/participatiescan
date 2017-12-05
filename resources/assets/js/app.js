@@ -31,7 +31,6 @@ export let store = {
 			]
 		},
 		pageboolean: false
-
 };
 
 /**
@@ -50,6 +49,10 @@ Vue.component('scan-container', require('./components/ScanContainer.vue'));
 Vue.component('scan-progress', require('./components/ScanProgress.vue'));
 Vue.component('theme-section', require('./components/ThemeSection.vue'));
 Vue.component('single-question', require('./components/SingleQuestion.vue'));
+Vue.component('theme-intro', require('./components/ThemeIntro.vue'));	
+Vue.component('theme-results', require('./components/ThemeResults.vue'));	
+
+Vue.component('algemeenbeeld', require('./components/Algemeenbeeld.vue'));
 
 Vue.component('groupmanager', require('./components/Groupmanager.vue'));
 

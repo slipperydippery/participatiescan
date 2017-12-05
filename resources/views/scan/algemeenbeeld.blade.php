@@ -20,14 +20,14 @@
     </div>
     <div class="row content--page">
     	<div class="col-sm-12">
-            beoordeel
+            <algemeenbeeld :workscan=" {{ $scan }} "></algemeenbeeld>
     	</div>
     </div>
     <div class="prev-next-nav">
     	<a href="#" class="btn prev-next-nav--prev">
     		<< vorige scherm
     	</a>
-    	<a href=" {{ route('scan.showscan', $scan) }} " class="btn prev-next-nav--next">
+    	<a href=" {{ route('scan.algemeenbeeldresultaten', $scan) }} " class="btn prev-next-nav--next">
     		volgende scherm >>
     	</a>
     </div>

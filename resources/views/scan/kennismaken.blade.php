@@ -17,14 +17,14 @@
     <div class="row content--page">
     	<div class="col-sm-12">
             <div class="row">
-        		@foreach($scan->group->scans as $scan)
+        		@foreach($scan->group->scans as $thisscan)
                     <div class="col-sm-2">
                         <div class="infoblock">
                             <span class="logged logged--in">ingelogd</span>
                             <img src="/img/user.svg" alt="">
                             <div class="infoblock--padded">
-                                <span>{{ $scan->user->name }}</span>
-                                <span class="center"><strong>...instantie...</strong></span>
+                                <span>{{ $thisscan->user->name }}</span>
+                                <span class="center"><strong> {{ $thisscan->instantie->instantiemodel->title }} </strong></span>
                             </div>
                             
                         </div>

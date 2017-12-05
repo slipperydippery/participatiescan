@@ -5,3 +5,29 @@
 .row--table:nth-of-type(2n) {
 	background: rgba(0,0,0,.05);
 }
+
+.table--instantie {
+	color: $themecolor--light;
+}
+
+.table--score {
+	color: $themecolor-2;
+	font-weight: 900;
+}
+
+.resultslider--container {
+	padding-top: 1.5rem;
+}
+
+.resultstable {
+	.resultstable--row {
+		padding: .5rem 0;
+	}
+	.resultstable--row:nth-of-type(2n) {
+		background: rgba(0,0,0,0.03);
+	}
+	.resultstable--row--head {
+		font-weight: 900;
+		color: $themecolor-2;
+	}
+}

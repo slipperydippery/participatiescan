@@ -1,5 +1,17 @@
 .scan--container {
+	display: flex;
+	flex-flow: column nowrap;
+	position: relative;
+	height: 100%;
+	flex-grow: 1;
+}
 
+.scan--theme {
+	flex-grow: 1;
+}
+
+.scan--progress {
+	margin-bottom: 20vh;
 }
 
 h2.theme--head{
