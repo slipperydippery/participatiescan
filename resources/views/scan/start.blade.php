@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container container--page">
     <div class="row">
         <div class="col-md-12">
             <span class="breadcrumb"> Introductiefilm </span>
@@ -19,7 +19,7 @@
     		<img src="/img/movie.svg" alt="">
     	</div>
     </div>
-    <div class="prev-next-nav">
+    <div class="row prev-next-nav">
     	<a href="#" class="btn prev-next-nav--prev">
     		<< vorige scherm
     	</a>

@@ -12,13 +12,24 @@
                     <div class="col-sm-2"></div>
                     <div class="col-sm-2" v-for="question in theme.questions"> {{ question.title }} </div>
                 </div>
+                <div class="row resultstable--row resultstable--row--average">
+                    <div class="col-sm-2">Gemiddeld</div>
+                    <div class="col-sm-2" v-for="question in theme.questions"> 
+                        <div class="resultslider">
+                            <div class="resultslider--result"
+                                :style="{ width: cssPercent(questionAverage(question.id)) }"
+                            >
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row resultstable--row" 
                     v-if="typeof store.scan.group !== 'undefined'"
                     v-for="thisscan in store.scan.group.scans"
                 >
                     <div class="col-sm-2"> 
                         {{ thisscan.user.name }} <br>        
-                        {{ thisscan.instantie.instantiemodel.title }}
+                        <span class="emphasis">{{ thisscan.instantie.instantiemodel.title }}</span>
                     </div>
                     <div class="col-sm-2 resultslider--container" v-for="question in theme.questions">
                         <div class="resultslider">
@@ -73,6 +84,20 @@
                     }
                 })
                 return thisanswer;
+            },
+
+            questionAverage: function(questionid) {
+                var totalSum = 0;
+                var validAnswers = 0;
+                this.store.scan.group.scans.forEach(function(thisscan) {
+                    thisscan.answers.forEach(function(thisanswer) {
+                        if(thisanswer.question_id == questionid && thisanswer.answer != null) {
+                            totalSum += thisanswer.answer;
+                            validAnswers ++;
+                        }
+                    })
+                })
+                return (totalSum / validAnswers);
             },
 
             cssPercent: function (value) {

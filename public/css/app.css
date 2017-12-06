@@ -8688,7 +8688,7 @@ h2.subtitle {
 }
 
 .scan--progress {
-  margin-bottom: 20vh;
+  margin-bottom: 2rem;
 }
 
 h2.theme--head span.theme--head--number {
@@ -8890,6 +8890,10 @@ input[type=range]:focus::-ms-fill-upper {
   background: #5C9FBB;
 }
 
+.resultstable--row--average .resultslider--result {
+  background: #BD6498;
+}
+
 button,
 .btn {
   background: #117B94;
@@ -8975,6 +8979,19 @@ input {
   color: #BD6498;
 }
 
+.resultstable .resultstable--row--average {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background: rgba(17, 123, 148, 0.1) !important;
+  font-weight: 900;
+  color: #BD6498;
+}
+
+.resultstable span.emphasis {
+  font-weight: 900;
+  color: #117B94;
+}
+
 .confirm--container {
   position: absolute;
   top: 0;
@@ -9021,6 +9038,9 @@ span.page--clarification span.highlight {
 }
 
 .content--page {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   margin-top: 4rem;
 }
 
@@ -9029,10 +9049,9 @@ span.page--clarification span.highlight {
 }
 
 .prev-next-nav {
-  position: fixed;
-  bottom: 8vh;
-  left: 0;
-  width: 100vw;
+  margin-bottom: 4rem;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
 .prev-next-nav .prev-next-nav--prev {

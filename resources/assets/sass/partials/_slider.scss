@@ -99,3 +99,7 @@ input[type=range]:focus::-ms-fill-upper {
 		background: $themecolor--light;
 	}
 }
+
+.resultstable--row--average .resultslider--result {
+	background: $themecolor-2;
+}

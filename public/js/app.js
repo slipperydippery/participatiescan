@@ -45451,6 +45451,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -45484,6 +45495,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
             return thisanswer;
+        },
+
+        questionAverage: function questionAverage(questionid) {
+            var totalSum = 0;
+            var validAnswers = 0;
+            this.store.scan.group.scans.forEach(function (thisscan) {
+                thisscan.answers.forEach(function (thisanswer) {
+                    if (thisanswer.question_id == questionid && thisanswer.answer != null) {
+                        totalSum += thisanswer.answer;
+                        validAnswers++;
+                    }
+                });
+            });
+            return totalSum / validAnswers;
         },
 
         cssPercent: function cssPercent(value) {
@@ -45549,6 +45574,28 @@ var render = function() {
             2
           ),
           _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "row resultstable--row resultstable--row--average" },
+            [
+              _c("div", { staticClass: "col-sm-2" }, [_vm._v("Gemiddeld")]),
+              _vm._v(" "),
+              _vm._l(_vm.theme.questions, function(question) {
+                return _c("div", { staticClass: "col-sm-2" }, [
+                  _c("div", { staticClass: "resultslider" }, [
+                    _c("div", {
+                      staticClass: "resultslider--result",
+                      style: {
+                        width: _vm.cssPercent(_vm.questionAverage(question.id))
+                      }
+                    })
+                  ])
+                ])
+              })
+            ],
+            2
+          ),
+          _vm._v(" "),
           _vm._l(_vm.store.scan.group.scans, function(thisscan) {
             return typeof _vm.store.scan.group !== "undefined"
               ? _c(
@@ -45562,11 +45609,10 @@ var render = function() {
                           " "
                       ),
                       _c("br"),
-                      _vm._v(
-                        "        \n                    " +
-                          _vm._s(thisscan.instantie.instantiemodel.title) +
-                          "\n                "
-                      )
+                      _vm._v(" "),
+                      _c("span", { staticClass: "emphasis" }, [
+                        _vm._v(_vm._s(thisscan.instantie.instantiemodel.title))
+                      ])
                     ]),
                     _vm._v(" "),
                     _vm._l(_vm.theme.questions, function(question) {
