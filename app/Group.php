@@ -24,4 +24,9 @@ class Group extends Model
     {
     	return $this->hasMany('App\Grouprequest');
     }
+
+    public function measures()
+    {
+        return $this->hasMany('App\Measure');
+    }
 }

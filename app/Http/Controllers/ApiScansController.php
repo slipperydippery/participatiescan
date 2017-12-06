@@ -14,7 +14,7 @@ class ApiScansController extends Controller
 		// return $scan->scanmodel->get();		
     	// return Scanmodel::with('themes.questions')->findOrFail($scan->scanmodel->id)->get();
 
-        return Scan::with('answers', 'group.scans.answers', 'group.scans.user', 'group.scans.instantie.instantiemodel')->findOrFail($scan->id);
+        return Scan::with('answers', 'group.scans.answers', 'group.scans.user', 'group.scans.instantie.instantiemodel', 'group.measures')->findOrFail($scan->id);
 	}
 
 	public function store(Request $request)

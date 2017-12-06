@@ -39,4 +39,9 @@ class Scan extends Model
     {
     	return $this->hasOne('App\Instantie');
     }
+
+    public function measures()
+    {
+        return $this->hasMany('App\Measure');
+    }
 }

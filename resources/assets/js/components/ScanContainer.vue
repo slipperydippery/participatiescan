@@ -92,7 +92,7 @@
             },
 
             nextQuestion: function () {
-                if(this.store.scan.activequestion < 6) {
+                if(this.store.scan.activequestion < 7) {
                     this.store.scan.activequestion ++;
                     if(this.store.scan.activequestion == 6) {
                         this.getScan();
@@ -110,7 +110,7 @@
                     this.store.scan.activequestion --;
                 } else if (this.store.scan.activetheme > 1) {
                     this.store.scan.activetheme --;
-                    this.store.scan.activequestion = 6;
+                    this.store.scan.activequestion = 7;
                 } else {
                     window.location.href = '/scan/2/algemeenbeeldresultaten';
                 }
@@ -118,6 +118,7 @@
             },
 
             storeScan: function() {
+                console.log('storing scan...');
                 axios.post('/api/scan/' + this.store.scan.id, {
                     scan: store.scan
                 })

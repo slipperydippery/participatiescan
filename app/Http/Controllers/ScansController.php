@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Scan;
 use App\Group;
 use App\Answer;
+use App\Measure;
 use App\Question;
 use App\Instantie;
 use App\Scanmodel;
@@ -69,6 +70,10 @@ class ScansController extends Controller
             foreach($theme->questions as $question) {
                 Answer::create([
                     'user_id' => $user->id,
+                    'scan_id' => $scan->id,
+                    'question_id' => $question->id
+                ]);
+                Measure::create([
                     'scan_id' => $scan->id,
                     'question_id' => $question->id
                 ]);

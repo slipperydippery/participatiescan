@@ -12,6 +12,12 @@
         >
         </theme-results>
 
+        <theme-measures
+            v-if="store.scan.activequestion == 7"
+            :theme="theme"
+        >
+        </theme-measures>
+
         <single-question
             v-for="question in theme.questions"
             :question="question"
@@ -39,6 +45,9 @@
         },
 
         mounted() {
+            this.$on('storescan', function(value){
+                this.$parent.$emit('storescan', 'test');
+            });
         },
 
         computed: {

@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Group;
 use App\Measure;
-use App\Postcode;
-use App\Scanmodel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class GroupsController extends Controller
+class ApiMeasuresController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,7 +24,7 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        return view('group.create');
+        //
     }
 
     /**
@@ -39,26 +35,7 @@ class GroupsController extends Controller
      */
     public function store(Request $request)
     {
-        $group = Group::create([
-            'title' => $request->title,
-            'user_id' => Auth::user()->id,
-            'scanmodel_id' => Scanmodel::findOrFail(1)->id,
-            'postcode_id' => Postcode::findOrFail(1)->id
-        ]);
-
-        $scanmodel = Scanmodel::findOrFail(1);
-        foreach($scanmodel->themes as $theme) {
-            foreach($theme->questions as $question) {
-                Measure::create([
-                    'group_id' => $group->id,
-                    'question_id' => $question->id
-                ]);
-            }
-        }
-
-        $group->save();
-        
-        return redirect()->route('home');
+        //
     }
 
     /**
@@ -67,10 +44,9 @@ class GroupsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Group $group)
+    public function show($id)
     {
-        $group->with('scans.user');
-        return view('group.show', compact('group'));
+        //
     }
 
     /**
@@ -91,9 +67,12 @@ class GroupsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Measure $measure)
     {
-        //
+        $measure->measure = $request->measure['measure'];
+        $measure->active = $request->measure['active'];
+        $measure->save();
+        return $measure;        
     }
 
     /**

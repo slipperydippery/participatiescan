@@ -37,3 +37,5 @@ Route::post('/answer/{answer}', 'ApiAnswersController@store');
 Route::get('/scan/{scan}/theme/{theme}/questions', 'ApiScansController@indexquestions');
 Route::get('/scan/{scan}/user/', 'ApiScansController@getuser');
 
+Route::resource('measure', 'ApiMeasuresController');
+
