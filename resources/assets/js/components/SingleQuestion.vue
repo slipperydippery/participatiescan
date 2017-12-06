@@ -20,7 +20,6 @@
             <span class="question--answer" v-else >-</span>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -39,7 +38,6 @@
         },
 
         mounted() {
-            // this.onChange();
         },
 
         computed: {
@@ -47,14 +45,16 @@
 
         methods: {
             onChange: function () {
-                var home = this;
-                axios.post('/api/answer/' + home.question.id, {
-                    answer: store.scan.answers[home.question.id - 1]
-                })
-                .then(response => {})
-                .catch(e => {
-                    home.errors.push(e)
-                })
+                if(store.loggedin) {
+                    var home = this;
+                    axios.post('/api/answer/' + home.question.id, {
+                        answer: store.scan.answers[home.question.id - 1]
+                    })
+                    .then(response => {})
+                    .catch(e => {
+                        home.errors.push(e)
+                    })
+                }
             },
         }
     }

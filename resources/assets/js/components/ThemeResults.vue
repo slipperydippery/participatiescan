@@ -1,9 +1,10 @@
 <template>
-    <div class="introvideo" >
+    <div >
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="page--title"><span class="theme--head--number">Thema {{ theme.id }}:</span> <span class="theme--head--title">{{ theme.title }}</span></h2>
-                <span class="page--clarification">Dit zijn de antwoorden van alle deelnemers</span>
+                <span class="page--clarification" v-if="store.isgroup">Dit zijn de antwoorden van alle deelnemers</span>
+                <span class="page--clarification" v-else>Dit zijn jouw antwoorden</span>
             </div>
         </div>
         <div class="row content--page">
@@ -12,7 +13,7 @@
                     <div class="col-sm-2"></div>
                     <div class="col-sm-2" v-for="question in theme.questions"> {{ question.title }} </div>
                 </div>
-                <div class="row resultstable--row resultstable--row--average">
+                <div class="row resultstable--row resultstable--row--average"  v-if="store.isgroup">
                     <div class="col-sm-2">Gemiddeld</div>
                     <div class="col-sm-2" v-for="question in theme.questions"> 
                         <div class="resultslider">
@@ -23,9 +24,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="row resultstable--row">
+                    <div class="col-sm-2">
+                        {{ store.scan.user.name }} <br>
+                        <span class="emphasis">{{ store.scan.instantie.instantiemodel.title }}</span>
+                    </div>
+                    <div class="col-sm-2 resultslider--container" v-for="question in theme.questions">
+                        <div class="resultslider">
+                            <div class="resultslider--result"
+                                :style="{ width: cssPercent(questionResult(store.scan, question.id)), background: nullColor(store.scan, question.id) }"
+                            >
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row resultstable--row" 
-                    v-if="typeof store.scan.group !== 'undefined'"
-                    v-for="thisscan in store.scan.group.scans"
+                    v-if="store.isgroup"
+                    v-for="thisscan in store.group.scans"
                 >
                     <div class="col-sm-2"> 
                         {{ thisscan.user.name }} <br>        
@@ -77,7 +92,7 @@
             },
 
             questionResult: function(thisscan, questionid) {
-                var thisanswer = '-'
+                var thisanswer = '-';
                 thisscan.answers.forEach(function(answer) {
                     if(answer.question_id == questionid) {
                         thisanswer = answer.answer;
@@ -89,7 +104,7 @@
             questionAverage: function(questionid) {
                 var totalSum = 0;
                 var validAnswers = 0;
-                this.store.scan.group.scans.forEach(function(thisscan) {
+                this.store.group.scans.forEach(function(thisscan) {
                     thisscan.answers.forEach(function(thisanswer) {
                         if(thisanswer.question_id == questionid && thisanswer.answer != null) {
                             totalSum += thisanswer.answer;

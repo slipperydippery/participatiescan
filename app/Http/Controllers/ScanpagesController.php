@@ -35,7 +35,7 @@ class ScanpagesController extends Controller
     public function showscan(Scan $scan)
     {
         $scanmodel = $scan->scanmodel->with('themes.questions')->first();
-        $scan = Scan::with('answers', 'group.scans.answers', 'group.scans.user', 'group.scans.instantie.instantiemodel', 'group.measures')->findOrFail($scan->id);
+        $scan = Scan::with('answers', 'user', 'instantie.instantiemodel', 'measures')->findOrFail($scan->id);
         return view('scan.show', compact('scan', 'scanmodel'));
     }
 }

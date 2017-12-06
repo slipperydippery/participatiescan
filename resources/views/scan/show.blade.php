@@ -5,6 +5,7 @@
 	<scan-container
 		:workscan=" {{ $scan }} "
 		:scanmodel=" {{ $scanmodel }} "
+		:loggedin=" {{ Auth::check() }} "
 	>
 	</scan-container>
 </div>

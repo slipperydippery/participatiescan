@@ -504,7 +504,10 @@ var store = {
 	scan: {
 		answers: [{ "id": 1, "answer": null }, { "id": 2, "answer": null }, { "id": 3, "answer": null }, { "id": 4, "answer": null }, { "id": 5, "answer": null }, { "id": 6, "answer": null }, { "id": 7, "answer": null }, { "id": 8, "answer": null }, { "id": 9, "answer": null }, { "id": 10, "answer": null }, { "id": 11, "answer": null }, { "id": 12, "answer": null }, { "id": 13, "answer": null }, { "id": 14, "answer": null }, { "id": 15, "answer": null }]
 	},
-	pageboolean: false
+	pageboolean: false,
+	isgroup: false,
+	loggedin: false,
+	group: {}
 };
 
 /**
@@ -43587,7 +43590,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-    props: ['workscan', 'scanmodel'],
+    props: ['workscan', 'scanmodel', 'loggedin'],
 
     data: function data() {
         return {
@@ -43598,7 +43601,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         this.getAnswers();
         __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan = this.workscan;
-        this.$on('updatescan', function (value) {
+        __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].loggedin = this.loggedin ? true : false;
+        if (__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.group_id) {
+            console.log(__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.group_id);
+            __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].isgroup = true;
+            this.getGroup(this.workscan.group_id);
+        }
+        this.$on('getscan', function (value) {
             this.getScan();
         });
         this.$on('storescan', function (value) {
@@ -43612,12 +43621,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         getScan: function getScan() {
-            var home = this;
-            axios.get('/api/scan/' + home.workscan.id).then(function (response) {
-                __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan = response.data;
-            }).catch(function (error) {
-                console.log(error);
-            });
+            if (__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].loggedin) {
+                var home = this;
+                axios.get('/api/scan/' + home.workscan.id).then(function (response) {
+                    home.store.scan = response.data;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
         },
 
         getAnswers: function getAnswers() {
@@ -43629,25 +43640,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
 
+        getGroup: function getGroup(groupid) {
+            console.log('getting group');
+            var home = this;
+            axios.get('/api/group/' + groupid).then(function (response) {
+                home.store.group = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+
         nextQuestion: function nextQuestion() {
-            if (this.store.scan.activequestion < 7) {
-                this.store.scan.activequestion++;
-                if (this.store.scan.activequestion == 6) {
+            if (__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activequestion < 7) {
+                __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activequestion++;
+                if (__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activequestion == 6) {
                     this.getScan();
                 }
-            } else if (this.store.scan.activetheme == 3) {} else {
-                this.store.scan.activequestion = 0;
-                this.store.scan.activetheme++;
+            } else if (__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activetheme == 3) {} else {
+                __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activequestion = 0;
+                __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activetheme++;
             }
             this.storeScan();
         },
 
         previousQuestion: function previousQuestion() {
-            if (this.store.scan.activequestion > 0) {
-                this.store.scan.activequestion--;
-            } else if (this.store.scan.activetheme > 1) {
-                this.store.scan.activetheme--;
-                this.store.scan.activequestion = 7;
+            if (__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activequestion > 0) {
+                __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activequestion--;
+            } else if (__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activetheme > 1) {
+                __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activetheme--;
+                __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activequestion = 7;
             } else {
                 window.location.href = '/scan/2/algemeenbeeldresultaten';
             }
@@ -43658,7 +43679,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             console.log('storing scan...');
-            axios.post('/api/scan/' + this.store.scan.id, {
+            axios.post('/api/scan/' + __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.id, {
                 scan: __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan
             }).then(function (response) {
                 _this.getScan();
@@ -44234,14 +44255,6 @@ var render = function() {
         ? _c("theme-intro", { attrs: { theme: _vm.theme } })
         : _vm._e(),
       _vm._v(" "),
-      _vm.store.scan.activequestion == 6
-        ? _c("theme-results", { attrs: { theme: _vm.theme } })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.store.scan.activequestion == 7
-        ? _c("theme-measures", { attrs: { theme: _vm.theme } })
-        : _vm._e(),
-      _vm._v(" "),
       _vm._l(_vm.theme.questions, function(question) {
         return _vm.store.scan.answers && _vm.isActiveQuestion(question.id)
           ? _c("single-question", {
@@ -44249,7 +44262,17 @@ var render = function() {
               attrs: { question: question, theme: _vm.theme }
             })
           : _vm._e()
-      })
+      }),
+      _vm._v(" "),
+      _vm.store.scan.activequestion == 6 &&
+      (_vm.store.group.scans || !_vm.store.isgroup)
+        ? _c("theme-results", { attrs: { theme: _vm.theme } })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.store.scan.activequestion == 7 &&
+      (_vm.store.group.scans || !_vm.store.isgroup)
+        ? _c("theme-measures", { attrs: { theme: _vm.theme } })
+        : _vm._e()
     ],
     2
   )
@@ -44387,7 +44410,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -44399,21 +44421,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             store: __WEBPACK_IMPORTED_MODULE_0__app_js__["store"]
         };
     },
-    mounted: function mounted() {
-        // this.onChange();
-    },
+    mounted: function mounted() {},
 
 
     computed: {},
 
     methods: {
         onChange: function onChange() {
-            var home = this;
-            axios.post('/api/answer/' + home.question.id, {
-                answer: __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.answers[home.question.id - 1]
-            }).then(function (response) {}).catch(function (e) {
-                home.errors.push(e);
-            });
+            if (__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].loggedin) {
+                var home = this;
+                axios.post('/api/answer/' + home.question.id, {
+                    answer: __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.answers[home.question.id - 1]
+                }).then(function (response) {}).catch(function (e) {
+                    home.errors.push(e);
+                });
+            }
         }
     }
 });
@@ -45478,6 +45500,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -45516,7 +45553,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         questionAverage: function questionAverage(questionid) {
             var totalSum = 0;
             var validAnswers = 0;
-            this.store.scan.group.scans.forEach(function (thisscan) {
+            this.store.group.scans.forEach(function (thisscan) {
                 thisscan.answers.forEach(function (thisanswer) {
                     if (thisanswer.question_id == questionid && thisanswer.answer != null) {
                         totalSum += thisanswer.answer;
@@ -45551,7 +45588,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "introvideo" }, [
+  return _c("div", [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-sm-12" }, [
         _c("h2", { staticClass: "page--title" }, [
@@ -45564,9 +45601,13 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("span", { staticClass: "page--clarification" }, [
-          _vm._v("Dit zijn de antwoorden van alle deelnemers")
-        ])
+        _vm.store.isgroup
+          ? _c("span", { staticClass: "page--clarification" }, [
+              _vm._v("Dit zijn de antwoorden van alle deelnemers")
+            ])
+          : _c("span", { staticClass: "page--clarification" }, [
+              _vm._v("Dit zijn jouw antwoorden")
+            ])
       ])
     ]),
     _vm._v(" "),
@@ -45590,30 +45631,77 @@ var render = function() {
             2
           ),
           _vm._v(" "),
+          _vm.store.isgroup
+            ? _c(
+                "div",
+                {
+                  staticClass:
+                    "row resultstable--row resultstable--row--average"
+                },
+                [
+                  _c("div", { staticClass: "col-sm-2" }, [_vm._v("Gemiddeld")]),
+                  _vm._v(" "),
+                  _vm._l(_vm.theme.questions, function(question) {
+                    return _c("div", { staticClass: "col-sm-2" }, [
+                      _c("div", { staticClass: "resultslider" }, [
+                        _c("div", {
+                          staticClass: "resultslider--result",
+                          style: {
+                            width: _vm.cssPercent(
+                              _vm.questionAverage(question.id)
+                            )
+                          }
+                        })
+                      ])
+                    ])
+                  })
+                ],
+                2
+              )
+            : _vm._e(),
+          _vm._v(" "),
           _c(
             "div",
-            { staticClass: "row resultstable--row resultstable--row--average" },
+            { staticClass: "row resultstable--row" },
             [
-              _c("div", { staticClass: "col-sm-2" }, [_vm._v("Gemiddeld")]),
+              _c("div", { staticClass: "col-sm-2" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.store.scan.user.name) +
+                    " "
+                ),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "emphasis" }, [
+                  _vm._v(_vm._s(_vm.store.scan.instantie.instantiemodel.title))
+                ])
+              ]),
               _vm._v(" "),
               _vm._l(_vm.theme.questions, function(question) {
-                return _c("div", { staticClass: "col-sm-2" }, [
-                  _c("div", { staticClass: "resultslider" }, [
-                    _c("div", {
-                      staticClass: "resultslider--result",
-                      style: {
-                        width: _vm.cssPercent(_vm.questionAverage(question.id))
-                      }
-                    })
-                  ])
-                ])
+                return _c(
+                  "div",
+                  { staticClass: "col-sm-2 resultslider--container" },
+                  [
+                    _c("div", { staticClass: "resultslider" }, [
+                      _c("div", {
+                        staticClass: "resultslider--result",
+                        style: {
+                          width: _vm.cssPercent(
+                            _vm.questionResult(_vm.store.scan, question.id)
+                          ),
+                          background: _vm.nullColor(_vm.store.scan, question.id)
+                        }
+                      })
+                    ])
+                  ]
+                )
               })
             ],
             2
           ),
           _vm._v(" "),
-          _vm._l(_vm.store.scan.group.scans, function(thisscan) {
-            return typeof _vm.store.scan.group !== "undefined"
+          _vm._l(_vm.store.group.scans, function(thisscan) {
+            return _vm.store.isgroup
               ? _c(
                   "div",
                   { staticClass: "row resultstable--row" },
@@ -45783,6 +45871,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -45804,16 +45913,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         findMeasure: function findMeasure(questionid) {
             var returnmeasure = {};
             var home = this;
-            if (typeof this.store.scan.group == 'undefined') {
+            if (!__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].isgroup) {
                 this.store.scan.measures.forEach(function (thismeasure) {
                     if (thismeasure.question_id == questionid) {
-                        returnmeasure = thismeasure;
+                        returnmeasure = __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.measures.indexOf(thismeasure);
                     }
                 });
             } else {
-                this.store.scan.group.measures.forEach(function (thismeasure) {
+                this.store.group.measures.forEach(function (thismeasure) {
                     if (thismeasure.question_id == questionid) {
-                        returnmeasure = home.store.scan.group.measures.indexOf(thismeasure);
+                        returnmeasure = home.store.group.measures.indexOf(thismeasure);
                     }
                 });
             }
@@ -45830,14 +45939,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         isActiveMeasure: function isActiveMeasure(questionid) {
             var active = false;
-            if (typeof this.store.scan.group == 'undefined') {
+            if (!__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].isgroup) {
                 this.store.scan.measures.forEach(function (thismeasure) {
                     if (thismeasure.question_id == questionid) {
                         active = thismeasure.active;
                     }
                 });
             } else {
-                this.store.scan.group.measures.forEach(function (thismeasure) {
+                this.store.group.measures.forEach(function (thismeasure) {
                     if (thismeasure.question_id == questionid) {
                         active = thismeasure.active;
                     }
@@ -45848,7 +45957,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         toggleActiveMeasure: function toggleActiveMeasure(questionid) {
             var home = this;
-            if (typeof this.store.scan.group == 'undefined') {
+            if (!__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].isgroup) {
                 this.store.scan.measures.forEach(function (thismeasure) {
                     if (thismeasure.question_id == questionid) {
                         thismeasure.active = !thismeasure.active;
@@ -45856,7 +45965,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 });
             } else {
-                this.store.scan.group.measures.forEach(function (thismeasure) {
+                this.store.group.measures.forEach(function (thismeasure) {
                     if (thismeasure.question_id == questionid) {
                         thismeasure.active = !thismeasure.active;
                         home.storeMeasure(thismeasure);
@@ -45866,7 +45975,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         updateMeasure: function updateMeasure(thismeasure) {
-            console.log(thismeasure);
             axios.patch('/api/measure/' + thismeasure.id, {
                 measure: thismeasure
             }).then(function (response) {}).catch(function (error) {
@@ -45883,10 +45991,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
 
+        questionResult: function questionResult(thisscan, questionid) {
+            var thisanswer = '-';
+            thisscan.answers.forEach(function (answer) {
+                if (answer.question_id == questionid) {
+                    thisanswer = answer.answer;
+                }
+            });
+            return thisanswer;
+        },
+
         questionAverage: function questionAverage(questionid) {
             var totalSum = 0;
             var validAnswers = 0;
-            this.store.scan.group.scans.forEach(function (thisscan) {
+            this.store.group.scans.forEach(function (thisscan) {
                 thisscan.answers.forEach(function (thisanswer) {
                     if (thisanswer.question_id == questionid && thisanswer.answer != null) {
                         totalSum += thisanswer.answer;
@@ -45948,27 +46066,63 @@ var render = function() {
           2
         ),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "row resultstable--row resultstable--row--average" },
-          [
-            _c("div", { staticClass: "col-sm-2" }, [_vm._v("Gemiddeld")]),
-            _vm._v(" "),
-            _vm._l(_vm.theme.questions, function(question) {
-              return _c("div", { staticClass: "col-sm-2" }, [
-                _c("div", { staticClass: "resultslider" }, [
-                  _c("div", {
-                    staticClass: "resultslider--result",
-                    style: {
-                      width: _vm.cssPercent(_vm.questionAverage(question.id))
-                    }
-                  })
-                ])
-              ])
-            })
-          ],
-          2
-        ),
+        _vm.store.isgroup
+          ? _c(
+              "div",
+              {
+                staticClass: "row resultstable--row resultstable--row--average"
+              },
+              [
+                _c("div", { staticClass: "col-sm-2" }, [_vm._v("Gemiddeld")]),
+                _vm._v(" "),
+                _vm._l(_vm.theme.questions, function(question) {
+                  return _c("div", { staticClass: "col-sm-2" }, [
+                    _c("div", { staticClass: "resultslider" }, [
+                      _c("div", {
+                        staticClass: "resultslider--result",
+                        style: {
+                          width: _vm.cssPercent(
+                            _vm.questionAverage(question.id)
+                          )
+                        }
+                      })
+                    ])
+                  ])
+                })
+              ],
+              2
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        !_vm.store.isgroup
+          ? _c(
+              "div",
+              {
+                staticClass: "row resultstable--row resultstable--row--average"
+              },
+              [
+                _c("div", { staticClass: "col-sm-2" }, [
+                  _vm._v("Jouw Antwoorden")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.theme.questions, function(question) {
+                  return _c("div", { staticClass: "col-sm-2" }, [
+                    _c("div", { staticClass: "resultslider" }, [
+                      _c("div", {
+                        staticClass: "resultslider--result",
+                        style: {
+                          width: _vm.cssPercent(
+                            _vm.questionResult(_vm.store.scan, question.id)
+                          )
+                        }
+                      })
+                    ])
+                  ])
+                })
+              ],
+              2
+            )
+          : _vm._e(),
         _vm._v(" "),
         _c("div", { staticClass: "measures" }, [
           _c("div", { staticClass: "measures--group" }, [
@@ -46005,49 +46159,99 @@ var render = function() {
                 _vm._v(" "),
                 _vm._l(_vm.theme.questions, function(question) {
                   return _c("div", { staticClass: "col-sm-2" }, [
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value:
-                            _vm.store.scan.group.measures[
-                              _vm.findMeasure(question.id)
-                            ].measure,
-                          expression:
-                            "store.scan.group.measures[findMeasure(question.id)].measure"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { placeholder: "Actie Omschrijving", rows: "6" },
-                      domProps: {
-                        value:
-                          _vm.store.scan.group.measures[
-                            _vm.findMeasure(question.id)
-                          ].measure
-                      },
-                      on: {
-                        blur: function($event) {
-                          _vm.updateMeasure(
-                            _vm.store.scan.group.measures[
-                              _vm.findMeasure(question.id)
-                            ]
-                          )
-                        },
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                    _vm.store.isgroup
+                      ? _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value:
+                                _vm.store.group.measures[
+                                  _vm.findMeasure(question.id)
+                                ].measure,
+                              expression:
+                                "store.group.measures[findMeasure(question.id)].measure"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            placeholder: "Actie Omschrijving",
+                            rows: "6"
+                          },
+                          domProps: {
+                            value:
+                              _vm.store.group.measures[
+                                _vm.findMeasure(question.id)
+                              ].measure
+                          },
+                          on: {
+                            blur: function($event) {
+                              _vm.updateMeasure(
+                                _vm.store.group.measures[
+                                  _vm.findMeasure(question.id)
+                                ]
+                              )
+                            },
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.store.group.measures[
+                                  _vm.findMeasure(question.id)
+                                ],
+                                "measure",
+                                $event.target.value
+                              )
+                            }
                           }
-                          _vm.$set(
-                            _vm.store.scan.group.measures[
-                              _vm.findMeasure(question.id)
-                            ],
-                            "measure",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
+                        })
+                      : _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value:
+                                _vm.store.scan.measures[
+                                  _vm.findMeasure(question.id)
+                                ].measure,
+                              expression:
+                                "store.scan.measures[findMeasure(question.id)].measure"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            placeholder: "Actie Omschrijving",
+                            rows: "6"
+                          },
+                          domProps: {
+                            value:
+                              _vm.store.scan.measures[
+                                _vm.findMeasure(question.id)
+                              ].measure
+                          },
+                          on: {
+                            blur: function($event) {
+                              _vm.updateMeasure(
+                                _vm.store.scan.measures[
+                                  _vm.findMeasure(question.id)
+                                ]
+                              )
+                            },
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.store.scan.measures[
+                                  _vm.findMeasure(question.id)
+                                ],
+                                "measure",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
                   ])
                 })
               ],

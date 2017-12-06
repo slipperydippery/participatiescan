@@ -6,18 +6,6 @@
         >
         </theme-intro>
 
-        <theme-results
-            v-if="store.scan.activequestion == 6"    
-            :theme="theme"
-        >
-        </theme-results>
-
-        <theme-measures
-            v-if="store.scan.activequestion == 7"
-            :theme="theme"
-        >
-        </theme-measures>
-
         <single-question
             v-for="question in theme.questions"
             :question="question"
@@ -26,6 +14,18 @@
             v-if="store.scan.answers && isActiveQuestion(question.id)"
         >
         </single-question>
+
+        <theme-results
+            v-if="store.scan.activequestion == 6 && (store.group.scans || ! store.isgroup)"    
+            :theme="theme"
+        >
+        </theme-results>
+
+        <theme-measures
+            v-if="store.scan.activequestion == 7 && (store.group.scans || ! store.isgroup)"
+            :theme="theme"
+        >
+        </theme-measures>
     </div>
 
 </template>

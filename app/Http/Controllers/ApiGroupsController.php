@@ -47,8 +47,7 @@ class ApiGroupsController extends Controller
      */
     public function show(Group $group)
     {
-        return Group::with('scans.user')->findOrFail($group)->first();
-
+        return Group::with('scans.user', 'scans.answers', 'scans.instantie.instantiemodel', 'measures')->findOrFail($group)->first();
     }
 
     /**

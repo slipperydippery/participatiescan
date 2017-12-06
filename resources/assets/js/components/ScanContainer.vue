@@ -42,6 +42,7 @@
         props: [
             'workscan',
             'scanmodel',
+            'loggedin'
         ],
 
         data() {
@@ -54,7 +55,13 @@
         mounted() {
             this.getAnswers();
             store.scan = this.workscan;
-            this.$on('updatescan', function(value){
+            store.loggedin = this.loggedin ? true : false;
+            if(store.scan.group_id) {
+                console.log( store.scan.group_id);
+                store.isgroup = true;
+                this.getGroup(this.workscan.group_id);
+            }
+            this.$on('getscan', function(value){
                 this.getScan();
             });
             this.$on('storescan', function(value){
@@ -70,14 +77,16 @@
 
         methods: {
             getScan: function() {
-                var home = this;
-                axios.get('/api/scan/' + home.workscan.id )
-                    .then(function(response){
-                        store.scan = response.data;
-                    })
-                    .catch(function(error){
-                        console.log(error)
-                    })
+                if(store.loggedin) {
+                    var home = this;
+                    axios.get('/api/scan/' + home.workscan.id )
+                        .then(function(response){
+                            home.store.scan = response.data;
+                        })
+                        .catch(function(error){
+                            console.log(error)
+                        })
+                }
             },
 
             getAnswers: function() {
@@ -91,26 +100,38 @@
                     })
             },
 
+            getGroup: function(groupid) {
+                console.log('getting group');
+                var home = this;
+                axios.get('/api/group/' + groupid)
+                    .then(function(response){
+                        home.store.group = response.data;
+                    })
+                    .catch(function(error){
+                        console.log(error)
+                    })
+            },
+
             nextQuestion: function () {
-                if(this.store.scan.activequestion < 7) {
-                    this.store.scan.activequestion ++;
-                    if(this.store.scan.activequestion == 6) {
+                if(store.scan.activequestion < 7) {
+                    store.scan.activequestion ++;
+                    if(store.scan.activequestion == 6) {
                         this.getScan();
                     }
-                } else if (this.store.scan.activetheme == 3) {
+                } else if (store.scan.activetheme == 3) {
                 } else {
-                    this.store.scan.activequestion = 0;
-                    this.store.scan.activetheme ++;
+                    store.scan.activequestion = 0;
+                    store.scan.activetheme ++;
                 }
                 this.storeScan();
             },
 
             previousQuestion: function () {
-                if(this.store.scan.activequestion > 0) {
-                    this.store.scan.activequestion --;
-                } else if (this.store.scan.activetheme > 1) {
-                    this.store.scan.activetheme --;
-                    this.store.scan.activequestion = 7;
+                if(store.scan.activequestion > 0) {
+                    store.scan.activequestion --;
+                } else if (store.scan.activetheme > 1) {
+                    store.scan.activetheme --;
+                    store.scan.activequestion = 7;
                 } else {
                     window.location.href = '/scan/2/algemeenbeeldresultaten';
                 }
@@ -119,7 +140,7 @@
 
             storeScan: function() {
                 console.log('storing scan...');
-                axios.post('/api/scan/' + this.store.scan.id, {
+                axios.post('/api/scan/' + store.scan.id, {
                     scan: store.scan
                 })
                 .then( response => {

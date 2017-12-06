@@ -12,7 +12,7 @@ window.Vue = require('vue');
 
 export let store = {
 	scan: {
-			answers: [
+		answers: [
 			 { "id": 1, "answer": null},
 			 { "id": 2, "answer": null},
 			 { "id": 3, "answer": null},
@@ -28,9 +28,12 @@ export let store = {
 			 { "id": 13, "answer": null},
 			 { "id": 14, "answer": null},
 			 { "id": 15, "answer": null},
-			]
-		},
-		pageboolean: false
+		]
+	},
+	pageboolean: false,
+	isgroup: false,
+	loggedin: false,
+	group: {}
 };
 
 /**

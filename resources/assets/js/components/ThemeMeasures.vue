@@ -12,12 +12,23 @@
                     <div class="col-sm-2"></div>
                     <div class="col-sm-2" v-for="question in theme.questions"> {{ question.title }} </div>
                 </div>
-                <div class="row resultstable--row resultstable--row--average">
+                <div class="row resultstable--row resultstable--row--average" v-if="store.isgroup">
                     <div class="col-sm-2">Gemiddeld</div>
                     <div class="col-sm-2" v-for="question in theme.questions"> 
                         <div class="resultslider">
                             <div class="resultslider--result"
                                 :style="{ width: cssPercent(questionAverage(question.id)) }"
+                            >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row resultstable--row resultstable--row--average" v-if="! store.isgroup">
+                    <div class="col-sm-2">Jouw Antwoorden</div>
+                    <div class="col-sm-2" v-for="question in theme.questions"> 
+                        <div class="resultslider">
+                            <div class="resultslider--result"
+                                :style="{ width: cssPercent(questionResult(store.scan, question.id)) }"
                             >
                             </div>
                         </div>
@@ -35,11 +46,21 @@
                             <div class="col-sm-2">Aantekeningen</div>
                             <div class="col-sm-2" v-for="question in theme.questions">
                                 <textarea  
+                                    v-if="store.isgroup"
                                     class="form-control" 
                                     placeholder="Actie Omschrijving"
                                     rows="6"
-                                    v-model="store.scan.group.measures[findMeasure(question.id)].measure"
-                                    @blur="updateMeasure(store.scan.group.measures[findMeasure(question.id)])"
+                                    v-model="store.group.measures[findMeasure(question.id)].measure"
+                                    @blur="updateMeasure(store.group.measures[findMeasure(question.id)])"
+                                >
+                                </textarea>
+                                <textarea  
+                                    v-else
+                                    class="form-control" 
+                                    placeholder="Actie Omschrijving"
+                                    rows="6"
+                                    v-model="store.scan.measures[findMeasure(question.id)].measure"
+                                    @blur="updateMeasure(store.scan.measures[findMeasure(question.id)])"
                                 >
                                 </textarea>
                             </div>
@@ -78,16 +99,16 @@
             findMeasure: function(questionid) {
                 var returnmeasure = {};
                 var home = this;
-                if(typeof this.store.scan.group == 'undefined') {
+                if( ! store.isgroup) {
                     this.store.scan.measures.forEach(function(thismeasure) {
                         if(thismeasure.question_id == questionid) {
-                            returnmeasure = thismeasure;
+                            returnmeasure = store.scan.measures.indexOf(thismeasure);
                         }
                     }) 
                 } else {
-                    this.store.scan.group.measures.forEach(function(thismeasure){
+                    this.store.group.measures.forEach(function(thismeasure){
                         if(thismeasure.question_id == questionid) {
-                            returnmeasure = home.store.scan.group.measures.indexOf(thismeasure);
+                            returnmeasure = home.store.group.measures.indexOf(thismeasure);
                         }
                     })
                 }
@@ -104,14 +125,14 @@
 
             isActiveMeasure: function (questionid) {
                 var active = false;
-                if(typeof this.store.scan.group == 'undefined') {
+                if( ! store.isgroup) {
                     this.store.scan.measures.forEach(function(thismeasure){
                         if (thismeasure.question_id == questionid) {
                             active = thismeasure.active;
                         }
                     })
                 } else {
-                    this.store.scan.group.measures.forEach(function(thismeasure) {
+                    this.store.group.measures.forEach(function(thismeasure) {
                         if (thismeasure.question_id == questionid) {
                             active = thismeasure.active;
                         }
@@ -122,7 +143,7 @@
 
             toggleActiveMeasure: function (questionid) {
                 var home = this;
-                if(typeof this.store.scan.group == 'undefined') {
+                if( ! store.isgroup) {
                     this.store.scan.measures.forEach(function(thismeasure) {
                         if (thismeasure.question_id == questionid) {
                             thismeasure.active = ! thismeasure.active; 
@@ -130,7 +151,7 @@
                         }
                     })
                 } else {
-                    this.store.scan.group.measures.forEach(function(thismeasure) {
+                    this.store.group.measures.forEach(function(thismeasure) {
                         if (thismeasure.question_id == questionid) {
                             thismeasure.active = ! thismeasure.active; 
                             home.storeMeasure(thismeasure); 
@@ -140,7 +161,6 @@
             },
 
             updateMeasure: function (thismeasure) {
-                console.log(thismeasure)
                 axios.patch('/api/measure/' + thismeasure.id, {
                     measure: thismeasure
                     })
@@ -165,10 +185,20 @@
                 })
             },
 
+            questionResult: function(thisscan, questionid) {
+                var thisanswer = '-';
+                thisscan.answers.forEach(function(answer) {
+                    if(answer.question_id == questionid) {
+                        thisanswer = answer.answer;
+                    }
+                })
+                return thisanswer;
+            },
+
             questionAverage: function(questionid) {
                 var totalSum = 0;
                 var validAnswers = 0;
-                this.store.scan.group.scans.forEach(function(thisscan) {
+                this.store.group.scans.forEach(function(thisscan) {
                     thisscan.answers.forEach(function(thisanswer) {
                         if(thisanswer.question_id == questionid && thisanswer.answer != null) {
                             totalSum += thisanswer.answer;
