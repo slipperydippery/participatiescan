@@ -12,6 +12,6 @@ class Instantie extends Model
 
     public function instantiemodel()
     {
-    	return $this->belongsTo('App\instantiemodel');
+    	return $this->belongsTo('App\Instantiemodel');
     }
 }
