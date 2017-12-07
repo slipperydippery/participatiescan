@@ -24,20 +24,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="row resultstable--row">
-                    <div class="col-sm-2">
-                        {{ store.scan.user.name }} <br>
-                        <span class="emphasis">{{ store.scan.instantie.instantiemodel.title }}</span>
-                    </div>
-                    <div class="col-sm-2 resultslider--container" v-for="question in theme.questions">
-                        <div class="resultslider">
-                            <div class="resultslider--result"
-                                :style="{ width: cssPercent(questionResult(store.scan, question.id)), background: nullColor(store.scan, question.id) }"
-                            >
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row resultstable--row" 
                     v-if="store.isgroup"
                     v-for="thisscan in store.group.scans"
@@ -50,6 +36,20 @@
                         <div class="resultslider">
                             <div class="resultslider--result"
                                 :style="{ width: cssPercent(questionResult(thisscan, question.id)), background: nullColor(thisscan, question.id) }"
+                            >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row resultstable--row" v-else>
+                    <div class="col-sm-2">
+                        {{ store.scan.user.name }} <br>
+                        <span class="emphasis">{{ store.scan.instantie.instantiemodel.title }}</span>
+                    </div>
+                    <div class="col-sm-2 resultslider--container" v-for="question in theme.questions">
+                        <div class="resultslider">
+                            <div class="resultslider--result"
+                                :style="{ width: cssPercent(questionResult(store.scan, question.id)), background: nullColor(store.scan, question.id) }"
                             >
                             </div>
                         </div>

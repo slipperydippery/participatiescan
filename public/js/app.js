@@ -45660,46 +45660,6 @@ var render = function() {
               )
             : _vm._e(),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "row resultstable--row" },
-            [
-              _c("div", { staticClass: "col-sm-2" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.store.scan.user.name) +
-                    " "
-                ),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "emphasis" }, [
-                  _vm._v(_vm._s(_vm.store.scan.instantie.instantiemodel.title))
-                ])
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.theme.questions, function(question) {
-                return _c(
-                  "div",
-                  { staticClass: "col-sm-2 resultslider--container" },
-                  [
-                    _c("div", { staticClass: "resultslider" }, [
-                      _c("div", {
-                        staticClass: "resultslider--result",
-                        style: {
-                          width: _vm.cssPercent(
-                            _vm.questionResult(_vm.store.scan, question.id)
-                          ),
-                          background: _vm.nullColor(_vm.store.scan, question.id)
-                        }
-                      })
-                    ])
-                  ]
-                )
-              })
-            ],
-            2
-          ),
-          _vm._v(" "),
           _vm._l(_vm.store.group.scans, function(thisscan) {
             return _vm.store.isgroup
               ? _c(
@@ -45741,7 +45701,53 @@ var render = function() {
                   ],
                   2
                 )
-              : _vm._e()
+              : _c(
+                  "div",
+                  { staticClass: "row resultstable--row" },
+                  [
+                    _c("div", { staticClass: "col-sm-2" }, [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(_vm.store.scan.user.name) +
+                          " "
+                      ),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "emphasis" }, [
+                        _vm._v(
+                          _vm._s(_vm.store.scan.instantie.instantiemodel.title)
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.theme.questions, function(question) {
+                      return _c(
+                        "div",
+                        { staticClass: "col-sm-2 resultslider--container" },
+                        [
+                          _c("div", { staticClass: "resultslider" }, [
+                            _c("div", {
+                              staticClass: "resultslider--result",
+                              style: {
+                                width: _vm.cssPercent(
+                                  _vm.questionResult(
+                                    _vm.store.scan,
+                                    question.id
+                                  )
+                                ),
+                                background: _vm.nullColor(
+                                  _vm.store.scan,
+                                  question.id
+                                )
+                              }
+                            })
+                          ])
+                        ]
+                      )
+                    })
+                  ],
+                  2
+                )
           })
         ],
         2
