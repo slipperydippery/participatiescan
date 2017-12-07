@@ -13,6 +13,9 @@ class PagesController extends Controller
 {
     public function welcome()
     {
+        if(Auth::check()){
+            return redirect()->route('home');
+        }
     	$scanmodel = Scanmodel::with('themes.questions')->findOrFail(1);
 
     	return view('welcome', compact('scanmodel'));
