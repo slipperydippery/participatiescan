@@ -8568,7 +8568,7 @@ body {
 }
 
 h1.title {
-  margin-top: 10rem;
+  margin-top: 6rem;
   font-size: 6rem;
 }
 
@@ -8588,7 +8588,7 @@ h1.title span.title--scan {
 
 h2.subtitle {
   color: #666666;
-  font-size: 4rem;
+  font-size: 3.2rem;
 }
 
 .featuredimg--container {
