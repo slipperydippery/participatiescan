@@ -3,7 +3,9 @@
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="page--title"><span class="theme--head--number">Thema {{ theme.id }}:</span> <span class="theme--head--title">{{ theme.title }}</span></h2>
-                <span class="page--clarification">Dit zijn de antwoorden van alle deelnemers</span>
+                <span class="page--clarification" v-if="store.isgroup && store.loggedin">Selecteer de belangrijkste verbeterpunten, en noteer de belangrijkste opmerkingen uit het gesprek. Deze verbeterpunten kunnen aan het eind van de scan nader worden uitgewerkt.</span>
+                <span class="page--clarification" v-if=" ! store.isgroup && store.loggedin">Selecteer de belangrijkste verbeterpunten, en noteer jouw belangrijkste ideeen daarbij. Deze verbeterpunten kunnen aan het eind van de scan nader worden uitgewerkt.</span>
+                <span class="page--clarification" v-else>Selecteer de belangrijkste verbeterpunten, en noteer jouw belangrijkste ideeen daarbij. Deze verbeterpunten kunnen aan het eind van de scan nader worden uitgewerkt.</span>
             </div>
         </div>
         <div class="row content--page">

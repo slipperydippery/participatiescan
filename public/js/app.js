@@ -43618,6 +43618,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -43628,11 +43639,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             store: __WEBPACK_IMPORTED_MODULE_0__app_js__["store"],
-            answers: []
+            answers: [],
+            finished: false
         };
     },
     mounted: function mounted() {
-        console.log(this.loggedin);
         this.getAnswers();
         __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan = this.workscan;
         __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].loggedin = this.loggedin ? true : false;
@@ -43690,7 +43701,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activequestion == 6) {
                     this.getScan();
                 }
-            } else if (__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activetheme == 3) {} else {
+            } else if (__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activetheme == 3) {
+                if (!__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].loggedin) {
+                    this.finished = true;
+                }
+            } else {
                 __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activequestion = 0;
                 __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.activetheme++;
             }
@@ -43745,6 +43760,12 @@ var render = function() {
       _vm._v(" "),
       _c("scan-progress", { attrs: { scanmodel: _vm.scanmodel } }),
       _vm._v(" "),
+      _vm.finished
+        ? _c("div", { staticClass: "confirm--container" }, [
+            _vm._m(0, false, false)
+          ])
+        : _vm._e(),
+      _vm._v(" "),
       _c("div", { staticClass: "prev-next-nav" }, [
         _c(
           "a",
@@ -43770,7 +43791,32 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "confirm" }, [
+      _c("span", { staticClass: "page--clarification" }, [
+        _vm._v(
+          "\n                Dank je voor het uitvoeren van de testscan!\n            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Met een account kun je jouw scanresultaten opslaan en vergelijken met een groep of andere deelnemers aan de scan."
+        )
+      ]),
+      _vm._v(" "),
+      _c("button", [_vm._v("Maak een account aan")]),
+      _vm._v(" "),
+      _c("button", [_vm._v("Terug naar de homepagina")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -43867,7 +43913,7 @@ exports = module.exports = __webpack_require__(5)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -43912,6 +43958,18 @@ module.exports = function listToStyles (parentId, list) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_js__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -43999,6 +44057,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         gotoThemeResults: function gotoThemeResults(themeid) {
             this.store.scan.activequestion = 6;
+            this.store.scan.activetheme = themeid;
+            this.$parent.$emit('storescan', 'test');
+        },
+
+        gotoThemeMeasures: function gotoThemeMeasures(themeid) {
+            this.store.scan.activequestion = 7;
             this.store.scan.activetheme = themeid;
             this.$parent.$emit('storescan', 'test');
         },
@@ -44117,6 +44181,47 @@ var render = function() {
                             }
                           })
                         ])
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "progress--results",
+                    on: {
+                      click: function($event) {
+                        _vm.gotoThemeMeasures(theme.id)
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        attrs: {
+                          version: "1.1",
+                          id: "Layer_1",
+                          xmlns: "http://www.w3.org/2000/svg",
+                          "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                          x: "0px",
+                          y: "0px",
+                          width: "70.318px",
+                          height: "101.108px",
+                          viewBox: "0 0 70.318 101.108",
+                          "enable-background": "new 0 0 70.318 101.108",
+                          "xml:space": "preserve"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            fill: "#FFFFFF",
+                            d:
+                              "M60.803,25.412c4.543-7.851,1.853-17.931-5.996-22.474l-1.264-0.73c-7.849-4.541-17.93-1.85-22.471,5.998\n                        l-4.393,7.59l-0.003-0.002L0,61.895l0.027,34.461L29.74,79.092L60.803,25.412z M36.828,11.538c2.707-4.674,8.71-6.277,13.385-3.572\n                        l1.264,0.73c4.672,2.705,6.275,8.709,3.569,13.383l-3.662,6.33L33.167,17.868L36.828,11.538z M13.992,80.549L6.663,76.31\n                        l-0.01-12.384l18.011,10.423L13.992,80.549z M7.974,61.398l21.129-36.515l18.222,10.542l-21.13,36.516L7.974,61.398z M0.027,96.356\n                        H0v4.752h70.318v-4.752H0.027z"
+                          }
+                        })
                       ]
                     )
                   ]
@@ -44829,6 +44934,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -44915,12 +45021,24 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm.store.isgroup
+        _vm.store.isgroup && _vm.store.loggedin
           ? _c("span", { staticClass: "page--clarification" }, [
-              _vm._v("Dit zijn de antwoorden van alle deelnemers")
+              _vm._v(
+                "Dit zijn de antwoorden van alle deelnemers. Bespreek met elkaar wat opvalt, en kies in het volgende scherm de belangrijkste verbeterpunten."
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        !_vm.store.isgroup && _vm.store.loggedin
+          ? _c("span", { staticClass: "page--clarification" }, [
+              _vm._v(
+                "Dit zijn jouw antwoorden. Via het dashboard kun je jouw antwoorden vergelijken met andere deelnemers. Kies in het volgende scherm de belangrijkste verbeterpunten."
+              )
             ])
           : _c("span", { staticClass: "page--clarification" }, [
-              _vm._v("Dit zijn jouw antwoorden")
+              _vm._v(
+                "Dit zijn jouw antwoorden. Met een account kun je jouw antwoorden vergelijken met de group of andere individuele scans. Kies in het volgende scherm de belangrijkste verbeterpunten."
+              )
             ])
       ])
     ]),
@@ -45210,6 +45328,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -45361,9 +45481,25 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("span", { staticClass: "page--clarification" }, [
-          _vm._v("Dit zijn de antwoorden van alle deelnemers")
-        ])
+        _vm.store.isgroup && _vm.store.loggedin
+          ? _c("span", { staticClass: "page--clarification" }, [
+              _vm._v(
+                "Selecteer de belangrijkste verbeterpunten, en noteer de belangrijkste opmerkingen uit het gesprek. Deze verbeterpunten kunnen aan het eind van de scan nader worden uitgewerkt."
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        !_vm.store.isgroup && _vm.store.loggedin
+          ? _c("span", { staticClass: "page--clarification" }, [
+              _vm._v(
+                "Selecteer de belangrijkste verbeterpunten, en noteer jouw belangrijkste ideeen daarbij. Deze verbeterpunten kunnen aan het eind van de scan nader worden uitgewerkt."
+              )
+            ])
+          : _c("span", { staticClass: "page--clarification" }, [
+              _vm._v(
+                "Selecteer de belangrijkste verbeterpunten, en noteer jouw belangrijkste ideeen daarbij. Deze verbeterpunten kunnen aan het eind van de scan nader worden uitgewerkt."
+              )
+            ])
       ])
     ]),
     _vm._v(" "),

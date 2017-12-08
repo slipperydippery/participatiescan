@@ -18,7 +18,7 @@ class ScanpagesController extends Controller
 			$attributes = [
 				"title" => "Testscan",
 				"description" => null,
-				"instantiemodel_id" => "1",
+				"instantiemodel_id" => "6",
 				"districtmodel_id" => "1",
 				"scanmodel_id" => "1",
 				"activetheme" => "1",

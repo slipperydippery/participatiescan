@@ -31,6 +31,18 @@
                             </g>
                         </svg>
                     </div>
+                    <div class="progress--results" @click=" gotoThemeMeasures(theme.id) ">
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             width="70.318px" height="101.108px" viewBox="0 0 70.318 101.108" enable-background="new 0 0 70.318 101.108"
+                             xml:space="preserve">
+                        <path fill="#FFFFFF" d="M60.803,25.412c4.543-7.851,1.853-17.931-5.996-22.474l-1.264-0.73c-7.849-4.541-17.93-1.85-22.471,5.998
+                            l-4.393,7.59l-0.003-0.002L0,61.895l0.027,34.461L29.74,79.092L60.803,25.412z M36.828,11.538c2.707-4.674,8.71-6.277,13.385-3.572
+                            l1.264,0.73c4.672,2.705,6.275,8.709,3.569,13.383l-3.662,6.33L33.167,17.868L36.828,11.538z M13.992,80.549L6.663,76.31
+                            l-0.01-12.384l18.011,10.423L13.992,80.549z M7.974,61.398l21.129-36.515l18.222,10.542l-21.13,36.516L7.974,61.398z M0.027,96.356
+                            H0v4.752h70.318v-4.752H0.027z"/>
+                        </svg>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -87,6 +99,12 @@
 
             gotoThemeResults: function (themeid) {
                 this.store.scan.activequestion = 6;
+                this.store.scan.activetheme = themeid;
+                this.$parent.$emit('storescan', 'test');
+            },
+
+            gotoThemeMeasures: function (themeid) {
+                this.store.scan.activequestion = 7;
                 this.store.scan.activetheme = themeid;
                 this.$parent.$emit('storescan', 'test');
             },

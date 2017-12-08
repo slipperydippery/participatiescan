@@ -16,20 +16,28 @@
     <div class="row">
     	<div class="col-md-12">
     		<h2 class="page--title"> Algemeen beeld resultaten.</h2>
-    		<span class="page--clarification"> Bespreek met elkaar wat je van de gezamelijke huidige aanpak vindt. </span>
+
+            @if(count($scan->group))
+                <span class="page--clarification"> Bespreek met elkaar wat je van de gezamelijke huidige aanpak vindt. </span>
+            @elseif(Auth::guest())
+                <span class="page--clarification"> Dit is het antwoord dat je gegeven hebt. Met een account kun je jouw antwoord vergelijken met de group of andere individuele scans. </span>
+            @else
+        		<span class="page--clarification"> Dit is het antwoord dat je gegeven hebt. Via het dashboard kun je jouw antwoorden vergelijken met andere deelnemers. </span>
+            @endif
+            
     	</div>
     </div>
     <div class="row content--page">
     	<div class="col-sm-12">
-            @if(count($scan->group))
-                    <div class="row">
-                        <div class="col-sm-2">  </div>
-                        <div class="col-sm-2 table--instantie">  </div>
-                        <div class="col-sm-1 table--score"> score </div>
-                        <div class="col-sm-7">
+            <div class="row">
+                <div class="col-sm-2">  </div>
+                <div class="col-sm-2 table--instantie">  </div>
+                <div class="col-sm-1 table--score"> score </div>
+                <div class="col-sm-7">
 
-                        </div>
-                    </div>
+                </div>
+            </div>
+            @if(count($scan->group))
                 @foreach($scan->group->scans as $thisscan)
                     <div class="row">
                         <div class="col-sm-2"> {{ $thisscan->user->name }} </div>
@@ -44,6 +52,19 @@
                         </div>
                     </div>
                 @endforeach
+            @else
+                <div class="row">
+                    <div class="col-sm-2"> {{ $scan->user->name }} </div>
+                    <div class="col-sm-2 table--instantie"> {{ $scan->instantie->instantiemodel->title }} </div>
+                    <div class="col-sm-1 table--score"> {{ $scan->algemeenbeeld }} </div>
+                    <div class="col-sm-7">
+                        <input type="range" 
+                            min="0" max="100"
+                            value="{{ $scan->algemeenbeeld }}" 
+                            disabled
+                        >
+                    </div>
+                </div>            
             @endif
             
     	</div>

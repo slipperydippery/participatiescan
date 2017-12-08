@@ -13,6 +13,17 @@
         >
         </scan-progress>
 
+        <div class="confirm--container" v-if=" finished">
+            <div class="confirm">
+                <span class="page--clarification">
+                    Dank je voor het uitvoeren van de testscan!
+                </span> <br>
+                <p>Met een account kun je jouw scanresultaten opslaan en vergelijken met een groep of andere deelnemers aan de scan.</p>
+                <button>Maak een account aan</button>
+                <button>Terug naar de homepagina</button>
+            </div>
+        </div>
+
         <div class="prev-next-nav">
             <a href="#" class="btn prev-next-nav--prev" @click=" previousQuestion ">
                 << vorige pagina
@@ -41,11 +52,11 @@
             return {
                 store,
                 answers: [],
+                finished: false,
             }
         },
 
         mounted() {
-            console.log(this.loggedin);
             this.getAnswers();
             store.scan = this.workscan;
             store.loggedin = this.loggedin ? true : false;
@@ -112,6 +123,9 @@
                         this.getScan();
                     }
                 } else if (store.scan.activetheme == 3) {
+                    if(! store.loggedin) {
+                        this.finished = true;
+                    }
                 } else {
                     store.scan.activequestion = 0;
                     store.scan.activetheme ++;

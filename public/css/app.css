@@ -8614,7 +8614,7 @@ h2.subtitle {
 
 .welcome--textblock--container {
   text-align: left;
-  margin-bottom: 6rem;
+  margin-bottom: 10rem;
 }
 
 .welcome--textblock--container .welcome--textblock {
@@ -9037,6 +9037,7 @@ input {
   background: white;
   border: grey;
   padding: 8rem;
+  border: 1px solid black;
 }
 
 .breadcrumb {

@@ -15,13 +15,13 @@ class UsersTableSeeder extends Seeder
 
         $users = [
             [
-                'name' => 'Susanne Meeuwissen',
-                'email' => 'susanne@embav.nl',
+                'name' => 'gast',
+                'email' => 'gast@gast.nl',
                 'password' => Hash::make('password')
             ],
             [
-                'name' => 'gast',
-                'email' => 'gast@gast.nl',
+                'name' => 'Susanne Meeuwissen',
+                'email' => 'susanne@embav.nl',
                 'password' => Hash::make('password')
             ],
             [
