@@ -8383,6 +8383,13 @@ label {
   font-size: 1.3rem;
 }
 
+.fineprint--welcome {
+  margin-top: 1rem;
+  color: #BD6498;
+  text-style: italic;
+  font-size: 1.5rem;
+}
+
 .infoblock {
   margin: 2rem 0;
   border: 1px solid #DEDEDE;
@@ -8564,7 +8571,7 @@ body {
 }
 
 .content--welcome section {
-  margin: 2rem auto 6rem;
+  margin: 0 auto 2rem;
 }
 
 h1.title {
@@ -8603,6 +8610,19 @@ h2.subtitle {
 
 .featuredimg--container .mainbutton--container .mainbutton {
   margin: 0 auto;
+}
+
+.welcome--textblock--container {
+  text-align: left;
+  margin-bottom: 6rem;
+}
+
+.welcome--textblock--container .welcome--textblock {
+  padding: 2rem;
+}
+
+.welcome--textblock--container .welcome--textblock h3 {
+  color: #117B94;
 }
 
 .dashmessage {

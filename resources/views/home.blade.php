@@ -70,7 +70,7 @@
                 </div>
             </div>
             <div class="dashboard--item">
-                <div class="dashboard--item--head">Participatiealmanak</div>
+                <div class="dashboard--item--head">Kennisbank</div>
                 <div class="dashboard--item--body"><img src="/img/books.svg" alt=""></div>
             </div>
         </div>
@@ -80,7 +80,7 @@
                 <div class="dashboard--item--body"><img src="/img/scales.svg" alt=""></div>
             </div>
             <div class="dashboard--item dashboard--item--doubleheight">
-                <div class="dashboard--item--head">ParticipatieKaart</div>
+                <div class="dashboard--item--head">Cijfers uit jouw regio</div>
                 <div class="dashboard--item--body"><img src="/img/nederlandlarge.svg" alt=""></div>
             </div>
         </div>

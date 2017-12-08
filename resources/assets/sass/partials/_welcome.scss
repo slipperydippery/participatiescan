@@ -5,7 +5,7 @@
 		margin: 0 auto;
 	}
 	section {
-		margin: 2rem auto 6rem;;
+		margin: 0 auto 2rem;;
 	}
 }
 
@@ -44,6 +44,17 @@ h2.subtitle {
 	.mainbutton--container {
 		.mainbutton {
 			margin: 0 auto;
+		}
+	}
+}
+
+.welcome--textblock--container {
+	text-align: left;
+	margin-bottom: 10rem;
+	.welcome--textblock {
+		padding: 2rem;
+		h3 {
+			color: $themecolor;
 		}
 	}
 }

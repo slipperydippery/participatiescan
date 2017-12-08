@@ -9,6 +9,7 @@
                 <div class="featuredimg--container">
                     <div class="mainbutton--container">
                         <a href=" {{ route('startscan') }} " class="btn mainbutton">Doe de scan</a>
+                        <a href="#"><span class="fineprint fineprint--welcome">Lees hier hoe de scan werkt</span></a>
                     </div>
                 </div>
             </div>
@@ -34,6 +35,23 @@
                         <h4>Cijfers uit jouw regio</h4>
                         <img src="/img/nederland.svg" alt="">
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="row container welcome--textblock--container">
+                <div class="col-sm-4 welcome--textblock">
+                    <h3>Betere kansen voor jongeren</h3>
+                    <span>Vocent corpora ei vim, usu ut saepe neglegentur complectitur. Falli propriae constituto et qui, cu dicam intellegam sed, decore nominavi scripserit ea cum. Est volutpat persecuti ei, duo harum adipisci abhorreant in.</span>
+                </div>
+                <div class="col-sm-4 welcome--textblock">
+                    <h3>In 2 stappen een werkagenda</h3>
+                    <span>Vocent corpora ei vim, usu ut saepe neglegentur complectitur. Falli propriae constituto et qui, cu dicam intellegam sed, decore nominavi scripserit ea cum. Est volutpat persecuti ei, duo harum adipisci abhorreant in.</span>
+                </div>
+                <div class="col-sm-4 welcome--textblock">
+                    <h3>Gezamelijk aan tafel</h3>
+                    <span>Vocent corpora ei vim, usu ut saepe neglegentur complectitur. Falli propriae constituto et qui, cu dicam intellegam sed, decore nominavi scripserit ea cum. Est volutpat persecuti ei, duo harum adipisci abhorreant in.</span>
                 </div>
             </div>
         </section>
