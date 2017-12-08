@@ -15,6 +15,29 @@
         </section>
         
 
+        <section class="">
+            <div class="row container">
+                <div class="col-sm-4">
+                    <div class="infoblock">
+                        <h4>Films</h4>
+                        <img src="/img/movie.svg" alt="">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="infoblock">
+                        <h4>Kennisbank</h4>
+                        <img src="/img/books.svg" alt="">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="infoblock">
+                        <h4>Cijfers uit jouw regio</h4>
+                        <img src="/img/nederland.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="content--fullwidthback">
             <div class="row container">
                 <div class="col-sm-4">
@@ -51,29 +74,6 @@
                         <a href="#" class="btn themebutton themecolor-{{ $theme->id }}"> {{ $theme->title }} </a>
                     </div>
                 @endforeach
-            </div>
-        </section>
-
-        <section class="">
-            <div class="row container">
-                <div class="col-sm-4">
-                    <div class="infoblock">
-                        <h4>Films</h4>
-                        <img src="/img/movie.svg" alt="">
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="infoblock">
-                        <h4>Participatiealmanak</h4>
-                        <img src="/img/books.svg" alt="">
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="infoblock">
-                        <h4>Cijfers uit jouw regio</h4>
-                        <img src="/img/nederland.svg" alt="">
-                    </div>
-                </div>
             </div>
         </section>
     </div>

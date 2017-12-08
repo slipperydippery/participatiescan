@@ -52,41 +52,7 @@ class ScansController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-
-        $scan = Scan::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'user_id' => $user->id,
-            'scanmodel_id' => $request->scanmodel_id,
-            'activetheme' => 1,
-            'activequestion' => 0,
-        ]);
-
-        $instantie = Instantie::create([
-            'user_id' => $user->id,
-            'scan_id' => $scan->id,
-            'instantiemodel_id' => $request->instantiemodel_id,
-        ]);
-
-        $district = District::create([
-            'scan_id' => $scan->id,
-            'districtmodel_id' => $request->districtmodel_id,
-        ]);
-
-        $scanmodel = Scanmodel::findOrFail($request->scanmodel_id);
-        foreach($scanmodel->themes as $theme) {
-            foreach($theme->questions as $question) {
-                Answer::create([
-                    'user_id' => $user->id,
-                    'scan_id' => $scan->id,
-                    'question_id' => $question->id
-                ]);
-                Measure::create([
-                    'scan_id' => $scan->id,
-                    'question_id' => $question->id
-                ]);
-            }
-        }
+        $scan = Scan::register($user, $request->all());
 
         $grouprequest =  false;
 

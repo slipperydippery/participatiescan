@@ -68,9 +68,9 @@
                             maak je account aan
                         </button>
                         <span class="submit--choice">Of</span>
-                        <button type="submit" class="btn btn-link btn--secondary btn--fullwidth">
+                        <a href=" {{ route('scan.loggless') }} " class="btn btn-link btn--secondary btn--fullwidth">
                             bekijk de scan zonder in te loggen
-                        </button>
+                        </a>
                         <span class="fineprint">(de resultaten worden niet opgeslagen)</span>
                     </div>
                 </div>

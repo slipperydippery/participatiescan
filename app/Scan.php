@@ -2,6 +2,13 @@
 
 namespace App;
 
+use App\Scan;
+use App\User;
+use App\Answer;
+use App\Measure;
+use App\District;
+use App\Instantie;
+use App\Scanmodel;
 use Illuminate\Database\Eloquent\Model;
 
 class Scan extends Model
@@ -48,5 +55,35 @@ class Scan extends Model
     public function district()
     {
         return $this->hasOne('App\District');
+    }
+
+    public static function register(User $user, $attributes)
+    {
+        $scan = new Scan($attributes);
+        $user->scans()->save($scan);
+
+        $instantie = Instantie::create([
+            'scan_id' => $scan->id,
+            'instantiemodel_id' => $attributes['instantiemodel_id'],
+        ]);
+
+        $district = District::create([
+            'scan_id' => $scan->id,
+            'districtmodel_id' => $attributes['districtmodel_id'],
+        ]);
+
+        $scanmodel = Scanmodel::findOrFail($attributes['scanmodel_id']);
+        foreach($scanmodel->themes as $theme) {
+            foreach($theme->questions as $question) {
+                Answer::create([
+                    'scan_id' => $scan->id,
+                    'question_id' => $question->id
+                ]);
+                Measure::create([
+                    'scan_id' => $scan->id,
+                    'question_id' => $question->id
+                ]);
+            }
+        }
     }
 }

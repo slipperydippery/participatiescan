@@ -45,11 +45,11 @@
         },
 
         mounted() {
+            console.log(this.loggedin);
             this.getAnswers();
             store.scan = this.workscan;
             store.loggedin = this.loggedin ? true : false;
             if(store.scan.group_id) {
-                console.log( store.scan.group_id);
                 store.isgroup = true;
                 this.getGroup(this.workscan.group_id);
             }
@@ -93,15 +93,16 @@
             },
 
             getGroup: function(groupid) {
-                console.log('getting group');
-                var home = this;
-                axios.get('/api/group/' + groupid)
-                    .then(function(response){
-                        home.store.group = response.data;
-                    })
-                    .catch(function(error){
-                        console.log(error)
-                    })
+                if(store.loggedin) {
+                    var home = this;
+                    axios.get('/api/group/' + groupid)
+                        .then(function(response){
+                            home.store.group = response.data;
+                        })
+                        .catch(function(error){
+                            console.log(error)
+                        })
+                }
             },
 
             nextQuestion: function () {
@@ -131,16 +132,17 @@
             },
 
             storeScan: function() {
-                console.log('storing scan...');
-                axios.post('/api/scan/' + store.scan.id, {
-                    scan: store.scan
-                })
-                .then( response => {
-                    this.getScan();
-                } )
-                .catch( e => {
-                    this.errors.push( e )
-                })
+                if(store.loggedin) {
+                    axios.post('/api/scan/' + store.scan.id, {
+                        scan: store.scan
+                    })
+                    .then( response => {
+                        this.getScan();
+                    } )
+                    .catch( e => {
+                        this.errors.push( e )
+                    })
+                }
             }
         }
     }

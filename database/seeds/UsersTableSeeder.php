@@ -20,6 +20,11 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('password')
             ],
             [
+                'name' => 'gast',
+                'email' => 'gast@gast.nl',
+                'password' => Hash::make('password')
+            ],
+            [
                 'name' => 'Maarten de Jager',
                 'email' => 'maartendejager@gmail.com',
                 'password' => Hash::make('password')

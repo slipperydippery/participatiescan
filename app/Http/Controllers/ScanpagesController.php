@@ -3,11 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Scan;
+use App\User;
 use App\Scanmodel;
 use Illuminate\Http\Request;
 
 class ScanpagesController extends Controller
 {
+	public function loggless()
+	{
+		if(count(Scan::find(1))){
+			return redirect()->route('scan.show', Scan::find(1));
+		} else {
+			$user = User::find(1);
+			$attributes = [
+				"title" => "Testscan",
+				"description" => null,
+				"instantiemodel_id" => "1",
+				"districtmodel_id" => "1",
+				"scanmodel_id" => "1",
+				"activetheme" => "1",
+				"activequestion" => "1"
+			];
+	        $scan = Scan::register($user, $attributes);
+		}
+
+		return redirect()->route('startscan');
+	}
+
     public function kennismaken(Scan $scan)
     {
     	if(count($scan->group)) {

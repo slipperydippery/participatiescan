@@ -43632,11 +43632,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
+        console.log(this.loggedin);
         this.getAnswers();
         __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan = this.workscan;
         __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].loggedin = this.loggedin ? true : false;
         if (__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.group_id) {
-            console.log(__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.group_id);
             __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].isgroup = true;
             this.getGroup(this.workscan.group_id);
         }
@@ -43674,13 +43674,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         getGroup: function getGroup(groupid) {
-            console.log('getting group');
-            var home = this;
-            axios.get('/api/group/' + groupid).then(function (response) {
-                home.store.group = response.data;
-            }).catch(function (error) {
-                console.log(error);
-            });
+            if (__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].loggedin) {
+                var home = this;
+                axios.get('/api/group/' + groupid).then(function (response) {
+                    home.store.group = response.data;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
         },
 
         nextQuestion: function nextQuestion() {
@@ -43711,14 +43712,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         storeScan: function storeScan() {
             var _this = this;
 
-            console.log('storing scan...');
-            axios.post('/api/scan/' + __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.id, {
-                scan: __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan
-            }).then(function (response) {
-                _this.getScan();
-            }).catch(function (e) {
-                _this.errors.push(e);
-            });
+            if (__WEBPACK_IMPORTED_MODULE_0__app_js__["store"].loggedin) {
+                axios.post('/api/scan/' + __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan.id, {
+                    scan: __WEBPACK_IMPORTED_MODULE_0__app_js__["store"].scan
+                }).then(function (response) {
+                    _this.getScan();
+                }).catch(function (e) {
+                    _this.errors.push(e);
+                });
+            }
         }
     }
 });

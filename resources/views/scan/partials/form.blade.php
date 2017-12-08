@@ -37,6 +37,14 @@
 <!-- Hidden scanmodel_id Type Form Input -->
 {!! Form::hidden('scanmodel_id', 1, null) !!}
 
+<!-- Hidden activetheme Type Form Input -->
+{!! Form::hidden('activetheme', 1, null) !!}
+
+<!-- Hidden activequestion Type Form Input -->
+{!! Form::hidden('activequestion', 1, null) !!}
+
+    
+
 <!-- Add Submit Field -->
 <div class="form-group">
     {!! Form::submit($submittext, ['class' => 'btn btn-primary btn--fullwidth']) !!}

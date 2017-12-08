@@ -13,10 +13,14 @@
             @endif
         </div>
     </div>	
+    <?php 
+    	$loggedin = Auth::guest() ? 0 : 1;
+    ?>
+
 	<scan-container
 		:workscan=" {{ $scan }} "
 		:scanmodel=" {{ $scanmodel }} "
-		:loggedin=" {{ Auth::check() }} "
+		:loggedin=" {{ $loggedin }} "
 	>
 	</scan-container>
 </div>
