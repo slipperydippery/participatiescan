@@ -16,10 +16,10 @@
     {!! Form::select('instantiemodel_id', $instantiemodels, null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Arbeidsregio Form Input -->
+<!-- Voor welk Arbeidsmarktregio doe je deze scan? Form Input -->
 <div class="form-group">
-	{!! Form::label('arbeidsregio', 'Arbeidsregio:') !!}
-	{!! Form::text('arbeidsregio', null, ['class' => 'form-control']) !!}
+    {!! Form::label('districtmodel_id', 'Voor welk Arbeidsmarktregio doe je deze scan?:') !!}
+    {!! Form::select('districtmodel_id', $districtmodels, null, ['class' => 'form-control']) !!}
 </div>
 
 

@@ -8469,6 +8469,18 @@ textarea {
   overflow-x: hidden;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
+.accept {
+  color: #0ead0e;
+}
+
+.deny {
+  color: #dc2f1a;
+}
+
 html,
 body {
   background-color: #fff;
@@ -8978,7 +8990,7 @@ input {
   padding: .5rem 0;
 }
 
-.resultstable .resultstable--row:nth-of-type(2n) {
+.resultstable .resultstable--row:nth-child(2n) {
   background: rgba(0, 0, 0, 0.03);
 }
 

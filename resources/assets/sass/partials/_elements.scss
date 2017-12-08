@@ -86,3 +86,15 @@ iframe.iframe--monitor {
 textarea {
 	overflow-x: hidden;
 }
+
+.clickable {
+	cursor: pointer;
+}
+
+.accept {
+	color: $green;
+}
+
+.deny {
+	color: $red;
+}

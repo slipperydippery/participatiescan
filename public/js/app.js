@@ -43577,14 +43577,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -43702,22 +43694,6 @@ var render = function() {
     "div",
     { staticClass: "scan--container" },
     [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-12" }, [
-          _c("span", { staticClass: "breadcrumb" }, [
-            _vm._v("Arbeidsregio...")
-          ]),
-          _vm._v(" "),
-          typeof _vm.store.scan.group !== "undefined"
-            ? _c("h1", { staticClass: "section--title" }, [
-                _vm._v(" " + _vm._s(_vm.store.scan.group.title) + " ")
-              ])
-            : _c("h1", { staticClass: "section--title" }, [
-                _vm._v(" " + _vm._s(_vm.store.scan.title) + " ")
-              ])
-        ])
-      ]),
-      _vm._v(" "),
       _vm._l(_vm.scanmodel.themes, function(theme) {
         return _vm.store.scan.activetheme == theme.id
           ? _c("theme-section", { key: theme.id, attrs: { theme: theme } })
@@ -44615,6 +44591,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -44627,13 +44612,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             titleedit: false,
             confirmdeletebox: false,
             confirmscan: {},
-            group: {},
+            group: { grouprequests: [] },
             scans: [],
-            grouprequests: []
+            grouprequests: [],
+            district: { districtmodel: null }
         };
     },
     mounted: function mounted() {
-        this.getGroupAndRequests();
+        this.getGroup();
     },
 
 
@@ -44658,12 +44644,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
 
-        getGroupAndRequests: function getGroupAndRequests() {
+        getGroup: function getGroup() {
             var home = this;
-            axios.get('/api/grouprequest/' + home.workgroup.id, {
-                group: home.group
-            }).then(function (response) {
+            axios.get('/api/group/' + home.workgroup.id).then(function (response) {
                 home.group = response.data;
+                home.getDistrict();
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+
+        getDistrict: function getDistrict() {
+            var home = this;
+            axios.get('/api/group/' + home.workgroup.id + '/getdistrict').then(function (response) {
+                home.district = response.data;
             }).catch(function (error) {
                 console.log(error);
             });
@@ -44671,9 +44665,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         acceptGrouprequest: function acceptGrouprequest(grouprequest) {
             var home = this;
+            // home.group.scans.push(grouprequest.scan);
             axios.get('/api/grouprequest/' + grouprequest.id + '/accept').then(function (response) {
                 home.group.grouprequests.splice(home.group.grouprequests.indexOf(grouprequest), 1);
-                home.group.scans.push(grouprequest.scan);
+                home.getGroup();
             }).catch(function (error) {
                 console.log(error);
             });
@@ -44908,7 +44903,9 @@ var render = function() {
       "div",
       { staticClass: "col-sm-12" },
       [
-        _c("p", [_vm._v("postcode arbeidsregio")]),
+        _vm.district.districtmodel != "null"
+          ? _c("p", [_vm._v(_vm._s(_vm.district.districtmodel.title))])
+          : _vm._e(),
         _vm._v(" "),
         _c("h4", [_vm._v("mensen die aan je group meedoen:")]),
         _vm._v(" "),
@@ -44934,6 +44931,7 @@ var render = function() {
               _c(
                 "span",
                 {
+                  staticClass: "clickable",
                   on: {
                     click: function($event) {
                       _vm.confirm(scan)
@@ -44980,42 +44978,59 @@ var render = function() {
             ])
           : _vm._e(),
         _vm._v(" "),
-        _c("h4", [_vm._v("mensen die aan je groep willen meedoen: ")]),
+        _vm.group.grouprequests.length
+          ? _c("h4", [_vm._v("mensen die aan je groep willen meedoen: ")])
+          : _vm._e(),
         _vm._v(" "),
         _vm._l(_vm.group.grouprequests, function(grouprequest) {
-          return _c("div", {}, [
-            _vm._v(
-              "\n            " +
-                _vm._s(grouprequest.scan.user.name) +
-                "\n            "
-            ),
-            _c(
-              "span",
-              {
-                on: {
-                  click: function($event) {
-                    _vm.acceptGrouprequest(grouprequest)
-                  }
-                }
-              },
-              [_vm._v("accepteren")]
-            ),
+          return _c("div", { staticClass: "row row--table" }, [
+            _c("div", { staticClass: "col-sm-3" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(grouprequest.scan.user.name) +
+                  "\n            "
+              )
+            ]),
             _vm._v(" "),
-            _c(
-              "span",
-              {
-                on: {
-                  click: function($event) {
-                    _vm.denyGrouprequest(grouprequest)
+            _c("div", { staticClass: "col-sm-7" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(grouprequest.scan.user.email) +
+                  "\n            "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-1" }, [
+              _c(
+                "span",
+                {
+                  staticClass: "clickable accept",
+                  on: {
+                    click: function($event) {
+                      _vm.acceptGrouprequest(grouprequest)
+                    }
                   }
-                }
-              },
-              [_vm._v("verwijderen")]
-            )
+                },
+                [_vm._v("accepteren")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-1" }, [
+              _c(
+                "span",
+                {
+                  staticClass: "clickable deny",
+                  on: {
+                    click: function($event) {
+                      _vm.denyGrouprequest(grouprequest)
+                    }
+                  }
+                },
+                [_vm._v("verwijderen")]
+              )
+            ])
           ])
-        }),
-        _vm._v(" "),
-        _c("p", [_vm._v("Hallo, waarom nodig je geen mensen uit?")])
+        })
       ],
       2
     )
@@ -45701,54 +45716,55 @@ var render = function() {
                   ],
                   2
                 )
-              : _c(
-                  "div",
-                  { staticClass: "row resultstable--row" },
-                  [
-                    _c("div", { staticClass: "col-sm-2" }, [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(_vm.store.scan.user.name) +
-                          " "
-                      ),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "emphasis" }, [
-                        _vm._v(
-                          _vm._s(_vm.store.scan.instantie.instantiemodel.title)
-                        )
-                      ])
-                    ]),
+              : _vm._e()
+          }),
+          _vm._v(" "),
+          !_vm.store.isgroup
+            ? _c(
+                "div",
+                { staticClass: "row resultstable--row" },
+                [
+                  _c("div", { staticClass: "col-sm-2" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.store.scan.user.name) +
+                        " "
+                    ),
+                    _c("br"),
                     _vm._v(" "),
-                    _vm._l(_vm.theme.questions, function(question) {
-                      return _c(
-                        "div",
-                        { staticClass: "col-sm-2 resultslider--container" },
-                        [
-                          _c("div", { staticClass: "resultslider" }, [
-                            _c("div", {
-                              staticClass: "resultslider--result",
-                              style: {
-                                width: _vm.cssPercent(
-                                  _vm.questionResult(
-                                    _vm.store.scan,
-                                    question.id
-                                  )
-                                ),
-                                background: _vm.nullColor(
-                                  _vm.store.scan,
-                                  question.id
-                                )
-                              }
-                            })
-                          ])
-                        ]
+                    _c("span", { staticClass: "emphasis" }, [
+                      _vm._v(
+                        _vm._s(_vm.store.scan.instantie.instantiemodel.title)
                       )
-                    })
-                  ],
-                  2
-                )
-          })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.theme.questions, function(question) {
+                    return _c(
+                      "div",
+                      { staticClass: "col-sm-2 resultslider--container" },
+                      [
+                        _c("div", { staticClass: "resultslider" }, [
+                          _c("div", {
+                            staticClass: "resultslider--result",
+                            style: {
+                              width: _vm.cssPercent(
+                                _vm.questionResult(_vm.store.scan, question.id)
+                              ),
+                              background: _vm.nullColor(
+                                _vm.store.scan,
+                                question.id
+                              )
+                            }
+                          })
+                        ])
+                      ]
+                    )
+                  })
+                ],
+                2
+              )
+            : _vm._e()
         ],
         2
       )

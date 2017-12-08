@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAlgemeenbeeldsTable extends Migration
+class CreateDistrictmodelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateAlgemeenbeeldsTable extends Migration
      */
     public function up()
     {
-        Schema::create('algemeenbeelds', function (Blueprint $table) {
+        Schema::create('districtmodels', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('answer');
-            $table->integer('scan_id')->unsigned();
-            $table->foreign('scan_id')->references('id')->on('scans')->onDelete('cascade');
+            $table->string('title');
+            $table->text('description');
+            $table->integer('scanmodel_id')->unsigned();
+            $table->foreign('scanmodel_id')->references('id')->on('scanmodels')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateAlgemeenbeeldsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('algemeenbeelds');
+        Schema::dropIfExists('districtmodels');
     }
 }

@@ -2,22 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Scan;
-use App\Group;
-use App\District;
-use App\Districtmodel;
 use Illuminate\Http\Request;
 
-class ApiGroupsController extends Controller
+class ApiDistrictsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Group $group)
+    public function index()
     {
-        // return $group->grouprequests;
+        //
     }
 
     /**
@@ -47,14 +43,9 @@ class ApiGroupsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Group $group)
+    public function show($id)
     {
-        return Group::with('scans.user', 'scans.answers', 'scans.instantie.instantiemodel', 'measures', 'grouprequests.scan.user', 'district.districtmodel')->findOrFail($group)->first();
-    }
-
-    public function getdistrict(Group $group)
-    {
-        return District::with('districtmodel')->where('group_id', '=', $group->id)->first();
+        //
     }
 
     /**
@@ -75,11 +66,9 @@ class ApiGroupsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Group $group)
+    public function update(Request $request, $id)
     {
-        $group->title = $request->group['title'];
-        $group->postcode_id = $request->group['postcode_id'];
-        $group->save();
+        //
     }
 
     /**
@@ -91,12 +80,5 @@ class ApiGroupsController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function removescan(Group $group, Scan $scan)
-    {
-        $scan->group()->dissociate();
-        $scan->save();
-        return $group;
     }
 }

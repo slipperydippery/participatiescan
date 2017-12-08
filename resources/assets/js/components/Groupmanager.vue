@@ -6,7 +6,7 @@
             <h3>Dit is het overzicht van je groep</h3>
         </div>
         <div class="col-sm-12">
-            <p>postcode arbeidsregio</p>
+            <p v-if="district.districtmodel != 'null'">{{ district.districtmodel.title }}</p>
             <h4>mensen die aan je group meedoen:</h4>
                 <div class="row row--table" v-for="scan in group.scans">
                     <div class="col-sm-3"> {{ scan.user.name }} </div>
@@ -14,7 +14,7 @@
                     <div class="col-sm-3"> {{ scan.instantie.instantiemodel.title }} </div>
                     <div class="col-sm-2"> {{ answerCount(scan) }}/15 </div>
                     <div class="col-sm-1"> 
-                        <span @click=" confirm(scan) ">X</span>
+                        <span class="clickable" @click=" confirm(scan) ">X</span>
                     </div>
                 </div>
                 <div class="confirm--container" v-if="confirmdeletebox"> 
@@ -25,13 +25,22 @@
                     </div>
                 </div>
 
-            <h4>mensen die aan je groep willen meedoen: </h4>
-            <div class="" v-for="grouprequest in group.grouprequests">
-                {{ grouprequest.scan.user.name }}
-                <span @click="acceptGrouprequest(grouprequest)">accepteren</span>
-                <span @click="denyGrouprequest(grouprequest)">verwijderen</span>
+            <h4 v-if="group.grouprequests.length">mensen die aan je groep willen meedoen: </h4>
+            <div class="row row--table" v-for="grouprequest in group.grouprequests">
+                <div class="col-sm-3">
+                    {{ grouprequest.scan.user.name }}
+                </div>
+                <div class="col-sm-7">
+                    {{ grouprequest.scan.user.email }}
+                </div>
+                <div class="col-sm-1">
+                    <span class="clickable accept" @click="acceptGrouprequest(grouprequest)">accepteren</span>
+                </div>
+                <div class="col-sm-1">
+                    <span class="clickable deny" @click="denyGrouprequest(grouprequest)">verwijderen</span>
+                </div>
+                </div>
             </div>
-            <p>Hallo, waarom nodig je geen mensen uit?</p>
         </div>
     </div>
 </template>
@@ -50,14 +59,15 @@
                 titleedit: false,
                 confirmdeletebox: false,
                 confirmscan: {},
-                group: {},
+                group: { grouprequests: [] },
                 scans: [],
                 grouprequests: [],
+                district: { districtmodel: null }
             }
         },
 
         mounted() {
-            this.getGroupAndRequests();
+            this.getGroup();
         },
 
         computed: {
@@ -82,25 +92,36 @@
                 } )
             },
 
-            getGroupAndRequests: function () {
+            getGroup: function () {
                 var home = this;
-                axios.get('/api/grouprequest/' + home.workgroup.id, {
-                        group: home.group
-                    })
+                axios.get('/api/group/' + home.workgroup.id )
                     .then(function(response){
                         home.group = response.data;
+                        home.getDistrict();
                     })
                     .catch(function(error){
                         console.log(error);
                     })
             },
 
+            getDistrict: function() {
+                var home = this;
+                axios.get('/api/group/' + home.workgroup.id + '/getdistrict')
+                    .then(function(response){
+                        home.district = response.data;
+                    })
+                    .catch(function(error){
+                        console.log(error)
+                    })
+            },
+
             acceptGrouprequest: function (grouprequest) {
                 var home = this;
+                // home.group.scans.push(grouprequest.scan);
                 axios.get('/api/grouprequest/' + grouprequest.id + '/accept')
                     .then(function(response){
                         home.group.grouprequests.splice(home.group.grouprequests.indexOf(grouprequest), 1);
-                        home.group.scans.push(grouprequest.scan);
+                        home.getGroup();
                     })
                     .catch(function(error){
                         console.log(error);

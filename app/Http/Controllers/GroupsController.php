@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Group;
 use App\Measure;
+use App\District;
 use App\Postcode;
 use App\Scanmodel;
+use App\Districtmodel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,7 +30,8 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        return view('group.create');
+        $districtmodels = Districtmodel::pluck('title', 'id');
+        return view('group.create', compact('districtmodels'));
     }
 
     /**
@@ -44,6 +47,11 @@ class GroupsController extends Controller
             'user_id' => Auth::user()->id,
             'scanmodel_id' => Scanmodel::findOrFail(1)->id,
             'postcode_id' => Postcode::findOrFail(1)->id
+        ]);
+
+        $district = District::create([
+            'group_id' => $group->id,
+            'districtmodel_id' => $request->districtmodel_id,
         ]);
 
         $scanmodel = Scanmodel::findOrFail(1);
@@ -69,7 +77,7 @@ class GroupsController extends Controller
      */
     public function show(Group $group)
     {
-        $group->with('scans.user');
+        $group = Group::with('scans.user')->findOrFail($group->id);
         return view('group.show', compact('group'));
     }
 

@@ -23,7 +23,7 @@
 	.resultstable--row {
 		padding: .5rem 0;
 	}
-	.resultstable--row:nth-of-type(2n) {
+	.resultstable--row:nth-child(2n) {
 		background: rgba(0,0,0,0.03);
 	}
 	.resultstable--row--head {

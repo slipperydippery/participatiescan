@@ -6,11 +6,13 @@ use App\Scan;
 use App\Group;
 use App\Answer;
 use App\Measure;
+use App\District;
 use App\Question;
 use App\Instantie;
 use App\Scanmodel;
 use App\Dashmessage;
 use App\Grouprequest;
+use App\Districtmodel;
 use App\Instantiemodel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,8 +38,9 @@ class ScansController extends Controller
     public function create()
     {
         $instantiemodels = Instantiemodel::pluck('title', 'id');
+        $districtmodels = Districtmodel::pluck('title', 'id');
         $groups = Group::pluck('title', 'id');
-        return view('scan.create', compact('instantiemodels', 'groups'));
+        return view('scan.create', compact('instantiemodels', 'districtmodels', 'groups'));
     }
 
     /**
@@ -63,6 +66,11 @@ class ScansController extends Controller
             'user_id' => $user->id,
             'scan_id' => $scan->id,
             'instantiemodel_id' => $request->instantiemodel_id,
+        ]);
+
+        $district = District::create([
+            'scan_id' => $scan->id,
+            'districtmodel_id' => $request->districtmodel_id,
         ]);
 
         $scanmodel = Scanmodel::findOrFail($request->scanmodel_id);

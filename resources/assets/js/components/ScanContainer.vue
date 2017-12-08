@@ -1,13 +1,5 @@
 <template>
     <div class="scan--container">
-        <div class="row">
-            <div class="col-sm-12">
-                <span class="breadcrumb">Arbeidsregio...</span>
-                <h1 class="section--title" v-if="typeof store.scan.group !== 'undefined'"> {{ store.scan.group.title }} </h1>                    
-                <h1 class="section--title" v-else> {{ store.scan.title }} </h1>                    
-            </div>
-        </div>
-
         <theme-section
             v-for="theme in scanmodel.themes"
             :theme="theme"

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Scan;
 use App\Group;
+use App\District;
 use App\Dashmessage;
 use App\Grouprequest;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class ApiGrouprequestsController extends Controller
 
     public function index(Group $group)
     {
-        $group = Group::with('grouprequests.scan.user', 'scans.user', 'scans.instantie.instantiemodel', 'scans.answers')->findOrFail($group)->first();
+        $group = Group::with('grouprequests.scan.user', 'scans.user', 'scans.instantie.instantiemodel', 'scans.answers', 'district.districtmodel')->findOrFail($group)->first();
         return $group;
     }
 

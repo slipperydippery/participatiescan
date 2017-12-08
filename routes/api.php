@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::patch('/group/{group}', 'ApiGroupsController@update');
 Route::get('/group/{group}', 'ApiGroupsController@show');
-Route::get('/group/{group}/show', 'ApiGroupsController@show');
+Route::get('/group/{group}/getdistrict', 'ApiGroupsController@getdistrict');
 Route::get('/group/{group}/removescan/{scan}', 'ApiGroupsController@removescan');
 Route::get('/grouprequest/{group}', 'ApiGrouprequestsController@index');
 Route::get('/grouprequest/{grouprequest}/accept', 'ApiGrouprequestsController@accept');

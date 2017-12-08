@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row resultstable--row" v-else>
+                <div class="row resultstable--row" v-if=" ! store.isgroup ">
                     <div class="col-sm-2">
                         {{ store.scan.user.name }} <br>
                         <span class="emphasis">{{ store.scan.instantie.instantiemodel.title }}</span>
