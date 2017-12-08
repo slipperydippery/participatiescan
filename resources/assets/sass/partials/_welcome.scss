@@ -36,16 +36,12 @@ h2.subtitle {
 
 .featuredimg--container {
 	position: relative;
-	margin: 4rem 0 0;
+	margin: 4rem 0;
 	img.featuredimg {
 		clear: both;
 		width: 100%;
 	}
 	.mainbutton--container {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
 		.mainbutton {
 			margin: 0 auto;
 		}

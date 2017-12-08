@@ -7,7 +7,6 @@
                 <h1 class="title"><span class="title--participatie">Participatie</span><span class="title--dot">.</span><span class="title--scan">scan</span></h1>
                 <h2 class="subtitle">Zet jouw kennis in. Verbeter de participatie van jongeren in een kwetsbare positie.</h2>
                 <div class="featuredimg--container">
-                    <img src="/img/brainstorm meeting.svg" alt="" class="featuredimg">
                     <div class="mainbutton--container">
                         <a href=" {{ route('startscan') }} " class="btn mainbutton">Doe de scan</a>
                     </div>

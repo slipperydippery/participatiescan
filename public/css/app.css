@@ -8593,19 +8593,12 @@ h2.subtitle {
 
 .featuredimg--container {
   position: relative;
-  margin: 4rem 0 0;
+  margin: 4rem 0;
 }
 
 .featuredimg--container img.featuredimg {
   clear: both;
   width: 100%;
-}
-
-.featuredimg--container .mainbutton--container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
 }
 
 .featuredimg--container .mainbutton--container .mainbutton {
