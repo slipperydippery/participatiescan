@@ -45028,7 +45028,7 @@ var render = function() {
         _vm.store.isgroup && _vm.store.loggedin
           ? _c("span", { staticClass: "page--clarification" }, [
               _vm._v(
-                "Dit zijn de antwoorden van alle deelnemers. Bespreek met elkaar wat opvalt, en kies in het volgende scherm de belangrijkste verbeterpunten."
+                "Dit zijn de antwoorden van alle deelnemers. Bespreek met elkaar wat opvalt en kies in het volgende scherm de belangrijkste verbeterpunten."
               )
             ])
           : _vm._e(),
@@ -45039,11 +45039,15 @@ var render = function() {
                 "Dit zijn jouw antwoorden. Via het dashboard kun je jouw antwoorden vergelijken met andere deelnemers. Kies in het volgende scherm de belangrijkste verbeterpunten."
               )
             ])
-          : _c("span", { staticClass: "page--clarification" }, [
+          : _vm._e(),
+        _vm._v(" "),
+        !_vm.store.loggedin
+          ? _c("span", { staticClass: "page--clarification" }, [
               _vm._v(
                 "Dit zijn jouw antwoorden. Met een account kun je jouw antwoorden vergelijken met de group of andere individuele scans. Kies in het volgende scherm de belangrijkste verbeterpunten."
               )
             ])
+          : _vm._e()
       ])
     ]),
     _vm._v(" "),
@@ -46310,7 +46314,11 @@ var render = function() {
             }
           }),
       _vm._v(" "),
-      _c("h3", [_vm._v("Dit is het overzicht van je groep")])
+      _c("h3", [
+        _vm._v(
+          "Jij bent beheerder van deze groepsscan. Hieronder zie je een overzicht van alle deelnemers die aan jouw scan meedoen. "
+        )
+      ])
     ]),
     _vm._v(" "),
     _c(
@@ -46321,7 +46329,7 @@ var render = function() {
           ? _c("p", [_vm._v(_vm._s(_vm.district.districtmodel.title))])
           : _vm._e(),
         _vm._v(" "),
-        _c("h4", [_vm._v("mensen die aan je group meedoen:")]),
+        _c("h4", [_vm._v("mensen die aan je groep meedoen:")]),
         _vm._v(" "),
         _vm._l(_vm.group.scans, function(scan) {
           return _c("div", { staticClass: "row row--table" }, [

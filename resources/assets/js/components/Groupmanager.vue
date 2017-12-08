@@ -3,11 +3,11 @@
         <div class="col-sm-12 page--head">
             <h2 v-if=" ! titleedit " @click=" titleedit = ! titleedit " class="hidden--container">{{ group.title }} <img src="/img/editicon.svg" alt="" class="icon icon--edit hidden--item"></h2>
             <input type="text" v-else v-model="group.title" @keyup.enter=" toggleTitle " v-on-click-outside=" toggleTitle ">
-            <h3>Dit is het overzicht van je groep</h3>
+            <h3>Jij bent beheerder van deze groepsscan. Hieronder zie je een overzicht van alle deelnemers die aan jouw scan meedoen. </h3>
         </div>
         <div class="col-sm-12">
             <p v-if="district.districtmodel != 'null'">{{ district.districtmodel.title }}</p>
-            <h4>mensen die aan je group meedoen:</h4>
+            <h4>mensen die aan je groep meedoen:</h4>
                 <div class="row row--table" v-for="scan in group.scans">
                     <div class="col-sm-3"> {{ scan.user.name }} </div>
                     <div class="col-sm-3"> {{ scan.user.email }} </div>
