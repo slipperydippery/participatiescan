@@ -4,14 +4,15 @@
 <div class="container container--page">
     <div class="row">
         <div class="col-md-12">
-            <span class="breadcrumb"> Arbeidsregio ... </span>
+            <span class="breadcrumb"> Arbeidsmarktregio: {{ $scan->group->district->districtmodel->title }} </span>
             <h1 class="section--title"> Groepsscan: {{ $scan->group->title }} </h1>
         </div>
     </div>
     <div class="row">
     	<div class="col-md-12">
     		<h2 class="page--title"> Kennismaken </h2>
-    		<span class="page--clarification">Is iedereen ingelogd? Neem even de tijd om iedereen te leren kennen.</span>
+    		<span class="page--clarification">Vaak zal niet iedereen elkaar kennen. Daarom een voorstelrondje, waarbij iedereen aangeeft: wie ben je, namens welke organisatie doe je mee, je rol/functie en wat je hoopt dat uit deze sessie komt (wens of droom).</span>
+
     	</div>
     </div>
     <div class="row content--page">

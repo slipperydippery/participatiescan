@@ -43,7 +43,7 @@ class QuestionsTableSeeder extends Seeder
   </ul>
   </li>
 </ul>',
-                'norm'                      => 'School hanteert een professionele aanpak in de relatie met werkgevers en heeft dus kennis van context, belangen en taal van bedrijven.',
+                'norm'                      => 'Onze scholen hanteren in het algemeen een professionele aanpak in de relatie met werkgevers. En spreken dus de taal en kennen de context en belangen van bedrijven.',
                 'theme_id' => 1,
             ],
             [
@@ -58,7 +58,8 @@ class QuestionsTableSeeder extends Seeder
     </ul>
   </li>
 </ul>',
-                'norm'                      => 'School werkt naar werkgevers toe proactief samen met organisaties/intermediairs op het vlak van arbeidstoeleiding.',
+                'norm'                      => 'Onze scholen werken proactief samen met intermediairs op het vlak van arbeidstoeleiding.
+',
                 'theme_id' => 1,
             ],
             [
@@ -74,7 +75,7 @@ class QuestionsTableSeeder extends Seeder
     </ul>
   </li>
 </ul>',
-                'norm'                      => 'School heeft de kennis en mogelijkheden om werkgevers direct en/of via samenwerking met partners te ontzorgen bij stages en arbeidstoeleiding.',
+                'norm'                      => 'Onze scholen en gemeenten ontzorgen (zelf of in samenwerking met partners) werkgevers goed bij stages, werkervaringsplaatsen en arbeidstoeleiding.',
                 'theme_id' => 1,
             ],
             [
@@ -85,7 +86,7 @@ class QuestionsTableSeeder extends Seeder
     <li>School heeft een voldoende groot netwerk voor plaatsingen na afronding school</li>
     <li>Het netwerk van bedrijven is divers en omvat een groot aantal branches en sectoren</li>
 </ul>',
-                'norm'                      => 'School en gemeente hebben een voldoende groot en divers netwerk van geschikte bedrijven voor stages en plaatsingskansen voor jongeren in een kwetsbare positie.',
+                'norm'                      => 'Onze scholen en gemeenten hebben een voldoende groot en divers netwerk van geschikte bedrijven voor stages en plaatsingskansen voor jongeren in een kwetsbare positie.',
                 'theme_id' => 1,
             ],
             [
@@ -97,7 +98,7 @@ class QuestionsTableSeeder extends Seeder
     <li>Jongeren ontdekken en ervaren zelf</li>
     <li>Coaching richt zich op leren door eigen ervaringen (learning by doing)</li>
 </ul>',
-                'norm'                      => 'Jongeren worden gestimuleerd en empowered, niet gepamperd of ‘schools’ benaderd.',
+                'norm'                      => 'Jongeren worden door onze scholen en gemeenten gestimuleerd en empowered, niet gepamperd of ‘schools’ benaderd.',
                 'theme_id' => 2,
             ],
             [
@@ -114,7 +115,7 @@ class QuestionsTableSeeder extends Seeder
     </ul>
   </li>
 </ul>',
-                'norm'                      => 'Docenten en begeleiders zijn qua caseload, competenties en persoonlijkheid in staat om jongeren goed te begeleiden, vertrouwen te geven en zo te laten groeien.',
+                'norm'                      => 'Docenten en begeleiders zijn in staat om jongeren goed te begeleiden, vertrouwen te geven en zo te laten groeien. Ze beschikken namelijk daartoe over een niet te hoge caseload, goede competenties en empowerende persoonlijkheid.',
                 'theme_id' => 2,
             ],
             [
@@ -125,7 +126,7 @@ class QuestionsTableSeeder extends Seeder
     <li>School heeft vroegtijdig inzicht in competenties en mogelijkheden</li>
     <li>School heeft vroegtijdig inzicht in mogelijk belemmerende factoren voor school- en werkloopbaan</li>
 </ul>',
-                'norm'                      => 'Docenten hebben vroegtijdig zicht op belemmeringen, mogelijkheden en loopbaan wensen van de jongeren, zodat gerichte begeleiding in de juiste richting mogelijk is.',
+                'norm'                      => 'We zorgen ervoor dat docenten vroegtijdig zicht hebben op belemmeringen, mogelijkheden en loopbaanwensen van de jongeren, zodat jongeren steeds goed worden begeleid in een richting die bij hen past.',
                 'theme_id' => 2,
             ],
             [
@@ -140,7 +141,7 @@ class QuestionsTableSeeder extends Seeder
     </ul>
   </li>
 </ul>',
-                'norm'                      => ' De impact van ouders wordt  benut door hen actief te betrekken, stimuleren en committeren.',
+                'norm'                      => 'De impact van ouders wordt benut door hen echt te betrekken en stimulerende bondgenoot te maken.',
                 'theme_id' => 2,
             ],
             [
@@ -151,7 +152,7 @@ class QuestionsTableSeeder extends Seeder
     <li>Niet aansluitend, maar overlappend</li>
     <li>School verzorgt goede nazorg</li>
 </ul>',
-                'norm'                      => 'Er is sprake van een tijdige warme overdracht, en nazorg op het moment dat de jongere school verlaat en daarna.',
+                'norm'                      => 'Bij ons wordt het estafettestokje goed en tijdig overgedragen van school naar gemeente: tijdige, warme overdracht, met vroegtijdige rol van de gemeente en nazorg door de school.',
                 'theme_id' => 2,
             ],
             [
@@ -176,7 +177,7 @@ class QuestionsTableSeeder extends Seeder
     </ul>
   </li>
 </ul>',
-                'norm'                      => 'Er vindt tussen netwerkpartners structureel op verschillende niveaus overleg plaats over de samenwerking.',
+                'norm'                      => 'Er vindt tussen netwerkpartners structureel op verschillende niveaus (beleid, uitvoering) overleg plaats over de samenwerking.',
                 'theme_id' => 3,
             ],
             [
@@ -187,7 +188,7 @@ class QuestionsTableSeeder extends Seeder
     <li>Betreffende docent/ (traject)begeleider coördineert interventies op verschillend levensgebieden</li>
     <li>Ouders en jongeren ervaren geen verkokering</li>
 </ul>',
-                'norm'                      => 'Het is helder  welke docent/(traject)begeleider op welk moment de regie heeft. Deze persoon heeft het overzicht en coördineert de verschillende interventies naar de jongere toe.',
+                'norm'                      => 'Het is helder welke docent of (traject)begeleider op welk moment de regie heeft. Deze persoon heeft het overzicht en coördineert de verschillende interventies naar de jongere toe.',
                 'theme_id' => 3,
             ],
             [
@@ -201,7 +202,8 @@ class QuestionsTableSeeder extends Seeder
     </ul>
   </li>
 </ul>',
-                'norm'                      => 'De VSO en PRO scholen werken zodanig samen dat er een goede, efficiënte samenwerking met gemeenten mogelijk is.',
+                'norm'                      => 'De VSO, PRO en Entree scholen werken zodanig samen dat er een goede, efficiënte samenwerking met gemeenten mogelijk is.
+',
                 'theme_id' => 3,
             ],
             [
@@ -215,7 +217,7 @@ class QuestionsTableSeeder extends Seeder
     </ul>
   </li>
 </ul>',
-                'norm'                      => 'De gemeenten werken zodanig samen dat er een goede, efficiënte samenwerking met de PRO/VSO scholen mogelijk is.',
+                'norm'                      => 'De gemeenten werken zodanig samen dat er een goede, efficiënte samenwerking met de PRO, VSO en Entree scholen mogelijk is.',
                 'theme_id' => 3,
             ],
         ];

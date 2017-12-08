@@ -43,15 +43,15 @@
             <div class="row container welcome--textblock--container">
                 <div class="col-sm-4 welcome--textblock">
                     <h3>Betere kansen voor jongeren</h3>
-                    <span>Vocent corpora ei vim, usu ut saepe neglegentur complectitur. Falli propriae constituto et qui, cu dicam intellegam sed, decore nominavi scripserit ea cum. Est volutpat persecuti ei, duo harum adipisci abhorreant in.</span>
+                    <span>Met deze participatiescan kun je samen met netwerkpartners werken aan een succesvolle aanpak om jongeren in een kwetsbare positie naar werk te begeleiden. De scan helpt je om de regionale aanpak te verbeteren aan de hand van 15 bewezen succesfactoren.</span>
                 </div>
                 <div class="col-sm-4 welcome--textblock">
-                    <h3>In 2 stappen een werkagenda</h3>
-                    <span>Vocent corpora ei vim, usu ut saepe neglegentur complectitur. Falli propriae constituto et qui, cu dicam intellegam sed, decore nominavi scripserit ea cum. Est volutpat persecuti ei, duo harum adipisci abhorreant in.</span>
+                    <h3>15 Succesfactoren</h3>
+                    <span>We weten veel over succesvolle arbeidstoeleiding van jongeren in een kwetsbare positie. Maar ‘Lessons Learned’ worden niet altijd toegepast in de praktijk. Met deze scan zet je kennis om in actie en kun je een effectieve, gezamenlijke aanpak te ontwikkelen.</span>
                 </div>
                 <div class="col-sm-4 welcome--textblock">
                     <h3>Gezamelijk aan tafel</h3>
-                    <span>Vocent corpora ei vim, usu ut saepe neglegentur complectitur. Falli propriae constituto et qui, cu dicam intellegam sed, decore nominavi scripserit ea cum. Est volutpat persecuti ei, duo harum adipisci abhorreant in.</span>
+                    <span>Maak een account aan, doe de scan en nodig netwerkpartners uit om hetzelfde te doen. Je kunt de resultaten met elkaar aan tafel bespreken of online via uw eigen dashboard met andere deelnemers vergelijken. Je komt tot gerichte verbeterpunten en een gezamenlijke werkagenda.</span>
                 </div>
             </div>
         </section>

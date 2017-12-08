@@ -16,7 +16,11 @@
     <div class="row">
     	<div class="col-md-12">
     		<h2 class="page--title"> Uw regio in cijfers </h2>
-    		<span class="page--clarification">Selecteer een arbeidsregio om te zien hoe verschillende factoren de NEET factor beinvloeden.</span>
+            @if(count($scan->group))
+                <span class="page--clarification">Selecteer een arbeidsregio om te zien hoe verschillende factoren de NEET-rate beinvloeden. Bespreek met elkaar wat jullie opvalt.</span>
+            @else
+        		<span class="page--clarification">Selecteer een arbeidsregio om te zien hoe verschillende factoren de NEET-rate beinvloeden.</span>
+            @endif
     	</div>
     </div>
     <div class="row content--page">

@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="">
-            <p>{{ question.body }}</p>
+            <p class="questionbody">{{ question.norm }}</p>
         </div>
         <div class="rangeslider--container">
             <input type="range" 

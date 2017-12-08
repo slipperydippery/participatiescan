@@ -85,5 +85,6 @@ class Scan extends Model
                 ]);
             }
         }
+        return $scan;
     }
 }

@@ -44597,7 +44597,11 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", {}, [_c("p", [_vm._v(_vm._s(_vm.question.body))])]),
+    _c("div", {}, [
+      _c("p", { staticClass: "questionbody" }, [
+        _vm._v(_vm._s(_vm.question.norm))
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "rangeslider--container" }, [
       _vm.store.scan.answers
