@@ -1,3 +1,50 @@
+.prev-next-nav {
+	margin-bottom: 0rem;
+	margin-left: -15px;
+	margin-right: -15px;
+	background: rgba($themecolor, 0.04);
+	.btn {
+		width: 23rem;
+	}
+
+	.prev-next-nav--prev {
+		float: left;
+		border-radius: 0;
+	}
+	.prev-next-nav--next {
+		float: right;
+		border-radius: 0;
+	}
+}
+
+.progressbar {
+	display: flex;
+	flex-flow: row nowrap;
+	height: 4.5rem;
+	margin-bottom: 6rem;
+	background: rgba($themecolor, .1);
+	border: $themecolor;
+	.progressbar--element {
+		border: 1px solid $themecolor;
+		border-right: none;
+		flex-grow: 1;
+		text-align: center;
+		transition: all .5s;
+		img {
+			margin: .75rem 0;
+			height: 3rem;
+			width: 3rem;
+		}
+	}
+	.progressbar--element:last-of-type {
+		border: 1px solid $themecolor;
+	}
+	.progressbar--element:hover, .active {
+		background: rgba($themecolor, 0.2);
+		filter: none;
+	}
+}
+
 .progress--themetitle {
 	width: 100%;
 	height: 3rem;

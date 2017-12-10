@@ -43,15 +43,23 @@
                                     }
                                 }
                             ?>
-                            <div class="row">
-                                <a href=" {{ route('scan.show', $scan) }} "><div class="col-sm-7">{{ $scan->title }}</div></a>
-                                <div class="col-sm-3" title=" <?= $answercount; ?> van de 15 vragen zijn beantwoord  "> <?= $answercount; ?>/15 </div>
-                                @if(count($scan->group))
-                                    <div class="col-sm-2"> <img src="/img/group.svg" title="Deze scan is onderdeel van groep '{{ $scan->group->title }}'" class="rowicon"> </div>
-                                @endif
-                                @if(count($scan->grouprequest))
-                                    <div class="col-sm-2"> <img src="/img/grouppending.svg" title="Een verzoek is naar group '{{ $scan->grouprequest->group->title }}' verzonden" class="rowicon"> </div>
-                                @endif
+                            <div class="col-sm-12">
+                                <div class="row no-overflow">
+                                    <div class="col-sm-8 hidden--container">
+                                        <a href=" {{ route('scan.show', $scan) }} "> {{ $scan->title }}</a> 
+                                        <img src="/img/editicon-color.svg" title="bewerk deze scan" class="rowicon hidden--item">
+                                    </div>
+                                    <div class="col-sm-2" title=" <?= $answercount; ?> van de 15 vragen zijn beantwoord  "> <?= $answercount; ?>/15 </div>
+                                    <div class="col-sm-2 rowicons"> 
+                                        @if(count($scan->group))
+                                            <img src="/img/group.svg" title="Deze scan is onderdeel van groep '{{ $scan->group->title }}'" class="rowicon">
+                                        @endif
+                                        @if(count($scan->grouprequest))
+                                            <img src="/img/grouppending.svg" title="Een verzoek is naar group '{{ $scan->grouprequest->group->title }}' verzonden" class="rowicon">
+                                        @endif
+                                        
+                                    </div>
+                                </div>
                             </div>
                         @endif
                     @endforeach

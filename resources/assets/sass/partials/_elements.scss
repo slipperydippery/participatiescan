@@ -51,8 +51,14 @@
 	width: 100vw;
 }
 
+.rowicons {
+}
+
 img.rowicon {
+	float: right;
 	height: 2rem !important;
+	width: 2rem !important; 
+    margin-left: .5rem !important;
 }
 
 .autoscroll {
@@ -99,3 +105,10 @@ textarea {
 button.deletebutton {
 	background: $red;
 }		
+
+.no-overflow {
+	overflow: hidden;
+	div {
+		padding: 0;
+	}
+}
