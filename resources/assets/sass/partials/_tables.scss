@@ -1,3 +1,16 @@
+.table--container {
+	background: white;
+}
+
+.table {
+	background: white;
+	border: $bordergrey;
+	span.emphasis {
+		font-weight: 900;
+		color: $themecolor;
+	}
+}
+
 .row--table {
 	padding: .5rem 0;
 }
@@ -37,8 +50,5 @@
 		font-weight: 900;
 		color: $themecolor-2;
 	}
-	span.emphasis {
-		font-weight: 900;
-		color: $themecolor;
-	}
+
 }

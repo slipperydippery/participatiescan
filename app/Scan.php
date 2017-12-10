@@ -32,6 +32,11 @@ class Scan extends Model
     	return $this->belongsTo('App\Group');
     }
 
+    public function owns()
+    {
+        return $this->hasOne('App\Group');
+    }
+
     public function user()
     {
     	return $this->belongsTo('App\User');

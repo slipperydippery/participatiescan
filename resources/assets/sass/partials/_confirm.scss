@@ -1,9 +1,13 @@
 .confirm--container {
-	position: absolute;
-	top: 0;
-	width: 100%;
-	text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+
 	.confirm {
+		margin-top: 20rem;
 		display: inline-block;
 		background: white;
 		border: grey;

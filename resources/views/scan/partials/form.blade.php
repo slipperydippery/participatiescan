@@ -4,12 +4,6 @@
 	{!! Form::text('title', null, ['class' => 'form-control']) !!}
 </div>	
 
-<!-- Omschrijving Form Input -->
-<div class="form-group">
-	{!! Form::label('description', 'Omschrijving:') !!}
-	{!! Form::text('description', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Welke instantie vertegenwoordigt u? Form Input -->
 <div class="form-group">
     {!! Form::label('instantiemodel_id', 'Welk soort organisatie vertegenwoordig je?:') !!}

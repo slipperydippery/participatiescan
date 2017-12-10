@@ -39,4 +39,5 @@ Route::get('/scan/{scan}/theme/{theme}/questions', 'ApiScansController@indexques
 Route::get('/scan/{scan}/user/', 'ApiScansController@getuser');
 
 Route::resource('measure', 'ApiMeasuresController');
+Route::resource('district', 'ApiDistrictsController');
 

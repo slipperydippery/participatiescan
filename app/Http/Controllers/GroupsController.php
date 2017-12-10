@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Scan;
 use App\Group;
 use App\Measure;
 use App\District;
 use App\Postcode;
 use App\Scanmodel;
 use App\Districtmodel;
+use App\Instantiemodel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,7 +33,8 @@ class GroupsController extends Controller
     public function create()
     {
         $districtmodels = Districtmodel::pluck('title', 'id');
-        return view('group.create', compact('districtmodels'));
+        $instantiemodels = Instantiemodel::pluck('title', 'id');
+        return view('group.create', compact('districtmodels', 'instantiemodels'));
     }
 
     /**
@@ -42,12 +45,17 @@ class GroupsController extends Controller
      */
     public function store(Request $request)
     {
-        $group = Group::create([
+        $user = Auth::user();
+        $scan = Scan::register($user, $request->all());
+        $group = new Group([
             'title' => $request->title,
-            'user_id' => Auth::user()->id,
-            'scanmodel_id' => Scanmodel::findOrFail(1)->id,
-            'postcode_id' => Postcode::findOrFail(1)->id
+            'user_id' => $user->id,
+            'scan_id' => $scan->id,
+            'scanmodel_id' => $request->scanmodel_id,
         ]);
+        $group->save();
+        $group->scans()->save($scan);
+
 
         $district = District::create([
             'group_id' => $group->id,
@@ -78,7 +86,8 @@ class GroupsController extends Controller
     public function show(Group $group)
     {
         $group = Group::with('scans.user')->findOrFail($group->id);
-        return view('group.show', compact('group'));
+        $districtmodels = Districtmodel::all();
+        return view('group.show', compact('group', 'districtmodels'));
     }
 
     /**
@@ -110,8 +119,9 @@ class GroupsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Group $group)
     {
-        //
+        $group->delete();
+        return redirect()->route('home');
     }
 }

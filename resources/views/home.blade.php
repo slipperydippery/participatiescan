@@ -31,32 +31,34 @@
         </div>
         <div class="col-md-4 dashboard--column">
             <div class="dashboard--item">
-                <div class="dashboard--item--head">Overzicht scans</div>
+                <div class="dashboard--item--head">Mijn scans</div>
                 <div class="dashboard--item--body autoscroll">
                     @foreach($user->scans as $scan)
-                        <?php 
-                            $answercount = 0;
-                            foreach($scan->answers as $answer) {
-                                if ($answer->answer != null) {
-                                    $answercount++;
+                        @if(! count($scan->owns))
+                            <?php 
+                                $answercount = 0;
+                                foreach($scan->answers as $answer) {
+                                    if ($answer->answer != null) {
+                                        $answercount++;
+                                    }
                                 }
-                            }
-                        ?>
-                        <div class="row">
-                            <a href=" {{ route('scan.show', $scan) }} "><div class="col-sm-7">{{ $scan->title }}</div></a>
-                            <div class="col-sm-3" title=" <?= $answercount; ?> van de 15 vragen zijn beantwoord  "> <?= $answercount; ?>/15 </div>
-                            @if(count($scan->group))
-                                <div class="col-sm-2"> <img src="/img/group.svg" title="Deze scan is onderdeel van groep '{{ $scan->group->title }}'" class="rowicon"> </div>
-                            @endif
-                            @if(count($scan->grouprequest))
-                                <div class="col-sm-2"> <img src="/img/grouppending.svg" title="Een verzoek is naar group '{{ $scan->grouprequest->group->title }}' verzonden" class="rowicon"> </div>
-                            @endif
-                        </div>
+                            ?>
+                            <div class="row">
+                                <a href=" {{ route('scan.show', $scan) }} "><div class="col-sm-7">{{ $scan->title }}</div></a>
+                                <div class="col-sm-3" title=" <?= $answercount; ?> van de 15 vragen zijn beantwoord  "> <?= $answercount; ?>/15 </div>
+                                @if(count($scan->group))
+                                    <div class="col-sm-2"> <img src="/img/group.svg" title="Deze scan is onderdeel van groep '{{ $scan->group->title }}'" class="rowicon"> </div>
+                                @endif
+                                @if(count($scan->grouprequest))
+                                    <div class="col-sm-2"> <img src="/img/grouppending.svg" title="Een verzoek is naar group '{{ $scan->grouprequest->group->title }}' verzonden" class="rowicon"> </div>
+                                @endif
+                            </div>
+                        @endif
                     @endforeach
                 </div>
             </div>
             <div class="dashboard--item">
-                <div class="dashboard--item--head">Overzicht groepen</div>
+                <div class="dashboard--item--head">Mijn groepen</div>
                 <div class="dashboard--item--body">
                     @foreach($user->groups as $group)
                         <div class="row">

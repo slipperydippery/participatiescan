@@ -69,9 +69,14 @@ img.rowicon {
 }
 
 h2 .icon {
-	height: 20px;
+	height: 2rem;
+	width: 2rem;
 }
 
+p .icon {
+	height: 1.4rem;
+	width: 1.4rem;
+}
 
 span.center {
 	display: block;
@@ -91,10 +96,6 @@ textarea {
 	cursor: pointer;
 }
 
-.accept {
-	color: $green;
-}
-
-.deny {
-	color: $red;
-}
+button.deletebutton {
+	background: $red;
+}		

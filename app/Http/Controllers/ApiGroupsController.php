@@ -49,7 +49,7 @@ class ApiGroupsController extends Controller
      */
     public function show(Group $group)
     {
-        return Group::with('scans.user', 'scans.answers', 'scans.instantie.instantiemodel', 'measures', 'grouprequests.scan.user', 'district.districtmodel')->findOrFail($group)->first();
+        return Group::with('scans.user', 'scans.answers', 'scans.instantie.instantiemodel', 'measures', 'district.districtmodel', 'owner')->where('id', $group->id)->get()->first();
     }
 
     public function getdistrict(Group $group)
@@ -78,7 +78,6 @@ class ApiGroupsController extends Controller
     public function update(Request $request, Group $group)
     {
         $group->title = $request->group['title'];
-        $group->postcode_id = $request->group['postcode_id'];
         $group->save();
     }
 

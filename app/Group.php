@@ -7,12 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     protected $fillable = [
-    	'title', 'user_id', 'scanmodel_id', 'postcode_id'
+    	'title', 'user_id', 'scanmodel_id', 'scan_id'
     ];
 
     public function scans()
     {
     	return $this->hasMany('App\Scan');
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo('App\Scan', 'scan_id');
     }
 
     public function invitations()

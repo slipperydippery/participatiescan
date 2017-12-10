@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\District;
 use Illuminate\Http\Request;
 
 class ApiDistrictsController extends Controller
@@ -66,9 +67,11 @@ class ApiDistrictsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, District $district)
     {
-        //
+        $district->districtmodel_id = $request->district['id'];
+        $district->save();
+        return $district;
     }
 
     /**

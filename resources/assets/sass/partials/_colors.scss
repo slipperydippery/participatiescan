@@ -19,3 +19,13 @@ $red: #dc2f1a;
 .themecolor-3 { 
 	background: $themecolor-3 !important;
 }
+
+$bordergrey: 1px solid #DEDEDE;
+
+.warning, .deny {
+	color: $red;
+}
+
+.succes, .accept {
+	color: $green;
+}

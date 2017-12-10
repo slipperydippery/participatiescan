@@ -3,14 +3,26 @@ button, .btn {
 	border: none;
 	color: white;
 	padding: 1rem 3rem;
+	border-radius: 4px;
 	font-size: 1.6rem;
 	transition: all .2s;
+	.hovershow {
+		display: none;
+		margin: 0 3rem;
+	}
 }
 
 button:hover, .btn:hover {
 	color: white;
     box-shadow: inset 0px 0px 5px black;
+    .hovershow {
+    	display: inline-block;
+    }
 }
+
+// button:hover .hovershow, .btn:hover .hovershow {
+// 	display: initial;
+// }
 
 .btn--fullwidth {
 	width: 100%;
@@ -30,4 +42,8 @@ button:hover, .btn:hover {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
 	text-transform: uppercase;
+}
+
+.btn--delete, .btn--alert {
+	background: $red;
 }
