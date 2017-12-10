@@ -3,12 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Scan;
+use App\User;
 use App\Theme;
 use App\Scanmodel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ApiScansController extends Controller
 {
+    public function index()
+    {
+        return Scan::with('user', 'answers', 'instantie.instantiemodel', 'district.districtmodel')->get();
+    }
+
+    public function indexuser(User $user)
+    {
+        return Scan::with('compares.user', 'compares.answers', 'compares.instantie.instantiemodel', 'compares.district.districtmodel')->where('user_id', $user->id)->get();
+    }
+
 	public function show(Scan $scan)
 	{
         return Scan::with('answers', 'user', 'instantie.instantiemodel', 'measures')->findOrFail($scan->id);

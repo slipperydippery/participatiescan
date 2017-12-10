@@ -4,14 +4,10 @@
             v-for="theme in scanmodel.themes"
             :theme="theme"
             :key="theme.id"
-            v-if="store.scan.activetheme == theme.id"
+            v-if="store.activetheme == theme.id"
         >
         </theme-section>
 
-        <scan-progress
-            :scanmodel="scanmodel"
-        >
-        </scan-progress>
 
         <div class="confirm--container" v-if=" finished">
             <div class="confirm">
@@ -32,6 +28,10 @@
                 volgende pagina >>
             </a>
         </div>
+        <scan-progress
+            :scanmodel="scanmodel"
+        >
+        </scan-progress>
     </div>
 
 </template>
@@ -117,28 +117,28 @@
             },
 
             nextQuestion: function () {
-                if(store.scan.activequestion < 7) {
-                    store.scan.activequestion ++;
-                    if(store.scan.activequestion == 6) {
+                if(store.activequestion < 7) {
+                    store.activequestion ++;
+                    if(store.activequestion == 6) {
                         this.getScan();
                     }
-                } else if (store.scan.activetheme == 3) {
+                } else if (store.activetheme == 3) {
                     if(! store.loggedin) {
                         this.finished = true;
                     }
                 } else {
-                    store.scan.activequestion = 0;
-                    store.scan.activetheme ++;
+                    store.activequestion = 0;
+                    store.activetheme ++;
                 }
                 this.storeScan();
             },
 
             previousQuestion: function () {
-                if(store.scan.activequestion > 0) {
-                    store.scan.activequestion --;
-                } else if (store.scan.activetheme > 1) {
-                    store.scan.activetheme --;
-                    store.scan.activequestion = 7;
+                if(store.activequestion > 0) {
+                    store.activequestion --;
+                } else if (store.activetheme > 1) {
+                    store.activetheme --;
+                    store.activequestion = 7;
                 } else {
                     window.location.href = '/scan/2/algemeenbeeldresultaten';
                 }

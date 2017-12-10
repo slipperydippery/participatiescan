@@ -19,12 +19,6 @@
 <!-- Hidden scanmodel_id Type Form Input -->
 {!! Form::hidden('scanmodel_id', 1, null) !!}
 
-<!-- Hidden activetheme Type Form Input -->
-{!! Form::hidden('activetheme', 1, null) !!}
-
-<!-- Hidden activequestion Type Form Input -->
-{!! Form::hidden('activequestion', 1, null) !!}
-
 <!-- Hidden user_id Type Form Input -->
 {!! Form::hidden('user_id', Auth::user()->id, null) !!}
 

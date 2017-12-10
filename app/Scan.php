@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class Scan extends Model
 {
     protected $fillable = [
-        'title', 'description', 'user_id', 'scanmodel_id', 'activetheme', 'activequestion'
+        'title', 'description', 'user_id', 'scanmodel_id'
     ];
 
     public function scanmodel()
@@ -60,6 +60,11 @@ class Scan extends Model
     public function district()
     {
         return $this->hasOne('App\District');
+    }
+
+    public function compares()
+    {
+        return $this->belongsToMany('App\Scan', 'compare_scan', 'compare_id', 'scan_id');
     }
 
     public static function register(User $user, $attributes)

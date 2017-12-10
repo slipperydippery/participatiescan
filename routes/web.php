@@ -7,6 +7,7 @@ Auth::routes();
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
 Route::get('/startscan', 'PagesController@startscan')->name('startscan');
+Route::get('/comparescans', 'PagesController@comparescans')->name('comparescans')->middleware('auth');
 Route::get('/loggless', 'ScanpagesController@loggless')->name('scan.loggless');
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -24,3 +25,4 @@ Route::get('/scan/{scan}/algemeenbeeldresultaten', 'ScanpagesController@algemeen
 Route::get('/scan/{scan}/showscan', 'ScanpagesController@showscan')->name('scan.showscan');
 
 Route::get('/group/{group}/delete', 'GroupsController@destroy')->middleware('auth');
+

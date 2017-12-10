@@ -29,6 +29,8 @@ Route::get('/grouprequest/{grouprequest}/deny', 'ApiGrouprequestsController@deny
 Route::get('/dashmessage/user/{user}/', 'ApiDashmessagesController@index');
 Route::delete('/dashmessage/{dashmessage}', 'ApiDashmessagesController@delete');
 
+Route::get('/scan/user/{user}', 'ApiScansController@indexuser');
+Route::get('/scan', 'ApiScansController@index');
 Route::get('/scan/{scan}', 'ApiScansController@show');
 Route::post('/scan/{scan}', 'ApiScansController@store');
 Route::post('/scan/{scan}/withanswers', 'ApiScansController@storewithanswers');
@@ -41,4 +43,7 @@ Route::get('/scan/{scan}/user/', 'ApiScansController@getuser');
 
 Route::resource('measure', 'ApiMeasuresController');
 Route::resource('district', 'ApiDistrictsController');
+Route::resource('compares', 'ApiComparesController');
+Route::get('/compare/{compare}/scan/{scan}', 'ApiComparesController@destroycompare');
+
 

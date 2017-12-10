@@ -33,7 +33,9 @@ export let store = {
 	pageboolean: false,
 	isgroup: false,
 	loggedin: false,
-	group: {}
+	group: {},
+    activetheme: 1,
+    activequestion: 0,
 };
 
 /**
@@ -59,6 +61,8 @@ Vue.component('theme-measures', require('./components/ThemeMeasures.vue'));
 Vue.component('algemeenbeeld', require('./components/Algemeenbeeld.vue'));
 
 Vue.component('groupmanager', require('./components/Groupmanager.vue'));
+Vue.component('comparemanager', require('./components/Comparemanager.vue'));
+Vue.component('comparescan', require('./components/Comparescan.vue'));
 
 const app = new Vue({
     el: '#app',

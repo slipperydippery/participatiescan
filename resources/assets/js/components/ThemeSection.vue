@@ -1,7 +1,7 @@
 <template>
     <div class="scan--theme">   
         <theme-intro
-            v-if="store.scan.activequestion == 0"
+            v-if="store.activequestion == 0"
             :theme="theme"
         >
         </theme-intro>
@@ -16,13 +16,13 @@
         </single-question>
 
         <theme-results
-            v-if="store.scan.activequestion == 6 && (store.group.scans || ! store.isgroup)"    
+            v-if="store.activequestion == 6 && (store.group.scans || ! store.isgroup)"    
             :theme="theme"
         >
         </theme-results>
 
         <theme-measures
-            v-if="store.scan.activequestion == 7 && (store.group.scans || ! store.isgroup)"
+            v-if="store.activequestion == 7 && (store.group.scans || ! store.isgroup)"
             :theme="theme"
         >
         </theme-measures>
@@ -57,7 +57,7 @@
         methods: {
             isActiveQuestion: function(questionid) {
                 var questionmodulo = ((questionid - 1 ) % 5) + 1;
-                if(this.store.scan.activequestion == questionmodulo) {
+                if(this.store.activequestion == questionmodulo) {
                     return true;
                 }
                 return false;
