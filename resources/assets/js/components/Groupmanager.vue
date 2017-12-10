@@ -35,10 +35,10 @@
 						</div>
 					</div>
 				</section>
-				<section class="infoblock"> 
+				<section class="infoblock" v-if="grouprequests.length"> 
 					<div class="row">  
 						<div class="col-sm-12"> 
-							<h4 v-if="grouprequests.length">mensen die aan je groep willen meedoen: </h4>
+							<h4>mensen die aan je groep willen meedoen: </h4>
 						</div>
 					</div>        
 					<div class="row">   

@@ -64,10 +64,6 @@ class ScansController extends Controller
                 'group_id' => $request->group_id,
                 'scan_id' => $scan->id,
             ]);
-            Dashmessage::create([
-                'message' => '<a href="group/' . $group->id . '">' . $user->name . ' wil graag meedoen met de groep <i>' . $group->title . '</i></a>',
-                'user_id' => $group->user_id,
-            ]);
         }
 
         return view('scan.postcreate', compact('scan', 'grouprequest'));

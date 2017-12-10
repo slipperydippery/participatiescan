@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Scan;
+use App\User;
 use App\Group;
 use App\District;
 use App\Districtmodel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ApiGroupsController extends Controller
 {
@@ -15,9 +17,9 @@ class ApiGroupsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Group $group)
+    public function index(User $user)
     {
-        // return $group->grouprequests;
+        return $user->groups;
     }
 
     /**
