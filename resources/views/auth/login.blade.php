@@ -1,7 +1,7 @@
 @extends('layouts.appcms')
 
 @section('content')
-<div class="container">
+<div class="container container--page">
     <div class="row">
         <div class="col-sm-12 page--head">
             <h2>Log in</h2>
