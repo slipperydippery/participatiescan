@@ -7,17 +7,21 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 progress--theme">
-                    <div class="progress--question" 
+                <div class="progress--theme progressbar">
+                    <div class="progressbar--element clickable"  
                         v-for="question in theme.questions" 
-                        :class=" { questioncomplete: store.scan.answers[question.id - 1].answer, active: isActiveQuestion(question.id) } "
-                        :id=" 'progressquestion_' + question.id "
-                        :style=" { background: colorvalue(store.scan.answers[question.id - 1].answer) } "
-                        :title=" question.title "
                         @click=" gotoQuestion(question.id) "
+                        :class=" { active: isActiveQuestion(question.id) } "
                     >
+                        <div class="progress--question" 
+                            :class=" { questioncomplete: store.scan.answers[question.id - 1].answer } "
+                            :id=" 'progressquestion_' + question.id "
+                            :style=" { background: colorvalue(store.scan.answers[question.id - 1].answer) } "
+                            :title=" question.title "
+                        >
+                        </div>
                     </div>
-                    <div class="progress--results" @click=" gotoThemeResults(theme.id) ">
+                    <div class="progressbar--element" @click=" gotoThemeResults(theme.id) ">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              width="449.192px" height="362.45px" viewBox="0 0 449.192 362.45" enable-background="new 0 0 449.192 362.45"
                              xml:space="preserve"
@@ -31,7 +35,7 @@
                             </g>
                         </svg>
                     </div>
-                    <div class="progress--results" @click=" gotoThemeMeasures(theme.id) ">
+                    <div class="progressbar--element" @click=" gotoThemeMeasures(theme.id) ">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              width="800px" height="799.992px" viewBox="0 0 800 799.992" enable-background="new 0 0 800 799.992" xml:space="preserve"
                              :class="{activeresult: isActiveMeasures(theme.id)}"

@@ -35,6 +35,9 @@
 			height: 3rem;
 			width: 3rem;
 		}
+		.progress--question, img, svg {
+			margin: 0.6rem auto;
+		}
 	}
 	.progressbar--element:last-of-type {
 		border: 1px solid $themecolor;
@@ -60,12 +63,12 @@
 	height: 3rem;
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: space-evenly;
-	align-items: center;
+	// justify-content: space-evenly;
+	// align-items: center;
 	background: rgba(255,255,255,0.6);
 	img, svg {
 		height: 1.6rem;
-		width: auto;
+		width: 1.6rem;
 	}
 	.activeresult {
 		filter: drop-shadow( 0px 0px 2px #000 )
@@ -79,10 +82,8 @@
 	width: 15px;
 	height: 15px;
 	cursor: pointer;
-	// border: 1.4px solid #ffffff;
 	box-sizing: border-box;
-	// box-shadow: inset 2px 2px 1px black;
-	box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.6);
+	box-shadow: inset 0px 0px 0px 0.3px rgba(0, 0, 0, 0.6);
 }
 
 .questioncomplete {
