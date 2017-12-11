@@ -15,8 +15,8 @@
                     Dank je voor het uitvoeren van de testscan!
                 </span> <br>
                 <p>Met een account kun je jouw scanresultaten opslaan en vergelijken met een groep of andere deelnemers aan de scan.</p>
-                <button>Maak een account aan</button>
-                <button>Terug naar de homepagina</button>
+                <button @click="goRegister">Maak een account aan</button>
+                <button @click="goHome">Terug naar de homepagina</button>
             </div>
         </div>
 
@@ -157,7 +157,16 @@
                         this.errors.push( e )
                     })
                 }
+            },
+
+            goRegister: function() {
+                window.location.href = '/register';
+            },
+
+            goHome: function() {
+                window.location.href = '/';
             }
+
         }
     }
 </script>

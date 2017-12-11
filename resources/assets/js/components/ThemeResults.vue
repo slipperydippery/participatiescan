@@ -5,7 +5,7 @@
                 <h2 class="page--title"><span class="theme--head--number">Thema {{ theme.id }}:</span> <span class="theme--head--title">{{ theme.title }}</span></h2>
                 <span class="page--clarification" v-if="store.isgroup && store.loggedin">Dit zijn de antwoorden van alle deelnemers. Bespreek met elkaar wat opvalt en kies in het volgende scherm de belangrijkste verbeterpunten.</span>
                 <span class="page--clarification" v-if=" ! store.isgroup && store.loggedin">Dit zijn jouw antwoorden. Via het dashboard kun je jouw antwoorden vergelijken met andere deelnemers. Kies in het volgende scherm de belangrijkste verbeterpunten.</span>
-                <span class="page--clarification" v-if=" ! store.loggedin ">Dit zijn jouw antwoorden. Met een account kun je jouw antwoorden vergelijken met de group of andere individuele scans. Kies in het volgende scherm de belangrijkste verbeterpunten.</span>
+                <span class="page--clarification" v-if=" ! store.loggedin ">Dit zijn jouw antwoorden. Met een account kun je jouw antwoorden vergelijken met de groep of andere individuele scans. Kies in het volgende scherm de belangrijkste verbeterpunten.</span>
             </div>
         </div>
         <div class="row content--page">
