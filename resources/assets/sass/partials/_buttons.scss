@@ -54,3 +54,15 @@ button:hover, .btn:hover, button:focus, .btn:focus {
 .btn--delete, .btn--alert {
 	background: $red;
 }
+
+.topright {
+	float: right;
+    margin-top: -4rem;
+    margin-right: -4rem;
+    padding: 0.7rem;
+    border-radius: 0;
+}
+
+button.alert {
+	background: $red;
+}

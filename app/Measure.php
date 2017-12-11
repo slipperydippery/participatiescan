@@ -24,4 +24,9 @@ class Measure extends Model
     {
     	return $this->belongsTo('App\Question');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }

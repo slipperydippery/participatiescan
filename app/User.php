@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Dashmessage');
     }
+
+    public function measures()
+    {
+        return $this->belongsToMany('App\Measure');
+    }
 }

@@ -31,8 +31,6 @@ class ApiScansController extends Controller
 		$scan = Scan::findOrFail($request->scan['id']);
 		$scan->title = $request->scan['title'];
 		$scan->description = $request->scan['description'];
-        $scan->activequestion = $request->scan['activequestion'];
-		$scan->activetheme = $request->scan['activetheme'];
         $scan->algemeenbeeld = $request->scan['algemeenbeeld'];
 		$scan->group_id = $request->scan['group_id'];
 		$scan->save();

@@ -22,6 +22,15 @@ class ApiGroupsController extends Controller
         return $user->groups;
     }
 
+    public function indexusers(Group $group)
+    {
+        $users = [];
+        foreach($group->scans as $scan) {
+            array_push($users, $scan->user);
+        }
+        return $users;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -51,7 +60,7 @@ class ApiGroupsController extends Controller
      */
     public function show(Group $group)
     {
-        return Group::with('scans.user', 'scans.answers', 'scans.instantie.instantiemodel', 'measures', 'district.districtmodel', 'owner')->where('id', $group->id)->get()->first();
+        return Group::with('scans.user', 'scans.answers', 'scans.instantie.instantiemodel', 'measures.users', 'district.districtmodel', 'owner')->where('id', $group->id)->get()->first();
     }
 
     public function getdistrict(Group $group)

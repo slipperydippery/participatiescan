@@ -23,6 +23,7 @@ Route::get('/scan/{scan}/regioincijfers', 'ScanpagesController@regioincijfers')-
 Route::get('/scan/{scan}/algemeenbeeld', 'ScanpagesController@algemeenbeeld')->name('scan.algemeenbeeld');
 Route::get('/scan/{scan}/algemeenbeeldresultaten', 'ScanpagesController@algemeenbeeldresultaten')->name('scan.algemeenbeeldresultaten');
 Route::get('/scan/{scan}/showscan', 'ScanpagesController@showscan')->name('scan.showscan');
+Route::get('/scan/{scan}/showmeasures', 'ScanpagesController@showmeasures')->name('scan.showmeasures');
 
 Route::get('/group/{group}/delete', 'GroupsController@destroy')->middleware('auth');
 

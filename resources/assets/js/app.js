@@ -64,6 +64,12 @@ Vue.component('groupmanager', require('./components/Groupmanager.vue'));
 Vue.component('comparemanager', require('./components/Comparemanager.vue'));
 Vue.component('comparescan', require('./components/Comparescan.vue'));
 
+Vue.component('measures-container', require('./components/MeasuresContainer.vue'));
+Vue.component('measure-theme-section', require('./components/MeasureThemeSection.vue'));
+Vue.component('measures-progress', require('./components/MeasuresProgress.vue'));
+Vue.component('single-measure', require('./components/SingleMeasure.vue'));
+
+
 const app = new Vue({
     el: '#app',
     data: {

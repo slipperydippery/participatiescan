@@ -1,25 +1,14 @@
 <template>
     <div class="scan--container">
-        <theme-section
+        <measure-theme-section
             v-for="theme in scanmodel.themes"
             :theme="theme"
+            :groupusers="groupusers"
             :key="theme.id"
             v-if="store.activetheme == theme.id"
         >
-        </theme-section>
+        </measure-theme-section>
 
-
-        <div class="confirm--container" v-if=" finished">
-            <div class="confirm">
-                <button class="alert topright" @click="finished = false">&#10006;</button>
-                <span class="page--clarification">
-                    Dank je voor het uitvoeren van de testscan!
-                </span> <br>
-                <p>Met een account kun je jouw scanresultaten opslaan en vergelijken met een groep of andere deelnemers aan de scan.</p>
-                <button @click="goRegister">Maak een account aan</button>
-                <button @click="goHome">Terug naar de homepagina</button>
-            </div>
-        </div>
 
         <div class="prev-next-nav">
             <a href="#" class="btn prev-next-nav--prev" @click=" previousQuestion ">
@@ -29,10 +18,10 @@
                 volgende pagina >>
             </a>
         </div>
-        <scan-progress
+        <measure-progress
             :scanmodel="scanmodel"
         >
-        </scan-progress>
+        </measure-progress>
     </div>
 
 </template>
@@ -54,13 +43,13 @@
                 store,
                 answers: [],
                 finished: false,
+                groupusers: [],
             }
         },
 
         mounted() {
-            this.getAnswers();
-            store.scan = this.workscan;
             store.loggedin = this.loggedin ? true : false;
+            store.scan = this.workscan;
             if(store.scan.group_id) {
                 store.isgroup = true;
                 this.getGroup(this.workscan.group_id);
@@ -110,11 +99,23 @@
                     axios.get('/api/group/' + groupid)
                         .then(function(response){
                             home.store.group = response.data;
+                            home.getGroupUsers(groupid);
                         })
                         .catch(function(error){
                             console.log(error)
                         })
                 }
+            },
+
+            getGroupUsers: function(groupid) {
+                var home = this;
+                axios.get('/api/group/' + groupid +'/users')
+                    .then(function(response){
+                        home.groupusers = response.data;
+                    })
+                    .catch(function(error){
+                        console.log(error)
+                    })
             },
 
             nextQuestion: function () {
@@ -126,8 +127,6 @@
                 } else if (store.activetheme == 3) {
                     if(! store.loggedin) {
                         this.finished = true;
-                    } else {
-                        window.location.href = '/scan/' +  store.scan.id + '/showmeasures';
                     }
                 } else {
                     store.activequestion = 0;
@@ -161,14 +160,6 @@
                     })
                 }
             },
-
-            goRegister: function() {
-                window.location.href = '/register';
-            },
-
-            goHome: function() {
-                window.location.href = '/';
-            }
 
         }
     }
