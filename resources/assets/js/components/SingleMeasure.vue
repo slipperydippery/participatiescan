@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-12 resultstable">
+    <div class="col-sm-12 resultstable resultstable__measure">
         <div class="row resultstable--row resultstable--row--head">
             <div class="col-sm-12" > {{ question.title }} </div>
         </div>
@@ -32,8 +32,23 @@
                     <div class="col-sm-2">
                         Betrokkenen
                     </div>
-                    <div class="col-sm-10">
-                        <span v-for="user in groupusers"> {{ user.name }} </span>         
+                    <div class="col-sm-5">
+                        <span 
+                            v-for="user in store.group.measures[this.measure].users" 
+                            @click="removeUser(user)"
+                            class="clickable user user--active"
+                        > 
+                            {{ user.name }} 
+                        </span>
+                    </div>
+                    <div class="col-sm-5">
+                        <span 
+                            v-for="user in passiveusers" 
+                            @click="addUser(user)"
+                            class="clickable user user--passive"
+                        > 
+                            {{ user.name }} 
+                        </span><br>    
                     </div>
                 </div>
             </div>
@@ -63,7 +78,20 @@
         },
 
         computed: {
-
+            passiveusers: function() {
+                var theseusers = [];
+                var home = this;
+                home.groupusers.forEach(function(thisuser){
+                    var match = false;
+                    store.group.measures[home.measure].users.forEach(function(thatuser){
+                        if(thisuser.id == thatuser.id){
+                            match = true;
+                        }
+                    })
+                    match ? '' : theseusers.push(thisuser) ;
+                })
+                return theseusers;
+            }
         },
 
         methods: {
@@ -111,7 +139,35 @@
                 })
             },
 
+            addUser: function (user) {
+                var home = this;
+                var thismeasure = store.group.measures[this.measure];
+                store.group.measures[home.measure].users.push(user);
+                axios.post('/api/measure/' + thismeasure.id + '/user/' + user.id, {
+                        user: user
+                    })
+                    .then(function(response){
+                        home.$parent.$emit('getgroup', 'test');
+                    })
+                    .catch(function(error){
+                        console.log(error)
+                    })
+            },
 
+            removeUser: function (user) {
+                var home = this;
+                var thismeasure = store.group.measures[this.measure];
+                store.group.measures[home.measure].users.splice(store.group.measures[home.measure].users.indexOf(user), 1 );
+                axios.get('/api/measure/' + thismeasure.id + '/user/' + user.id + '/removeuser')
+                    .then(function(response){
+                        home.$parent.$emit('getgroup');
+                    })
+                    .catch(function(error){
+                        console.log(error)
+                    })
+
+
+            }
 
         }
     }

@@ -46,5 +46,6 @@ Route::resource('measure', 'ApiMeasuresController');
 Route::resource('district', 'ApiDistrictsController');
 Route::resource('compares', 'ApiComparesController');
 Route::get('/compare/{compare}/scan/{scan}', 'ApiComparesController@destroycompare');
-
+Route::post('/measure/{measure}/user/{user}', 'ApiMeasuresController@adduser');
+Route::get('/measure/{measure}/user/{user}/removeuser', 'ApiMeasuresController@removeuser');
 

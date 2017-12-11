@@ -40,6 +40,9 @@
         },
 
         mounted() {
+            this.$on('getgroup', function(value){
+                this.$parent.$emit('getgroup', 'test');
+            });
         },
 
         computed: {

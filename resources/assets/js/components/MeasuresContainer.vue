@@ -60,6 +60,9 @@
             this.$on('storescan', function(value){
                 this.storeScan();
             });
+            this.$on('getgroup', function(value){
+                this.getGroup(this.workscan.group_id);
+            });
         },
 
         ready() {   
@@ -119,30 +122,21 @@
             },
 
             nextQuestion: function () {
-                if(store.activequestion < 7) {
-                    store.activequestion ++;
-                    if(store.activequestion == 6) {
-                        this.getScan();
-                    }
-                } else if (store.activetheme == 3) {
+                if(store.activetheme < 3) {
+                    store.activetheme ++;
+                } else  {
                     if(! store.loggedin) {
                         this.finished = true;
                     }
-                } else {
-                    store.activequestion = 0;
-                    store.activetheme ++;
-                }
+                } 
                 this.storeScan();
             },
 
             previousQuestion: function () {
-                if(store.activequestion > 0) {
-                    store.activequestion --;
-                } else if (store.activetheme > 1) {
+                if(store.activetheme > 1) {
                     store.activetheme --;
-                    store.activequestion = 7;
                 } else {
-                    window.location.href = '/scan/' + store.scan.id + '/algemeenbeeldresultaten';
+                    window.location.href = '/scan/' + store.scan.id + '/showscan';
                 }
                 this.storeScan();
             },

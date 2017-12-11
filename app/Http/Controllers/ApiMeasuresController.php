@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Measure;
 use Illuminate\Http\Request;
 
@@ -84,5 +85,17 @@ class ApiMeasuresController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function adduser(Measure $measure, User $user)
+    {
+        $measure->users()->attach($user);
+        return $measure;
+    }
+
+    public function removeuser(Measure $measure, User $user)
+    {
+        $measure->users()->detach($user);
+        return $measure;
     }
 }
