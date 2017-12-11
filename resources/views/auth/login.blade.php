@@ -51,7 +51,7 @@
 
                 <div class="form-group">
                     <div class="col-md-10 col-md-offset-2">
-                        <button type="submit" class="btn btn-primary btn--fullwidth">
+                        <button type="submit" class="btn btn--fullwidth">
                             log in
                         </button>
                         <br><br>

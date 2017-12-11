@@ -76,6 +76,11 @@
         </nav>
 
         @yield('content')
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">De Participatiescan is ontwikkeld in samenwerking met Lesco, Divosa, Ecorys, UWV, MEE, VOBC, BB, Ingrado, en NJI. Ontwikkeling door EMB AV.</span>
+            </div>
+        </footer>
     </div>
 
     <!-- Scripts -->

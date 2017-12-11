@@ -12,9 +12,11 @@ button, .btn {
 	}
 }
 
-button:hover, .btn:hover {
+button:hover, .btn:hover, button:focus, .btn:focus {
 	color: white;
-    box-shadow: inset 0px 0px 5px black;
+    // box-shadow: inset 0px 0px 5px black;
+    background: darken($themecolor, 10);
+    text-decoration: none !important; 
     .hovershow {
     	display: inline-block;
     }
@@ -31,6 +33,11 @@ button:hover, .btn:hover {
 
 .btn--secondary {
 	background: $themecolor-2;
+}
+
+.btn--secondary:hover, .btn--secondary:focus {
+	background: darken($themecolor-2, 10) !important;
+
 }
 
 .mainbutton {

@@ -54,7 +54,7 @@
                 <img src="/img/group.svg" alt="">
             </div>
         </a>
-        <a href=" {{ route('scan.regioincijfers', $scan) }} " class="progressbar--element" title="Uw regio in cijfers/">
+        <a href=" {{ route('scan.regioincijfers', $scan) }} " class="progressbar--element" title="Uw regio in cijfers">
             <div>
                 <img src="/img/nederland-square.svg" alt="">
             </div>

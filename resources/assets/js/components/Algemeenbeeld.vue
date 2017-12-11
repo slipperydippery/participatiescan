@@ -12,7 +12,8 @@
 <script>
     export default {
         props: [
-            'workscan'
+            'workscan',
+            'loggedin'
         ],
 
         data() {
@@ -31,6 +32,7 @@
         methods: {
             onChange: function () {
                 var home = this;
+                if(this.loggedin){
                     axios.post('/api/scan/' + this.scan.id, {
                             scan: home.scan
                         })
@@ -38,6 +40,7 @@
                         .catch( e => {
                             home.errors.push( e )
                     } )   
+                }
             },
         }
     }

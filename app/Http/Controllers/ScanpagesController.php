@@ -6,6 +6,7 @@ use App\Scan;
 use App\User;
 use App\Scanmodel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ScanpagesController extends Controller
 {
@@ -32,7 +33,7 @@ class ScanpagesController extends Controller
 
     public function kennismaken(Scan $scan)
     {
-    	if(count($scan->group)) {
+    	if(Auth::check() && count($scan->group)) {
     		return view('scan.kennismaken', compact('scan'));
     	} else {
     		return redirect()->route('scan.regioincijfers', $scan);

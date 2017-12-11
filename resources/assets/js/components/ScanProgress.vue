@@ -2,7 +2,7 @@
     <div class="scan--progress row">
         <div class="col-sm-4 " v-for="theme in scanmodel.themes" :class="'themecolor-' +theme.id">
             <div class="row">
-                <div class="col-sm-12 progress--themetitle clickable" @click="gotoTheme(theme.id)">
+                <div class="col-sm-12 progress--themetitle clickable" :class="{active: isActiveIntro(theme.id)}" @click="gotoTheme(theme.id)">
                     <span> {{ theme.title }} </span>
                 </div>
             </div>
@@ -130,6 +130,10 @@
             isActiveMeasures: function (themeid) {
                 return (this.store.activetheme == themeid && this.store.activequestion == 7) ? true : false;
             },
+
+            isActiveIntro: function (themeid) {
+                return (this.store.activetheme == themeid && this.store.activequestion == 0) ? true : false;
+            }
         }
     }
 </script>

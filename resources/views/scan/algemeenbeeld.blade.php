@@ -20,9 +20,12 @@
  </span>
     	</div>
     </div>
+    <?php 
+        $loggedin = Auth::guest() ? 0 : 1;
+    ?>
     <div class="row content--page">
     	<div class="col-sm-12">
-            <algemeenbeeld :workscan=" {{ $scan }} "></algemeenbeeld>
+            <algemeenbeeld :workscan=" {{ $scan }} " :loggedin=" {{ $loggedin }} "></algemeenbeeld>
     	</div>
     </div>
     <div class="prev-next-nav">
@@ -39,12 +42,16 @@
                 <img src="/img/play.svg" alt="">
             </div>
         </a>
-        <a href=" {{ route('scan.kennismaken', $scan) }} " class="progressbar--element" title="Kennismaken">
-            <div>
-                <img src="/img/group.svg" alt="">
-            </div>
-        </a>
-        <a href=" {{ route('scan.regioincijfers', $scan) }} " class="progressbar--element" title="Uw regio in cijfers/">
+        @if(Auth::check())
+            @if(count($scan->group))
+                <a href=" {{ route('scan.kennismaken', $scan) }} " class="progressbar--element" title="Kennismaken">
+                    <div>
+                        <img src="/img/group.svg" alt="">
+                    </div>
+                </a>
+            @endif
+        @endif
+        <a href=" {{ route('scan.regioincijfers', $scan) }} " class="progressbar--element" title="Uw regio in cijfers">
             <div>
                 <img src="/img/nederland-square.svg" alt="">
             </div>
