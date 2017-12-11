@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-12 resultstable resultstable__measure">
+    <div class="col-sm-12 resultstable resultstable__measure infoblock">
         <div class="row resultstable--row resultstable--row--head">
             <div class="col-sm-12" > {{ question.title }} </div>
         </div>
