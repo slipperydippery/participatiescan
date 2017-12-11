@@ -18,23 +18,25 @@
 				</div>
 			</div>
 			<div class="col-sm-12">
-				<h4>voeg een scan toe aan je vergelijking</h4>
-				<select v-model="districtfilter"  @change="filterScans">
-					<option value="">--geen arbeidsmarktregio filter--</option>
-					<option v-for="district in districtmodels" :value="district"> {{ district.title }} </option>
-				</select>
-				<div class="row row--table" v-for="scan in filteredscans">
-					<div class="col-sm-3"> <span class="emphasis">{{ scan.user.name }}</span> </div>
-					<div class="col-sm-3"> {{ scan.district.districtmodel.title }} </div>
-					<div class="col-sm-3"> {{ scan.instantie.instantiemodel.title }} </div>
-					<div class="col-sm-2"> {{ answerCount(scan) }}/15 </div>
-					<div class="col-sm-1"> 
-						<span class="clickable accept" @click=" addCompare(scan) " >&#10004;</span>
+				<h4 @click="addcompareactive = ! addcompareactive" class="clickable">voeg een scan toe aan je vergelijking</h4>
+				<div class="addcompare" v-if="addcompareactive">
+					<select v-model="districtfilter"  @change="filterScans">
+						<option value="">--geen arbeidsmarktregio filter--</option>
+						<option v-for="district in districtmodels" :value="district"> {{ district.title }} </option>
+					</select>
+					<div class="row row--table" v-for="scan in filteredscans">
+						<div class="col-sm-3"> <span class="emphasis">{{ scan.user.name }}</span> </div>
+						<div class="col-sm-3"> {{ scan.district.districtmodel.title }} </div>
+						<div class="col-sm-3"> {{ scan.instantie.instantiemodel.title }} </div>
+						<div class="col-sm-2"> {{ answerCount(scan) }}/15 </div>
+						<div class="col-sm-1"> 
+							<span class="clickable accept" @click=" addCompare(scan) " >&#10004;</span>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-sm-12" v-if="scan.compares.length">
-				<a :href="'/scan/' + scan.id" class="btn">Start scan</a>
+				<a :href="'/scan/' + scan.id" class="btn">Start vergelijking</a>
 			</div>
 			<div class="confirm--container" v-if="confirmremovecomparebox" v-on-click-outside="cancelremovecompare"> 
 				<div class="confirm">
@@ -61,6 +63,7 @@
 		data() {
 			return {
 				active: false,
+				addcompareactive: false,
 				confirmremovecomparebox: false,
 				districtfilter: "",
 				filteredscans: [],
