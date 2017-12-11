@@ -20,7 +20,7 @@
             @if(count($scan->group))
                 <span class="page--clarification"> Bespreek met elkaar wat je van de gezamelijke huidige aanpak vindt. </span>
             @elseif(Auth::guest())
-                <span class="page--clarification"> Met een account kun je hier jouw antwoord vergelijken met de group of andere individuele scans. </span>
+                <span class="page--clarification"> Met een account kun je hier de score zien die je hebt ingevuld, en jouw antwoord vergelijken met de groep of andere individuele scans. </span>
             @else
         		<span class="page--clarification"> Dit is het antwoord dat je gegeven hebt. Via het dashboard kun je jouw antwoorden vergelijken met andere deelnemers. </span>
             @endif

@@ -3,11 +3,8 @@
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="page--title"><span class="theme--head--number">Thema {{ theme.id }}:</span> <span class="theme--head--title">{{ theme.title }}</span></h2>
-                <span class="page--clarification"><span class="highlight">Introductiefilm</span></span>
+                <span class="page--clarification">Bekijk de introductiefilm over "Thema {{ theme.id }}: {{ theme.title }}" of ga direct door naar de vragen.</span>
             </div>
-        </div>
-        <div class="">
-            <p>Bekijk de introductiefilm over "Thema {{ theme.id }}: {{ theme.title }}" of ga direct door naar de vragen.</p>
         </div>
         <div class="row content--page">
             <div class="col-sm-12">
