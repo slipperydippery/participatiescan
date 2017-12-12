@@ -46,7 +46,11 @@
                             <div class="col-sm-12">
                                 <div class="row no-overflow">
                                     <div class="col-sm-8 hidden--container">
-                                        <a href=" {{ route('scan.show', $scan) }} "> {{ $scan->title }}</a> 
+                                        @if(count($scan->group))
+                                            <a href=" {{ route('scan.show', $scan) }} "> {{ $scan->group->owner->title }}</a> 
+                                        @else
+                                            <a href=" {{ route('scan.show', $scan) }} "> {{ $scan->title }}</a> 
+                                        @endif
                                         <img src="/img/editicon-color.svg" title="bewerk deze scan" class="rowicon hidden--item">
                                     </div>
                                     <div class="col-sm-2" title=" <?= $answercount; ?> van de 15 vragen zijn beantwoord  "> <?= $answercount; ?>/15 </div>
