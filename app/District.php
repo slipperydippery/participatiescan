@@ -7,22 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 class District extends Model
 {
 	protected $fillable = [
-		'districtmodel_id', 'scan_id', 'group_id'
+		'scanmodel_id', 'id', 'title'
 	];
 
-    public function districtmodel()
+    public function scanmodel()
     {
-    	return $this->belongsTo('App\Districtmodel');
+    	return $this->belongsTo('App\Scanmodel');
     }
 
-    public function scan()
+    public function scans()
     {
-    	return $this->belongsTo('App\Scan');
+    	return $this->belongsToMany('App\Scan');
     }
 
     public function group()
     {
-    	return $this->belongsTo('App\Group');
+    	return $this->belongsToMany('App\Group');
     }
 
     public function subdistricts()

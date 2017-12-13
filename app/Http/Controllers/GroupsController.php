@@ -8,7 +8,6 @@ use App\Measure;
 use App\District;
 use App\Postcode;
 use App\Scanmodel;
-use App\Districtmodel;
 use App\Instantiemodel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,9 +31,9 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        $districtmodels = Districtmodel::pluck('title', 'id');
+        $districts = District::pluck('title', 'id');
         $instantiemodels = Instantiemodel::pluck('title', 'id');
-        return view('group.create', compact('districtmodels', 'instantiemodels'));
+        return view('group.create', compact('districts', 'instantiemodels'));
     }
 
     /**
@@ -56,11 +55,14 @@ class GroupsController extends Controller
         $group->save();
         $group->scans()->save($scan);
 
-
-        $district = District::create([
-            'group_id' => $group->id,
-            'districtmodel_id' => $request->districtmodel_id,
-        ]);
+ 
+        /**
+         * Create something else here!!!
+         */
+        // $district = District::create([
+        //     'group_id' => $group->id,
+        //     'district_id' => $request->district_id,
+        // ]);
 
         $scanmodel = Scanmodel::findOrFail(1);
         foreach($scanmodel->themes as $theme) {
@@ -86,8 +88,8 @@ class GroupsController extends Controller
     public function show(Group $group)
     {
         $group = Group::with('scans.user')->findOrFail($group->id);
-        $districtmodels = Districtmodel::all();
-        return view('group.show', compact('group', 'districtmodels'));
+        $districts = District::all();
+        return view('group.show', compact('group', 'districts'));
     }
 
     /**

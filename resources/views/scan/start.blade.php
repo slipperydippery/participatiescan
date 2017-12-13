@@ -12,7 +12,6 @@
     	<div class="col-md-12">
     		<h2 class="page--title"> Introductiefilm </h2>
     		<span class="page--clarification">Bekijk de introductiefilm over het uitvoeren van de participatiescan of ga door naar het volgende scherm. We adviseren de film niet allemaal tegelijk, maar op een gezamelijk scherm te bekijken. </span>
-    		<span class="page--clarification">
     	</div>
     </div>
     <div class="row content--page">

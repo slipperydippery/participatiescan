@@ -12,10 +12,11 @@
 
 <!-- Voor welk Arbeidsmarktregio doe je deze scan? Form Input -->
 <div class="form-group">
-    {!! Form::label('districtmodel_id', 'Voor welk Arbeidsmarktregio doe je deze scan?:') !!}
-    {!! Form::select('districtmodel_id', $districtmodels, null, ['class' => 'form-control']) !!}
+    @foreach($districts as $district)
+        {!! Form::label('district_' . $district->id, $district->title) !!}
+        {{ Form::checkbox('district_id', $district->id, null, ['id' => 'district_' . $district->id]) }}
+    @endforeach
 </div>
-
 
 <!-- Wil je de scan aan een groep koppelen? Form Input -->
 <div class="form-group">

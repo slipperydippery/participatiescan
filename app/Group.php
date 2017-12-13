@@ -35,8 +35,8 @@ class Group extends Model
         return $this->hasMany('App\Measure');
     }
 
-    public function district()
+    public function districts()
     {
-        return $this->hasOne('App\District');
+        return $this->belongsToMany('App\District');
     }
 }

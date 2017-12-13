@@ -102,25 +102,31 @@
             gotoQuestion: function(questionid) {
                 this.store.activetheme = Math.ceil(questionid / 5);
                 this.store.activequestion = (questionid - 1) % 5 + 1;
-                this.$parent.$emit('storescan', 'test');
             },
 
             gotoTheme: function (themeid) {
                 this.store.activequestion = 0;
                 this.store.activetheme = themeid;
-                this.$parent.$emit('storescan', 'test');
             },
 
             gotoThemeResults: function (themeid) {
                 this.store.activequestion = 6;
                 this.store.activetheme = themeid;
-                this.$parent.$emit('storescan', 'test');
+                if(store.isgroup){
+                    this.$parent.$emit('getgroup');
+                } else {
+                    this.$parent.$emit('getscan');
+                }
             },
 
             gotoThemeMeasures: function (themeid) {
                 this.store.activequestion = 7;
                 this.store.activetheme = themeid;
-                this.$parent.$emit('storescan', 'test');
+                if(store.isgroup){
+                    this.$parent.$emit('getgroup');
+                } else {
+                    this.$parent.$emit('getscan');
+                }
             },
 
             isActiveQuestion: function(questionid) {

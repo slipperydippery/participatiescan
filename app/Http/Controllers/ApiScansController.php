@@ -26,7 +26,12 @@ class ApiScansController extends Controller
         return Scan::with('answers', 'user', 'instantie.instantiemodel', 'measures')->findOrFail($scan->id);
 	}
 
-	public function store(Request $request)
+    public function store(Request $request)
+    {
+        return $request;
+    }
+
+	public function update(Request $request)
 	{
 		$scan = Scan::findOrFail($request->scan['id']);
 		$scan->title = $request->scan['title'];

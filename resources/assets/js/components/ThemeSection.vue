@@ -48,6 +48,12 @@
             this.$on('storescan', function(value){
                 this.$parent.$emit('storescan', 'test');
             });
+            this.$on('getscan', function(value){
+                this.$parent.$emit('getscan');
+            });
+            this.$on('getgroup', function(value){
+                this.$parent.$emit('getgroup');
+            });
         },
 
         computed: {

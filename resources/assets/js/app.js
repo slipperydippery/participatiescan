@@ -49,6 +49,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('dashmessages', require('./components/Dashmessages.vue'));
 Vue.component('dashmessage', require('./components/Dashmessage.vue'));
 
+Vue.component('create-scan', require('./components/CreateScan.vue'));
+
 Vue.component('scan-header', require('./components/ScanHeader.vue'));
 Vue.component('scan-container', require('./components/ScanContainer.vue'));
 Vue.component('scan-progress', require('./components/ScanProgress.vue'));

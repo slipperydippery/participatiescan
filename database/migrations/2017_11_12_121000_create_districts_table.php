@@ -15,12 +15,9 @@ class CreateDistrictsTable extends Migration
     {
         Schema::create('districts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('districtmodel_id')->unsigned();
-            $table->foreign('districtmodel_id')->references('id')->on('districtmodels')->onDelete('cascade');
-            $table->integer('scan_id')->unsigned()->nullable();
-            $table->foreign('scan_id')->references('id')->on('scans')->onDelete('cascade');
-            $table->integer('group_id')->unsigned()->nullable();
-            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+            $table->string('title');
+            $table->integer('scanmodel_id')->unsigned()->default('1');
+            $table->foreign('scanmodel_id')->references('id')->on('scanmodels')->onDelete('cascade');
             $table->timestamps();
         });
     }
