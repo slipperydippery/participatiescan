@@ -50,6 +50,7 @@ Vue.component('dashmessages', require('./components/Dashmessages.vue'));
 Vue.component('dashmessage', require('./components/Dashmessage.vue'));
 
 Vue.component('create-scan', require('./components/CreateScan.vue'));
+Vue.component('create-group', require('./components/CreateGroup.vue'));
 
 Vue.component('scan-header', require('./components/ScanHeader.vue'));
 Vue.component('scan-container', require('./components/ScanContainer.vue'));

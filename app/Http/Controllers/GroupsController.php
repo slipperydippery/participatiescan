@@ -31,8 +31,8 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        $districts = District::pluck('title', 'id');
-        $instantiemodels = Instantiemodel::pluck('title', 'id');
+        $districts = District::get();
+        $instantiemodels = Instantiemodel::get();
         return view('group.create', compact('districts', 'instantiemodels'));
     }
 

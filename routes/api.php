@@ -17,8 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/group/user/{user}', 'ApiGroupsController@index');
+Route::post('/group', 'ApiGroupsController@store');
 Route::patch('/group/{group}', 'ApiGroupsController@update');
+Route::get('/group/user/{user}', 'ApiGroupsController@index');
 Route::get('/group/{group}', 'ApiGroupsController@show');
 Route::get('/group/{group}/users', 'ApiGroupsController@indexusers');
 Route::get('/group/{group}/getdistrict', 'ApiGroupsController@getdistrict');
