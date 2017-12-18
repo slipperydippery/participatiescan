@@ -51,8 +51,8 @@
                                     class="form-control" 
                                     placeholder="Actie Omschrijving"
                                     rows="6"
-                                    v-model="store.group.measures[findMeasure(question.id)].measure"
-                                    @blur="updateMeasure(store.group.measures[findMeasure(question.id)])"
+                                    v-model="store.group.owner.measures[findMeasure(question.id)].measure"
+                                    @blur="updateMeasure(store.group.owner.measures[findMeasure(question.id)])"
                                 >
                                 </textarea>
                                 <textarea  
@@ -107,9 +107,9 @@
                         }
                     }) 
                 } else {
-                    this.store.group.measures.forEach(function(thismeasure){
+                    this.store.group.owner.measures.forEach(function(thismeasure){
                         if(thismeasure.question_id == questionid) {
-                            returnmeasure = home.store.group.measures.indexOf(thismeasure);
+                            returnmeasure = home.store.group.owner.measures.indexOf(thismeasure);
                         }
                     })
                 }
@@ -133,7 +133,7 @@
                         }
                     })
                 } else {
-                    this.store.group.measures.forEach(function(thismeasure) {
+                    this.store.group.owner.measures.forEach(function(thismeasure) {
                         if (thismeasure.question_id == questionid) {
                             active = thismeasure.active;
                         }
@@ -152,7 +152,7 @@
                         }
                     })
                 } else {
-                    this.store.group.measures.forEach(function(thismeasure) {
+                    this.store.group.owner.measures.forEach(function(thismeasure) {
                         if (thismeasure.question_id == questionid) {
                             thismeasure.active = ! thismeasure.active; 
                             home.storeMeasure(thismeasure); 

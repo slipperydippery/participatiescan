@@ -10,7 +10,7 @@
         </div>
         <comparemanager
         	:user=" {{ $user }} "	
-        	:districtmodels=" {{ $districtmodels }} "
+        	:districts=" {{ $districts }} "
         >
         </comparemanager>
     </div>

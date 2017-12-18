@@ -6,7 +6,6 @@ use App\Scan;
 use App\District;
 use App\Scanmodel;
 use App\Thememodel;
-use App\Districtmodel;
 use App\Questionmodel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,8 +35,8 @@ class PagesController extends Controller
     public function comparescans()
     {
         $user = Auth::user();
-        $districtmodels = Districtmodel::get();
-        return view ('compare.comparescans', compact('user', 'districtmodels'));
+        $districts = District::get();
+        return view ('compare.comparescans', compact('user', 'districts'));
     }
 
     public function passport()

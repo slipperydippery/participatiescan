@@ -1,7 +1,7 @@
 <template>
 	<section class="infoblock">
 		<div class="row">   
-			<div class="col-sm-12 clickable" @click="activeateCompare"> 
+			<div class="col-sm-12 clickable" @click="activateCompare"> 
 				<h4>Vergelijk scans met {{ scan.title }} </h4>
 			</div>
 		</div>
@@ -10,7 +10,7 @@
 				<div class="row row--table" v-for="scan in scan.compares">
 					<div class="col-sm-3"> <span class="emphasis">{{ scan.user.name }}</span> </div>
 					<div class="col-sm-3"> {{ scan.user.email }} </div>
-					<div class="col-sm-3"> {{ scan.instantie.instantiemodel.title }} </div>
+					<div class="col-sm-3"> {{ scan.instantie.title }} </div>
 					<div class="col-sm-2"> {{ answerCount(scan) }}/15 </div>
 					<div class="col-sm-1"> 
 						<span class="clickable warning" @click=" confirm(scan) ">&#10006;</span>
@@ -22,12 +22,12 @@
 				<div class="addcompare" v-if="addcompareactive">
 					<select v-model="districtfilter"  @change="filterScans">
 						<option value="">--geen arbeidsmarktregio filter--</option>
-						<option v-for="district in districtmodels" :value="district"> {{ district.title }} </option>
+						<option v-for="district in districts" :value="district"> {{ district.title }} </option>
 					</select>
 					<div class="row row--table" v-for="scan in filteredscans">
 						<div class="col-sm-3"> <span class="emphasis">{{ scan.user.name }}</span> </div>
-						<div class="col-sm-3"> {{ scan.district.districtmodel.title }} </div>
-						<div class="col-sm-3"> {{ scan.instantie.instantiemodel.title }} </div>
+						<div class="col-sm-3"> <span v-for="district in scan.districts"> {{ district.title }} </span></div>
+						<div class="col-sm-3"> {{ scan.instantie.title }} </div>
 						<div class="col-sm-2"> {{ answerCount(scan) }}/15 </div>
 						<div class="col-sm-1"> 
 							<span class="clickable accept" @click=" addCompare(scan) " >&#10004;</span>
@@ -36,7 +36,7 @@
 				</div>
 			</div>
 			<div class="col-sm-12" v-if="scan.compares.length">
-				<a :href="'/scan/' + scan.id" class="btn">Start vergelijking</a>
+				<a :href="'/scan/' + scan.id + '/results'" class="btn">Start vergelijking</a>
 			</div>
 			<div class="confirm--container" v-if="confirmremovecomparebox" v-on-click-outside="cancelremovecompare"> 
 				<div class="confirm">
@@ -58,7 +58,7 @@
 		props: [
 			'scan',
 			'allscans',
-			'districtmodels'
+			'districts'
 		],
 		data() {
 			return {
@@ -78,7 +78,7 @@
 		},
 
 		methods: {
-			activeateCompare: function() {
+			activateCompare: function() {
 				this.filteredscans =  this.allscans.slice();
 				this.active = ! this.active;
 				this.filterScans();
@@ -124,18 +124,18 @@
 			},
 
 			filterScans: function () {
-				console.log('filtering scans');
 				var home = this;
 				home.filteredscans = [];
 				if(home.districtfilter == ""){
-					console.log('all scans');
 					home.filteredscans =  home.allscans.slice();
 				} else {
 					home.allscans.filter(function (scan) {
-						if(scan.district.districtmodel_id == home.districtfilter.id)
-						{
-							home.filteredscans.push(scan);
-						}
+						scan.districts.forEach(function(district){
+							if(district.id == home.districtfilter.id)
+							{
+								home.filteredscans.push(scan);
+							}
+						})
 					})
 				}
 				home.filteredscans.forEach(function(scan){

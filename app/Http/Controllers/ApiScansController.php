@@ -15,12 +15,12 @@ class ApiScansController extends Controller
 {
     public function index()
     {
-        return Scan::with('user', 'answers', 'instantie', 'district.districtmodel')->get();
+        return Scan::with('user', 'answers', 'instantie', 'districts')->get();
     }
 
     public function indexuser(User $user)
     {
-        return Scan::with('compares.user', 'compares.answers', 'compares.instantie', 'compares.district.districtmodel')->where('user_id', $user->id)->get();
+        return Scan::with('compares.user', 'compares.answers', 'compares.instantie', 'compares.districts')->where('user_id', $user->id)->get();
     }
 
 	public function show(Scan $scan)
@@ -41,7 +41,7 @@ class ApiScansController extends Controller
                 'isgroup' => 'required|boolean',
                 'title' => 'required|min:3|max:255',
                 'instantie_id' => 'required|integer',
-                'districts' => 'required|max:2'
+                'districts' => 'required'
             ]);
         }
 

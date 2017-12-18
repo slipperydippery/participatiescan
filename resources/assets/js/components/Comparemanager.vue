@@ -12,7 +12,7 @@
 				<comparescan 
 					:scan="scan"
 					:allscans="allscans"
-					:districtmodels="districtmodels"
+					:districts="districts"
 					v-for="scan in scans"	
 					:key="scan.id"
 				>
@@ -31,7 +31,7 @@
 
 		props: [
 			'user',
-			'districtmodels'
+			'districts'
 		],
 		data() {
 			return {

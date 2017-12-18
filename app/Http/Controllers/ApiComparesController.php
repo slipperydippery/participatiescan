@@ -18,6 +18,12 @@ class ApiComparesController extends Controller
         //
     }
 
+    public function indexscan(Scan $scan)
+    {
+        return Scan::with('compares.answers', 'compares.user', 'compares.instantie')->find($scan->id);
+        // return $scan->compares->with('answers');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

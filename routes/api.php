@@ -51,6 +51,7 @@ Route::resource('district', 'ApiDistrictsController')->middleware('auth:api');
 Route::resource('compares', 'ApiComparesController')->middleware('auth:api');
 
 Route::get('/compare/{compare}/scan/{scan}', 'ApiComparesController@destroycompare')->middleware('auth:api');
+Route::get('/compare/scan/{scan}', 'ApiComparesController@indexscan')->middleware('auth:api');
 Route::post('/measure/{measure}/user/{user}', 'ApiMeasuresController@adduser')->middleware('auth:api');
 Route::get('/measure/{measure}/user/{user}/removeuser', 'ApiMeasuresController@removeuser')->middleware('auth:api');
 

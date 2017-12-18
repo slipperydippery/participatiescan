@@ -93,7 +93,7 @@
                     axios.get('/api/scan/' + home.workscan.id )
                         .then(function(response){
                             console.log('getting scan');
-                            home.store.scan = response.data;
+                            store.scan = response.data;
                         })
                         .catch(function(error){
                             console.log(error)
@@ -118,8 +118,21 @@
                     var home = this;
                     axios.get('/api/group/' + groupid)
                         .then(function(response){
-                            home.store.group = response.data;
+                            store.group = response.data;
                             console.log('getting group');
+                        })
+                        .catch(function(error){
+                            console.log(error)
+                        })
+                }
+            },
+
+            getCompares: function(groupid) {
+                if(store.loggedin) {
+                    var home = this;
+                    axios.get('/api/compare/scan/' + groupid)
+                        .then(function(response){
+                            store.compares = response.data;
                         })
                         .catch(function(error){
                             console.log(error)

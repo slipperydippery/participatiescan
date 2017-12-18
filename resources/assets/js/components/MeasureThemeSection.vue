@@ -54,15 +54,15 @@
                 var returnmeasure = {};
                 var home = this;
                 if( ! store.isgroup) {
-                    this.store.scan.measures.forEach(function(thismeasure) {
+                    store.scan.measures.forEach(function(thismeasure) {
                         if(thismeasure.question_id == questionid) {
                             returnmeasure = store.scan.measures.indexOf(thismeasure);
                         }
                     }) 
                 } else {
-                    this.store.group.measures.forEach(function(thismeasure){
+                    store.group.owner.measures.forEach(function(thismeasure){
                         if(thismeasure.question_id == questionid) {
-                            returnmeasure = home.store.group.measures.indexOf(thismeasure);
+                            returnmeasure = home.store.group.owner.measures.indexOf(thismeasure);
                         }
                     })
                 }
@@ -73,15 +73,15 @@
                 var active = false;
                 if( ! store.isgroup) {
                     if(store.scan.measures){
-                        this.store.scan.measures.forEach(function(thismeasure){
+                        store.scan.measures.forEach(function(thismeasure){
                             if (thismeasure.question_id == questionid) {
                                 active = thismeasure.active;
                             }
                         })
                     }
                 } else {
-                    if(store.group.measures){
-                        this.store.group.measures.forEach(function(thismeasure) {
+                    if(store.group.owner){
+                        store.group.owner.measures.forEach(function(thismeasure) {
                             if (thismeasure.question_id == questionid) {
                                 active = thismeasure.active;
                             }

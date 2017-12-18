@@ -83,6 +83,8 @@ class ScanpagesController extends Controller
 
     public function results(Scan $scan)
     {
-        
+        $scanmodel = $scan->scanmodel->with('themes.questions')->first();
+        $scan = Scan::with('answers', 'user', 'instantie', 'measures.users')->findOrFail($scan->id);
+        return view('scan.results', compact('scan', 'scanmodel'));
     }
 }

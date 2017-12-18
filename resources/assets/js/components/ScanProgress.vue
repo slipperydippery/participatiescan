@@ -37,8 +37,8 @@
                 </div>
             </a>
         </div>
-        <div class="scan--progress row" v-if="page == 'show'">
-            <div class="col-sm-4 " v-for="theme in scanmodel.themes" :class="'themecolor-' +theme.id">
+        <div class="scan--progress row progressbar progressbar__double" v-if="page == 'show'">
+            <div class="col-sm-4" v-for="theme in scanmodel.themes" :class="'themecolor-' +theme.id">
                 <div class="row">
                     <div class="col-sm-12 progress--themetitle" >
                         <span> {{ theme.title }} </span>

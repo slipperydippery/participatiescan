@@ -9,12 +9,12 @@
                     <div class="col-sm-2">Actiepunten</div>
                     <div class="col-sm-10">
                         <textarea  
-                            v-if="store.isgroup && store.group.measures"
+                            v-if="store.isgroup && store.group.owner.measures"
                             class="form-control" 
                             placeholder="Actie Omschrijving"
                             rows="6"
-                            v-model="store.group.measures[findMeasure(question.id)].measure"
-                            @blur="updateMeasure(store.group.measures[findMeasure(question.id)])"
+                            v-model="store.group.owner.measures[findMeasure(question.id)].measure"
+                            @blur="updateMeasure(store.group.owner.measures[findMeasure(question.id)])"
                         >
                         </textarea>
                         <textarea  
@@ -30,13 +30,13 @@
                 </div>
                 <div class="row resultstable--row" v-if="store.isgroup">
                     <div class="col-sm-2">
-                        Betrokkenen
+                        Trekker
                     </div>
                     <div class="col-sm-5">
                         <span 
-                            v-for="user in store.group.measures[this.measure].users" 
+                            v-for="user in store.group.owner.measures[this.measure].users" 
                             @click="removeUser(user)"
-                            class="clickable user user--active"
+                            class="clickable selectable selectable--active"
                         > 
                             {{ user.name }} 
                         </span>
@@ -45,7 +45,7 @@
                         <span 
                             v-for="user in passiveusers" 
                             @click="addUser(user)"
-                            class="clickable user user--passive"
+                            class="clickable selectable selectable--passive"
                         > 
                             {{ user.name }} 
                         </span><br>    
@@ -83,7 +83,7 @@
                 var home = this;
                 home.groupusers.forEach(function(thisuser){
                     var match = false;
-                    store.group.measures[home.measure].users.forEach(function(thatuser){
+                    store.group.owner.measures[home.measure].users.forEach(function(thatuser){
                         if(thisuser.id == thatuser.id){
                             match = true;
                         }
@@ -105,9 +105,9 @@
                         }
                     }) 
                 } else {
-                    this.store.group.measures.forEach(function(thismeasure){
+                    this.store.group.owner.measures.forEach(function(thismeasure){
                         if(thismeasure.question_id == questionid) {
-                            returnmeasure = home.store.group.measures.indexOf(thismeasure);
+                            returnmeasure = home.store.group.owner.measures.indexOf(thismeasure);
                         }
                     })
                 }
@@ -141,8 +141,9 @@
 
             addUser: function (user) {
                 var home = this;
-                var thismeasure = store.group.measures[this.measure];
-                store.group.measures[home.measure].users.push(user);
+                var thismeasure = store.group.owner.measures[this.measure];
+                store.group.owner.measures[home.measure].users = [];
+                store.group.owner.measures[home.measure].users.push(user);
                 axios.post('/api/measure/' + thismeasure.id + '/user/' + user.id, {
                         user: user
                     })
@@ -156,8 +157,8 @@
 
             removeUser: function (user) {
                 var home = this;
-                var thismeasure = store.group.measures[this.measure];
-                store.group.measures[home.measure].users.splice(store.group.measures[home.measure].users.indexOf(user), 1 );
+                var thismeasure = store.group.owner.measures[this.measure];
+                store.group.owner.measures[home.measure].users = [];
                 axios.get('/api/measure/' + thismeasure.id + '/user/' + user.id + '/removeuser')
                     .then(function(response){
                         home.$parent.$emit('getgroup');

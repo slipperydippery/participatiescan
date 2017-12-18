@@ -5,10 +5,9 @@
             :theme="theme"
             :groupusers="groupusers"
             :key="theme.id"
-            v-if="store.activetheme == theme.id"
+            v-if="store.scan.id && store.activetheme == theme.id"
         >
         </measure-theme-section>
-
 
         <div class="prev-next-nav">
             <a href="#" class="btn prev-next-nav--prev" @click=" previousQuestion ">
