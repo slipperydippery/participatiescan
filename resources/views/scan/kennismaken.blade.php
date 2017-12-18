@@ -14,9 +14,8 @@
         <div class="row">
     		@foreach($scan->group->scans as $thisscan)
                 <div class="col-sm-2">
-                    {{ $scan->user->isOnline() }}
                     <div class="infoblock">
-                        @if($scan->user->isOnline())
+                        @if($thisscan->user->isOnline())
                             <span class="logged logged--in">ingelogd</span>
                         @else
                             <span class="logged logged--out">uitgelogd</span>

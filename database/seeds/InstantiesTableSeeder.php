@@ -15,33 +15,33 @@ class InstantiesTableSeeder extends Seeder
 
         $instanties = [
             [
-                'title' => 'VSO / PRO scholen',
-                'description' => '',
+                'title' => 'Scholen',
+                'description' => 'Scholen (met name VSO, PrO en MBO)',
                 'scanmodel_id' => '1'
             ],
             [
-                'title' => 'Sociale Diensten / Werkbedrijf',
-                'description' => '',
+                'title' => 'Sociale Diensten',
+                'description' => 'Sociale Diensten / Werkbedrijf',
                 'scanmodel_id' => '1'
             ],
             [
-                'title' => 'Leerplicht / RMC',
-                'description' => '',
+                'title' => 'Leerplicht',
+                'description' => 'Leerplicht / RMC',
                 'scanmodel_id' => '1'
             ],
             [
-                'title' => 'Werkgevers (vertegenwoordigers)',
-                'description' => '',
+                'title' => 'Werkgevers ',
+                'description' => 'Werkgevers / Werkgeversservicepunt / S-BB',
                 'scanmodel_id' => '1'
             ],
             [
                 'title' => 'Zorg',
-                'description' => 'bijv MEE, Jeugdzorg.',
+                'description' => 'Zorg (bijv MEE, Jeugdzorg)',
                 'scanmodel_id' => '1'
             ],
             [
                 'title' => 'Overig',
-                'description' => 'bijv UWV, Projectorganisaties.',
+                'description' => 'Overig (bijv UWV of een specifieke regionale organisatie)',
                 'scanmodel_id' => '1'
             ],
         ];
