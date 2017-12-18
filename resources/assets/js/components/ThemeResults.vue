@@ -31,7 +31,7 @@
                 >
                     <div class="col-sm-2"> 
                         {{ thisscan.user.name }} <br>        
-                        <span class="emphasis">{{ thisscan.instantie.instantiemodel.title }}</span>
+                        <span class="emphasis">{{ thisscan.instantie.title }}</span>
                     </div>
                     <div class="col-sm-2 resultslider--container" v-for="question in theme.questions">
                         <div class="resultslider">
@@ -45,7 +45,7 @@
                 <div class="row resultstable--row" v-if=" ! store.isgroup ">
                     <div class="col-sm-2">
                         {{ store.scan.user.name }} <br>
-                        <span class="emphasis">{{ store.scan.instantie.instantiemodel.title }}</span>
+                        <span class="emphasis">{{ store.scan.instantie.title }}</span>
                     </div>
                     <div class="col-sm-2 resultslider--container" v-for="question in theme.questions">
                         <div class="resultslider">

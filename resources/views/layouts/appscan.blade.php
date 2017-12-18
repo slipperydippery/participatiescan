@@ -74,8 +74,31 @@
                 </div>
             </div>
         </nav>
+        <div class="container container--page">
+            <div class="row">
+                <div class="col-md-12">
+                    @if(count($scan->group))
+                        <span class="breadcrumb"> 
+                            Arbeidsmarktregios: 
+                            @foreach($scan->group->owner->districts as $district)
+                                {{ $district->title }} -
+                            @endforeach
+                         </span>
+                        <h1 class="section--title"> Groepsscan: {{ $scan->group->owner->title }} </h1>
+                    @else
+                        <span class="breadcrumb"> 
+                            Arbeidsmarktregios: 
+                            @foreach($scan->districts as $district)
+                                {{ $district->title }} -
+                            @endforeach
+                         </span>
+                        <h1 class="section--title"> {{ $scan->title }} </h1>
 
-        @yield('content')
+                    @endif
+                </div>
+            </div>
+            @yield('content')
+        </div>
         <footer class="footer">
             <div class="container">
                 <span class="text-muted">De Participatiescan is ontwikkeld in samenwerking met Lesco, Divosa, Ecorys, UWV, MEE, VOBC, BB, Ingrado, en NJI. Ontwikkeling door EMB AV.</span>

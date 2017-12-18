@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Scan;
 use App\User;
 use App\Group;
+use App\Measure;
 use App\District;
+use App\Scanmodel;
 use App\Districtmodel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,8 +51,25 @@ class ApiGroupsController extends Controller
      */
     public function store(Request $request)
     {
-        
-    }
+        request()->validate([
+            'title' => 'required|min:3|max:255',
+            'instantie_id' => 'required|integer',
+            'districts' => 'required'
+        ]);
+
+        $user = Auth::user();
+        $scan = Scan::register($user, $request->all());
+
+        $group = new Group([
+            'title' => $request->title,
+            'user_id' => $user->id,
+            'scan_id' => $scan->id,
+            'scanmodel_id' => $scan->scanmodel->id,
+        ]);
+        $group->save();
+        $group->scans()->save($scan);
+
+        }
 
     /**
      * Display the specified resource.
@@ -60,12 +79,12 @@ class ApiGroupsController extends Controller
      */
     public function show(Group $group)
     {
-        return Group::with('scans.user', 'scans.answers', 'scans.instantie.instantiemodel', 'measures.users', 'district.districtmodel', 'owner')->where('id', $group->id)->get()->first();
+        return Group::with('scans.user', 'scans.answers', 'scans.instantie', 'owner.measures.users')->where('id', $group->id)->get()->first();
     }
 
-    public function getdistrict(Group $group)
+    public function updatedistricts(Group $group, Request $request)
     {
-        return District::with('districtmodel')->where('group_id', '=', $group->id)->first();
+        $group->districts()->sync($request['districts']);
     }
 
     /**

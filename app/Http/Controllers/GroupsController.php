@@ -8,7 +8,7 @@ use App\Measure;
 use App\District;
 use App\Postcode;
 use App\Scanmodel;
-use App\Instantiemodel;
+use App\Instantie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,8 +32,8 @@ class GroupsController extends Controller
     public function create()
     {
         $districts = District::get();
-        $instantiemodels = Instantiemodel::get();
-        return view('group.create', compact('districts', 'instantiemodels'));
+        $instanties = Instantie::get();
+        return view('group.create', compact('districts', 'instanties'));
     }
 
     /**
@@ -54,15 +54,11 @@ class GroupsController extends Controller
         ]);
         $group->save();
         $group->scans()->save($scan);
-
  
-        /**
-         * Create something else here!!!
-         */
-        // $district = District::create([
-        //     'group_id' => $group->id,
-        //     'district_id' => $request->district_id,
-        // ]);
+        foreach($request['districts'] as $district) {
+            $district = District::find($district['id']);
+            $group->districts()->attach($district);
+        }
 
         $scanmodel = Scanmodel::findOrFail(1);
         foreach($scanmodel->themes as $theme) {

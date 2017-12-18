@@ -14,7 +14,7 @@ class ApiDistrictsController extends Controller
      */
     public function index()
     {
-        //
+        return District::get();
     }
 
     /**
@@ -69,9 +69,7 @@ class ApiDistrictsController extends Controller
      */
     public function update(Request $request, District $district)
     {
-        $district->districtmodel_id = $request->district['id'];
-        $district->save();
-        return $district;
+        //
     }
 
     /**

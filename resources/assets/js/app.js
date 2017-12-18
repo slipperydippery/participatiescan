@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+// import router from './routes';
 
 window.Vue = require('vue');
 
@@ -44,7 +45,9 @@ export let store = {
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('passport-clients', require('./components/passport/Clients.vue') );
+Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue') );
+Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue') );
 
 Vue.component('dashmessages', require('./components/Dashmessages.vue'));
 Vue.component('dashmessage', require('./components/Dashmessage.vue'));
@@ -71,6 +74,8 @@ Vue.component('measures-container', require('./components/MeasuresContainer.vue'
 Vue.component('measure-theme-section', require('./components/MeasureThemeSection.vue'));
 Vue.component('measures-progress', require('./components/MeasuresProgress.vue'));
 Vue.component('single-measure', require('./components/SingleMeasure.vue'));
+Vue.component('edit-districts', require('./components/EditDistricts.vue'));
+
 
 
 const app = new Vue({

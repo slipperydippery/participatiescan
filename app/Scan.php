@@ -4,6 +4,7 @@ namespace App;
 
 use App\Scan;
 use App\User;
+use App\Group;
 use App\Answer;
 use App\Measure;
 use App\District;
@@ -14,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
 class Scan extends Model
 {
     protected $fillable = [
-        'title', 'description', 'user_id', 'scanmodel_id'
+        'title', 'description', 'algemeenbeeld', 'user_id', 'group_id', 'instantie_id', 'scanmodel_id'
     ];
 
     public function scanmodel()
@@ -49,7 +50,7 @@ class Scan extends Model
 
     public function instantie()
     {
-    	return $this->hasOne('App\Instantie');
+    	return $this->belongsTo('App\Instantie');
     }
 
     public function measures()
@@ -67,23 +68,38 @@ class Scan extends Model
         return $this->belongsToMany('App\Scan', 'compare_scan', 'compare_id', 'scan_id');
     }
 
+    public static function registerWithGroup(User $user, Group $group, $attributes)
+    {
+        $scan = new Scan($attributes);
+        $scan->title = $group->title;
+        $user->scans()->save($scan);
+
+        $scan->save();
+
+        $scan->generateQuestions($scan);
+
+        return $scan;
+    }
+
     public static function register(User $user, $attributes)
     {
         $scan = new Scan($attributes);
         $user->scans()->save($scan);
 
-        $instantie = Instantie::create([
-            'scan_id' => $scan->id,
-            'instantiemodel_id' => $attributes['instantiemodel_id'],
-        ]);
+        foreach($attributes['districts'] as $district) {
+            $district = District::find($district['id']);
+            $scan->districts()->attach($district);
+        }
+        $scan->save();
 
-        $district = District::create([
-            'scan_id' => $scan->id,
-            'districtmodel_id' => $attributes['districtmodel_id'],
-        ]);
+        $scan->generateQuestions($scan);
+        
+        return $scan;
+    }
 
-        $scanmodel = Scanmodel::findOrFail($attributes['scanmodel_id']);
-        foreach($scanmodel->themes as $theme) {
+    public function generateQuestions(Scan $scan)
+    {
+        foreach($scan->scanmodel->themes as $theme) {
             foreach($theme->questions as $question) {
                 Answer::create([
                     'scan_id' => $scan->id,
@@ -95,6 +111,6 @@ class Scan extends Model
                 ]);
             }
         }
-        return $scan;
     }
+
 }

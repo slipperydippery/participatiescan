@@ -2,12 +2,15 @@
 
 namespace App;
 
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -37,11 +40,6 @@ class User extends Authenticatable
         return $this->hasMany('App\Group');
     }
 
-    public function invitations()
-    {
-        return $this->hasMany('App\Invitation');
-    }
-
     public function dashmessages()
     {
         return $this->hasMany('App\Dashmessage');
@@ -50,5 +48,10 @@ class User extends Authenticatable
     public function measures()
     {
         return $this->belongsToMany('App\Measure');
+    }
+
+    public function isOnline()
+    {
+        return Cache::has('user-is-online-' . $this->id);
     }
 }

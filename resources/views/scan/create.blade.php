@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
         	<h1>Maak een nieuwe scan aan:</h1>
         	<create-scan
-        		:instantiemodels=" {{ $instantiemodels }} "
+        		:instanties=" {{ $instanties }} "
         		:groups=" {{ $groups }} "
         		:alldistricts=" {{ $districts }} "
         	>

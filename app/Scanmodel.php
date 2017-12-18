@@ -16,13 +16,13 @@ class Scanmodel extends Model
     	return $this->hasMany('App\Theme');
     }
 
-    public function instantiemodels()
+    public function instanties()
     {
-    	return $this->hasMany('App\Instantiemodel');
+    	return $this->hasMany('App\Instantie');
     }
 
-    public function groups()
+    public function districts()
     {
-    	return $this->hasMany('App\Group');
+    	return $this->hasMany('App\District');
     }
 }

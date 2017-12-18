@@ -1,13 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.appscan')
+@section('title', 'Introductie')
 
 @section('content')
-<div class="container container--page">
-    <div class="row">
-        <div class="col-md-12">
-            <span class="breadcrumb"> Introductiefilm </span>
-            <h1 class="section--title"> Introductie </h1>
-        </div>
-    </div>
     <div class="row">
     	<div class="col-md-12">
     		<h2 class="page--title"> Introductiefilm </h2>
@@ -63,5 +57,4 @@
             </div>
         </a>
     </div>
-</div>
 @endsection

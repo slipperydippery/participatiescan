@@ -3,11 +3,12 @@
 		<div class="row page--head">
 			<div class="col-sm-12">
 				<h2 v-if=" ! titleedit " @click=" titleedit = ! titleedit " class="hidden--container clickable">{{ group.title }} <img src="/img/editicon.svg" alt="" class="icon icon--edit hidden--item"></h2>
-				<input type="text" v-else v-model="group.title" @keyup.enter=" toggleTitle " v-on-click-outside=" toggleTitle ">
-				<p v-if="district.districtmodel != null && ! districtedit" @click=" districtedit = ! districtedit " class="hidden--container clickable"><span>arbeidsmarktregio: </span>{{ district.districtmodel.title }} <img src="/img/editicon.svg" alt="" class="icon icon--edit hidden--item"></p>
-				<select v-else v-model="selecteddistrict" @blur=" districtedit = ! districtedit " @change="updateDistrict">
-					<option v-for="district in districtmodels" :value="district"> {{ district.title }} </option>
-				</select>
+				<h2 v-else><input type="text"  v-model="group.title" @keyup.enter=" toggleTitle " v-on-click-outside=" toggleTitle "></h2>
+				<edit-districts
+					v-if="group.id"
+					:scan="group.owner"
+				>
+				</edit-districts>
 			</div>
 			<div class="col-sm-12"> 
 				<h3>Jij bent beheerder van deze groepsscan. Hieronder zie je een overzicht van alle deelnemers die aan jouw scan meedoen. </h3>
@@ -26,7 +27,7 @@
 							<div class="row row--table" v-for="scan in group.scans">
 								<div class="col-sm-3"> <span class="emphasis">{{ scan.user.name }}</span> </div>
 								<div class="col-sm-3"> {{ scan.user.email }} </div>
-								<div class="col-sm-3"> {{ scan.instantie.instantiemodel.title }} </div>
+								<div class="col-sm-3"> {{ scan.instantie.title }} </div>
 								<div class="col-sm-2"> {{ answerCount(scan) }}/15 </div>
 								<div class="col-sm-1"> 
 									<span class="clickable warning" @click=" confirm(scan) " v-if="group.owner.id != scan.id">X</span>
@@ -51,7 +52,7 @@
 									{{ grouprequest.scan.user.email }}
 								</div>
 								<div class="col-sm-4">
-									{{ grouprequest.scan.instantie.instantiemodel.title }}
+									{{ grouprequest.scan.instantie.title }}
 								</div>
 								<div class="col-sm-1">
 									<span class="clickable accept" @click="acceptGrouprequest(grouprequest)">accepteren</span>
@@ -96,7 +97,7 @@
 
 		props: [
 			'workgroup',
-			'districtmodels',
+			'districts',
 		],
 		data() {
 			return {
@@ -105,10 +106,10 @@
 				confirmdeleteuserbox: false,
 				confirmdeletegroupbox: false,
 				confirmscan: {},
-				group: { owner: {} },
+				group: { owner: {}, title: '' },
 				grouprequests: [],
 				scans: [],
-				district: { districtmodel: null },
+				district: { district: null },
 				selecteddistrict: {},
 			}
 		},
@@ -160,7 +161,6 @@
 				axios.get('/api/group/' + home.workgroup.id )
 					.then(function(response){
 						home.group = response.data;
-						home.getDistrict();
 					})
 					.catch(function(error){
 						console.log(error);
@@ -172,17 +172,6 @@
 				axios.get('/api/grouprequest/' + home.workgroup.id)
 					.then(function(response){
 						home.grouprequests = response.data;
-					})
-					.catch(function(error){
-						console.log(error)
-					})
-			},
-
-			getDistrict: function() {
-				var home = this;
-				axios.get('/api/group/' + home.workgroup.id + '/getdistrict')
-					.then(function(response){
-						home.district = response.data;
 					})
 					.catch(function(error){
 						console.log(error)

@@ -39,4 +39,9 @@ class PagesController extends Controller
         $districtmodels = Districtmodel::get();
         return view ('compare.comparescans', compact('user', 'districtmodels'));
     }
+
+    public function passport()
+    {
+        return view('pages.passport');
+    }   
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     protected $fillable = [
-    	'title', 'user_id', 'scanmodel_id', 'scan_id'
+    	'title', 'scan_id', 'user_id'
     ];
 
     public function scans()
@@ -20,23 +20,13 @@ class Group extends Model
         return $this->belongsTo('App\Scan', 'scan_id');
     }
 
-    public function invitations()
+    public function user()
     {
-    	return $this->hasMany('App\Invitation');
+        return $this->belongsTo('App\User');
     }
 
     public function grouprequests()
     {
     	return $this->hasMany('App\Grouprequest');
-    }
-
-    public function measures()
-    {
-        return $this->hasMany('App\Measure');
-    }
-
-    public function districts()
-    {
-        return $this->belongsToMany('App\District');
     }
 }

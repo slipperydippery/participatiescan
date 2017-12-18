@@ -12,7 +12,6 @@ use App\Instantie;
 use App\Scanmodel;
 use App\Dashmessage;
 use App\Grouprequest;
-use App\Instantiemodel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,10 +35,10 @@ class ScansController extends Controller
      */
     public function create()
     {
-        $instantiemodels = Instantiemodel::get();
+        $instanties = Instantie::get();
         $districts = District::get();
-        $groups = Group::pluck('title', 'id');
-        return view('scan.create', compact('instantiemodels', 'districts', 'groups'));
+        $groups = Group::get();
+        return view('scan.create', compact('instanties', 'districts', 'groups'));
     }
 
     /**

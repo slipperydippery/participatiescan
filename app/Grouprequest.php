@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Grouprequest extends Model
 {
     protected $fillable = [
-    	'scan_id', 'group_id', 'message'
+    	'scan_id', 'group_id'
     ];
 
     public function scan()

@@ -1,21 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.appscan')
+@section('title', 'Algemeen beeld resultaten')
 
 @section('content')
-<div class="container container--page">
-    <div class="row">
-        <div class="col-md-12">
-            @if(count($scan->group))
-                <span class="breadcrumb"> Arbeidsmarktregio: {{ $scan->group->district->districtmodel->title }} </span>
-                <h1 class="section--title"> Groepsscan: {{ $scan->group->title }} </h1>
-            @else
-                <span class="breadcrumb"> Arbeidsmarktregio: {{ $scan->district->districtmodel->title }} </span>
-                <h1 class="section--title">{{ $scan->title }} </h1>
-            @endif
-        </div>
-    </div>
     <div class="row">
     	<div class="col-md-12">
-    		<h2 class="page--title"> Algemeen beeld resultaten.</h2>
+    		<h2 class="page--title"> Algemeen beeld resultaten</h2>
 
             @if(count($scan->group))
                 <span class="page--clarification"> Bespreek met elkaar wat je van de gezamelijke huidige aanpak vindt. </span>
@@ -41,7 +30,7 @@
                 @foreach($scan->group->scans as $thisscan)
                     <div class="row">
                         <div class="col-sm-2"> {{ $thisscan->user->name }} </div>
-                        <div class="col-sm-2 table--instantie"> {{ $thisscan->instantie->instantiemodel->title }} </div>
+                        <div class="col-sm-2 table--instantie"> {{ $thisscan->instantie->title }} </div>
                         <div class="col-sm-1 table--score"> {{ $thisscan->algemeenbeeld }} </div>
                         <div class="col-sm-7">
                             <input type="range" 
@@ -55,7 +44,7 @@
             @else
                 <div class="row">
                     <div class="col-sm-2"> {{ $scan->user->name }} </div>
-                    <div class="col-sm-2 table--instantie"> {{ $scan->instantie->instantiemodel->title }} </div>
+                    <div class="col-sm-2 table--instantie"> {{ $scan->instantie->title }} </div>
                     <div class="col-sm-1 table--score"> {{ $scan->algemeenbeeld }} </div>
                     <div class="col-sm-7">
                         <input type="range" 
@@ -113,5 +102,4 @@
             </div>
         </a>
     </div>
-</div>
 @endsection

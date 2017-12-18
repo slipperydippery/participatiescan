@@ -5,8 +5,9 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
         	<h1>Maak een nieuwe group aan:</h1>
+
         	<create-group
-        		:instantiemodels=" {{ $instantiemodels }} "
+        		:instanties=" {{ $instanties }} "
         		:alldistricts=" {{ $districts }} "
         	>
         	</create-group>

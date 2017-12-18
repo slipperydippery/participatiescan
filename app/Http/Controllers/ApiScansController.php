@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Scan;
 use App\User;
+use App\Group;
 use App\Theme;
 use App\Scanmodel;
+use App\Grouprequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,22 +15,54 @@ class ApiScansController extends Controller
 {
     public function index()
     {
-        return Scan::with('user', 'answers', 'instantie.instantiemodel', 'district.districtmodel')->get();
+        return Scan::with('user', 'answers', 'instantie', 'district.districtmodel')->get();
     }
 
     public function indexuser(User $user)
     {
-        return Scan::with('compares.user', 'compares.answers', 'compares.instantie.instantiemodel', 'compares.district.districtmodel')->where('user_id', $user->id)->get();
+        return Scan::with('compares.user', 'compares.answers', 'compares.instantie', 'compares.district.districtmodel')->where('user_id', $user->id)->get();
     }
 
 	public function show(Scan $scan)
 	{
-        return Scan::with('answers', 'user', 'instantie.instantiemodel', 'measures')->findOrFail($scan->id);
+        return Scan::with('answers', 'user', 'instantie', 'measures')->findOrFail($scan->id);
 	}
 
     public function store(Request $request)
-    {
-        return $request;
+    {        
+        if($request->isgroup) {
+            request()->validate([
+                'isgroup' => 'required|boolean',
+                'selectedgroup' => 'required|integer',
+                'instantie_id' => 'required|integer',
+            ]);
+        } else {
+            request()->validate([
+                'isgroup' => 'required|boolean',
+                'title' => 'required|min:3|max:255',
+                'instantie_id' => 'required|integer',
+                'districts' => 'required|max:2'
+            ]);
+        }
+
+        $user = Auth::user();
+
+        if($request->isgroup) {
+            $group = Group::find($request->selectedgroup);
+            $scan = Scan::registerWithGroup($user, $group, $request->all());
+        } else {
+            $scan = Scan::register($user, $request->all());
+        }
+
+        $grouprequest =  false;
+        if($request->isgroup) {
+            $grouprequest = $group;
+            Grouprequest::create([
+                'group_id' => $group->id,
+                'scan_id' => $scan->id,
+            ]);
+        }
+        return $scan;
     }
 
 	public function update(Request $request)
@@ -74,6 +108,16 @@ class ApiScansController extends Controller
     public function getuser(Scan $scan)
     {
     	return $scan->user->get();
+    }
+
+    public function getdistricts(Scan $scan)
+    {
+        return $scan->districts;
+    }
+
+    public function updatedistricts(Scan $scan, Request $request)
+    {
+        $scan->districts()->sync($request['districts']);
     }
 
 }

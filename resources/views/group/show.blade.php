@@ -8,7 +8,7 @@
                 <span class="breadcrumb"> <a href=" {{ route('home') }} ">Dashboard</a> > groep beheren </span>
             </div>
         </div>
-        <groupmanager :workgroup="{{ $group }}" :districtmodels=" {{ $districtmodels }} "></groupmanager>
+        <groupmanager :workgroup="{{ $group }}" :districts=" {{ $districts }} "></groupmanager>
     </div>
 
 @endsection

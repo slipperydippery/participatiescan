@@ -7,11 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Instantie extends Model
 {
     protected $fillable = [
-    	'user_id', 'instantiemodel_id', 'scan_id'
+    	'scanmodel_id', 'title', 'description'
     ];
 
-    public function instantiemodel()
+    public function scan()
     {
-    	return $this->belongsTo('App\Instantiemodel');
+    	return $this->hasMany('App\Scan');
+    }
+
+    public function scanmodel(	)
+    {
+    	return $this->belongsTo('App\Scan');
     }
 }

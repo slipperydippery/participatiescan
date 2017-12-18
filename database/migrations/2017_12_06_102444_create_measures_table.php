@@ -17,8 +17,6 @@ class CreateMeasuresTable extends Migration
             $table->increments('id');
             $table->text('measure')->nullable();
             $table->boolean('active')->default(false);
-            $table->integer('group_id')->unsigned()->nullable();
-            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
             $table->integer('scan_id')->unsigned()->nullable();
             $table->foreign('scan_id')->references('id')->on('scans')->onDelete('cascade');
             $table->integer('question_id')->unsigned();

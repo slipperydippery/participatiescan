@@ -10,6 +10,7 @@ Route::get('/startscan', 'PagesController@startscan')->name('startscan');
 Route::get('/comparescans', 'PagesController@comparescans')->name('comparescans')->middleware('auth');
 Route::get('/loggless', 'ScanpagesController@loggless')->name('scan.loggless');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/passport', 'PagesController@passport');
 
 Route::resource('scanmodel', 'ScanmodelsController');
 Route::resource('group', 'GroupsController')->middleware('auth');

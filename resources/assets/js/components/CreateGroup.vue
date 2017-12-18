@@ -1,19 +1,31 @@
 <template>
     <div class="group--create">
-        <div class="form-group" v-if=" ! isgroup">
-            <label for="">Hoe wil je je groep noemen?</label> <br>
-            <input type="text" v-model="title" placeholder="Vul hier een title voor je groep in" class="form-control">
+        <div class="alert alert-danger" v-if="errors.length">
+            <strong>Belangrijk!</strong> {{ errors }}.
         </div>
 
+        <div class="form-group" v-if=" ! isgroup">
+            <label for="">Hoe wil je je groep noemen?</label> <br>
+            <div class="alert alert-danger" v-if="errors.title" v-for="error in errors.title">
+                <strong>Incompleet</strong> {{ error }}
+            </div>
+            <input type="text" v-model="title" placeholder="Vul hier een title voor je groep in" class="form-control">
+        </div>
         <div class="form-group">
             <label for="">Welk soort organisatie vertegenwoordig je zelf tijdens deze scan?</label> <br>
+            <div class="alert alert-danger" v-if="errors.instantie_id" v-for="error in errors.instantie_id">
+              <strong>Incompleet</strong> {{ error }}
+            </div>
             <select v-model="instantie" class="form-control" placeholder="kies een instantie">
-              <option v-for="instantie in instantiemodels" :value="instantie"> {{ instantie.title }} </option>
+              <option v-for="instantie in instanties" :value="instantie"> {{ instantie.title }} </option>
             </select>
         </div>
 
         <div class="form-group" v-if=" ! isgroup">
             <label for="">Voor welke gemeentes wordt deze groep gemaakt?</label> <br>
+            <div class="alert alert-danger" v-if="errors.districts" v-for="error in errors.districts">
+                <strong>Incompleet</strong> {{ error }}
+            </div>
             <input type="text" v-model="districtsearch" class="form-control" placeholder="Zoek je gemeente">
             <div class="row resultstable--row" v-if="! isgroup">
                 <div class="col-sm-12">
@@ -54,12 +66,13 @@
 </template>
 
 <script>
+        
 
     export default {
 
 
         props: [
-            'instantiemodels',
+            'instanties',
             'alldistricts'
         ],
 
@@ -71,6 +84,7 @@
                 instantie: {},
                 selecteddistricts: [],
                 districtsearch: '',
+                errors: [],
             }
         },
 
@@ -140,13 +154,25 @@
             },
 
             saveGroup: function() {
+                this.checkInput();
                 var home = this;
                 axios.post('/api/group', {
-                    title: this.title,
-                    instantie: this.instantie,
-                    districts: this.selecteddistricts,
-                })
+                        title: this.title,
+                        instantie_id: this.instantie.id,
+                        districts: this.selecteddistricts,
+                        scanmodel_id: 1,
+                    })
+                    .then(function(response){
+                        window.location.href = '/home'; 
+                    })
+                    .catch(function(error){
+                        home.errors = error.response.data.errors;
+                    })
             },
+
+            checkInput: function () {
+
+            }
 
         }
     }

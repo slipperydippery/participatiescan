@@ -7,26 +7,38 @@
 
         <div class="form-group" v-if="isgroup">
             <label for="">Aan welke groep wil je je scan koppelen</label> <br>
-            <select v-model="instantie" class="form-control" placeholder="kies een instantie">
-              <option selected="selectedgroup" disabled value="">Kies een groep</option>
-              <option v-for="grouop in groups"> {{ group.title }} </option>
+            <div class="alert alert-danger" v-if="errors.selectedgroup" v-for="error in errors.selectedgroup">
+                <strong>Incompleet</strong> {{ error }}
+            </div>
+            <select v-model="selectedgroup" class="form-control" placeholder="kies een groep" >
+              <option  disabled value="">Kies een groep</option>
+              <option v-for="group in groups" :value="group"> {{ group.title }} </option>
             </select>
         </div>
 
         <div class="form-group" v-if=" ! isgroup">
             <label for="">Hoe wil je je scan noemen?</label> <br>
+            <div class="alert alert-danger" v-if="errors.title" v-for="error in errors.title">
+                <strong>Incompleet</strong> {{ error }}
+            </div>
             <input type="text" v-model="title" placeholder="Vul hier een title voor je scan in" class="form-control">
         </div>
 
         <div class="form-group">
             <label for="">Welk soort organisatie vertegenwoordig je?</label> <br>
+            <div class="alert alert-danger" v-if="errors.instantie_id" v-for="error in errors.instantie_id">
+                <strong>Incompleet</strong> {{ error }}
+            </div>
             <select v-model="instantie" class="form-control" placeholder="kies een instantie">
-              <option v-for="instantie in instantiemodels" :value="instantie"> {{ instantie.title }} </option>
+              <option v-for="instantie in instanties" :value="instantie"> {{ instantie.title }} </option>
             </select>
         </div>
 
         <div class="form-group" v-if=" ! isgroup">
             <label for="">Voor welke gemeentes?</label> <br>
+            <div class="alert alert-danger" v-if="errors.districts" v-for="error in errors.districts">
+                <strong>Incompleet</strong> {{ error }}
+            </div>
             <input type="text" v-model="districtsearch" class="form-control" placeholder="Zoek je gemeente">
             <div class="row resultstable--row" v-if="! isgroup">
                 <div class="col-sm-12">
@@ -72,7 +84,7 @@
 
 
         props: [
-            'instantiemodels',
+            'instanties',
             'groups',
             'alldistricts'
         ],
@@ -85,6 +97,7 @@
                 instantie: {},
                 selecteddistricts: [],
                 districtsearch: '',
+                errors: [],
             }
         },
 
@@ -156,12 +169,19 @@
             saveScan: function() {
                 var home = this;
                 axios.post('/api/scan', {
-                    isgroup: this.isgroup,
-                    selectedgroup: this.selectedgroup,
-                    title: this.title,
-                    instantie: this.instantie,
-                    districts: this.selecteddistricts,
-                })
+                        isgroup: this.isgroup,
+                        selectedgroup: this.selectedgroup.id,
+                        title: this.title,
+                        instantie_id: this.instantie.id,
+                        districts: this.selecteddistricts,
+                        scanmodel_id: 1,
+                    })
+                    .then(function(response){
+                        window.location.href = '/home';
+                    })
+                    .catch(function(error){
+                        home.errors = error.response.data.errors;
+                    })
             },
 
         }

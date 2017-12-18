@@ -14,8 +14,9 @@ class ApiGrouprequestsController extends Controller
 
     public function index(Group $group)
     {
+        // return Scan::with('instantie')->find(1);
         // $group = Group::with('grouprequests.scan.user', 'scans.user', 'scans.instantie.instantiemodel', 'scans.answers', 'district.districtmodel')->findOrFail($group)->first();
-        $grouprequests = Grouprequest::with('scan.user', 'scan.instantie.instantiemodel', 'group')->where('group_id', $group->id)->get();
+        $grouprequests = Grouprequest::with('scan.user', 'scan.instantie', 'group')->where('group_id', $group->id)->get();
         return $grouprequests;
     }
 

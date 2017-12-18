@@ -7,13 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Measure extends Model
 {
 	protected $fillable = [
-		'measure', 'active', 'group_id', 'scan_id', 'question_id'
+		'measure', 'active', 'scan_id', 'question_id'
 	];
-
-    public function group()
-    {
-    	return $this->belongsTo('App\Group');
-    }
 
     public function scan()
     {
