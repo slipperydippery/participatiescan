@@ -1,7 +1,7 @@
 <template>
     <div class="progress--container">
         <div class="row progressbar">
-            <a :href="'/scan/' + workscan.id + '/'" class="progressbar--element" :class=" { active: (page == 'start') } " title="Introductie">
+            <a :href="'/scan/' + workscan.id + '/startscan'" class="progressbar--element" :class=" { active: (page == 'start') } " title="Introductie">
                 <div>
                     <img src="/img/play.svg" alt="">
                 </div>

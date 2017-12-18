@@ -16,7 +16,7 @@
     
     <div class="prev-next-nav">
         <a href=" {{ route('home') }} " class="btn prev-next-nav--prev">
-            << vorige scherm
+            << dashboard
         </a>
         <a href=" {{ route('scan.kennismaken', $scan) }} " class="btn prev-next-nav--next">
             volgende scherm >>

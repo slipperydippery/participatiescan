@@ -19,12 +19,15 @@ Route::resource('question', 'QuestionsController');
 Route::resource('answer', 'AnswersController');
 Route::resource('postcode', 'PostcodesController');
 
+Route::get('/scan/{scan}/startscan', 'ScanpagesController@startscan')->name('scan.startscan');
 Route::get('/scan/{scan}/kennismaken', 'ScanpagesController@kennismaken')->name('scan.kennismaken');
 Route::get('/scan/{scan}/regioincijfers', 'ScanpagesController@regioincijfers')->name('scan.regioincijfers');
 Route::get('/scan/{scan}/algemeenbeeld', 'ScanpagesController@algemeenbeeld')->name('scan.algemeenbeeld');
 Route::get('/scan/{scan}/algemeenbeeldresultaten', 'ScanpagesController@algemeenbeeldresultaten')->name('scan.algemeenbeeldresultaten');
 Route::get('/scan/{scan}/showscan', 'ScanpagesController@showscan')->name('scan.showscan');
 Route::get('/scan/{scan}/showmeasures', 'ScanpagesController@showmeasures')->name('scan.showmeasures');
+Route::get('/scan/{scan}/scancomplete', 'ScanpagesController@scancomplete')->name('scan.complete');
+Route::get('/scan/{scan}/results', 'ScanpagesController@results')->name('scan.results');
 
 Route::get('/group/{group}/delete', 'GroupsController@destroy')->middleware('auth');
 

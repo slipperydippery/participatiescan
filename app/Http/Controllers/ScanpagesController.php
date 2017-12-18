@@ -19,8 +19,8 @@ class ScanpagesController extends Controller
 			$attributes = [
 				"title" => "Testscan",
 				"description" => null,
-				"instantiemodel_id" => "6",
-				"districtmodel_id" => "1",
+				"instantie_id" => "6",
+				"districts" => [],
 				"scanmodel_id" => "1",
 				"activetheme" => "1",
 				"activequestion" => "1"
@@ -30,6 +30,13 @@ class ScanpagesController extends Controller
 
 		return redirect()->route('startscan');
 	}
+
+    public function startscan(Scan $scan)
+    {
+        $scan = Scan::with('answers')->findOrFail($scan->id);
+        
+        return view('scan.start', compact('scan'));
+    }
 
     public function kennismaken(Scan $scan)
     {
@@ -67,5 +74,15 @@ class ScanpagesController extends Controller
         $scanmodel = $scan->scanmodel->with('themes.questions')->first();
         $scan = Scan::with('user', 'measures.users')->findOrFail($scan->id);
         return view('scan.measures', compact('scan', 'scanmodel'));
+    }
+
+    public function scancomplete(Scan $scan)
+    {
+        return view('scan.complete', compact('scan'));
+    }
+
+    public function results(Scan $scan)
+    {
+        
     }
 }

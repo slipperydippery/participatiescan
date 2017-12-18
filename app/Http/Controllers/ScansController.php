@@ -75,8 +75,20 @@ class ScansController extends Controller
      */
     public function show(Scan $scan)
     {
-        $scan = Scan::with('answers')->findOrFail($scan->id);
-        return view('scan.start', compact('scan'));
+        if($scan->algemeenbeeld) {
+            $answercount = 0;
+            $questioncount = 0;
+            foreach($scan->answers as $answer) {
+                if($answer->answer) {
+                    $answercount++;
+                }
+                $questioncount++;
+            }
+            if($answercount == $questioncount){
+                return redirect()->route('scan.complete', compact('scan'));
+            }
+        }
+        return redirect()->route('scan.startscan', compact('scan'));
     }
 
     /**

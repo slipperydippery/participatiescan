@@ -34,7 +34,7 @@
 	</div>
 </div>
 <div class="prev-next-nav">
-	<a href=" {{ route('scan.show', $scan) }} " class="btn prev-next-nav--prev">
+	<a href=" {{ route('scan.startscan', $scan) }} " class="btn prev-next-nav--prev">
 		<< vorige scherm
 	</a>
 	<a href=" {{ route('scan.regioincijfers', $scan) }} " class="btn prev-next-nav--next">
