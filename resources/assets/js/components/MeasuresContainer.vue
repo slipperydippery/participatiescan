@@ -18,10 +18,13 @@
                 volgende pagina >>
             </a>
         </div>
-        <measure-progress
+        <scan-progress
             :scanmodel="scanmodel"
+            :workscan="workscan"
+            :page="'showmeasures'"
         >
-        </measure-progress>
+        </scan-progress>
+
     </div>
 
 </template>

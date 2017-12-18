@@ -8,7 +8,6 @@
         >
         </theme-section>
 
-
         <div class="confirm--container" v-if=" finished">
             <div class="confirm">
                 <button class="alert topright" @click="finished = false">&#10006;</button>
@@ -31,6 +30,8 @@
         </div>
         <scan-progress
             :scanmodel="scanmodel"
+            :workscan="workscan"
+            :page="'show'"
         >
         </scan-progress>
     </div>

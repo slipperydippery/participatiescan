@@ -97,7 +97,11 @@
                     @endif
                 </div>
             </div>
+            
             @yield('content')
+
+
+
         </div>
         <footer class="footer">
             <div class="container">
