@@ -28,7 +28,7 @@ class ScanpagesController extends Controller
 	        $scan = Scan::register($user, $attributes);
 		}
 
-		return redirect()->route('startscan');
+        return redirect()->route('scan.show', Scan::find(1));
 	}
 
     public function startscan(Scan $scan)
