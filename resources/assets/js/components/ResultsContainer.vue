@@ -1,5 +1,15 @@
 <template>
     <div class="scan--container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="page--title">Resultaten</h2>
+                <span class="page--clarification">Dit is een overzicht van de resultaten van de scan</span>
+            </div>
+        </div>
+        <algemeenbeeld-section
+            v-if="store.scan.id"
+        >
+        </algemeenbeeld-section>
         <theme-section
             v-for="theme in scanmodel.themes"
             :theme="theme"

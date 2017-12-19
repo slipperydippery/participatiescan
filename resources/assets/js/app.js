@@ -68,6 +68,7 @@ Vue.component('theme-results', require('./components/ThemeResults.vue'));
 Vue.component('theme-measures', require('./components/ThemeMeasures.vue'));	
 
 Vue.component('results-container', require('./components/ResultsContainer.vue'));
+Vue.component('algemeenbeeld-section', require('./components/AlgemeenbeeldSection.vue'));
 
 Vue.component('algemeenbeeld', require('./components/Algemeenbeeld.vue'));
 

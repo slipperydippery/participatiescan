@@ -5,7 +5,15 @@
     <div class="row">
     	<div class="col-md-12">
     		<h2 class="page--title"> Introductiefilm </h2>
-    		<span class="page--clarification">Bekijk de introductiefilm over het uitvoeren van de participatiescan of ga door naar het volgende scherm. We adviseren de film niet allemaal tegelijk, maar op een gezamelijk scherm te bekijken. </span>
+            @guest
+                <span class="page--clarification">Bekijk de introductiefilm over wat en waarvoor de Participatiescan is. Of ga door naar het volgende scherm, als je de film of de sessiedeelnemers de film al hebben gezien. Tijdens een sessie kan de film gezamenlijk worden bekeken op het plenaire scherm.</span>
+            @else
+                @if(count($scan->group))
+                    <span class="page--clarification">Bekijk de introductiefilm over het uitvoeren van de participatiescan of ga door naar het volgende scherm. We adviseren de film op een gezamelijk scherm te bekijken. </span>
+                @else
+                    <span class="page--clarification">Bekijk de introductiefilm over het uitvoeren van de participatiescan of ga door naar het volgende scherm. </span>
+                @endif
+            @endguest
     	</div>
     </div>
     <div class="row content--page">

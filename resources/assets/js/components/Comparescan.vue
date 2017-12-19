@@ -5,7 +5,7 @@
 				<h4>Vergelijk scans met {{ scan.title }} </h4>
 			</div>
 		</div>
-		<div class="row" v-if="active">   
+		<div class="row">   
 			<div class="col-sm-12"> 
 				<div class="row row--table" v-for="scan in scan.compares">
 					<div class="col-sm-3"> <span class="emphasis">{{ scan.user.name }}</span> </div>
@@ -18,7 +18,7 @@
 				</div>
 			</div>
 			<div class="col-sm-12">
-				<h4 @click="addcompareactive = ! addcompareactive" class="clickable">voeg een scan toe aan je vergelijking</h4>
+				<h4 @click="addcompareactive = ! addcompareactive" class="clickable">+ voeg een scan toe aan je vergelijking</h4>
 				<div class="addcompare" v-if="addcompareactive">
 					<select v-model="districtfilter"  @change="filterScans">
 						<option value="">--geen arbeidsmarktregio filter--</option>

@@ -5,11 +5,22 @@
     <div class="row">
         <div class="col-sm-12 page--head">
             <h2>Welkom bij de Participatiescan</h2>
-            <h3>De participatiescan doe je bij voorkeur door aan tafel te gaan met professionele partners uit jouw regio. Met een account kun je jouw resultaten vergelijken en delen met andere deelnemers. Maar je kunt ook eerst even kijken. Wat wil je doen?</h3>
+            <h3>De Participatiescan is ontwikkeld om samen aan tafel met netwerkpartners de huidige samenwerking en aanpak onder de loep te nemen en waar nodig verbeteracties te bepalen. Ook met behulp van de kennis en praktijkvoorbeelden in de Kennisbank. Maar je kunt ook eerst even kijken. Wat wil je doen?</h3>
         </div>
         <div class="col-md-12">
             <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                 {{ csrf_field() }}
+
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2 ">
+                        <a href=" {{ route('scan.loggless') }} " class="btn btn-link btn--secondary btn--fullwidth">
+                            bekijk de scan zonder in te loggen
+                        </a>
+                        <span class="fineprint">(de resultaten worden niet opgeslagen)</span>
+                        <span class="submit--choice">Of</span>
+                        <h2>Doe de scan, vraag een account aan</h2>
+                    </div>
+                </div>
 
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                     <label for="name" class="col-md-2 control-label">je naam</label>
@@ -67,11 +78,6 @@
                         <button type="submit" class="btn btn-primary btn--fullwidth">
                             maak je account aan
                         </button>
-                        <span class="submit--choice">Of</span>
-                        <a href=" {{ route('scan.loggless') }} " class="btn btn-link btn--secondary btn--fullwidth">
-                            bekijk de scan zonder in te loggen
-                        </a>
-                        <span class="fineprint">(de resultaten worden niet opgeslagen)</span>
                     </div>
                 </div>
             </form>

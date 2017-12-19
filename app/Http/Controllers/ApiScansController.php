@@ -20,7 +20,7 @@ class ApiScansController extends Controller
 
     public function indexuser(User $user)
     {
-        return Scan::with('compares.user', 'compares.answers', 'compares.instantie', 'compares.districts')->where('user_id', $user->id)->get();
+        return Scan::with('compares.user', 'compares.answers', 'compares.instantie', 'compares.districts', 'group.scans')->where('user_id', $user->id)->get();
     }
 
 	public function show(Scan $scan)

@@ -9,10 +9,10 @@
             <div class="alert alert-danger" v-if="errors.title" v-for="error in errors.title">
                 <strong>Incompleet</strong> {{ error }}
             </div>
-            <input type="text" v-model="title" placeholder="Vul hier een title voor je groep in" class="form-control">
+            <input type="text" v-model="title" placeholder="Geef jouw scan een naam die herkenbaar is voor mensen uit jouw regio" class="form-control">
         </div>
         <div class="form-group">
-            <label for="">Welk soort organisatie vertegenwoordig je zelf tijdens deze scan?</label> <br>
+            <label for="">Wat voor soort organisatie vertegenwoordig jij tijdens deze scan?</label> <br>
             <div class="alert alert-danger" v-if="errors.instantie_id" v-for="error in errors.instantie_id">
               <strong>Incompleet</strong> {{ error }}
             </div>
@@ -22,7 +22,7 @@
         </div>
 
         <div class="form-group" v-if=" ! isgroup">
-            <label for="">Voor welke gemeentes wordt deze groep gemaakt?</label> <br>
+            <label for="">Voor welke gemeente(n) maak je deze groep?</label> <br>
             <div class="alert alert-danger" v-if="errors.districts" v-for="error in errors.districts">
                 <strong>Incompleet</strong> {{ error }}
             </div>

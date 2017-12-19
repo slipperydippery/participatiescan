@@ -14,6 +14,7 @@
 					:allscans="allscans"
 					:districts="districts"
 					v-for="scan in scans"	
+					v-if="! scan.group"
 					:key="scan.id"
 				>
 				</comparescan>

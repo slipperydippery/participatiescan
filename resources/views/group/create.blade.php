@@ -4,7 +4,7 @@
 <div class="container container--page">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-        	<h1>Maak een nieuwe group aan:</h1>
+        	<h1>Maak een nieuwe groep aan:</h1>
 
         	<create-group
         		:instanties=" {{ $instanties }} "

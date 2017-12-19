@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="page--title"><span class="theme--head--number">Thema {{ theme.id }}:</span> <span class="theme--head--title">{{ theme.title }}</span></h2>
-                <span class="page--clarification" v-if="store.isgroup && store.loggedin && ! store.resultsview">Dit zijn de antwoorden van alle deelnemers. Bespreek met elkaar wat opvalt en kies in het volgende scherm de belangrijkste verbeterpunten.</span>
+                <span class="page--clarification" v-if="store.isgroup && store.loggedin && ! store.resultsview">Dit zijn de scores van de deelnemers. Bespreek met elkaar wat er uit springt en/of over welke onderwerpen sterk van mening wordt verschilt. In het volgende scherm kunnen de belangrijkste twee of drie verbeterpunten worden benoemd.</span>
                 <span class="page--clarification" v-if=" ! store.isgroup && store.loggedin && ! store.resultsview">Dit zijn jouw antwoorden. Via het dashboard kun je jouw antwoorden vergelijken met andere deelnemers. Kies in het volgende scherm de belangrijkste verbeterpunten.</span>
                 <span class="page--clarification" v-if=" ! store.loggedin && ! store.resultsview ">Dit zijn jouw antwoorden. Met een account kun je jouw antwoorden vergelijken met de groep of andere individuele scans. Kies in het volgende scherm de belangrijkste verbeterpunten.</span>
             </div>
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row resultstable--row resultstable--row--average"  v-if="store.iscomparison">
+                <div class="row resultstable--row resultstable--row--average"  v-if="! store.isgroup && store.iscomparison">
                     <div class="col-sm-2">Gemiddeld</div>
                     <div class="col-sm-2" v-for="question in theme.questions"> 
                         <div class="resultslider">
@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="row resultstable--row" 
-                    v-if="store.iscomparison"
+                    v-if="! store.isgroup && store.iscomparison"
                     v-for="thisscan in store.compares"
                 >
                     <div class="col-sm-2"> 

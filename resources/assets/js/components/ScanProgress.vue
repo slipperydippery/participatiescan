@@ -1,7 +1,7 @@
 <template>
     <div class="progress--container">
         <div class="row progressbar">
-            <a :href="'/scan/' + workscan.id + '/startscan'" class="progressbar--element" :class=" { active: (page == 'start') } " title="Introductie">
+            <a :href="'/scan/' + workscan.id + '/startscan'" class="progressbar--element" :class=" { active: (page == 'start') } " title="Bekijk de instructiefilm">
                 <div>
                     <img src="/img/play.svg" alt="">
                 </div>
@@ -11,7 +11,7 @@
                     <img src="/img/group.svg" alt="">
                 </div>
             </a>
-            <a :href=" '/scan/' + workscan.id + '/regioincijfers' " class="progressbar--element" :class=" { active: (page == 'regioincijfers') } " title="Uw regio in cijfers">
+            <a :href=" '/scan/' + workscan.id + '/regioincijfers' " class="progressbar--element" :class=" { active: (page == 'regioincijfers') } " title="Cijfers uit jouw regio">
                 <div>
                     <img src="/img/nederland-square.svg" alt="">
                 </div>
@@ -21,7 +21,7 @@
                     <img src="/img/eye.svg" alt="">
                 </div>
             </a>
-            <a :href=" '/scan/' + workscan.id + '/algemeenbeeldresultaten' " class="progressbar--element" :class=" { active: (page == 'algemeenbeeldresultaten') } " title="Algemeen beeld resultaten.">
+            <a :href=" '/scan/' + workscan.id + '/algemeenbeeldresultaten' " class="progressbar--element" :class=" { active: (page == 'algemeenbeeldresultaten') } " title="Resultaten beoordeling gezamenlijke aanpak">
                 <div>
                     <img src="/img/checkmark.svg" alt="">
                 </div>

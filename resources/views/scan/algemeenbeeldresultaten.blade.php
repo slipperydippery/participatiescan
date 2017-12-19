@@ -7,9 +7,9 @@
     		<h2 class="page--title"> Algemeen beeld resultaten</h2>
 
             @if(count($scan->group))
-                <span class="page--clarification"> Bespreek met elkaar wat je van de gezamelijke huidige aanpak vindt. </span>
+                <span class="page--clarification"> Niet om te bespreken, maar wel om alvast met elkaar te delen: wat is ons gevoel bij hoe we het in algemene zin doen in onze regio? </span>
             @elseif(Auth::guest())
-                <span class="page--clarification"> Met een account kun je hier de score zien die je hebt ingevuld, en jouw antwoord vergelijken met de groep of andere individuele scans. </span>
+                <span class="page--clarification"> Met een account kun je hier de score zien die je hebt ingevuld en jouw antwoord vergelijken met de groep of andere individuele scans. </span>
             @else
         		<span class="page--clarification"> Dit is het antwoord dat je gegeven hebt. Via het dashboard kun je jouw antwoorden vergelijken met andere deelnemers. </span>
             @endif

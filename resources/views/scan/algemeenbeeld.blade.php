@@ -6,8 +6,7 @@
     <div class="row">
     	<div class="col-md-12">
     		<h2 class="page--title"> Beoordeel de huidige gezamenlijke aanpak </h2>
-    		<span class="page--clarification"> Kunt u aangeven hoe goed uw regio het volgens u doet voor wat betreft de gezamenlijke aanpak om jongeren in een kwetsbare positie tijdens en na hun schoolloopbaan goed te begeleiden naar werk? Nul is ‘we doen dat als regio slecht’ en honderd is ‘we doen dat als regio perfect’.
- </span>
+    		<span class="page--clarification"> Kunt u een algemene indruk geven van hoe goed uw regio het volgens u doet als het gaat om het gezamenlijk goed begeleiden van jongeren in een kwetsbare positie van school naar werk. Nul is ‘heel slecht’  en tien is ‘perfect’ </span>
     	</div>
     </div>
     <?php 
