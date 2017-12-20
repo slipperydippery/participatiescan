@@ -92,11 +92,12 @@ input[type=range]:focus::-ms-fill-upper {
 
 .resultslider {
 	height: 0.8rem;
-	background: rgba(0,0,0,0.1);
+	background: rgba(255, 0, 0, 0.42);
 	box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.38);
 	.resultslider--result {
 		height: 100%;
-		background: $themecolor--light;
+		// background: darken($themecolor, 20);
+		background: $themecolor;
 	}
 }
 
