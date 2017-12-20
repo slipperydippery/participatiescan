@@ -159,7 +159,11 @@
             },
 
             cssPercent: function (value) {
-                return value + '%';
+                if(value == null) {
+                    return 100;
+                } else {
+                    return (value * 10) + '%';
+                }
             },
 
             nullColor: function (thisscan, questionid) {

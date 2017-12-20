@@ -11,8 +11,9 @@
         </div>
         <div class="rangeslider--container">
             <input type="range" 
-                min="0" max="100"
-                v-if="store.scan.answers "
+                min="0" max="10"
+                step="0.1"
+                v-if="store.scan.answers"
                 v-model="store.scan.answers[question.id - 1].answer" 
                 v-on:change="onChange"
             >

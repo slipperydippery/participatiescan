@@ -144,6 +144,7 @@
 
             colorvalue: function (value) {
                 if(value == null){ return '#f1f1f1' }
+                value = value * 10;
                 if(value < 50) {
                     var green = value * 5;
                     var blue = value * 5;

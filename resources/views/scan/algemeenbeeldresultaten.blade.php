@@ -34,7 +34,8 @@
                         <div class="col-sm-1 table--score"> {{ $thisscan->algemeenbeeld }} </div>
                         <div class="col-sm-7">
                             <input type="range" 
-                                min="0" max="100"
+                                min="0" max="10"
+                                step="0.1"
                                 value="{{ $thisscan->algemeenbeeld }}" 
                                 disabled
                             >
@@ -48,7 +49,8 @@
                     <div class="col-sm-1 table--score"> {{ $scan->algemeenbeeld }} </div>
                     <div class="col-sm-7">
                         <input type="range" 
-                            min="0" max="100"
+                            min="0" max="10"
+                            step="0.1"
                             value="{{ $scan->algemeenbeeld }}" 
                             disabled
                         >

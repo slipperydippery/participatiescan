@@ -15,7 +15,7 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('answer')->nullable();
+            $table->decimal('answer', 3, 1)->nullable();
             $table->integer('scan_id')->unsigned();
             $table->foreign('scan_id')->references('id')->on('scans')->onDelete('cascade');
             $table->integer('question_id')->unsigned();
