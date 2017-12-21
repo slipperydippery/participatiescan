@@ -24,10 +24,12 @@
                     <div class="dashboard--item--body"><img src="/img/newgroup.svg" alt=""></div>
                 </div>
             </a>
-            <div class="dashboard--item" title="De participatiescan in beeld">
-                <div class="dashboard--item--head">Instructiefilms</div>
-                <div class="dashboard--item--body"><img src="/img/movie.svg" alt=""></div>
-            </div>
+            <a href=" {{ route('instructiefilms') }} ">
+                <div class="dashboard--item" title="De participatiescan in beeld">
+                    <div class="dashboard--item--head">Instructiefilms</div>
+                    <div class="dashboard--item--body"><img src="/img/movie.svg" alt=""></div>
+                </div>
+            </a> 
         </div>
         <div class="col-md-4 dashboard--column">
             <div class="dashboard--item" title="Beheer je scans">
@@ -83,10 +85,12 @@
                     @endforeach
                 </div>
             </div>
-            <div class="dashboard--item" title="Inspirerende praktijkvoorbeelden, tools en links">
-                <div class="dashboard--item--head">Kennisbank</div>
-                <div class="dashboard--item--body"><img src="/img/books.svg" alt=""></div>
-            </div>
+            <a href=" {{ route('kennisbank') }} ">
+                <div class="dashboard--item" title="Inspirerende praktijkvoorbeelden, tools en links">
+                    <div class="dashboard--item--head">Kennisbank</div>
+                    <div class="dashboard--item--body"><img src="/img/books.svg" alt=""></div>
+                </div>
+            </a>
         </div>
         <div class="col-md-4 dashboard--column">
             <a href=" {{ route('comparescans') }} " title="Vergelijk jouw scan met andere deelnemers">
@@ -95,10 +99,12 @@
                     <div class="dashboard--item--body"><img src="/img/scales.svg" alt=""></div>
                 </div>
             </a>
-            <div class="dashboard--item dashboard--item--doubleheight" title="NEET-rate en risico's per arbeidsmarktregio">
-                <div class="dashboard--item--head">Cijfers uit jouw regio</div>
-                <div class="dashboard--item--body"><img src="/img/nederlandlarge.svg" alt=""></div>
-            </div>
+            <a href=" {{ route('pmonitor') }} ">
+                <div class="dashboard--item dashboard--item--doubleheight" title="NEET-rate en risico's per arbeidsmarktregio">
+                    <div class="dashboard--item--head">Cijfers uit jouw regio</div>
+                    <div class="dashboard--item--body"><img src="/img/nederlandlarge.svg" alt=""></div>
+                </div>
+            </a>
         </div>
     </div>
 </div>

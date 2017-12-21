@@ -43,4 +43,19 @@ class PagesController extends Controller
     {
         return view('pages.passport');
     }   
+
+    public function instructiefilms()
+    {
+        return view('pages.instructiefilms');
+    }
+
+    public function kennisbank()
+    {
+        return view('pages.kennisbank');
+    }
+
+    public function pmonitor()
+    {
+        return view('pages.pmonitor');
+    }
 }

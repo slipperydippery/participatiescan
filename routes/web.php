@@ -11,6 +11,9 @@ Route::get('/comparescans', 'PagesController@comparescans')->name('comparescans'
 Route::get('/loggless', 'ScanpagesController@loggless')->name('scan.loggless');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/passport', 'PagesController@passport');
+Route::get('/kennisbank', 'PagesController@kennisbank')->name('kennisbank');
+Route::get('/instructiefilms', 'PagesController@instructiefilms')->name('instructiefilms');
+Route::get('/pmonitor', 'PagesController@pmonitor')->name('pmonitor');
 
 Route::resource('scanmodel', 'ScanmodelsController');
 Route::resource('group', 'GroupsController')->middleware('auth');
