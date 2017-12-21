@@ -1,6 +1,7 @@
 <?php
 
 Auth::routes();
+Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');
 
 // Route::middleware(['first', 'second'])->group(function () {
 // });

@@ -17,27 +17,32 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'gast',
                 'email' => 'gast@gast.nl',
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'verified' => 1,
             ],
             [
                 'name' => 'Susanne Meeuwissen',
                 'email' => 'susanne@embav.nl',
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'verified' => 1,
             ],
             [
                 'name' => 'Maarten de Jager',
                 'email' => 'maartendejager@gmail.com',
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'verified' => 1,
             ],
             [
                 'name' => 'admin',
                 'email' => 'admin@temp.com',
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'verified' => 1,
             ],
             [
                 'name' => 'guest',
                 'email' => 'guest@guest.com',
-                'password' => Hash::make('guest')
+                'password' => Hash::make('guest'),
+                'verified' => 1,
             ],
         ];
 
