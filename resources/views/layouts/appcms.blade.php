@@ -42,9 +42,12 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Functional links -->
+                        @guest
+                        @else
                         <li><a href=" {{ route('home') }} "><img src="/img/dashboard.svg" alt=""></a></li>
-                        <li><a href="#"><img src="/img/manual2.svg" alt=""></a></li>
-                        <li><a href="#"><img src="/img/share.svg" alt=""></a></li>
+                        @endguest
+                        <li><a href="#"><img src="/img/manual2.svg" alt="" title="Instructie"></a></li>
+                        <li><a href="#"><img src="/img/share.svg" alt="" title="Deel deze pagina met je netwerkpartners"></a></li>
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Log in</a></li>
@@ -78,7 +81,7 @@
         @yield('content')
         <footer class="footer">
             <div class="container">
-                <span class="text-muted">De Participatiescan is ontwikkeld in samenwerking met Lesco, Divosa, Ecorys, UWV, MEE, VOBC, BB, Ingrado, en NJI. Ontwikkeling door EMB AV.</span>
+                <span class="text-muted">De Participatiescan is ontwikkeld in opdracht van Lecso, Divosa, VNG, MBO Raad, VO Raad, Sectorraad Praktijkonderwijs, Ingrado, UWV, S-BB, MEE NL, VOBC en de ministeries van SZW en OCW door ECORYS en NJi. Concept programmering en uitvoering door EMB AV &copy; </span>
             </div>
         </footer>
     </div>
