@@ -5,7 +5,7 @@
 				<h4>Vergelijk scans met {{ scan.title }} </h4>
 			</div>
 		</div>
-		<div class="row">   
+		<div class="row" >   
 			<div class="col-sm-12"> 
 				<div class="row row--table" v-for="scan in scan.compares">
 					<div class="col-sm-3"> <span class="emphasis">{{ scan.user.name }}</span> </div>

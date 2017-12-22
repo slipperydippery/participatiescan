@@ -6,6 +6,7 @@
         <div class="col-md-12">
             <div class="page--title">
                 <h1 class="pagetitle">Dashboard</h1>
+                <countdown date="60"></countdown>
             </div>
         </div>
     </div>

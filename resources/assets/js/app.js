@@ -83,6 +83,7 @@ Vue.component('measures-progress', require('./components/MeasuresProgress.vue'))
 Vue.component('single-measure', require('./components/SingleMeasure.vue'));
 Vue.component('edit-districts', require('./components/EditDistricts.vue'));
 
+Vue.component('countdown', require('./components/Countdown.vue'));
 
 
 const app = new Vue({

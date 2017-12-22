@@ -9,6 +9,9 @@
     		<span class="page--clarification"> Kunt u een algemene indruk geven van hoe goed uw regio het volgens u doet als het gaat om het gezamenlijk goed begeleiden van jongeren in een kwetsbare positie van school naar werk. Nul is ‘heel slecht’  en tien is ‘perfect’ </span>
     	</div>
     </div>
+
+    <countdown date="60"></countdown>
+
     <?php 
         $loggedin = Auth::guest() ? 0 : 1;
     ?>
