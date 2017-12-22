@@ -12,7 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<link href="https://vjs.zencdn.net/5.17.0/video-js.css" rel="stylesheet">
+    <link href="https://vjs.zencdn.net/5.17.0/video-js.css" rel="stylesheet">
+    
 </head>
 <body>
     <div id="app">
