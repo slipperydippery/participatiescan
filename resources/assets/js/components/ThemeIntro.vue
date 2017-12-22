@@ -7,15 +7,32 @@
             </div>
         </div>
         <div class="row content--page">
-            <div class="col-sm-12">
-                <img src="/img/movie.svg" alt="">
-            </div>
+                <div class="col-sm-8 col-sm-offset-2">
+                    <video  
+                        id="my-video" 
+                        class="video-js vjs-big-play-centered" 
+                        controls
+                        poster="/img/movie-thin-white.svg" 
+                        data-setup="{}"
+                    > 
+
+                    <source :src="'/videos/thema_' + theme.id + '.mp4'" type="video/mp4" />
+
+                    <p class="vjs-no-js">
+                        To view this video please enable JavaScript, and consider upgrading to a web browser that
+                        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                    </p>
+                    </video>
+                </div>
         </div>
     </div>
 
 </template>
 
+let videojs = require('video.js');
+
 <script>
+    import videojs from "video.js" ; 
     import {store} from '../app.js';
 
     export default {

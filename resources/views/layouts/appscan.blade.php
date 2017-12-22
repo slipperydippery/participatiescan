@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link href="https://vjs.zencdn.net/5.17.0/video-js.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -121,7 +122,8 @@
            'csrfToken' => csrf_token(),
        ]) !!};
    </script>
-        
+    
+    <script src="https://vjs.zencdn.net/5.17.0/video.js"></script>        
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
