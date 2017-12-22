@@ -19,22 +19,28 @@
         <section class="">
             <div class="row container">
                 <div class="col-sm-4">
-                    <div class="infoblock">
-                        <h4>Instructiefilms</h4>
-                        <img src="/img/movie.svg" alt="">
-                    </div>
+                    <a href=" {{ route('instructiefilms') }} ">
+                        <div class="infoblock">
+                            <h4>Instructiefilms</h4>
+                            <img src="/img/movie.svg" alt="">
+                        </div>
+                    </a>
                 </div>
                 <div class="col-sm-4">
-                    <div class="infoblock">
-                        <h4>Kennisbank</h4>
-                        <img src="/img/books.svg" alt="">
-                    </div>
+                    <a href=" {{ route('kennisbank') }} ">
+                        <div class="infoblock">
+                            <h4>Kennisbank</h4>
+                            <img src="/img/books.svg" alt="">
+                        </div>
+                    </a>
                 </div>
                 <div class="col-sm-4">
-                    <div class="infoblock">
-                        <h4>Cijfers uit jouw regio</h4>
-                        <img src="/img/nederland.svg" alt="">
-                    </div>
+                    <a href=" {{ route('pmonitor') }} ">
+                        <div class="infoblock">
+                            <h4>Cijfers uit jouw regio</h4>
+                            <img src="/img/nederland.svg" alt="">
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>

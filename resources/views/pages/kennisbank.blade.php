@@ -4,14 +4,14 @@
     <div class="container container--page">
         <div class="row">
             <div class="col-md-12">
-                <span class="breadcrumb"> <a href=" {{ route('home') }} ">Dashboard</a> > instructiefilms </span>
-                <h1 class="section--title"> Bekijk de instructiefilms  </h1>
+                <span class="breadcrumb"> <a href=" {{ route('home') }} ">Dashboard</a> > kennisbank </span>
+                <h1 class="section--title"> kennisbank  </h1>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h2 class="page--title"> Introductiefilm </h2>
-                <span class="page--clarification">Bekijk de introductiefilm over wat en waarvoor de Participatiescan is. Of ga door naar het volgende scherm, als je de film of de sessiedeelnemers de film al hebben gezien. Tijdens een sessie kan de film gezamenlijk worden bekeken op het plenaire scherm.</span>
+                <h2 class="page--title"> Een weelde aan informatie </h2>
+                <span class="page--clarification">Hieronder vindt u informatie over de succesfactoren voor het begeleiden van jongeren in een kwetsbare positie naar werk. Experts hebben aangegeven dat deze veelal ook gelden voor andere kwetsbare jongeren. Kijk gerust rond tussen de instrumenten/tools, programma’s en praktijkvoorbeelden. En zie hoe je via de opgenomen hyperlinks in contact komt met andere kennisbanken en inspirerende omgevingen, die scholen, gemeenten en partners ook op weg kunnen helpen om jongeren zo goed mogelijk een werkende toekomst te geven.</span>
 
             </div>
         </div>

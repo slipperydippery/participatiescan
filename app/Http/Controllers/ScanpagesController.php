@@ -12,7 +12,7 @@ class ScanpagesController extends Controller
 {
 	public function loggless()
 	{
-		if(count(Scan::find(1))){
+		if(Scan::find(1)){
 			return redirect()->route('scan.show', Scan::find(1));
 		} else {
 			$user = User::find(1);

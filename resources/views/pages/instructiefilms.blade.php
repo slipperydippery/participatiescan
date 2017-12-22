@@ -10,8 +10,8 @@
         </div>
         <div class="row">
         	<div class="col-md-12">
-        		<h2 class="page--title"> Introductiefilm </h2>
-                <span class="page--clarification">Bekijk de introductiefilm over wat en waarvoor de Participatiescan is. Of ga door naar het volgende scherm, als je de film of de sessiedeelnemers de film al hebben gezien. Tijdens een sessie kan de film gezamenlijk worden bekeken op het plenaire scherm.</span>
+        		<h2 class="page--title"> Instructiefilms </h2>
+                <span class="page--clarification">Bekijk de instructiefilms over de Participatiescan. In de introductiefilm ziet u waarvoor de Participatiescan is. In de films "Focus op werk en talent", "Kwaliteit begeleiding", en "Effectieve samenwerking" ziet u per thema waar de vragen in de scan over gaan.</span>
         	</div>
         </div>
         <div class="row content--page">

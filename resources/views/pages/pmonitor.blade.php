@@ -10,8 +10,8 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h2 class="page--title"> Introductiefilm </h2>
-                <span class="page--clarification">Bekijk de introductiefilm over wat en waarvoor de Participatiescan is. Of ga door naar het volgende scherm, als je de film of de sessiedeelnemers de film al hebben gezien. Tijdens een sessie kan de film gezamenlijk worden bekeken op het plenaire scherm.</span>
+                <h2 class="page--title"> Participatiemonitor </h2>
+                <span class="page--clarification">De cijfers die hier worden weergegeven geven aan welke factoren in de geschiedenis van een jongere hem of haar extra kwetsbaar maken om zonder werk en school te raken. Deze data en kennis over effectieve arbeidstoeleiding van de doelgroep leveren input voor een gesprek waarin kennis, reflectie en actie op tactisch niveau gecombineerd worden. Klik op de "i" voor een uitgebreide toelichting </span>
 
             </div>
         </div>
