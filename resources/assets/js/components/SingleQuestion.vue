@@ -9,6 +9,9 @@
         <div class="">
             <p class="questionbody">{{ question.norm }}</p>
         </div>
+
+        <countdown date="60"></countdown>
+        
         <div class="rangeslider--container">
             <input type="range" 
                 min="0" max="10"

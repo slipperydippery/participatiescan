@@ -86,6 +86,9 @@
                 </div>
             </div>
         </div>
+
+        <countdown date="120"></countdown>
+
     </div>
 
 </template>

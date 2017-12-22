@@ -8,6 +8,9 @@
                 <span class="page--clarification" v-if="! store.isgroup && ! store.loggedin">Selecteer de belangrijkste verbeterpunten, en noteer jouw belangrijkste ideeen daarbij. Deze verbeterpunten kunnen aan het eind van de scan nader worden uitgewerkt.</span>
             </div>
         </div>
+
+        <countdown date="300"></countdown>
+
         <div class="row content--page">
             <single-measure
                 v-for="question in theme.questions" v-if="isActiveMeasure(question.id)"
