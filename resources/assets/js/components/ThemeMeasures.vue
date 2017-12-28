@@ -39,7 +39,7 @@
                         <div class="row resultstable--row">
                             <div class="col-sm-2">Actiepunten</div>
                             <div class="col-sm-2" v-for="question in theme.questions">
-                                <input type="checkbox" id="checkbox" :checked="isActiveMeasure(question.id)" @click="toggleActiveMeasure(question.id)">
+                                <input type="checkbox" id="checkbox" :checked="isActiveMeasure(question.id)" @click="toggleActiveMeasure(question.id)" :disabled="isntOwner">
                             </div>
                         </div>
                         <div class="row resultstable--row">
@@ -51,6 +51,7 @@
                                     placeholder="Actie Omschrijving"
                                     rows="6"
                                     v-model="store.group.owner.measures[findMeasure(question.id)].measure"
+                                    :disabled="isntOwner"
                                     @blur="updateMeasure(store.group.owner.measures[findMeasure(question.id)])"
                                 >
                                 </textarea>
@@ -95,7 +96,12 @@
         },
 
         computed: {
-
+            isntOwner: function() {
+                if(store.group.owner.id == store.scan.id) {
+                    return false;
+                }
+                return true;
+            }
         },
 
         methods: {
