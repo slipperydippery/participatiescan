@@ -97,10 +97,14 @@
 
         computed: {
             isntOwner: function() {
-                if(store.group.owner.id == store.scan.id) {
+                if(! store.isgroup) {
                     return false;
+                } else {
+                    if(store.group.owner.id == store.scan.id) {
+                        return false;
+                    }
+                    return true;
                 }
-                return true;
             }
         },
 
