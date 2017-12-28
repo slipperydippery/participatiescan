@@ -126,10 +126,8 @@
             nextQuestion: function () {
                 if(store.activetheme < 3) {
                     store.activetheme ++;
-                } else  {
-                    if(! store.loggedin) {
-                        this.finished = true;
-                    }
+                } else {
+                    window.location.href = '/scan/' + store.scan.id + '/complete';
                 } 
                 this.storeScan();
             },

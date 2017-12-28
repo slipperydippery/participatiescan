@@ -6,6 +6,7 @@ use App\Scan;
 use App\User;
 use App\Scanmodel;
 use Illuminate\Http\Request;
+use App\Jobs\SendScancompleteEmail;
 use Illuminate\Support\Facades\Auth;
 
 class ScanpagesController extends Controller
@@ -79,6 +80,19 @@ class ScanpagesController extends Controller
     public function scancomplete(Scan $scan)
     {
         return view('scan.complete', compact('scan'));
+    }
+
+    public function emailresults(Scan $scan)
+    {
+        $user = Auth::user();   
+        if(count($scan->group)){
+            $mailscan = $scan->group->owner;
+        } else {
+            $mailscan = $scan;
+        }
+        dispatch(new SendScancompleteEmail($user, $mailscan));
+
+        return redirect()->route('home');
     }
 
     public function results(Scan $scan)

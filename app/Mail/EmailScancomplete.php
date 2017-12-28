@@ -11,14 +11,18 @@ class EmailScancomplete extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $user;
+    protected $scan;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user, $scan)
     {
-        //
+        $this->user = $user;
+        $this->scan = $scan;
     }
 
     /**
@@ -28,6 +32,9 @@ class EmailScancomplete extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.scancomplete')->with([
+            'scan' => $this->scan,
+            'user' => $this->user
+        ])->subject('Participatiescan: Einde groepsscan - overzicht van actiepunten voor ' . $this->scan->title);
     }
 }

@@ -30,7 +30,8 @@ Route::get('/scan/{scan}/algemeenbeeld', 'ScanpagesController@algemeenbeeld')->n
 Route::get('/scan/{scan}/algemeenbeeldresultaten', 'ScanpagesController@algemeenbeeldresultaten')->name('scan.algemeenbeeldresultaten');
 Route::get('/scan/{scan}/showscan', 'ScanpagesController@showscan')->name('scan.showscan');
 Route::get('/scan/{scan}/showmeasures', 'ScanpagesController@showmeasures')->name('scan.showmeasures');
-Route::get('/scan/{scan}/scancomplete', 'ScanpagesController@scancomplete')->name('scan.complete');
+Route::get('/scan/{scan}/complete', 'ScanpagesController@scancomplete')->name('scan.complete');
+Route::get('/scan/{scan}/emailresults', 'ScanpagesController@emailresults')->name('scan.emailresults');
 Route::get('/scan/{scan}/results', 'ScanpagesController@results')->name('scan.results');
 
 Route::get('/group/{group}/delete', 'GroupsController@destroy')->middleware('auth');
