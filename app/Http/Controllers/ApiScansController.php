@@ -9,6 +9,7 @@ use App\Theme;
 use App\Scanmodel;
 use App\Grouprequest;
 use Illuminate\Http\Request;
+use App\Jobs\SendGrouprequestEmail;
 use Illuminate\Support\Facades\Auth;
 
 class ApiScansController extends Controller
@@ -61,6 +62,7 @@ class ApiScansController extends Controller
                 'group_id' => $group->id,
                 'scan_id' => $scan->id,
             ]);
+            dispatch(new SendGrouprequestEmail($user, $group));
         }
         return $scan;
     }

@@ -1,7 +1,7 @@
 <template>
 	<section class="infoblock">
 		<div class="row">   
-			<div class="col-sm-12 clickable" @click="activateCompare"> 
+			<div class="col-sm-12 clickable" > 
 				<h4>Vergelijk scans met {{ scan.title }} </h4>
 			</div>
 		</div>
@@ -18,7 +18,7 @@
 				</div>
 			</div>
 			<div class="col-sm-12">
-				<h4 @click="addcompareactive = ! addcompareactive" class="clickable">+ voeg een scan toe aan je vergelijking</h4>
+				<h4 @click="activateCompare" class="clickable">+ voeg een scan toe aan je vergelijking</h4>
 				<div class="addcompare" v-if="addcompareactive">
 					<select v-model="districtfilter"  @change="filterScans">
 						<option value="">--geen arbeidsmarktregio filter--</option>
@@ -81,6 +81,7 @@
 			activateCompare: function() {
 				this.filteredscans =  this.allscans.slice();
 				this.active = ! this.active;
+				this.addcompareactive = ! this.addcompareactive;
 				this.filterScans();
 			},
 

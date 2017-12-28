@@ -23,6 +23,7 @@ Route::get('/group/user/{user}', 'ApiGroupsController@index')->middleware('auth:
 Route::get('/group/{group}', 'ApiGroupsController@show')->middleware('auth:api');
 Route::get('/group/{group}/users', 'ApiGroupsController@indexusers')->middleware('auth:api');
 Route::post('/group/{group}/updatedistricts', 'ApiGroupsController@updatedistricts')->middleware('auth:api');
+Route::post('/group/{group}/storescan', 'ApiGroupsController@storescan')->middleware('auth:api');
 Route::get('/group/{group}/removescan/{scan}', 'ApiGroupsController@removescan')->middleware('auth:api');
 Route::get('/grouprequest/{group}', 'ApiGrouprequestsController@index')->middleware('auth:api');
 Route::get('/grouprequest/{grouprequest}/accept', 'ApiGrouprequestsController@accept')->middleware('auth:api');

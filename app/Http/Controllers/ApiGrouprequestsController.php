@@ -8,6 +8,9 @@ use App\District;
 use App\Dashmessage;
 use App\Grouprequest;
 use Illuminate\Http\Request;
+use App\Jobs\SendGroupdeniedEmail;
+use App\Jobs\SendGrouprequestEmail;
+use App\Jobs\SendGroupacceptedEmail;
 
 class ApiGrouprequestsController extends Controller
 {
@@ -22,10 +25,15 @@ class ApiGrouprequestsController extends Controller
 
     public function accept(Grouprequest $grouprequest)
     {
+
         $scan = Scan::findOrFail($grouprequest->scan_id);
         $group = Group::findOrFail($grouprequest->group_id);
         $group->scans()->save($scan);
         $grouprequest->delete();
+        $user = $scan->user;
+        
+        dispatch(new SendGroupacceptedEmail($user, $group));
+
         return $grouprequest;
     }
 
@@ -37,6 +45,10 @@ class ApiGrouprequestsController extends Controller
             'message' => 'Helaas is je uitnodiging om mee te doen aan de groep <i>' . $group->title . '</i> geweigerd.',
             'user_id' =>  $scan->user->id
         ]);        
+
+        $user = $scan->user;
+
+        dispatch(new SendGroupdeniedEmail($user, $group));
         $grouprequest->delete();
     }
 

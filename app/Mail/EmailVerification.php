@@ -32,6 +32,6 @@ class EmailVerification extends Mailable
     {
         return $this->view('emails.verification')->with([
             'email_token' => $this->user->email_token,
-        ]);
+        ])->subject('Email Verificatie voor de Participatiescan');
     }
 }

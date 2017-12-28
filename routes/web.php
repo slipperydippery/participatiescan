@@ -34,4 +34,6 @@ Route::get('/scan/{scan}/scancomplete', 'ScanpagesController@scancomplete')->nam
 Route::get('/scan/{scan}/results', 'ScanpagesController@results')->name('scan.results');
 
 Route::get('/group/{group}/delete', 'GroupsController@destroy')->middleware('auth');
+Route::get('/group/{group}/created', 'GroupsController@created')->name('group.created')->middleware('auth');
+Route::get('/group/{group}/createscan/{code}', 'GroupsController@createscan')->name('group.createscan')->middleware('auth');
 

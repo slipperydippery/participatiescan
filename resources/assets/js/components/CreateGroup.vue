@@ -163,7 +163,8 @@
                         scanmodel_id: 1,
                     })
                     .then(function(response){
-                        window.location.href = '/home'; 
+                        window.location.href = '/group/' + response.data.id + '/created'; 
+                        // window.location.href = '/home'; 
                     })
                     .catch(function(error){
                         home.errors = error.response.data.errors;

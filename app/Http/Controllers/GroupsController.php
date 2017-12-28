@@ -36,6 +36,15 @@ class GroupsController extends Controller
         return view('group.create', compact('districts', 'instanties'));
     }
 
+    public function createscan(Group $group, $code)
+    {
+        if($code == $group->code) {
+            $instanties = Instantie::get();
+            return view('group.createscan', compact('group', 'instanties'));
+        } 
+        return view('welcome');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -73,6 +82,11 @@ class GroupsController extends Controller
         $group->save();
         
         return redirect()->route('home');
+    }
+
+    public function created(Group $group)
+    {
+        return view('group.created', compact('group'));
     }
 
     /**

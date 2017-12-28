@@ -18,6 +18,10 @@
 					:key="scan.id"
 				>
 				</comparescan>
+				<div class="" v-if="scanstocompare">
+					{{ scanstocompare }}
+					Je hebt helaas geen scans om te vergelijken
+				</div>
 				
 			</div>
 		</div>
@@ -47,6 +51,16 @@
 		},
 
 		computed: {
+			scanstocompare: function () {
+				var comparescancount = 0;
+				this.scans.forEach(function(thisscan){
+					if(! thisscan.group){
+						console.log('here');
+						comparescancount ++;
+					}
+				})
+				return comparescancount ? false : true;
+			}
 		},
 
 		methods: {

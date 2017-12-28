@@ -60,8 +60,10 @@ class ApiGroupsController extends Controller
         $user = Auth::user();
         $scan = Scan::register($user, $request->all());
 
+        $code = str_random(10);
         $group = new Group([
             'title' => $request->title,
+            'code' => $code,
             'user_id' => $user->id,
             'scan_id' => $scan->id,
             'scanmodel_id' => $scan->scanmodel->id,
@@ -69,7 +71,24 @@ class ApiGroupsController extends Controller
         $group->save();
         $group->scans()->save($scan);
 
-        }
+        return $group;
+    }
+
+    public function storescan(Group $group, Request $request)
+    {
+        request()->validate([
+            'instantie_id' => 'required|integer',
+        ]);
+
+        $user = Auth::user();
+
+        $scan = Scan::registerWithGroup($user, $group, $request->all());
+
+        $group->scans()->save($scan);
+        
+        return $scan;
+    }
+
 
     /**
      * Display the specified resource.

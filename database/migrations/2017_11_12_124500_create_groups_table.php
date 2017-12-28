@@ -16,6 +16,7 @@ class CreateGroupsTable extends Migration
         Schema::create('groups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('code');
             $table->integer('scan_id')->unsigned();
             $table->foreign('scan_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('user_id')->unsigned()->nullable();

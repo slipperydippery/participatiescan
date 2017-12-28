@@ -87,7 +87,7 @@
             </div>
         </div>
 
-        <countdown date="120"></countdown>
+        <countdown date="120" v-if="! store.resultsview "></countdown>
 
     </div>
 
