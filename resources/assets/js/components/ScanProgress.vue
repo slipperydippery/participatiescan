@@ -31,7 +31,7 @@
                     <img src="/img/questionmark.svg" alt="">
                 </div>
             </a>
-            <a :href=" '/scan/' + workscan.id + '/showmeasures' " class="progressbar--element" :class=" { active: (page == 'showmeasures') } " title="Uitwerken verbeterpunten">
+            <a :href=" '/scan/' + workscan.id + '/showmeasures' " class="progressbar--element" :class=" { active: (page == 'showmeasures') } " title="Uitwerken verbeterpunten" v-if="store.loggedin">
                 <div>
                     <img src="/img/scoreboard.svg" alt="">
                 </div>

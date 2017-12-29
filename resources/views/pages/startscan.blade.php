@@ -1,5 +1,10 @@
 @extends('layouts.appcms')
 
+@section('modal')
+
+@endsection
+
+
 @section('content')
 <div class="container container--page">
     <div class="row">
