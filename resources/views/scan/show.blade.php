@@ -7,11 +7,8 @@
     ?>
 
     <hintsmodal
-        :active=" {{ $loggedin ? $loggedin->hints : true }} "
+        :active=" false "
         :messages=" [
-            'Als je een vraag hebt ingevuld, zie je dat in het menu onderin. Via het menu onderin kun je ook versneld door de scan bladeren.',
-
-            'Je kunt altijd direct naar je dashboard via het icoon bovenin. Als je tussentijds stop worden je vragen opgeslagen.'
 
         ] "
         :loggedin=" {{ $loggedin }} "
