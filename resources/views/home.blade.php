@@ -1,5 +1,27 @@
 @extends('layouts.appcms')
 
+@section('hintsmodal')
+    <?php 
+        $loggedin = Auth::guest() ? 0 : Auth::user();
+    ?>
+
+    <hintsmodal
+        :active=" {{ $loggedin ? $loggedin->hints : false }} "
+        :messages=" [
+            'Dit is jouw persoonlijke dashboard. Als je een nieuwe scan aanmaakt, kun je deze meteen of later uitvoeren. Heb je de scan gemaakt? Dan kun je jouw resultaten altijd via het dashboard bekijken of vergelijken met anderen die de scan hebben gemaakt.',
+
+            'Wil je de scan gezamenlijk met netwerkpartners doen? Maak dan een groepsscan aan. Als je de groepsscan hebt aangemaakt, kunnen andere deelnemers hun eigen scan aan jouw groepsscan koppelen. Je krijgt daarvan bericht op het dashboard. Je kunt deelnemers accepteren of verwijderen. Alleen de deelnemers die je accepteert, kunnen meedoen aan jouw groepsscan.',
+
+            'Via dit dashboard heb je altijd toegang tot de kennisbank; een bibliotheek vol links en praktijkvoorbeelden.', 
+
+            'Via dit dashboard heb je altijd actuele cijfers uit jouw regio over jongeren in een kwetsbare positie. Deze cijfers zijn handig bij het ontwikkelen van beleid of voor het direct ontwikkelen van acties voor een bepaalde doelgroep.'
+
+        ] "
+        :loggedin=" {{ $loggedin }} "
+    >
+    </hintsmodal>
+@endsection
+
 @section('content')
 <div class="container container--page">
     <div class="row">

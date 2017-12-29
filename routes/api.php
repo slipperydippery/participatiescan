@@ -56,3 +56,4 @@ Route::get('/compare/scan/{scan}', 'ApiComparesController@indexscan')->middlewar
 Route::post('/measure/{measure}/user/{user}', 'ApiMeasuresController@adduser')->middleware('auth:api');
 Route::get('/measure/{measure}/user/{user}/removeuser', 'ApiMeasuresController@removeuser')->middleware('auth:api');
 
+Route::get('/user/{user}/nomorehints', 'ApiUsersController@nomorehints')->middleware('auth:api');

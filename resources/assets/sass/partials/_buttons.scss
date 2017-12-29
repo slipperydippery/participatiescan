@@ -66,3 +66,8 @@ button:hover, .btn:hover, button:focus, .btn:focus {
 button.alert {
 	background: $red;
 }
+
+.btn--small {
+    padding: 0.5rem 1.7rem;
+    font-size: 1.4rem;
+}

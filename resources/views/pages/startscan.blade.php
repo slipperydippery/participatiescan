@@ -1,7 +1,21 @@
 @extends('layouts.appcms')
 
-@section('modal')
+@section('hintsmodal')
+    <?php 
+        $loggedin = Auth::guest() ? 0 : Auth::user();
+    ?>
 
+    <hintsmodal
+        :active=true
+        :messages=" [
+            'Wil je de scan bekijken zonder dat je een account aanmaakt? Klik dan op de roze balk en je kunt de scan vrijblijvend doorlopen. Let wel op! Je antwoorden worden niet opgeslagen.',
+
+            'Wil je jouw scan vergelijken met andere deelnemers? Of wil je de scan samen met netwerkpartners uitvoeren? Maak dan een account aan en je krijgt tot jouw eigen persoonlijke dashboard.'
+
+        ] "
+        :loggedin=" {{ $loggedin }} "
+    >
+    </hintsmodal>
 @endsection
 
 
