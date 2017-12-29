@@ -11,7 +11,7 @@
         <div class="row">
         	<div class="col-md-12">
         		<h2 class="page--title"> Email verificatie </h2>
-                <span class="page--clarification">Je hebt je sucessvorl aangemeld. Een email is naar je gestuurd ter verificatie van je email adress.</span>
+                <span class="page--clarification">Je hebt je succesvol aangemeld. Een email is naar je gestuurd ter verificatie van je email adres.</span>
         	</div>
         </div>
     </div>

@@ -54,6 +54,9 @@
             this.$on('getgroup', function(value){
                 this.$parent.$emit('getgroup');
             });
+            this.$on('updateHintsModal', function(value){
+                this.$parent.$emit('updateHintsModal');
+            })
         },
 
         computed: {

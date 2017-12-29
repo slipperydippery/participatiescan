@@ -40,6 +40,11 @@ export let store = {
 	iscomparison: false,
 	compares: [],
 	resultsview: false,
+	hintsmodal: {
+		active: true,
+		messages: [],
+		loggedin: false
+	}
 };
 
 /**

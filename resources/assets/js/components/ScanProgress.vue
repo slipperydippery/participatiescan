@@ -31,7 +31,7 @@
                     <img src="/img/questionmark.svg" alt="">
                 </div>
             </a>
-            <a :href=" '/scan/' + workscan.id + '/showmeasures' " class="progressbar--element" :class=" { active: (page == 'showmeasures') } " title="Uitwerken verbeterpunten" v-if="store.loggedin">
+            <a :href=" '/scan/' + workscan.id + '/showmeasures' " class="progressbar--element" :class=" { active: (page == 'showmeasures') } " title="Uitwerken verbeterpunten" v-if="workscan.id != 1">
                 <div>
                     <img src="/img/scoreboard.svg" alt="">
                 </div>
@@ -161,11 +161,13 @@
             gotoQuestion: function(questionid) {
                 this.store.activetheme = Math.ceil(questionid / 5);
                 this.store.activequestion = (questionid - 1) % 5 + 1;
+                this.$parent.$emit('updateHintsModal');
             },
 
             gotoTheme: function (themeid) {
                 this.store.activequestion = 0;
                 this.store.activetheme = themeid;
+                this.$parent.$emit('updateHintsModal');
             },
 
             gotoThemeResults: function (themeid) {
@@ -176,6 +178,7 @@
                 } else {
                     this.$parent.$emit('getscan');
                 }
+                this.$parent.$emit('updateHintsModal');
             },
 
             gotoThemeMeasures: function (themeid) {
@@ -186,6 +189,7 @@
                 } else {
                     this.$parent.$emit('getscan');
                 }
+                this.$parent.$emit('updateHintsModal');
             },
 
             isActiveQuestion: function(questionid) {

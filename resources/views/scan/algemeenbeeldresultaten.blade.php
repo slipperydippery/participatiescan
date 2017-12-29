@@ -1,6 +1,21 @@
 @extends('layouts.appscan')
 @section('title', 'Algemeen beeld resultaten')
 
+@section('hintsmodal')
+    <?php 
+        $loggedin = Auth::guest() ? 0 : Auth::user();
+    ?>
+
+    <hintsmodal
+        :active=" {{ $loggedin ? $loggedin->hints : false }} "
+        :messages=" [
+            'Hier zie je jouw ingevulde resultaat en de resultaten van andere deelnemers als je een groepsscan doet, of als je de scan vergelijkt met anderen.'
+        ] "
+        :loggedin=" {{ $loggedin }} "
+    >
+    </hintsmodal>
+@endsection
+
 @section('content')
     <div class="row">
     	<div class="col-md-12">

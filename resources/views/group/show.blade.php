@@ -1,5 +1,6 @@
 @extends('layouts.appcms')
 
+
 @section('content')
 
     <div class="container container--page">

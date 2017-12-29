@@ -1,17 +1,17 @@
 <template>
-	<div class="hintsmodal" v-if="active" @click.self="active = false">
+	<div class="hintsmodal" v-if="store.hintsmodal.active" @click.self="store.hintsmodal.active = false">
 		<div class="hintscontainer infoblock">
 			<a href="#" class="close" @click="active = false">
 				X
 			</a>
 			<h4>Hints</h4>
 			<ul>
-				<li class="hint" v-for="message in messages">
+				<li class="hint" v-for="message in store.hintsmodal.messages">
 					{{ message }}
 				</li>
 				
 			</ul>
-			<div class="nomorehints clearfix" v-if="loggedin">
+			<div class="nomorehints clearfix" v-if="store.hintsmodal.loggedin">
 				<span class="btn btn--small right" @click="noMoreHints()">Hints uitzetten</span>
 			</div>
 			
@@ -32,10 +32,14 @@
 
         data() {
             return {
+		        store,
             }
         },
 
         mounted() {
+        	store.hintsmodal.active = this.active;
+        	store.hintsmodal.loggedin = this.loggedin;
+        	store.hintsmodal.messages = this.messages.slice(0);
         },
 
         ready() {   

@@ -1,6 +1,25 @@
 @extends('layouts.appscan')
 @section('title', 'Regio in Cijfers')
 
+@section('hintsmodal')
+    <?php 
+        $loggedin = Auth::guest() ? 0 : Auth::user();
+    ?>
+
+    <hintsmodal
+        :active=" {{ $loggedin ? $loggedin->hints : false }} "
+        :messages=" [
+            'Ga met je muis over een regio om de NEET-rate per arbeidsregio te bekijken.',
+
+            'Met de drie knoppen onderin kun een eigen selectie maken.',
+
+            'Wil je een toelichting over de NEET-rate, klik dan op de (i) knop onderin.'
+        ] "
+        :loggedin=" {{ $loggedin }} "
+    >
+    </hintsmodal>
+@endsection
+
 @section('content')
     <div class="row">
     	<div class="col-md-12">

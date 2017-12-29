@@ -1,5 +1,20 @@
 @extends('layouts.app')
 
+@section('hintsmodal')
+    <?php 
+        $loggedin = Auth::guest() ? 0 : Auth::user();
+    ?>
+
+    <hintsmodal
+        :active=" false "
+        :messages=" [
+            'Met de knoppen “vorige scherm”  en “ volgende scherm” kun je door de introductie bladeren. Je kunt de stappen ook selecteren in het menu onderaan. '
+        ] "
+        :loggedin=" {{ $loggedin }} "
+    >
+    </hintsmodal>
+@endsection
+
 @section('content')
     <div class="container container--page">
         <div class="row">

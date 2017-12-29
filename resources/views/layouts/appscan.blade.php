@@ -79,6 +79,9 @@
                 </div>
             </div>
         </nav>
+
+        @yield('hintsmodal')
+        
         <div class="container container--page">
             <div class="row">
                 <div class="col-md-12">

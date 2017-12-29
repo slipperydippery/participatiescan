@@ -61,7 +61,7 @@
         mounted() {
             this.getAnswers();
             store.scan = this.workscan;
-            store.loggedin = this.loggedin ? true : false;
+            store.loggedin = this.loggedin ? this.loggedin : false;
             if(store.scan.group_id) {
                 store.isgroup = true;
                 this.getGroup(this.workscan.group_id);
@@ -78,6 +78,9 @@
             this.$on('getgroup', function(value){
                 this.getGroup(store.group.id);
             });
+            this.$on('updateHintsModal', function(value){
+                this.updateHintsModal();
+            })
         },
 
         ready() {   
@@ -156,6 +159,7 @@
                     store.activequestion = 0;
                     store.activetheme ++;
                 }
+                this.updateHintsModal();
                 this.storeScan();
             },
 
@@ -169,6 +173,28 @@
                     window.location.href = '/scan/' + store.scan.id + '/algemeenbeeldresultaten';
                 }
                 this.storeScan();
+                this.updateHintsModal();
+            },
+
+            updateHintsModal: function () {
+                var showsModalHints = store.loggedin ? store.loggedin.hints : true;
+                if(store.activequestion == 1) {
+                    store.hintsmodal.active = showsModalHints;
+                    store.hintsmodal.messages = [
+                        'Als je een vraag hebt ingevuld, zie je dat in het menu onderin. Via het menu onderin kun je ook versneld door de scan bladeren.',
+                        'Je kunt altijd direct naar je dashboard via het icoon bovenin. Als je tussentijds stop worden je vragen opgeslagen.'
+                    ];
+                } else if (store.activequestion == 6 ) {
+                    store.hintsmodal.active = showsModalHints;
+                    store.hintsmodal.messages = [
+                        'Dit zijn de scores van de deelnemers. Bespreek met elkaar wat Bespreek met elkaar wat er uit springt en/of overe welke onderwerpen sterk van mening wordt verschilt.  In het volgende scherm kunnen de belangrijkste twee of drie verbeterpunten worden benoemd.'
+                    ];
+                } else if (store.activequestion == 7) {
+                    store.hintsmodal.active = showsModalHints;
+                    store.hintsmodal.messages = [
+                        'Licht hier eventueel toe wat de concrete analyse of actie is, waartoe door de deelnemers aan de sessie is besloten. Deze komen verderop automatisch terug in de concept verbeteragenda.'
+                    ];
+                }
             },
 
             storeScan: function() {
