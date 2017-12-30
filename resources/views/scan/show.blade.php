@@ -3,7 +3,7 @@
 
 @section('hintsmodal')
     <hintsmodal
-        :active=" true "
+        :active=" false "
         :messages=" [
 
         ] "
