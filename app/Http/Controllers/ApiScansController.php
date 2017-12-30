@@ -62,7 +62,8 @@ class ApiScansController extends Controller
                 'group_id' => $group->id,
                 'scan_id' => $scan->id,
             ]);
-            dispatch(new SendGrouprequestEmail($user, $group));
+            $owner = $group->owner;
+            dispatch(new SendGrouprequestEmail($user, $group, $owner));
         }
         return $scan;
     }

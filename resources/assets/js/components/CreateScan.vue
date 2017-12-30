@@ -112,7 +112,7 @@
                 var filteredarray = [];
                 var home = this;
                 if(home.districtsearch != ''){
-                    this.alldistricts.forEach(function(thisdistrict){
+                    home.alldistricts.forEach(function(thisdistrict){
                         if(thisdistrict.title.toLowerCase().includes(home.districtsearch.toLowerCase())) {
                             filteredarray.push(thisdistrict);
                         } 
@@ -169,11 +169,11 @@
             saveScan: function() {
                 var home = this;
                 axios.post('/api/scan', {
-                        isgroup: this.isgroup,
-                        selectedgroup: this.selectedgroup.id,
-                        title: this.title,
-                        instantie_id: this.instantie.id,
-                        districts: this.selecteddistricts,
+                        isgroup: home.isgroup,
+                        selectedgroup: home.selectedgroup.id,
+                        title: home.title,
+                        instantie_id: home.instantie.id,
+                        districts: home.selecteddistricts,
                         scanmodel_id: 1,
                     })
                     .then(function(response){

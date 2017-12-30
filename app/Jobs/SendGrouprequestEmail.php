@@ -16,16 +16,18 @@ class SendGrouprequestEmail implements ShouldQueue
 
     protected $user;
     protected $group;
+    protected $owner;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($user, $group)
+    public function __construct($user, $group, $owner)
     {
         $this->user = $user;
         $this->group = $group;
+        $this->owner = $owner;
     }
 
     /**
@@ -36,6 +38,6 @@ class SendGrouprequestEmail implements ShouldQueue
     public function handle()
     {
         $email = new EmailGrouprequest($this->user, $this->group);
-        Mail::to($this->user->email)->send($email);
+        Mail::to($this->owner->email)->send($email);
     }
 }
