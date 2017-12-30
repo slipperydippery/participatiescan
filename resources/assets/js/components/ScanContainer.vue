@@ -146,7 +146,7 @@
             nextQuestion: function () {
                 if(store.activequestion < 7) {
                     store.activequestion ++;
-                    if(store.activequestion == 6) {
+                    if(store.activequestion >= 6) {
                         this.getScan();
                     }
                 } else if (store.activetheme == 3) {
