@@ -117,11 +117,6 @@
 
 
         </div>
-        <footer class="footer">
-            <div class="container">
-                <span class="text-muted">De Participatiescan is ontwikkeld in opdracht van Lecso, Divosa, VNG, MBO Raad, VO Raad, Sectorraad Praktijkonderwijs, Ingrado, UWV, S-BB, MEE NL, VOBC en de ministeries van SZW en OCW door ECORYS en NJi. Concept programmering en uitvoering door EMB AV &copy; </span>
-            </div>
-        </footer>
     </div>
 
     <!-- Scripts -->
