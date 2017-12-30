@@ -2,12 +2,8 @@
 @section('title', 'Regio in Cijfers')
 
 @section('hintsmodal')
-    <?php 
-        $loggedin = Auth::guest() ? 0 : Auth::user();
-    ?>
-
     <hintsmodal
-        :active=" {{ $loggedin ? $loggedin->hints : false }} "
+        :active="true"
         :messages=" [
             'Ga met je muis over een regio om de NEET-rate per arbeidsregio te bekijken.',
 
@@ -15,7 +11,7 @@
 
             'Wil je een toelichting over de NEET-rate, klik dan op de (i) knop onderin.'
         ] "
-        :loggedin=" {{ $loggedin }} "
+        :loggedin=" {{ Auth::guest() ? 0 : Auth::user() }} "
     >
     </hintsmodal>
 @endsection

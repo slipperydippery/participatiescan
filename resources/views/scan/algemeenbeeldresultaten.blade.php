@@ -2,16 +2,13 @@
 @section('title', 'Algemeen beeld resultaten')
 
 @section('hintsmodal')
-    <?php 
-        $loggedin = Auth::guest() ? 0 : Auth::user();
-    ?>
 
     <hintsmodal
-        :active=" {{ $loggedin ? $loggedin->hints : false }} "
+        :active="true"
         :messages=" [
             'Hier zie je jouw ingevulde resultaat en de resultaten van andere deelnemers als je een groepsscan doet, of als je de scan vergelijkt met anderen.'
         ] "
-        :loggedin=" {{ $loggedin }} "
+        :loggedin=" {{ Auth::guest() ? 0 : Auth::user() }} "
     >
     </hintsmodal>
 @endsection

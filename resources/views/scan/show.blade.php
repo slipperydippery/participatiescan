@@ -2,16 +2,12 @@
 @section('title', '15 vragen over 3 themas')
 
 @section('hintsmodal')
-    <?php 
-        $loggedin = Auth::guest() ? 0 : Auth::user();
-    ?>
-
     <hintsmodal
-        :active=" false "
+        :active=" true "
         :messages=" [
 
         ] "
-        :loggedin=" {{ $loggedin }} "
+        :loggedin=" {{ Auth::guest() ? 0 : Auth::user() }} "
     >
     </hintsmodal>
 @endsection
