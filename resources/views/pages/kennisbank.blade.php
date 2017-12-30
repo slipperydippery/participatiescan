@@ -32,7 +32,49 @@
         </div>
         <div class="row content--page">
             <div class="col-sm-12">
-                <img src="/img/movie-thin.svg" alt="">
+                <div id="exTab2" class="container kennisbank"> 
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a  href="#1" data-toggle="tab">Instrumenten</a>
+                        </li>
+                        <li>
+                            <a href="#2" data-toggle="tab">Programmas</a>
+                        </li>
+                        <li>
+                            <a href="#3" data-toggle="tab">Praktijkvoorbeelden</a>
+                        </li>
+                        <li>
+                            <a href="#4" data-toggle="tab">PDFs</a>
+                        </li>
+                        <li>
+                            <a href="http://werkhoezithet.nl/" target="_blank">werkhoezithet.nl</a>
+                        </li>
+                        <li>
+                            <a href="#6" data-toggle="tab">Links</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content ">
+                        <div class="tab-pane active" id="1">
+                            <instrumenten></instrumenten>
+                        </div>
+                        <div class="tab-pane" id="2">
+                            <programmas></programmas>
+                        </div>
+                        <div class="tab-pane" id="3">
+                            <praktijkvoorbeelds></praktijkvoorbeelds>
+                        </div>
+                        <div class="tab-pane" id="4">
+                            <pdfs></pdfs>
+                        </div>
+                        <div class="tab-pane" id="5">
+                            <h3>add clearfix to tab-content (see the css)</h3>
+                        </div>
+                        <div class="tab-pane" id="6">
+                            <links></links>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

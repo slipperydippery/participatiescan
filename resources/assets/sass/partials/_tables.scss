@@ -56,3 +56,20 @@
 .resultstable__measure {
 	margin-bottom: 6rem;
 }
+
+.searchitems {
+	margin: 0 0 4rem 0;
+}
+
+.kennisbank {
+	font-size: 1.8rem;
+	line-height: 3.2rem;
+}
+
+.table-header {
+	border-top: 1px solid rgba(0,0,0,0.2);
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+	background: rgba($themecolor, 0.1) !important;
+	font-weight: 600;
+	color: $themecolor;
+}

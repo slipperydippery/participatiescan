@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Scan;
 use App\User;
 use App\Scanmodel;
+use App\Instrument;
 use Illuminate\Http\Request;
 use App\Jobs\SendScancompleteEmail;
 use Illuminate\Support\Facades\Auth;
@@ -100,5 +101,11 @@ class ScanpagesController extends Controller
         $scanmodel = $scan->scanmodel->with('themes.questions')->first();
         $scan = Scan::with('answers', 'user', 'instantie', 'measures.users')->findOrFail($scan->id);
         return view('scan.results', compact('scan', 'scanmodel'));
+    }
+
+    public function indexinstrument()
+    {
+        // return Scan::get();
+        return Instrument::get();
     }
 }

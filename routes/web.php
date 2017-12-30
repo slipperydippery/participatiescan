@@ -33,6 +33,7 @@ Route::get('/scan/{scan}/showmeasures', 'ScanpagesController@showmeasures')->nam
 Route::get('/scan/{scan}/complete', 'ScanpagesController@scancomplete')->name('scan.complete');
 Route::get('/scan/{scan}/emailresults', 'ScanpagesController@emailresults')->name('scan.emailresults');
 Route::get('/scan/{scan}/results', 'ScanpagesController@results')->name('scan.results');
+Route::get('/instrument', 'ScanpagesController@indexinstrument');
 
 Route::get('/group/{group}/delete', 'GroupsController@destroy')->middleware('auth');
 Route::get('/group/{group}/created', 'GroupsController@created')->name('group.created')->middleware('auth');

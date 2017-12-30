@@ -50,6 +50,12 @@ Route::get('/scan/{scan}/user/', 'ApiScansController@getuser')->middleware('auth
 Route::resource('measure', 'ApiMeasuresController')->middleware('auth:api');
 Route::resource('district', 'ApiDistrictsController')->middleware('auth:api');
 Route::resource('compares', 'ApiComparesController')->middleware('auth:api');
+Route::resource('theme', 'ApiThemesController');
+Route::resource('instrument', 'ApiInstrumentsController');
+Route::resource('programma', 'ApiProgrammasController');
+Route::resource('praktijkvoorbeeld', 'ApiPraktijkvoorbeeldsController');
+Route::resource('pdf', 'ApiPdfsController');
+Route::resource('link', 'ApiLinksController');
 
 Route::get('/compare/{compare}/scan/{scan}', 'ApiComparesController@destroycompare')->middleware('auth:api');
 Route::get('/compare/scan/{scan}', 'ApiComparesController@indexscan')->middleware('auth:api');

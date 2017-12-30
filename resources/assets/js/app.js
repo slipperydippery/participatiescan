@@ -94,6 +94,11 @@ Vue.component('edit-districts', require('./components/EditDistricts.vue'));
 
 Vue.component('countdown', require('./components/Countdown.vue'));
 
+Vue.component('instrumenten', require('./components/Instrumenten.vue'));
+Vue.component('programmas', require('./components/Programmas.vue'));
+Vue.component('praktijkvoorbeelds', require('./components/Praktijkvoorbeelds.vue'));
+Vue.component('pdfs', require('./components/Pdfs.vue'));
+Vue.component('links', require('./components/Links.vue'));
 
 const app = new Vue({
     el: '#app',
