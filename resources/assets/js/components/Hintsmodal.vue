@@ -37,7 +37,7 @@
         },
 
         mounted() {
-        	store.hintsmodal.active = checkActive();
+        	store.hintsmodal.active = this.checkActive();
             store.hintsmodal.loggedin = this.loggedin;
         },
 
