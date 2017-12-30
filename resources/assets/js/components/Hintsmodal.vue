@@ -1,17 +1,17 @@
 <template>
 	<div class="hintsmodal" v-if="store.hintsmodal.active" @click.self="store.hintsmodal.active = false">
 		<div class="hintscontainer infoblock">
-			<a href="#" class="close" @click="active = false">
+			<a href="#" class="close" @click="store.hintsmodal.active = false">
 				X
 			</a>
 			<h4>Hints</h4>
 			<ul>
-				<li class="hint" v-for="message in store.hintsmodal.messages">
+				<li class="hint" v-for="message in messages">
 					{{ message }}
 				</li>
 				
 			</ul>
-			<div class="nomorehints clearfix" v-if="store.hintsmodal.loggedin">
+			<div class="nomorehints clearfix" v-if="loggedin">
 				<span class="btn btn--small right" @click="noMoreHints()">Hints uitzetten</span>
 			</div>
 			
@@ -37,9 +37,8 @@
         },
 
         mounted() {
-        	store.hintsmodal.active = this.active;
-        	store.hintsmodal.loggedin = this.loggedin;
-        	store.hintsmodal.messages = this.messages.slice(0);
+        	store.hintsmodal.active = checkActive();
+            store.hintsmodal.loggedin = this.loggedin;
         },
 
         ready() {   
@@ -54,12 +53,19 @@
         		axios.get('/api/user/' + home.loggedin.id + '/nomorehints')
         			.then(function(response){
         				home.active = false;
+                        store.hintsmodal.active = false;
         			})
         			.catch(function(error){
         				console.log(error)
         			})
-        	}
+        	},
 
+            checkActive: function() {
+                if (this.loggedin) {
+                    return this.loggedin.hints;
+                }
+                return true;
+            }
 
         }
     }

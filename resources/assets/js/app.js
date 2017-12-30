@@ -43,7 +43,7 @@ export let store = {
 	hintsmodal: {
 		active: true,
 		messages: [],
-		loggedin: false
+		loggedin: 0,
 	}
 };
 

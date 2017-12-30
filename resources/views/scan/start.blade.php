@@ -2,16 +2,13 @@
 @section('title', 'Introductie')
 
 @section('hintsmodal')
-    <?php 
-        $loggedin = Auth::guest() ? 0 : Auth::user();
-    ?>
 
     <hintsmodal
-        :active=" {{ $loggedin ? $loggedin->hints : false }} "
+        :active=" true "
         :messages=" [
             'Met de knoppen “vorige scherm”  en “ volgende scherm” kun je door de introductie bladeren. Je kunt de stappen ook selecteren in het menu onderaan. '
         ] "
-        :loggedin=" {{ $loggedin }} "
+        :loggedin=" {{ Auth::guest() ? 0 : Auth::user() }} "
     >
     </hintsmodal>
 @endsection
