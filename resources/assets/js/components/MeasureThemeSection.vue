@@ -20,6 +20,7 @@
                 :key="question.id"    
             >
             </single-measure>
+            <div class="infoblock" v-if="! activeMeasuresCount">Er zijn geen verbeterpunten geselecteerd in de vorige schermen. Ga door naar het volgende thema, of ga terug om alsnog verbeterpunten te selecteren om hier uit te werken.</div>
             
         </div>
     </div>
@@ -49,7 +50,17 @@
         },
 
         computed: {
-
+            activeMeasuresCount: function () {
+                var activecount = 0;
+                var home = this;
+                this.theme.questions.forEach(function(thisquestion) {
+                    if (home.isActiveMeasure(thisquestion.id)){
+                        activecount ++;
+                    }
+                })
+                console.log(activecount);
+                return activecount;
+            }
         },
 
         methods: {
