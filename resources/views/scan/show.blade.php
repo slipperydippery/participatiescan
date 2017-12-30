@@ -17,7 +17,7 @@
 	<scan-container
 		:workscan=" {{ $scan }} "
 		:scanmodel=" {{ $scanmodel }} "
-		:loggedin=" {{ $loggedin }} "
+        :loggedin=" {{ Auth::guest() ? 0 : Auth::user() }} "
 	>
 	</scan-container>
 
