@@ -2,8 +2,8 @@
 	<div class="groupmanager">  
 		<div class="row page--head">
 			<div class="col-sm-12">
-				<h2>Hier kan je een scan vergelijken </h2>
-				<p class=" "></p>
+				<h2 class="page--title">Hier kan je een scan vergelijken </h2>
+				<span class="page--clarification">Klik op een van jouw scans die je wilt vergelijken met andere scans. Voeg daar scans toe om mee te vergelijken, en als je tevreden bent met je selectie, klik dan op "start vergelijking"</span>
 
 			</div>
 		</div>
