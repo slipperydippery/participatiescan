@@ -13,7 +13,7 @@
 					<div class="col-sm-3"> {{ scan.instantie.title }} </div>
 					<div class="col-sm-2"> {{ answerCount(scan) }}/15 </div>
 					<div class="col-sm-1"> 
-						<span class="clickable warning" @click=" confirm(scan) ">&#10006;</span>
+						<span class="clickable accept" @click=" confirm(scan) ">&#10004;</span>
 					</div>
 				</div>
 			</div>
@@ -21,7 +21,7 @@
 				<h4 @click="activateCompare" class="clickable">+ voeg een scan toe aan je vergelijking</h4>
 				<div class="addcompare" v-if="addcompareactive">
 					<select v-model="districtfilter"  @change="filterScans">
-						<option value="">--geen arbeidsmarktregio filter--</option>
+						<option value="">--filter hier op gemeente--</option>
 						<option v-for="district in districts" :value="district"> {{ district.title }} </option>
 					</select>
 					<div class="row row--table" v-for="scan in filteredscans">
@@ -30,7 +30,7 @@
 						<div class="col-sm-3"> {{ scan.instantie.title }} </div>
 						<div class="col-sm-2"> {{ answerCount(scan) }}/15 </div>
 						<div class="col-sm-1"> 
-							<span class="clickable accept" @click=" addCompare(scan) " >&#10004;</span>
+							<span class="clickable warning" @click=" addCompare(scan) " >&#10006;</span>
 						</div>
 					</div>
 				</div>
