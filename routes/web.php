@@ -15,6 +15,7 @@ Route::get('/passport', 'PagesController@passport');
 Route::get('/kennisbank', 'PagesController@kennisbank')->name('kennisbank');
 Route::get('/instructiefilms', 'PagesController@instructiefilms')->name('instructiefilms');
 Route::get('/pmonitor', 'PagesController@pmonitor')->name('pmonitor');
+Route::get('/grouprequested', 'PagesController@grouprequested')->name('grouprequested');
 
 Route::resource('scanmodel', 'ScanmodelsController');
 Route::resource('group', 'GroupsController')->middleware('auth');

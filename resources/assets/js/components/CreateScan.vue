@@ -177,7 +177,7 @@
                         scanmodel_id: 1,
                     })
                     .then(function(response){
-                        window.location.href = '/home';
+                        window.location.href = '/grouprequested';
                     })
                     .catch(function(error){
                         home.errors = error.response.data.errors;

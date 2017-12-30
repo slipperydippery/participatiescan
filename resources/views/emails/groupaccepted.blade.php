@@ -1,5 +1,5 @@
-<p>Je verzoek om mee te doen aan groep {{ $group->title }} is geaccpeteerd</p>
+<p>Je verzoek om mee te doen aan groep {{ $group->title }} is geaccepteerd</p>
 
-<p>Op je dashboard zie je nu je dat je scan is geaccpeteerd bij de groep.</p>
+<p>Op je dashboard zie je nu dat je scan is geaccepteerd.</p>
 
 {{ url('/home/') }}

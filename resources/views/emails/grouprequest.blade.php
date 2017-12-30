@@ -1,5 +1,5 @@
-<p>{{ $user->name }} wil mee doen aan jouw group {{ $group_title }}</p>
+<p>{{ $user->name }} wil mee doen aan jouw groep {{ $group_title }}</p>
 
-<p>Ga naar je Dashboard om {{ $user->name }} aan te accepteren of te weigeren.</p>
+<p>Ga naar je dashboard om {{ $user->name }} te accepteren of te weigeren.</p>
 
 {{ url('/home/') }}

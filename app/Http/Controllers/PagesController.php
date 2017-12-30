@@ -58,4 +58,9 @@ class PagesController extends Controller
     {
         return view('pages.pmonitor');
     }
+
+    public function grouprequested()
+    {
+        return view('pages.grouprequested');
+    }
 }
