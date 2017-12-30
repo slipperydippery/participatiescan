@@ -47,7 +47,13 @@
                         <!-- Functional links -->
                         @guest
                         @else
-                        <li><a href=" {{ route('home') }} "><img src="/img/dashboard.svg" alt=""></a></li>
+                            <li><a href=" {{ route('home') }} "><img src="/img/dashboard.svg" alt=""></a></li>
+                            <li>
+                                <turnonhints
+                                    :user=" {{ Auth::user() }} "    
+                                >
+                                </turnonhints>
+                            </li>
                         @endguest
                         <li><a href="#"><img src="/img/manual2.svg" alt="" title="Instructie"></a></li>
                         <li><a href="#"><img src="/img/share.svg" alt="" title="Deel deze pagina met je netwerkpartners"></a></li>

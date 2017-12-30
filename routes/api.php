@@ -63,3 +63,4 @@ Route::post('/measure/{measure}/user/{user}', 'ApiMeasuresController@adduser')->
 Route::get('/measure/{measure}/user/{user}/removeuser', 'ApiMeasuresController@removeuser')->middleware('auth:api');
 
 Route::get('/user/{user}/nomorehints', 'ApiUsersController@nomorehints')->middleware('auth:api');
+Route::get('/user/{user}/turnonhints', 'ApiUsersController@turnonhints')->middleware('auth:api');

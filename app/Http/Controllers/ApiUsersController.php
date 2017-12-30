@@ -13,4 +13,11 @@ class ApiUsersController extends Controller
     	$user->save();
     	return $user;
     }
+
+    public function turnonhints(User $user)
+    {
+    	$user->hints = true;
+    	$user->save();
+    	return $user;
+    }
 }
