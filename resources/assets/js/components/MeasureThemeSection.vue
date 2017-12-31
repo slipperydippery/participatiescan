@@ -2,10 +2,11 @@
     <div>
         <div class="row">
             <div class="col-sm-12">
+
                 <h2 class="page--title"><span class="theme--head--number">Thema {{ theme.id }}:</span> <span class="theme--head--title">{{ theme.title }}</span></h2>
-                <span class="page--clarification" v-if="store.isgroup && store.loggedin">Selecteer de belangrijkste verbeterpunten, en noteer de belangrijkste opmerkingen uit het gesprek. Deze verbeterpunten kunnen aan het eind van de scan nader worden uitgewerkt.</span>
-                <span class="page--clarification" v-if=" ! store.isgroup && store.loggedin">Selecteer de belangrijkste verbeterpunten, en noteer jouw belangrijkste ideeen daarbij. Deze verbeterpunten kunnen aan het eind van de scan nader worden uitgewerkt.</span>
-                <span class="page--clarification" v-if="! store.isgroup && ! store.loggedin">Selecteer de belangrijkste verbeterpunten, en noteer jouw belangrijkste ideeen daarbij. Deze verbeterpunten kunnen aan het eind van de scan nader worden uitgewerkt.</span>
+                <span class="page--clarification" v-if="store.isgroup && store.loggedin">Hieronder zie je de verbeterpunten die je tijdens de scan hebt geselecteerd. Je kunt per verbeterpunt een duidelijk omschrijving maken van de acties die je neemt, en je kunt aangeven wie de trekker is.</span>
+                <span class="page--clarification" v-if=" ! store.isgroup && store.loggedin">Hieronder zie je de verbeterpunten die je tijdens de scan hebt geselecteerd. Je kunt per verbeterpunt een duidelijk omschrijving maken van de acties die je neemt.</span>
+                <span class="page--clarification" v-if="! store.isgroup && ! store.loggedin">Hieronder zie je de verbeterpunten die je tijdens de scan hebt geselecteerd. Je kunt per verbeterpunt een duidelijk omschrijving maken van de acties die je neemt.</span>
             </div>
         </div>
 

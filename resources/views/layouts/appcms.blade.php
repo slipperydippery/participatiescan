@@ -47,10 +47,11 @@
                         <!-- Functional links -->
                         @guest
                         @else
-                            <li><a href=" {{ route('home') }} "><img src="/img/dashboard.svg" alt=""></a></li>
+                            <li><a href=" {{ route('home') }} " title="Naar je dashboard"><img src="/img/dashboard.svg" alt=""></a></li>
                             <li>
                                 <turnonhints
                                     :user=" {{ Auth::user() }} "    
+                                     title="Hints aanzetten"
                                 >
                                 </turnonhints>
                             </li>

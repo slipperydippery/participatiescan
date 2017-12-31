@@ -69,7 +69,7 @@
         </div>
         <div class="row resultstable--row">
             <div class="col-sm-12">
-                <button @click="saveScan()" class="btn btn-primary btn--fullwidth">Save scan</button>
+                <button @click="saveScan()" class="btn btn-primary btn--fullwidth" :disabled="clickedOnce">Save scan</button>
             </div>
         </div>
             
@@ -98,6 +98,7 @@
                 selecteddistricts: [],
                 districtsearch: '',
                 errors: [],
+                clickedOnce: false,
             }
         },
 
@@ -167,6 +168,7 @@
             },
 
             saveScan: function() {
+                this.clickedOnce = true;
                 var home = this;
                 axios.post('/api/scan', {
                         isgroup: home.isgroup,
@@ -177,10 +179,15 @@
                         scanmodel_id: 1,
                     })
                     .then(function(response){
-                        window.location.href = '/grouprequested';
+                        if(home.isgroup){
+                            window.location.href = '/grouprequested';
+                        } else {
+                            window.location.href = '/';
+                        }
                     })
                     .catch(function(error){
                         home.errors = error.response.data.errors;
+                        home.clickedOnce = false;
                     })
             },
 

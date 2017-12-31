@@ -24,6 +24,8 @@ Route::resource('question', 'QuestionsController');
 Route::resource('answer', 'AnswersController');
 Route::resource('postcode', 'PostcodesController');
 
+Route::get('/scan/{scan}/selfdestruct', 'ScansController@selfdestruct')->name('scan.selfdestruct')->middleware('auth');
+
 Route::get('/scan/{scan}/startscan', 'ScanpagesController@startscan')->name('scan.startscan');
 Route::get('/scan/{scan}/kennismaken', 'ScanpagesController@kennismaken')->name('scan.kennismaken');
 Route::get('/scan/{scan}/regioincijfers', 'ScanpagesController@regioincijfers')->name('scan.regioincijfers');

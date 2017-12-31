@@ -177,6 +177,7 @@
             },
 
             updateHintsModal: function () {
+                console.log('updating hints');
                 var showsModalHints = store.loggedin ? store.loggedin.hints : true;
                 if(store.activequestion == 1) {
                     store.hintsmodal.active = showsModalHints;

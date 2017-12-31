@@ -56,7 +56,7 @@
         </div>
         <div class="row resultstable--row">
             <div class="col-sm-12">
-                <button @click="saveGroup()" class="btn btn-primary btn--fullwidth">Maak de groep aan</button>
+                <button @click="saveGroup()" class="btn btn-primary btn--fullwidth" :disabled="clickedOnce">Maak de groep aan</button>
             </div>
         </div>
             
@@ -66,8 +66,6 @@
 </template>
 
 <script>
-        
-
     export default {
 
 
@@ -85,6 +83,7 @@
                 selecteddistricts: [],
                 districtsearch: '',
                 errors: [],
+                clickedOnce: false,
             }
         },
 
@@ -154,6 +153,7 @@
             },
 
             saveGroup: function() {
+                this.clickedOnce= true;
                 this.checkInput();
                 var home = this;
                 axios.post('/api/group', {
@@ -168,6 +168,7 @@
                     })
                     .catch(function(error){
                         home.errors = error.response.data.errors;
+                        home.clickedOnce = false;
                     })
             },
 

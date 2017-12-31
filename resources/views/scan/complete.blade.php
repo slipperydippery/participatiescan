@@ -10,8 +10,10 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
+            <br><br>
             <a href=" {{ route('scan.emailresults', $scan) }} " class="btn btn--fullwidth">Email mij de actiepunten</a> <br> <br>
-            <a href=" {{ route('scan.results', $scan) }} " class="btn btn--fullwidth btn--secondary">Bekijk alleen de resultaten</a>
+            <a href=" {{ route('scan.results', $scan) }} " class="btn btn--fullwidth btn--secondary">Bekijk alleen de resultaten</a> <br> <br>
+            <a href=" {{ route('scan.startscan', $scan) }} " class="btn btn--fullwidth btn--tertiary">Doe de scan opnieuw</a>
         </div>
     </div>
 

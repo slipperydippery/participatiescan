@@ -34,6 +34,7 @@ export let store = {
     activetheme: 1,
     activequestion: 0,
 	pageboolean: false,
+	showdeletescan: false,
 	loggedin: false,
 	isgroup: false,
 	group: {},
@@ -104,7 +105,8 @@ Vue.component('links', require('./components/Links.vue'));
 const app = new Vue({
     el: '#app',
     data: {
-		pageboolean: false 
+		pageboolean: false,
+		showdeletescan: false,
     }
 
 });

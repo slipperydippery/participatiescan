@@ -93,7 +93,7 @@
 
                 <div class="form-group">
                     <div class="col-md-10 col-md-offset-2">
-                        <span class="fineprint">door te registreren ga je akkoord met de <a href="#">gebruiksvoorwaarden</a></span>
+                        <span class="fineprint">door te registreren ga je akkoord met de <a href="/pdf/gebruiksvoorwaarden.pdf">gebruiksvoorwaarden</a></span>
                         <button type="submit" class="btn btn-primary btn--fullwidth">
                             maak je account aan
                         </button>

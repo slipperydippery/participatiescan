@@ -1,12 +1,12 @@
 <template>
-	<div class="hintsmodal" v-if="store.hintsmodal.active" @click.self="store.hintsmodal.active = false">
+	<div class="hintsmodal" v-if="store.hintsmodal.active && store.hintsmodal.messages.length" @click.self="store.hintsmodal.active = false">
 		<div class="hintscontainer infoblock">
 			<a href="#" class="close" @click="store.hintsmodal.active = false">
 				X
 			</a>
 			<h4>Hints</h4>
 			<ul>
-				<li class="hint" v-for="message in messages">
+				<li class="hint" v-for="message in store.hintsmodal.messages">
 					{{ message }}
 				</li>
 				
@@ -39,6 +39,7 @@
         mounted() {
         	store.hintsmodal.active = this.checkActive();
             store.hintsmodal.loggedin = this.loggedin;
+            store.hintsmodal.messages = this.messages;
         },
 
         ready() {   

@@ -15,6 +15,7 @@
                             rows="6"
                             v-model="store.group.owner.measures[findMeasure(question.id)].measure"
                             @blur="updateMeasure(store.group.owner.measures[findMeasure(question.id)])"
+                            :disabled="isntOwner"
                         >
                         </textarea>
                         <textarea  
@@ -91,6 +92,17 @@
                     match ? '' : theseusers.push(thisuser) ;
                 })
                 return theseusers;
+            },
+            
+            isntOwner: function() {
+                if(! store.isgroup) {
+                    return false;
+                } else {
+                    if(store.group.owner.id == store.scan.id) {
+                        return false;
+                    }
+                    return true;
+                }
             }
         },
 

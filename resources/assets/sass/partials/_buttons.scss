@@ -37,7 +37,10 @@ button:hover, .btn:hover, button:focus, .btn:focus {
 
 .btn--secondary:hover, .btn--secondary:focus {
 	background: darken($themecolor-2, 10) !important;
+}
 
+.btn--tertiary {
+	background: $themecolor-3;
 }
 
 .mainbutton {

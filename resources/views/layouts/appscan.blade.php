@@ -46,12 +46,21 @@
                         <!-- Functional links -->
                         @guest
                         @else
-                            <li><a href=" {{ route('home') }} "><img src="/img/dashboard.svg" alt=""></a></li>
+                            <li><a href=" {{ route('home') }} " title="Naar je dashboard"><img src="/img/dashboard.svg" alt=""></a></li>
                             <li>
                                 <turnonhints
                                     :user=" {{ Auth::user() }} "    
+                                    title="Hints aanzetten"
                                 >
                                 </turnonhints>
+                            </li>
+                            <li>
+                                <span class="clickable navitem warning" v-if=" ! showdeletescan " @click="showdeletescan = true" title="Verwijder scan">&#10006;</span>
+                                <span class="navitem" v-if="showdeletescan">
+                                    Weet je zeker dat je de scan wilt verwijderen? 
+                                    <a href=" {{ route('scan.selfdestruct', $scan) }} " class="warning">Ja</a> 
+                                    <span @click="showdeletescan = false" class="clickable accept">nee</span>
+                                </span>
                             </li>
                         @endguest
                         <li><a href="#"><img src="/img/manual2.svg" alt="" title="Instructie"></a></li>

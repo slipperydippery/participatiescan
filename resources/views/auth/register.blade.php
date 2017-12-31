@@ -59,9 +59,11 @@
 
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
+
                         <button type="submit" class="btn btn-primary">
                             Register
                         </button>
+                        <span class="fineprint">door te registreren ga je akkoord met de <a href="/pdf/gebruiksvoorwaarden.pdf">gebruiksvoorwaarden</a></span>
                     </div>
                 </div>
             </form>
