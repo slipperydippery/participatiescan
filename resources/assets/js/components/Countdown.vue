@@ -1,6 +1,6 @@
 <template>
 	<div class="countdown">
-		<div class="block">
+		<div class="block" title="Deze klok is handig bij het uitvoeren van de scan in groepsverband.">
 			<span class="digit">{{ minutes }}</span> : 
 			<span class="digit">{{ seconds }}</span>
 		</div>
