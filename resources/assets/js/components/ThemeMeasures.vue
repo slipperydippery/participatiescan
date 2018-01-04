@@ -214,7 +214,7 @@
                 this.store.group.scans.forEach(function(thisscan) {
                     thisscan.answers.forEach(function(thisanswer) {
                         if(thisanswer.question_id == questionid && thisanswer.answer != null) {
-                            totalSum += thisanswer.answer;
+                            totalSum = parseFloat(totalSum) + parseFloat(thisanswer.answer);
                             validAnswers ++;
                         }
                     })
