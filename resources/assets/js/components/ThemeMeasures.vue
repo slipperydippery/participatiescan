@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="page--title"><span class="theme--head--number">Thema {{ theme.id }}:</span> <span class="theme--head--title">{{ theme.title }}</span></h2>
-                <span class="page--clarification">Selecteer de belangrijkste verbeterpunten, licht hier eventueel toe wat de concrete analyse of actie is, waartoe door de deelnemers aan de sessie is besloten. Deze komen verderop automatisch terug in de concept verbeteragenda.</span>
+                <span class="page--clarification">Selecteer de belangrijkste verbeterpunten, licht hier eventueel toe wat de concrete analyse of actie is, waartoe door de deelnemers aan de sessie is besloten. Deze komen verderop automatisch terug in de concept verbeteragenda. Als je aan een groepsscan meedoet, kan alleen de beheer actiepunten aanvinken en een actie omschrijven</span>
             </div>
         </div>
         <div class="row content--page">
