@@ -102,6 +102,9 @@
                             console.log(error)
                         })
                 }
+                if(store.isgroup) {
+                    this.getGroup(store.group.id);
+                }
             },
 
             getAnswers: function() {
