@@ -53,6 +53,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="row resultstable--row" v-if=" ! store.isgroup ">
+                    <div class="col-sm-2">
+                        {{ store.scan.user.name }} <br>
+                        <span class="emphasis">{{ store.scan.instantie.title }}</span>
+                    </div>
+                    <div class="col-sm-2 resultslider--container" v-for="question in theme.questions">
+                        <div class="resultslider">
+                            <div class="resultslider--result"
+                                :style="{ width: cssPercent(questionResult(store.scan, question.id)), background: nullColor(store.scan, question.id) }"
+                            >
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row resultstable--row" 
                     v-if="! store.isgroup && store.iscomparison"
                     v-for="thisscan in store.compares"
@@ -65,20 +79,6 @@
                         <div class="resultslider">
                             <div class="resultslider--result"
                                 :style="{ width: cssPercent(questionResult(thisscan, question.id)), background: nullColor(thisscan, question.id) }"
-                            >
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row resultstable--row" v-if=" ! store.isgroup && ! store.iscomparison ">
-                    <div class="col-sm-2">
-                        {{ store.scan.user.name }} <br>
-                        <span class="emphasis">{{ store.scan.instantie.title }}</span>
-                    </div>
-                    <div class="col-sm-2 resultslider--container" v-for="question in theme.questions">
-                        <div class="resultslider">
-                            <div class="resultslider--result"
-                                :style="{ width: cssPercent(questionResult(store.scan, question.id)), background: nullColor(store.scan, question.id) }"
                             >
                             </div>
                         </div>

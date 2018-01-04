@@ -35,6 +35,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="row resultstable--row" v-if=" ! store.isgroup  ">
+                    <div class="col-sm-2">
+                        {{ store.scan.user.name }} <br>
+                        <span class="emphasis">{{ store.scan.instantie.title }}</span>
+                    </div>
+                    <div class="col-sm-10 resultslider--container">
+                        <div class="resultslider">
+                            <div class="resultslider--result"
+                                :style="{ width: cssPercent(store.scan.algemeenbeeld), background: store.scan.algemeenbeeld ? '' : 'white' }"
+                            >
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row resultstable--row" 
                     v-if="store.iscomparison && store.compares.length"
                     v-for="thisscan in store.compares"
@@ -47,20 +61,6 @@
                         <div class="resultslider">
                             <div class="resultslider--result"
                                 :style="{ width: cssPercent(thisscan.algemeenbeeld), background: thisscan.algemeenbeeld ? '' : 'white' }"
-                            >
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row resultstable--row" v-if=" ! store.isgroup && ! store.iscomparison && false">
-                    <div class="col-sm-2">
-                        {{ store.scan.user.name }} <br>
-                        <span class="emphasis">{{ store.scan.instantie.title }}</span>
-                    </div>
-                    <div class="col-sm-10 resultslider--container">
-                        <div class="resultslider">
-                            <div class="resultslider--result"
-                                :style="{ width: cssPercent(store.scan.algemeenbeeld), background: store.scan.algemeenbeeld ? '' : 'white' }"
                             >
                             </div>
                         </div>
