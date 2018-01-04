@@ -35,6 +35,7 @@ Route::get('/scan/{scan}/showscan', 'ScanpagesController@showscan')->name('scan.
 Route::get('/scan/{scan}/showmeasures', 'ScanpagesController@showmeasures')->name('scan.showmeasures');
 Route::get('/scan/{scan}/complete', 'ScanpagesController@scancomplete')->name('scan.complete');
 Route::get('/scan/{scan}/emailresults', 'ScanpagesController@emailresults')->name('scan.emailresults');
+Route::get('/scan/{scan}/resultsmailed', 'ScanpagesController@resultsmailed')->name('scan.resultsmailed');
 Route::get('/scan/{scan}/results', 'ScanpagesController@results')->name('scan.results');
 Route::get('/instrument', 'ScanpagesController@indexinstrument');
 

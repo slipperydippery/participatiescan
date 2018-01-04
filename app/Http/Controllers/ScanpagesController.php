@@ -93,7 +93,12 @@ class ScanpagesController extends Controller
         }
         dispatch(new SendScancompleteEmail($user, $mailscan));
 
-        return redirect()->route('home');
+        return redirect()->route('scan.resultsmailed', $scan);
+    }
+
+    public function resultsmailed(Scan $scan)
+    {
+        return view('scan.resultsmailed', compact('scan'));
     }
 
     public function results(Scan $scan)
