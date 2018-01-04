@@ -29,7 +29,7 @@
 
                     <p>Daarmee kunnen we met meerdere partijen in de regio in gesprek gaan over het vergroten van kansen op de arbeidsmarkt voor jongeren in een kwetsbare positie.</p>
 
-                    <p>Maak een account aan, en klik daarna op deze link om aan deze scan mee te doen. https://www.participatiescan.com/group/{{ $group->id }}/createscan/{{ $group->code }}</p>
+                    <p>Klik op deze link om aan deze scan mee te doen. https://www.participatiescan.com/group/{{ $group->id }}/createscan/{{ $group->code }}</p>
 
                     <p>Ik neem binnenkort contact op voor een afspraak zodat we de scan gezamenlijk kunnen uitvoeren.</p>
 
