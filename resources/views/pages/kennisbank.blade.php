@@ -38,7 +38,7 @@
                             <a  href="#1" data-toggle="tab">Instrumenten</a>
                         </li>
                         <li>
-                            <a href="#2" data-toggle="tab">Programmas</a>
+                            <a href="#2" data-toggle="tab">Programma's</a>
                         </li>
                         <li>
                             <a href="#3" data-toggle="tab">Praktijkvoorbeelden</a>

@@ -133,6 +133,8 @@ class GroupsController extends Controller
      */
     public function destroy(Group $group)
     {
+
+        $group->owner->districts()->detach();
         $group->delete();
         return redirect()->route('home');
     }
