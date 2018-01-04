@@ -187,9 +187,15 @@
                     ];
                 } else if (store.activequestion == 6 ) {
                     store.hintsmodal.active = showsModalHints;
-                    store.hintsmodal.messages = [
-                        'Dit zijn de scores van de deelnemers. Bespreek met elkaar wat Bespreek met elkaar wat er uit springt en/of overe welke onderwerpen sterk van mening wordt verschilt.  In het volgende scherm kunnen de belangrijkste twee of drie verbeterpunten worden benoemd.'
-                    ];
+                    if(store.isgroup) {
+                        store.hintsmodal.messages = [
+                            'Dit zijn de scores van de deelnemers. Bespreek met elkaar wat Bespreek met elkaar wat er uit springt en/of overe welke onderwerpen sterk van mening wordt verschilt.  In het volgende scherm kunnen de belangrijkste twee of drie verbeterpunten worden benoemd.'
+                        ];
+                    } else {
+                        store.hintsmodal.messages = [
+                            'Dit is jouw score. Deze kun je eventueel via het dashboard vergelijken met scans van andere deelnemers. Als je een groepsscan doet, zie je hier meteen de scores van de deelnemers uit jouw groep.'
+                        ];
+                    }
                 } else if (store.activequestion == 7) {
                     store.hintsmodal.active = showsModalHints;
                     store.hintsmodal.messages = [

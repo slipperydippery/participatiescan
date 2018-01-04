@@ -56,7 +56,7 @@
                     <span>Hoe ziet de optimale weg van school naar werk van jongeren in een kwetsbare positie eruit? Daarover weten we via onderzoek heel veel. Met deze scan zet je kennis om in actie en kun je een effectieve, gezamenlijke aanpak ontwikkelen. Toepassing van succesfactoren: het kan vaak zoveel beter! </span>
                 </div>
                 <div class="col-sm-4 welcome--textblock">
-                    <h3>Gezamelijk aan tafel</h3>
+                    <h3>Gezamenlijk aan tafel</h3>
                     <span>Maak een account aan en nodig 12 netwerkpartners uit voor een gezamenlijke analyse en verbeteragenda. De Participatiescan neemt je daarin mee. Bespreek de resultaten met elkaar aan tafel. Je kunt ook eerst zelf aan de slag of online jouw dashboard met andere deelnemers vergelijken.</span>
                 </div>
             </div>

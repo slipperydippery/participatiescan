@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h2 class="page--title">Resultaten</h2>
-                <span class="page--clarification">Dit is een overzicht van de resultaten van de scan</span>
+                <span class="page--clarification">Dit is een overzicht van de resultaten van jouw scan en de scans die je hebt geselecteerd</span>
             </div>
         </div>
         <algemeenbeeld-section
