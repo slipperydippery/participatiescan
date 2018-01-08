@@ -100,14 +100,14 @@
                 if(store.isgroup && store.group.length) {
                     store.group.scans.forEach(function(thisscan){
                         if (thisscan.algemeenbeeld != null) {
-                            algemeenresults += thisscan.algemeenbeeld;
+                            algemeenresults = parseFloat(algemeenresults) + parseFloat(thisscan.algemeenbeeld);
                             algemeencount ++;
                         }
                     })
                 } else if (store.iscomparison && store.compares.length) {
                     store.compares.forEach(function(thisscan){
                         if (thisscan.algemeenbeeld != null) {
-                            algemeenresults += thisscan.algemeenbeeld;
+                            algemeenresults = parseFloat(algemeenresults) + parseFloat(thisscan.algemeenbeeld);
                             algemeencount ++;
                         }
                     })
