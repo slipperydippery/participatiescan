@@ -50,6 +50,7 @@
 		}
 	}
 }
+
 .dashboard--item--doubleheight {
 	height: 38rem;
 }
@@ -57,5 +58,15 @@
 .dashboard--item--doubleheight {
 	.dashboard--item--body {
 		height: 100%;
+	}
+}
+
+.dashboard--item--groups {
+	background: white url("/img/aantafel.svg"); 
+	background-repeat: no-repeat;
+	background-size: auto 80%;
+	background-position: center; 
+	.row {
+		background: rgba(255,255,255,0.8)
 	}
 }

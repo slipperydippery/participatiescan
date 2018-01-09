@@ -92,7 +92,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="dashboard--item" title="Beheer je groepen">
+            <div class="dashboard--item dashboard--item--groups" title="Beheer je groepen">
                 <div class="dashboard--item--head">Mijn groepen</div>
                 <div class="dashboard--item--body">
                     @foreach($user->groups as $group)
