@@ -7,6 +7,7 @@
                 <h1 class="title"><span class="title--participatie">Participatie</span><span class="title--dot">.</span><span class="title--scan">scan</span></h1>
                 <h2 class="subtitle">Een analyse- en actietool om te komen tot heldere regionale afspraken en een effectieve samenwerking voor het naar werk begeleiden van jongeren in een kwetsbare positie. Alles wat netwerkpartners nodig hebben om succesvol de handen ineen te slaan.</h2>
                 <div class="featuredimg--container">
+                    <img src="/img/jongeren.svg" alt="" class="featuredimg">
                     <div class="mainbutton--container">
                         <a href=" {{ route('startscan') }} " class="btn mainbutton">Bekijk de scan</a>
                         <a href="#"><span class="fineprint fineprint--welcome">Lees hier hoe de scan werkt</span></a>
