@@ -19,11 +19,11 @@
 @section('content')
     <div class="row">
     	<div class="col-md-12">
-    		<h2 class="page--title"> Uw regio in cijfers </h2>
+            <h2 class="page--title"> Uw regio in cijfers </h2>
             @if(count($scan->group))
-                <span class="page--clarification">Selecteer een arbeidsregio om te zien hoe verschillende factoren de NEET-rate beinvloeden. Bespreek met elkaar wat jullie opvalt.</span>
+                <span class="page--clarification">Selecteer een arbeidsregio om te zien hoe verschillende factoren de NEET-rate beinvloeden. Bespreek met elkaar wat jullie opvalt. Als er geen kaart verschijnt, volg dan <a href="https://monitoraoj.nl/arbeidsregio1" target="_blank">deze link</a>.</span>
             @else
-        		<span class="page--clarification">Selecteer een arbeidsregio om te zien hoe verschillende factoren de NEET-rate beinvloeden.</span>
+        		<span class="page--clarification">Selecteer een arbeidsregio om te zien hoe verschillende factoren de NEET-rate beinvloeden. Als er geen kaart verschijnt, volg dan <a href="https://monitoraoj.nl/arbeidsregio1" target="_blank">deze link</a>.</span>
             @endif
     	</div>
     </div>
