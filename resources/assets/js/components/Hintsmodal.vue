@@ -4,7 +4,7 @@
 			<a href="#" class="close" @click="store.hintsmodal.active = false">
 				X
 			</a>
-			<h4>Hints</h4>
+			<h4><img src="/img/hints.svg" class="hinticon"> Hints</h4>
 			<ul>
 				<li class="hint" v-for="message in store.hintsmodal.messages">
 					{{ message }}
