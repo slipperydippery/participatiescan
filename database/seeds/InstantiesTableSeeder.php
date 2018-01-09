@@ -25,7 +25,7 @@ class InstantiesTableSeeder extends Seeder
                 'scanmodel_id' => '1'
             ],
             [
-                'title' => 'Leerplicht',
+                'title' => 'RMC',
                 'description' => 'Leerplicht / RMC',
                 'scanmodel_id' => '1'
             ],

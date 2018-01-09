@@ -12,22 +12,39 @@
 <div class="row content--page">
 	<div class="col-sm-12">
         <div class="row">
-    		@foreach($scan->group->scans as $thisscan)
                 <div class="col-sm-2">
                     <div class="infoblock">
-                        @if($thisscan->user->isOnline())
+                            <span class="beheerder">beheerder</span>
+                        @if($group->owner->user->isOnline())
                             <span class="logged logged--in">ingelogd</span>
                         @else
                             <span class="logged logged--out">uitgelogd</span>
                         @endif
                         <img src="/img/user.svg" alt="">
                         <div class="infoblock--padded">
-                            <span>{{ $thisscan->user->name }}</span>
-                            <span class="center"><strong> {{ $thisscan->instantie->title }} </strong></span>
+                            <span>{{ $group->owner->user->name }}</span>
+                            <span class="center"><strong> {{ $group->owner->instantie->title }} </strong></span>
                         </div>
-                        
                     </div>
                 </div>
+
+    		@foreach($scan->group->scans as $thisscan)
+                 @if($thisscan->id != $group->owner->id)
+                    <div class="col-sm-2">
+                        <div class="infoblock">
+                            @if($thisscan->user->isOnline())
+                                <span class="logged logged--in">ingelogd</span>
+                            @else
+                                <span class="logged logged--out">uitgelogd</span>
+                            @endif
+                            <img src="/img/user.svg" alt="">
+                            <div class="infoblock--padded">
+                                <span>{{ $thisscan->user->name }}</span>
+                                <span class="center"><strong> {{ $thisscan->instantie->title }} </strong></span>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             @endforeach
             
         </div>

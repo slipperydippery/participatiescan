@@ -63,4 +63,9 @@ class PagesController extends Controller
     {
         return view('pages.grouprequested');
     }
+
+    public function contact()
+    {
+        return view('pages.contact');
+    }
 }

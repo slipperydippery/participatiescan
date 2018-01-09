@@ -4,7 +4,7 @@
             <div class="col-sm-12">
 
                 <h2 class="page--title"><span class="theme--head--number">Thema {{ theme.id }}:</span> <span class="theme--head--title">{{ theme.title }}</span></h2>
-                <span class="page--clarification" v-if="store.isgroup && store.loggedin">Hieronder zie je de verbeterpunten die je tijdens de scan hebt geselecteerd. Je kunt per verbeterpunt een duidelijk omschrijving maken van de acties die je neemt, en je kunt aangeven wie de trekker is. Als je aan een groepsscan meedoet, kan alleen de beheer actiepunten aanvinken en een actie omschrijven</span>
+                <span class="page--clarification" v-if="store.isgroup && store.loggedin">Hieronder zie je de verbeterpunten die tijdens de scan door de deelnemers zijn geselecteerd. Je kunt per verbeterpunt een duidelijk omschrijving maken van de acties die je neemt, en je kunt aangeven wie de trekker is. Als je aan een groepsscan meedoet, kan alleen de beheer actiepunten aanvinken en een actie omschrijven</span>
                 <span class="page--clarification" v-if=" ! store.isgroup && store.loggedin">Hieronder zie je de verbeterpunten die je tijdens de scan hebt geselecteerd. Je kunt per verbeterpunt een duidelijk omschrijving maken van de acties die je neemt.</span>
                 <span class="page--clarification" v-if="! store.isgroup && ! store.loggedin">Hieronder zie je de verbeterpunten die je tijdens de scan hebt geselecteerd. Je kunt per verbeterpunt een duidelijk omschrijving maken van de acties die je neemt.</span>
             </div>

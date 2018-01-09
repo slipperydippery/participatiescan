@@ -12,7 +12,7 @@
             </div>
             <select v-model="selectedgroup" class="form-control" placeholder="kies een groep" >
               <option  disabled value="">Kies een groep</option>
-              <option v-for="group in groups" :value="group"> {{ group.title }} </option>
+              <option v-for="group in groups" :value="group"> {{ group.title }} - {{ group.owner.user.name }} </option>
             </select>
         </div>
 

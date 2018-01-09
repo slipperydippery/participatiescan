@@ -31,7 +31,7 @@
     	<div class="col-sm-12">
             <iframe scrolling="no" 
                 src="https://monitoraoj.nl/arbeidsregio1/#primary" 
-                style="border: 0px none; height: 763px; width: 1180px;"
+                style="border: 0px none; height: 1300px; width: 1180px;"
                 class="iframe--monitor"
             > 
             </iframe>

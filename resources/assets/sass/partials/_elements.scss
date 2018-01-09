@@ -32,6 +32,14 @@
 		font-weight: 600;
 		font-size: 1.4rem;
 	}
+	span.beheerder {
+		font-size: 1rem;
+		height: auto;
+		float: left;
+		font-weight: 600;
+		padding-bottom: 1rem;
+		color: $themecolor-2;
+	}
 	span.logged {
 		font-size: 1rem;
 		height: auto;

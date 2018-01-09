@@ -46,6 +46,7 @@
                         @else
                         <li><a href=" {{ route('home') }} "><img src="/img/dashboard.svg" alt=""></a></li>
                         @endguest
+                        <li><a href=" {{ route('contact') }} "><img src="/img/contact.svg" alt="" title="Contact"></a></li>
                         <li><a href="#"><img src="/img/manual2.svg" alt="" title="Instructie"></a></li>
                         <li><a href="
                             mailto:?Subject=Tip%3A%20Participatiescan.com&Body=Heb%20je%20beroepsmatig%20te%20maken%20met%20jongeren%20in%20een%20kwetsbare%20positie%3F%0ADan%20is%3A%20www.participatiescan.com%20echt%20een%20aanrader%21%20Een%20netwerktool%20om%20samen%20aan%20tafel%20of%20zelfstandig%20een%20analyse%20te%20maken%20en%20te%20komen%20tot%20een%20effectieve%20samenwerking%20voor%20het%20naar%20werk%20begeleiden%20van%20jongeren%20in%20een%20kwetsbare%20positie.

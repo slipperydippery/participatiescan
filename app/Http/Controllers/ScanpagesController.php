@@ -42,8 +42,9 @@ class ScanpagesController extends Controller
 
     public function kennismaken(Scan $scan)
     {
+        $group = $scan->group;
     	if(Auth::check() && count($scan->group)) {
-    		return view('scan.kennismaken', compact('scan'));
+    		return view('scan.kennismaken', compact('scan', 'group'));
     	} else {
     		return redirect()->route('scan.regioincijfers', $scan);
     	}

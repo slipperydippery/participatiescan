@@ -8,6 +8,10 @@
     <hintsmodal
         :active=true
         :messages=" [
+            'De participatiescan werkt het beste op Laptop, computer of iPad met de laatste software update: 10.3.3. en de laatste versie van internetbrowser van chrome, safari, explorer of firefox. Werkt de scan niet naar behoren, update dan eerst uw browser.',
+
+            'Ontvangt u geen mailbevestiging, controleer dan uw spam. Heeft u vragen over de scan? Mail dan naar: participatiescan@gmail.com',
+
             'Wil je de scan bekijken zonder dat je een account aanmaakt? Klik dan op de roze balk en je kunt de scan vrijblijvend doorlopen. Let wel op! Je antwoorden worden niet opgeslagen.',
 
             'Wil je jouw scan vergelijken met andere deelnemers? Of wil je de scan samen met netwerkpartners uitvoeren? Maak dan een account aan en je krijgt tot jouw eigen persoonlijke dashboard.'

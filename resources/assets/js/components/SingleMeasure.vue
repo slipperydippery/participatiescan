@@ -6,7 +6,7 @@
         <div class="measures">
             <div class="measures--group">
                 <div class="row resultstable--row">
-                    <div class="col-sm-2">Actiepunten</div>
+                    <div class="col-sm-2">Actiepunten en betrokkenen</div>
                     <div class="col-sm-10">
                         <textarea  
                             v-if="store.isgroup && store.group.owner.measures"

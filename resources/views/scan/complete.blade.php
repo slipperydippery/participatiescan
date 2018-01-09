@@ -5,7 +5,7 @@
     <div class="row">
     	<div class="col-md-12">
     		<h2 class="page--title"> De scan is afgerond </h2>
-            <span class="page--clarification">Je hebt alle vragen al beantwoord. Je kunt jezelf hier een overzicht van de actiepunten mailen, of naar een overzicht van alle resultaten gaan. </span>
+            <span class="page--clarification">Je hebt alle vragen al beantwoord. Je kunt jezelf een overzicht van de actiepunten mailen, of naar een overzicht van alle resultaten gaan. Maak gezamenlijk een afspraak om de actiepunten uit te werken naar een werkagenda. </span>
     	</div>
     </div>
     <div class="row">

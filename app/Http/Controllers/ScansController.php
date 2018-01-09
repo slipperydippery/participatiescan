@@ -45,7 +45,7 @@ class ScansController extends Controller
     {
         $instanties = Instantie::get();
         $districts = District::get();
-        $groups = Group::get();
+        $groups = Group::with('owner.user')->get();
         return view('scan.create', compact('instanties', 'districts', 'groups'));
     }
 
