@@ -24,6 +24,10 @@
 						<option value="">--filter hier op gemeente--</option>
 						<option v-for="district in districts" :value="district"> {{ district.title }} </option>
 					</select>
+					<select v-model="instantiefilter" @change="filterScans">
+						<option value="">--filter hier op instantie--</option>
+						<option v-for="instantie in instanties" :value="instantie"> {{ instantie.title }} </option>
+					</select>
 					<div class="row row--table table-header">
 						<div class="col-sm-2">Naam persoon</div>
 						<div class="col-sm-3">Naam scan</div>
@@ -67,7 +71,8 @@
 		props: [
 			'scan',
 			'allscans',
-			'districts'
+			'districts',
+			'instanties'
 		],
 		data() {
 			return {
@@ -75,6 +80,8 @@
 				addcompareactive: false,
 				confirmremovecomparebox: false,
 				districtfilter: "",
+				instantiefilter: "",
+				prefilteredscans: [],
 				filteredscans: [],
 				confirmscan: {},
 			}
@@ -135,17 +142,27 @@
 
 			filterScans: function () {
 				var home = this;
+				home.prefilteredscans = [];
 				home.filteredscans = [];
 				if(home.districtfilter == ""){
-					home.filteredscans =  home.allscans.slice();
+					home.prefilteredscans =  home.allscans.slice();
 				} else {
-					home.allscans.filter(function (scan) {
-						scan.districts.forEach(function(district){
+					home.allscans.filter(function (thisscan) {
+						thisscan.districts.forEach(function(district){
 							if(district.id == home.districtfilter.id)
 							{
-								home.filteredscans.push(scan);
+								home.prefilteredscans.push(thisscan);
 							}
 						})
+					})
+				}
+				if(home.instantiefilter == ""){
+					home.filteredscans = home.prefilteredscans.slice();
+				} else {
+					home.prefilteredscans.forEach(function(thisscan){
+						if(thisscan.instantie.id == home.instantiefilter.id){
+							home.filteredscans.push(thisscan);
+						}
 					})
 				}
 				home.filteredscans.forEach(function(scan){

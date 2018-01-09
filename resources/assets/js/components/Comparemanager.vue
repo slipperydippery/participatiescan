@@ -13,13 +13,13 @@
 					:scan="scan"
 					:allscans="allscans"
 					:districts="districts"
+					:instanties="instanties"
 					v-for="scan in scans"	
 					v-if="! scan.group"
 					:key="scan.id"
 				>
 				</comparescan>
 				<div class="" v-if="scanstocompare">
-					{{ scanstocompare }}
 					Je hebt helaas geen scans om te vergelijken
 				</div>
 				
@@ -36,7 +36,8 @@
 
 		props: [
 			'user',
-			'districts'
+			'districts',
+			'instanties'
 		],
 		data() {
 			return {

@@ -25,6 +25,7 @@
         <comparemanager
         	:user=" {{ Auth::user() }} "	
         	:districts=" {{ $districts }} "
+            :instanties=" {{ $instanties }} "
         >
         </comparemanager>
     </div>

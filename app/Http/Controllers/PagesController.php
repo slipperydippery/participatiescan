@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Scan;
 use App\District;
+use App\Instantie;
 use App\Scanmodel;
 use App\Thememodel;
 use App\Questionmodel;
@@ -36,7 +37,8 @@ class PagesController extends Controller
     {
         $user = Auth::user();
         $districts = District::get();
-        return view ('compare.comparescans', compact('user', 'districts'));
+        $instanties = Instantie::get();
+        return view ('compare.comparescans', compact('user', 'districts', 'instanties'));
     }
 
     public function passport()
