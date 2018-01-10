@@ -100,7 +100,7 @@
 
         @yield('hintsmodal')
         
-        <div class="container container--page">
+        <div class="container container--scancontainer">
             
             @yield('content')
 
