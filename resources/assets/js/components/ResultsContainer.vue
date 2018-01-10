@@ -80,7 +80,6 @@
                     var home = this;
                     axios.get('/api/scan/' + home.workscan.id )
                         .then(function(response){
-                            console.log('getting scan');
                             home.store.scan = response.data;
                         })
                         .catch(function(error){
@@ -94,7 +93,6 @@
                 axios.get('/api/scan/' + home.workscan.id + '/answers')
                     .then(function(response){
                         home.answers = response.data;
-                        console.log('getting answers');
                     })
                     .catch(function(error){
                         console.log(error)
@@ -107,13 +105,19 @@
                     axios.get('/api/group/' + groupid)
                         .then(function(response){
                             home.store.group = response.data;
-                            console.log('getting group');
+                            home.reorderGroup();
                         })
                         .catch(function(error){
                             console.log(error)
                         })
                 }
             },
+
+            reorderGroup: function() {
+                store.group.scans.sort(function(a, b) {
+                    return a.instantie_id - b.instantie_id;
+                })
+            }, 
 
             getCompares: function(groupid) {
                 if(store.loggedin) {
@@ -124,12 +128,20 @@
                             if(store.compares.length){
                                 store.iscomparison = true;
                             }
+                            home.reorderCompares();
                         })
                         .catch(function(error){
                             console.log(error)
                         })
                 }
             },
+
+            reorderCompares: function() {
+                console.log('reordering compares');
+                store.compares.sort(function(a, b) {
+                    return a.instantie_id - b.instantie_id;
+                })
+            }, 
 
             nextQuestion: function () {
                 if(store.activequestion < 7) {
