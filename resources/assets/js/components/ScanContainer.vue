@@ -1,5 +1,20 @@
 <template>
     <div class="scan--container">
+        <div class="row">
+            <div class="col-md-12">
+                <span class="breadcrumb" v-if="store.isgroup"> 
+                    Arbeidsmarktregios: 
+                    <span v-for="district in store.group.owner.districts"> {{ district.title }} </span>
+                 </span>
+                <h1 class="section--title" v-if="store.isgroup"> Groepsscan: {{ store.group.owner.title }} </h1>
+                <span class="breadcrumb" v-if=" ! store.isgroup"> 
+                    Arbeidsmarktregios: 
+                    <span v-for="district in store.scan.districts"> {{ district.title }} </span>
+                 </span>
+                <h1 class="section--title" v-if=" ! store.isgroup"> {{ store.scan.title }} </h1>
+            </div>
+        </div>
+
         <theme-section
             v-for="theme in scanmodel.themes"
             :theme="theme"

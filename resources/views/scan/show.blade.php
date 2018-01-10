@@ -1,4 +1,4 @@
-@extends('layouts.appscan')
+@extends('layouts.appscancontainer')
 @section('title', '15 vragen over 3 themas')
 
 @section('hintsmodal')

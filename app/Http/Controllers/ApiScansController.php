@@ -26,7 +26,7 @@ class ApiScansController extends Controller
 
 	public function show(Scan $scan)
 	{
-        return Scan::with('answers', 'user', 'instantie', 'measures')->findOrFail($scan->id);
+        return Scan::with('answers', 'user', 'instantie', 'measures', 'districts')->findOrFail($scan->id);
 	}
 
     public function store(Request $request)
