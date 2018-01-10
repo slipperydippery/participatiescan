@@ -62,7 +62,8 @@ class ScanpagesController extends Controller
 
     public function algemeenbeeldresultaten(Scan $scan)
     {
-        return view('scan.algemeenbeeldresultaten', compact('scan'));
+        $scanmodel = $scan->scanmodel->with('themes.questions')->first();
+        return view('scan.algemeenbeeldresultaten', compact('scan', 'scanmodel'));
     }
 
     public function showscan(Scan $scan)

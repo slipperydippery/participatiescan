@@ -116,7 +116,7 @@
             },
 
             cssPercent: function (value) {
-                return value + '%';
+                return (value * 10) + '%';
             },
         }
     }
