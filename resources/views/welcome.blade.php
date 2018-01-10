@@ -10,7 +10,7 @@
                     <img src="/img/jongeren.svg" alt="" class="featuredimg">
                     <div class="mainbutton--container">
                         <a href=" {{ route('startscan') }} " class="btn mainbutton">Bekijk de scan</a>
-                        <a href="#"><span class="fineprint fineprint--welcome">Lees hier hoe de scan werkt</span></a>
+                        <a href="/pdf/handleiding_participatiescan.pdf"><span class="fineprint fineprint--welcome">Lees hier hoe de scan werkt</span></a>
                     </div>
                 </div>
             </div>
