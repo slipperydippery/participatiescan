@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ScanpagesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('owner');
+    }
+
 	public function loggless()
 	{
 		if(Scan::find(1)){
@@ -108,11 +113,5 @@ class ScanpagesController extends Controller
         $scanmodel = $scan->scanmodel->with('themes.questions')->first();
         $scan = Scan::with('answers', 'user', 'instantie', 'measures.users')->findOrFail($scan->id);
         return view('scan.results', compact('scan', 'scanmodel'));
-    }
-
-    public function indexinstrument()
-    {
-        // return Scan::get();
-        return Instrument::get();
     }
 }

@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Auth;
 
 class ApiScansController extends Controller
 {
+    /**
+     * Enforce middleware.
+     */
+    public function __construct()
+    {
+        // $this->middleware('owner', ['except' => ['index', 'create', 'store']]);
+    }
+    
     public function index()
     {
         return Scan::with('user', 'answers', 'instantie', 'districts')->get();

@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class ApiUsersController extends Controller
 {
+    /**
+     * Enforce middleware.
+     */
+    public function __construct()
+    {
+        $this->middleware('user');
+    }
+
     public function nomorehints(User $user)
     {
     	$user->hints = false;

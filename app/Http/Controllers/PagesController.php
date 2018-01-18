@@ -39,11 +39,6 @@ class PagesController extends Controller
         $districts = District::get();
         $instanties = Instantie::get();
         return view ('compare.comparescans', compact('user', 'districts', 'instanties'));
-    }
-
-    public function passport()
-    {
-        return view('pages.passport');
     }   
 
     public function instructiefilms()

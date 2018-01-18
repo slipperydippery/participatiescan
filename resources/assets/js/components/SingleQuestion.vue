@@ -49,10 +49,11 @@
 
         methods: {
             onChange: function () {
+                var home = this;
+                var thisanswer = store.scan.answers[home.question.id - 1];
                 if(store.loggedin) {
-                    var home = this;
-                    axios.post('/api/answer/' + home.question.id, {
-                        answer: store.scan.answers[home.question.id - 1]
+                    axios.post('/api/answer/' + store.scan.answers[home.question.id - 1].id, {
+                        answer: thisanswer
                     })
                     .then(response => {})
                     .catch(e => {

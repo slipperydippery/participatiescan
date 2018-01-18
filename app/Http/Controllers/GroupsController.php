@@ -15,13 +15,12 @@ use Illuminate\Support\Facades\Auth;
 class GroupsController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Enforce middleware.
      */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('groupowner', ['except' => ['create', 'createscan', 'store']]);
     }
 
     /**
@@ -100,29 +99,6 @@ class GroupsController extends Controller
         $group = Group::with('scans.user')->findOrFail($group->id);
         $districts = District::all();
         return view('group.show', compact('group', 'districts'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**

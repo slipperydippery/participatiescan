@@ -43,7 +43,7 @@ Route::post('/scan/{scan}/withanswers', 'ApiScansController@storewithanswers')->
 Route::get('/scan/{scan}/themes', 'ApiScansController@indexthemes')->middleware('auth:api');
 Route::get('/scan/{scan}/answers', 'ApiScansController@indexanswers')->middleware('auth:api');
 Route::post('/scan/{scan}/answers/{answer}', 'ApiScansController@postanswer')->middleware('auth:api');
-Route::post('/answer/{answer}', 'ApiAnswersController@store')->middleware('auth:api');
+Route::post('/answer/{answer}', 'ApiAnswersController@update')->middleware('auth:api');
 Route::get('/scan/{scan}/theme/{theme}/questions', 'ApiScansController@indexquestions')->middleware('auth:api');
 Route::get('/scan/{scan}/user/', 'ApiScansController@getuser')->middleware('auth:api');
 

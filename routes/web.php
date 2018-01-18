@@ -1,32 +1,21 @@
 <?php
+// Need some better place
+Route::get('/comparescans', 'PagesController@comparescans')->name('comparescans')->middleware('auth');
 
+// Laravel Routes
 Auth::routes();
 Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');
 
-// Route::middleware(['first', 'second'])->group(function () {
-// });
-
-Route::get('/', 'PagesController@welcome')->name('welcome');
-Route::get('/startscan', 'PagesController@startscan')->name('startscan');
-Route::get('/comparescans', 'PagesController@comparescans')->name('comparescans')->middleware('auth');
-Route::get('/loggless', 'ScanpagesController@loggless')->name('scan.loggless');
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/passport', 'PagesController@passport');
-Route::get('/kennisbank', 'PagesController@kennisbank')->name('kennisbank');
-Route::get('/instructiefilms', 'PagesController@instructiefilms')->name('instructiefilms');
-Route::get('/pmonitor', 'PagesController@pmonitor')->name('pmonitor');
-Route::get('/grouprequested', 'PagesController@grouprequested')->name('grouprequested');
-Route::get('/contact', 'PagesController@contact')->name('contact');
-
-Route::resource('scanmodel', 'ScanmodelsController');
+// Resources GroupsController & ScanController and some other pages that need a better location
 Route::resource('group', 'GroupsController')->middleware('auth');
 Route::resource('scan', 'ScansController');
-Route::resource('question', 'QuestionsController');
-Route::resource('answer', 'AnswersController');
-Route::resource('postcode', 'PostcodesController');
+Route::get('/scan/{scan}/selfdestruct', 'ScansController@selfdestruct')->name('scan.selfdestruct');
+Route::get('/group/{group}/delete', 'GroupsController@destroy')->middleware('auth');
+Route::get('/group/{group}/created', 'GroupsController@created')->name('group.created')->middleware('auth');
+Route::get('/group/{group}/createscan/{code}', 'GroupsController@createscan')->name('group.createscan')->middleware('auth');
 
-Route::get('/scan/{scan}/selfdestruct', 'ScansController@selfdestruct')->name('scan.selfdestruct')->middleware('auth');
-
+// ScanpagesController
+Route::get('/loggless', 'ScanpagesController@loggless')->name('scan.loggless');
 Route::get('/scan/{scan}/startscan', 'ScanpagesController@startscan')->name('scan.startscan');
 Route::get('/scan/{scan}/kennismaken', 'ScanpagesController@kennismaken')->name('scan.kennismaken');
 Route::get('/scan/{scan}/regioincijfers', 'ScanpagesController@regioincijfers')->name('scan.regioincijfers');
@@ -38,9 +27,14 @@ Route::get('/scan/{scan}/complete', 'ScanpagesController@scancomplete')->name('s
 Route::get('/scan/{scan}/emailresults', 'ScanpagesController@emailresults')->name('scan.emailresults');
 Route::get('/scan/{scan}/resultsmailed', 'ScanpagesController@resultsmailed')->name('scan.resultsmailed');
 Route::get('/scan/{scan}/results', 'ScanpagesController@results')->name('scan.results');
-Route::get('/instrument', 'ScanpagesController@indexinstrument');
 
-Route::get('/group/{group}/delete', 'GroupsController@destroy')->middleware('auth');
-Route::get('/group/{group}/created', 'GroupsController@created')->name('group.created')->middleware('auth');
-Route::get('/group/{group}/createscan/{code}', 'GroupsController@createscan')->name('group.createscan')->middleware('auth');
+// PagesController
+Route::get('/', 'PagesController@welcome')->name('welcome');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/startscan', 'PagesController@startscan')->name('startscan');
+Route::get('/kennisbank', 'PagesController@kennisbank')->name('kennisbank');
+Route::get('/instructiefilms', 'PagesController@instructiefilms')->name('instructiefilms');
+Route::get('/pmonitor', 'PagesController@pmonitor')->name('pmonitor');
+Route::get('/grouprequested', 'PagesController@grouprequested')->name('grouprequested');
+Route::get('/contact', 'PagesController@contact')->name('contact');
 

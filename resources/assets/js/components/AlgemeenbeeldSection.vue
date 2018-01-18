@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="row resultstable--row" 
-                    v-if="store.isgroup && store.group.length"
+                    v-if="store.isgroup && store.group.scans"
                     v-for="thisscan in store.group.scans"
                 >
                     <div class="col-sm-2"> 
@@ -27,9 +27,9 @@
                         <span class="emphasis">{{ thisscan.instantie.title }}</span>
                     </div>
                     <div class="col-sm-10 resultslider--container">
-                        <div class="resultslider">
+                        <div class="resultslider" :style="{background: thisscan.algemeenbeeld ? '' : 'white'}">
                             <div class="resultslider--result"
-                                :style="{ width: cssPercent(thisscan.algemeenbeeld), background: thisscan.algemeenbeeld ? '' : 'white' }"
+                                :style="{ width: cssPercent(thisscan.algemeenbeeld)}"
                             >
                             </div>
                         </div>
@@ -41,9 +41,9 @@
                         <span class="emphasis">{{ store.scan.instantie.title }}</span>
                     </div>
                     <div class="col-sm-10 resultslider--container">
-                        <div class="resultslider">
+                        <div class="resultslider" :style="{background: store.scan.algemeenbeeld ? '' : 'white'}">
                             <div class="resultslider--result"
-                                :style="{ width: cssPercent(store.scan.algemeenbeeld), background: store.scan.algemeenbeeld ? '' : 'white' }"
+                                :style="{ width: cssPercent(store.scan.algemeenbeeld)}"
                             >
                             </div>
                         </div>
@@ -58,9 +58,9 @@
                         <span class="emphasis">{{ thisscan.instantie.title }}</span>
                     </div>
                     <div class="col-sm-10 resultslider--container">
-                        <div class="resultslider">
+                        <div class="resultslider" :style="{ background: thisscan.algemeenbeeld ? '' : 'white' }">
                             <div class="resultslider--result"
-                                :style="{ width: cssPercent(thisscan.algemeenbeeld), background: thisscan.algemeenbeeld ? '' : 'white' }"
+                                :style="{ width: cssPercent(thisscan.algemeenbeeld)}"
                             >
                             </div>
                         </div>
@@ -97,14 +97,14 @@
             algemeenAverage: function () {
                 var algemeenresults = 0;
                 var algemeencount = 0;
-                if(store.isgroup && store.group.length) {
+                if(store.isgroup && store.group.scans) {
                     store.group.scans.forEach(function(thisscan){
                         if (thisscan.algemeenbeeld != null) {
                             algemeenresults = parseFloat(algemeenresults) + parseFloat(thisscan.algemeenbeeld);
                             algemeencount ++;
                         }
                     })
-                } else if (store.iscomparison && store.compares.length) {
+                } else if (store.iscomparison && store.compares.scans) {
                     store.compares.forEach(function(thisscan){
                         if (thisscan.algemeenbeeld != null) {
                             algemeenresults = parseFloat(algemeenresults) + parseFloat(thisscan.algemeenbeeld);
