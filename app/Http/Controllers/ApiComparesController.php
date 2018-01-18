@@ -8,12 +8,6 @@ use Illuminate\Http\Request;
 
 class ApiComparesController extends Controller
 {
-
-    public function indexscan(Scan $scan)
-    {
-        return Scan::with('compares.answers', 'compares.user', 'compares.instantie')->find($scan->id);
-    }
-
     /**
      * Store a newly created resource in storage.
      *

@@ -1,6 +1,6 @@
 <?php
 // Need some better place
-Route::get('/comparescans', 'PagesController@comparescans')->name('comparescans')->middleware('auth');
+Route::get('/comparescans', 'ComparisonsController@index')->name('comparescans');
 
 // Laravel Routes
 Auth::routes();

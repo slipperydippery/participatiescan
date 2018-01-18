@@ -21,7 +21,7 @@
                 	</div>
                 </div>
             </div>
-            <div class="row" v-else>
+            <div class="row" v-if=" ! store.isgroup">
                 <div class="col-sm-2"> {{ store.scan.user.name }} </div>
                 <div class="col-sm-2 table--instantie"> {{ store.scan.instantie.title }} </div>
                 <div class="col-sm-1 table--score"> {{ store.scan.algemeenbeeld }} </div>

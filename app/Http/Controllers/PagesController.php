@@ -33,14 +33,6 @@ class PagesController extends Controller
     	return view('pages.startscan');
     }
 
-    public function comparescans()
-    {
-        $user = Auth::user();
-        $districts = District::get();
-        $instanties = Instantie::get();
-        return view ('compare.comparescans', compact('user', 'districts', 'instanties'));
-    }   
-
     public function instructiefilms()
     {
         return view('pages.instructiefilms');

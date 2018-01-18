@@ -13,6 +13,20 @@ use Illuminate\Http\Request;
 |
 */
 
+// Refactor this into a "Comparison" model with an "ApiComparisonsController" and an "ApiScanComparisonsController"
+
+// Old:
+Route::resource('compares', 'ApiComparesController')->middleware('auth:api');
+
+// New: 
+Route::resource('scan.comparison', 'ApiScanComparisonsController')->middleware('auth:api');
+Route::resource('comparison', 'ApiComparisonsController')->middleware('auth:api');
+Route::get('/compare/scan/{scan}', 'ApiComparesController@indexscan')->middleware('auth:api');
+Route::get('/compare/{compare}/scan/{scan}', 'ApiComparesController@destroycompare')->middleware('auth:api');
+Route::post('/measure/{measure}/user/{user}', 'ApiMeasuresController@adduser')->middleware('auth:api');
+Route::get('/measure/{measure}/user/{user}/removeuser', 'ApiMeasuresController@removeuser')->middleware('auth:api');
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -49,7 +63,6 @@ Route::get('/scan/{scan}/user/', 'ApiScansController@getuser')->middleware('auth
 
 Route::resource('measure', 'ApiMeasuresController')->middleware('auth:api');
 Route::resource('district', 'ApiDistrictsController')->middleware('auth:api');
-Route::resource('compares', 'ApiComparesController')->middleware('auth:api');
 Route::resource('theme', 'ApiThemesController');
 Route::resource('instrument', 'ApiInstrumentsController');
 Route::resource('programma', 'ApiProgrammasController');
@@ -57,10 +70,7 @@ Route::resource('praktijkvoorbeeld', 'ApiPraktijkvoorbeeldsController');
 Route::resource('pdf', 'ApiPdfsController');
 Route::resource('link', 'ApiLinksController');
 
-Route::get('/compare/{compare}/scan/{scan}', 'ApiComparesController@destroycompare')->middleware('auth:api');
-Route::get('/compare/scan/{scan}', 'ApiComparesController@indexscan')->middleware('auth:api');
-Route::post('/measure/{measure}/user/{user}', 'ApiMeasuresController@adduser')->middleware('auth:api');
-Route::get('/measure/{measure}/user/{user}/removeuser', 'ApiMeasuresController@removeuser')->middleware('auth:api');
+
 
 Route::get('/user/{user}/nomorehints', 'ApiUsersController@nomorehints')->middleware('auth:api');
 Route::get('/user/{user}/turnonhints', 'ApiUsersController@turnonhints')->middleware('auth:api');

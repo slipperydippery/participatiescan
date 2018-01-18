@@ -120,9 +120,10 @@
             }, 
 
             getCompares: function(groupid) {
+                console.log('getting compares');
                 if(store.loggedin) {
                     var home = this;
-                    axios.get('/api/compare/scan/' + groupid)
+                    axios.get('/api/scan/' + groupid + '/comparison/')
                         .then(function(response){
                             store.compares = response.data.compares;
                             if(store.compares.length){
