@@ -20,7 +20,7 @@
 				>
 				</comparescan>
 				<div class="" v-if="scanstocompare">
-					Je hebt helaas geen scans om te vergelijken
+					Je hebt helaas geen scans om te vergelijken. Scans die gekoppeld zijn aan een groep kun je niet gebruiken om met andere scans te vergelijken. <a href="/scan/create">Maak een scan aan</a> om een vergelijking mee te kunnen maken. 
 				</div>
 				
 			</div>

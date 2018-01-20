@@ -7,13 +7,13 @@
 		</div>
 		<div class="row" >   
 			<div class="col-sm-12"> 
-				<div class="row row--table" v-for="scan in scan.compares">
-					<div class="col-sm-3"> <span class="emphasis">{{ scan.user.name }}</span> </div>
-					<div class="col-sm-3"> {{ scan.user.email }} </div>
-					<div class="col-sm-3"> {{ scan.instantie.title }} </div>
-					<div class="col-sm-2"> {{ answerCount(scan) }}/15 </div>
+				<div class="row row--table" v-for="comparison in scan.comparisons">
+					<div class="col-sm-3"> <span class="emphasis">{{ comparison.compared.user.name }}</span> </div>
+					<div class="col-sm-3"> {{ comparison.compared.user.email }} </div>
+					<div class="col-sm-3"> {{ comparison.compared.instantie.title }} </div>
+					<div class="col-sm-2"> {{ answerCount(comparison.compared) }}/15 </div>
 					<div class="col-sm-1"> 
-						<span class="clickable accept" @click=" confirm(scan) ">&#10004;</span>
+						<span class="clickable accept" @click="confirm(comparison) ">&#10004;</span>
 					</div>
 				</div>
 			</div>
@@ -36,7 +36,7 @@
 						<div class="col-sm-1">#beantwoord</div>
 						<div class="col-sm-1"></div>
 					</div>
-					<div class="row row--table clickable" v-for="scan in filteredscans" @click=" addCompare(scan) " title="Klik op deze scan om hem toe te voegen aan je vergelijking">
+					<div class="row row--table clickable" v-for="scan in filteredscans" @click=" addCompare(scan) " title="Klik op deze scan om hem toe te voegen aan je vergelijking" v-if="isUncompared(scan)">
 						<div class="col-sm-2"> <span class="emphasis">{{ scan.user.name }}</span> </div>
 						<div class="col-sm-3"> {{ scan.title }} </div>
 						<div class="col-sm-3"> <span v-for="district in scan.districts"> {{ district.title }} </span></div>
@@ -48,12 +48,12 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-12" v-if="scan.compares.length">
+			<div class="col-sm-12" v-if="scan.comparisons.length">
 				<a :href="'/scan/' + scan.id + '/results'" class="btn">Start vergelijking</a>
 			</div>
 			<div class="confirm--container" v-if="confirmremovecomparebox" v-on-click-outside="cancelremovecompare"> 
 				<div class="confirm">
-					<p>Weet je zeker dat je <strong>{{ confirmscan.user.name }}</strong> uit de vergelijking wilt verwijderen?</p>
+					<p>Weet je zeker dat je <strong>{{ confirmcomparison.compared.user.name }}</strong> uit de vergelijking wilt verwijderen?</p>
 					<button @click="confirmremovecompare">Ja</button>
 					<button @click="cancelremovecompare" class="btn--delete">Nee</button>
 				</div>
@@ -83,7 +83,7 @@
 				instantiefilter: "",
 				prefilteredscans: [],
 				filteredscans: [],
-				confirmscan: {},
+				confirmcomparison: {},
 			}
 		},
 
@@ -94,6 +94,17 @@
 		},
 
 		methods: {
+			isUncompared: function(scan) {
+				var notcompared = true;
+				this.scan.comparisons.forEach(function(thiscomparison){
+					if(scan.id == thiscomparison.compared.id) {
+						console.log('hello there');
+						notcompared = false;
+					}
+				})
+				return notcompared;
+			},
+
 			activateCompare: function() {
 				this.filteredscans =  this.allscans.slice();
 				this.active = ! this.active;
@@ -102,14 +113,16 @@
 			},
 
 			addCompare: function (scan) {
-				this.scan.compares.push(scan);
-				this.filteredscans.splice(this.filteredscans.indexOf(scan), 1);
+				// this.filteredscans.splice(this.filteredscans.indexOf(scan), 1);
 				var home = this;
-				axios.post('/api/compares', {
+				console.log(home.scan.id + ' and ' + scan.id) ;
+				axios.post('/api/comparison', {
 						scan: home.scan,
-						compare: scan
+						comparison: scan
 					})
 					.then(function(response){
+						console.log(response.data.id);
+						home.scan.comparisons.push({compared: scan, id: response.data.id});
 
 					})
 					.catch(function(error){
@@ -117,21 +130,20 @@
 					})
 			},
 
-			confirm: function (scan) {
-				this.confirmscan = scan;
+			confirm: function (comparison) {
+				this.confirmcomparison = comparison;
 				this.confirmremovecomparebox = true;
 			},
 
 			cancelremovecompare: function() {
-				this.confirmscan = {};
+				this.confirmcomparison = {};
 				this.confirmremovecomparebox = false;
 			},
 
 			confirmremovecompare: function () {
 				var home = this;
-				this.scan.compares.splice(this.scan.compares.indexOf(home.confirmscan), 1);
-				this.filteredscans.push(home.confirmscan);
-				axios.get('/api/compare/' + home.confirmscan.id + '/scan/' + home.scan.id)
+				this.scan.comparisons.splice(this.scan.comparisons.indexOf(home.confirmcomparison), 1);
+				axios.delete('/api/comparison/' + home.confirmcomparison.id)
 					.then(function(response){
 					})
 					.catch(function(error){
@@ -169,13 +181,6 @@
 					if(scan.id == home.scan.id) {
 						home.filteredscans.splice(home.filteredscans.indexOf(scan), 1);
 					}
-				})
-				home.filteredscans.forEach(function(scan){
-					home.scan.compares.forEach(function(compares){
-						if(scan.id == compares.id) {
-							home.filteredscans.splice(home.filteredscans.indexOf(scan), 1);
-						}
-					})
 				})
 			},
 

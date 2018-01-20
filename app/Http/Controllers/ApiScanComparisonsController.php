@@ -14,7 +14,7 @@ class ApiScanComparisonsController extends Controller
      */
     public function index(Scan $scan)
     {
-        return Scan::with('compares.answers', 'compares.user', 'compares.instantie')->find($scan->id);
+        return Scan::with('comparisons.compared.answers', 'comparisons.compared.user', 'comparisons.compared.instantie')->find($scan->id);
     }
 
     /**

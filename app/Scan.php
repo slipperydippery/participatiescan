@@ -63,9 +63,14 @@ class Scan extends Model
         return $this->belongsToMany('App\District');
     }
 
-    public function compares()
+    public function comparisonscans()
     {
-        return $this->belongsToMany('App\Scan', 'compare_scan', 'compare_id', 'scan_id');
+        return $this->belongsToMany('App\Scan', 'comparisons', 'scan_id', 'comparison_id')->withTimestamps();
+    }
+
+    public function comparisons()
+    {
+        return $this->hasMany('App\Comparison');
     }
 
     public static function registerWithGroup(User $user, Group $group, $attributes)

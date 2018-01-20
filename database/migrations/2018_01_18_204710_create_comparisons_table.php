@@ -14,13 +14,15 @@ class CreateComparisonsTable extends Migration
     public function up()
     {
         Schema::create('comparisons', function (Blueprint $table) {
-            $table->integer('compare_id')->unsigned();
+            $table->increments('id');
+            $table->integer('comparison_id')->unsigned();
             $table->integer('scan_id')->unsigned();
 
             $table->foreign('scan_id')->references('id')->on('scans');
-            $table->foreign('compare_id')->references('id')->on('scans');
+            $table->foreign('comparison_id')->references('id')->on('scans');
 
-            $table->primary(array('scan_id', 'compare_id'));
+            // $table->primary(array('id', 'scan_id', 'comparison_id'));
+            $table->timestamps();
         });
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comparison;
 use Illuminate\Http\Request;
 
 class ApiComparisonsController extends Controller
@@ -34,7 +35,11 @@ class ApiComparisonsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comparison = Comparison::create([
+            'scan_id' => $request->scan['id'],
+            'comparison_id' => $request->comparison['id']
+        ]);
+        return $comparison;
     }
 
     /**
@@ -77,8 +82,8 @@ class ApiComparisonsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comparison $comparison)
     {
-        //
+        $comparison->delete();
     }
 }

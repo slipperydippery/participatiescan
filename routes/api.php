@@ -16,15 +16,14 @@ use Illuminate\Http\Request;
 // Refactor this into a "Comparison" model with an "ApiComparisonsController" and an "ApiScanComparisonsController"
 
 // Old:
-Route::resource('compares', 'ApiComparesController')->middleware('auth:api');
+// Route::resource('compares', 'ApiComparesController')->middleware('auth:api');
+// Route::get('/compare/{compare}/scan/{scan}', 'ApiComparesController@destroycompare')->middleware('auth:api');
+
+// WIP:
 
 // New: 
 Route::resource('scan.comparison', 'ApiScanComparisonsController')->middleware('auth:api');
 Route::resource('comparison', 'ApiComparisonsController')->middleware('auth:api');
-Route::get('/compare/scan/{scan}', 'ApiComparesController@indexscan')->middleware('auth:api');
-Route::get('/compare/{compare}/scan/{scan}', 'ApiComparesController@destroycompare')->middleware('auth:api');
-Route::post('/measure/{measure}/user/{user}', 'ApiMeasuresController@adduser')->middleware('auth:api');
-Route::get('/measure/{measure}/user/{user}/removeuser', 'ApiMeasuresController@removeuser')->middleware('auth:api');
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -71,6 +70,9 @@ Route::resource('pdf', 'ApiPdfsController');
 Route::resource('link', 'ApiLinksController');
 
 
+
+Route::post('/measure/{measure}/user/{user}', 'ApiMeasuresController@adduser')->middleware('auth:api');
+Route::get('/measure/{measure}/user/{user}/removeuser', 'ApiMeasuresController@removeuser')->middleware('auth:api');
 
 Route::get('/user/{user}/nomorehints', 'ApiUsersController@nomorehints')->middleware('auth:api');
 Route::get('/user/{user}/turnonhints', 'ApiUsersController@turnonhints')->middleware('auth:api');
