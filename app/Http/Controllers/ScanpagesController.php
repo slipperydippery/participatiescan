@@ -14,7 +14,7 @@ class ScanpagesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('owner');
+        $this->middleware('owner', ['except' => ['loggless']]);
     }
 
 	public function loggless()
