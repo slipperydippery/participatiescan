@@ -2,42 +2,25 @@
 
 use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-// Refactor this into a "Comparison" model with an "ApiComparisonsController" and an "ApiScanComparisonsController"
-
-// Old:
-// Route::resource('compares', 'ApiComparesController')->middleware('auth:api');
-// Route::get('/compare/{compare}/scan/{scan}', 'ApiComparesController@destroycompare')->middleware('auth:api');
-
-// WIP:
-
-// New: 
-Route::resource('scan.comparison', 'ApiScanComparisonsController')->middleware('auth:api');
-Route::resource('comparison', 'ApiComparisonsController')->middleware('auth:api');
-
-
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::post('/group', 'ApiGroupsController@store')->middleware('auth:api');
-Route::patch('/group/{group}', 'ApiGroupsController@update')->middleware('auth:api');
+// Refactor these:
+// Route::resource('user.group', 'ApiUserGroupsController')->middleware('auth:api');
 Route::get('/group/user/{user}', 'ApiGroupsController@index')->middleware('auth:api');
-Route::get('/group/{group}', 'ApiGroupsController@show')->middleware('auth:api');
+// Route::resource('group.user', 'ApiGroupUsersController')->middleware('auth:api');
 Route::get('/group/{group}/users', 'ApiGroupsController@indexusers')->middleware('auth:api');
+// Route::resource('group.district', 'ApiGroupDistrictsController')->middleware('auth:api');
 Route::post('/group/{group}/updatedistricts', 'ApiGroupsController@updatedistricts')->middleware('auth:api');
+// Route::resource('group.scan', 'ApiGroupScansController')->middleware('auth:api');
 Route::post('/group/{group}/storescan', 'ApiGroupsController@storescan')->middleware('auth:api');
 Route::get('/group/{group}/removescan/{scan}', 'ApiGroupsController@removescan')->middleware('auth:api');
+
+// Route::resource('group', 'ApiGroupsController')->middleware('auth:api');
+Route::post('/group', 'ApiGroupsController@store')->middleware('auth:api');
+Route::patch('/group/{group}', 'ApiGroupsController@update')->middleware('auth:api');
+Route::get('/group/{group}', 'ApiGroupsController@show')->middleware('auth:api');
+
 Route::get('/grouprequest/{group}', 'ApiGrouprequestsController@index')->middleware('auth:api');
 Route::get('/grouprequest/{grouprequest}/accept', 'ApiGrouprequestsController@accept')->middleware('auth:api');
 Route::get('/grouprequest/{grouprequest}/deny', 'ApiGrouprequestsController@deny')->middleware('auth:api');
@@ -63,6 +46,8 @@ Route::get('/scan/{scan}/user/', 'ApiScansController@getuser')->middleware('auth
 Route::resource('measure', 'ApiMeasuresController')->middleware('auth:api');
 Route::resource('district', 'ApiDistrictsController')->middleware('auth:api');
 Route::resource('theme', 'ApiThemesController');
+Route::resource('scan.comparison', 'ApiScanComparisonsController')->middleware('auth:api');
+Route::resource('comparison', 'ApiComparisonsController')->middleware('auth:api');
 Route::resource('instrument', 'ApiInstrumentsController');
 Route::resource('programma', 'ApiProgrammasController');
 Route::resource('praktijkvoorbeeld', 'ApiPraktijkvoorbeeldsController');

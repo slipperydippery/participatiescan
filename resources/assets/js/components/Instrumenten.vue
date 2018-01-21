@@ -74,11 +74,11 @@
 			},
 
 			searchedAndFilteredInstruments: function () {
-				var self = this;
-				return self.filteredInstruments.filter(function(instrument) {
-					if( (instrument.description.toLowerCase().indexOf(self.search.toLowerCase()) !== -1) ||
-						(instrument.title.toLowerCase().indexOf(self.search.toLowerCase()) !== -1) ||
-						(instrument.adress.toLowerCase().indexOf(self.search.toLowerCase()) !== -1) 
+				var home = this;
+				return home.filteredInstruments.filter(function(instrument) {
+					if( (instrument.description.toLowerCase().indexOf(home.search.toLowerCase()) !== -1) ||
+						(instrument.title.toLowerCase().indexOf(home.search.toLowerCase()) !== -1) ||
+						(instrument.adress.toLowerCase().indexOf(home.search.toLowerCase()) !== -1) 
 					)
 					{
 						return true;
@@ -87,16 +87,16 @@
 			},
 
 			filteredInstruments: function () {
-				var self = this;
-				return self.instruments.filter(function (instrument) {
-					for(var thema in self.checkedThemas)
+				var home = this;
+				return home.instruments.filter(function (instrument) {
+					for(var thema in home.checkedThemas)
 					{
-						if(instrument.themas.includes(self.checkedThemas[thema]))
+						if(instrument.themas.includes(home.checkedThemas[thema]))
 						{
 							return true;
 						}
 					}
-					if(self.checkedThemas.length == 0)
+					if(home.checkedThemas.length == 0)
 					{
 						return true;
 					}

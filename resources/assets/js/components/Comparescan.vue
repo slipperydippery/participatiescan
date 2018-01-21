@@ -7,14 +7,26 @@
 		</div>
 		<div class="row" >   
 			<div class="col-sm-12"> 
+				<div class="row row--table table-header">
+					<div class="col-sm-2">Naam persoon</div>
+					<div class="col-sm-3">Naam scan</div>
+					<div class="col-sm-3">Gemeenten</div>
+					<div class="col-sm-2">Instantie</div>
+					<div class="col-sm-1">#beantwoord</div>
+					<div class="col-sm-1"></div>
+				</div>
 				<div class="row row--table" v-for="comparison in scan.comparisons">
-					<div class="col-sm-3"> <span class="emphasis">{{ comparison.compared.user.name }}</span> </div>
-					<div class="col-sm-3"> {{ comparison.compared.user.email }} </div>
-					<div class="col-sm-3"> {{ comparison.compared.instantie.title }} </div>
-					<div class="col-sm-2"> {{ answerCount(comparison.compared) }}/15 </div>
+					<div class="col-sm-2"> <span class="emphasis">{{ comparison.compared.user.name }}</span> </div>
+					<div class="col-sm-3"> {{ comparison.compared.title }} </div>
+					<div class="col-sm-3"> <span v-for="district in comparison.compared.districts"> {{ district.title }} </span> </div>
+					<div class="col-sm-2"> {{ comparison.compared.instantie.title }} </div>
+					<div class="col-sm-1"> {{ answerCount(comparison.compared) }}/15 </div>
 					<div class="col-sm-1"> 
 						<span class="clickable accept" @click="confirm(comparison) ">&#10004;</span>
 					</div>
+				</div>
+				<div class="row row--table row--empty" v-if="! scan.comparisons.length">
+					<span class="center"><h5>--- nog geen scans in deze vergelijking ---</h5></span>
 				</div>
 			</div>
 			<div class="col-sm-12">
