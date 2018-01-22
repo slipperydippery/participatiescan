@@ -13,6 +13,7 @@
             <br><br>
             <a href=" {{ route('scan.results', $scan) }} " class="btn btn--fullwidth ">Bekijk de resultaten</a> <br> <br>
             <a href=" {{ route('scan.startscan', $scan) }} " class="btn btn--fullwidth btn--secondary">Doe de scan opnieuw</a> <br> <br>
+            <a href=" {{ route('scan.measureresults', $scan) }} " class="btn btn--fullwidth">Bekijk de actiepunten</a> <br><br>
             <a href=" {{ route('home', $scan) }} " class="btn btn--fullwidth btn--tertiary">Naar je dashboard</a>
         </div>
     </div>

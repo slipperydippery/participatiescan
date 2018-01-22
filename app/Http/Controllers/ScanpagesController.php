@@ -114,4 +114,13 @@ class ScanpagesController extends Controller
         $scan = Scan::with('answers', 'user', 'instantie', 'measures.users')->findOrFail($scan->id);
         return view('scan.results', compact('scan', 'scanmodel'));
     }
+
+    public function measureresults(Scan $scan)
+    {
+        $measurescan = $scan;
+        if(count($scan->group)){
+            $measurescan = $scan->group->owner;
+        }
+        return view('scan.measureresults', compact('scan', 'measurescan'));
+    }
 }
