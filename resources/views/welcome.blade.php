@@ -21,7 +21,7 @@
             <div class="row container">
                 <div class="col-sm-4">
                     <a href=" {{ route('instructiefilms') }} ">
-                        <div class="infoblock" title="Met de Participatiescan werk je als leidinggevende of beleidsmaker samen met netwerkpartners aan het versterken van de regionale aanpak om jongeren in een kwetsbare positie naar werk te begeleiden. Maak een account aan, nodig 12 netwerkpartners uit voor een gezamenlijke analyse van 15 bewezen succesfactoren en kom samen tot een verbeteragenda. Vergelijk online jouw dashboard met andere deelnemers of, nog beter, bespreek de resultaten met elkaar aan tafel.">
+                        <div class="infoblock">
                             <h4>Instructiefilms</h4>
                             <img src="/img/movie.svg" alt="">
                         </div>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-sm-4">
                     <a href=" {{ route('kennisbank') }} ">
-                        <div class="infoblock" title="Uit onderzoek en de praktijk weten we veel over de optimale weg van school naar werk van jongeren in een kwetsbare positie. Met de scan gaan netwerkpartners het gesprek aan over 15 bewezen succesfactoren. De kennisbank bevat nog meer kennis, goede praktijkvoorbeelden en tips & tricks om tot een optimale aanpak te komen in de regio.">
+                        <div class="infoblock">
                             <h4>Kennisbank</h4>
                             <img src="/img/books.svg" alt="">
                         </div>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-sm-4">
                     <a href=" {{ route('pmonitor') }} ">
-                        <div class="infoblock" title="De cijfers in de participatiemonitor geven inzicht in de omvang van de potentiele doelgroep in de regio. Deze data levert extra input voor het voelen van de urgentie en het aangaan van het gesprek.">
+                        <div class="infoblock">
                             <h4>Cijfers uit jouw regio</h4>
                             <img src="/img/nederland.svg" alt="">
                         </div>
