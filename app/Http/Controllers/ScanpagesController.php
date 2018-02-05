@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Jobs\SendScancompleteEmail;
 use Illuminate\Support\Facades\Auth;
 
-class ScanpagesController extends Controller
+class ScanPagesController extends Controller
 {
     public function __construct()
     {
