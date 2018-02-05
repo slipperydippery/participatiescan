@@ -21,7 +21,7 @@
                 v-on:change="onChange"
             >
             <span class="question--answer" v-if=" store.scan.answers[question.id - 1].answer " >{{ store.scan.answers[question.id - 1].answer }}</span>
-            <span class="question--answer" v-else >-</span>
+            <span class="question--answer question--answer__preanswer" v-else >5</span>
         </div>
     </div>
 </template>

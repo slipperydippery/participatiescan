@@ -6,7 +6,9 @@
             v-model="scan.algemeenbeeld" 
             v-on:change="onChange"
         >
-        <span class="question--answer">{{ scan.algemeenbeeld }}</span>
+        <span class="question--answer" v-if="scan.algemeenbeeld">{{ scan.algemeenbeeld }}</span>
+        <span class="question--answer question--answer__preanswer" v-else>5</span>
+
     </div>
 </template>
 
