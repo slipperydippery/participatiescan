@@ -12,7 +12,7 @@
 				
 			</ul>
 			<div class="nomorehints clearfix" v-if="loggedin">
-				<span class="btn btn--small right" @click="noMoreHints()">Hints uitzetten</span>
+				<span class="btn btn--small right" @click="noMoreHints()">Hints overal uitzetten</span>
 			</div>
 			
 		</div>
