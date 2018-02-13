@@ -131,7 +131,8 @@ class ScansController extends Controller
      */
     public function destroy(Scan $scan)
     {
-        $scan->compares()->detach();
+        $scan->comparisonscans()->delete();
+        $scan->comparisons()->delete();
         $scan->districts()->detach();
         $scan->delete();
         return redirect()->route('home');
@@ -139,7 +140,8 @@ class ScansController extends Controller
 
     public function selfdestruct(Scan $scan)
     {
-        $scan->compares()->detach();
+        $scan->comparisonscans()->delete();
+        $scan->comparisons()->delete();
         $scan->districts()->detach();
         $scan->delete();
         return redirect()->route('home');   
