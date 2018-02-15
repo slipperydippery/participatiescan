@@ -10,6 +10,7 @@ use App\District;
 use App\Question;
 use App\Instantie;
 use App\Scanmodel;
+use App\Comparison;
 use App\Dashmessage;
 use App\Grouprequest;
 use Illuminate\Http\Request;
@@ -140,7 +141,19 @@ class ScansController extends Controller
 
     public function selfdestruct(Scan $scan)
     {
-        $scan->comparisons()->delete();
+        // foreach($scan->comparisonscans as $comparescan) {
+        //     $comparescan->comparisons()->delete();
+        // }
+        Comparison::where('comparison_id', $scan->id)->delete();
+        Comparison::where('scan_id', $scan->id)->delete();
+        // foreach($scan->iscomparedby->where('scan_id', $scan->id) as $comparescan) {
+        //     return 'iscomparedby';
+        //     $comparescan->comparisons()->delete();
+        // }
+        // foreach($scan->comparisons as $comparison){
+        //     $comparison->delete();
+        // }
+        // $scan->comparisons()->delete();
         $scan->districts()->detach();
         $scan->delete();
         return redirect()->route('home');   

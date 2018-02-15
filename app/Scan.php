@@ -68,6 +68,11 @@ class Scan extends Model
         return $this->belongsToMany('App\Scan', 'comparisons', 'scan_id', 'comparison_id')->withTimestamps();
     }
 
+    public function iscomparedby()
+    {
+        return $this->belongsToMany('App\Scan', 'comparisons', 'comparison_id', 'scan_id');
+    }
+
     public function comparisons()
     {
         return $this->hasMany('App\Comparison');
