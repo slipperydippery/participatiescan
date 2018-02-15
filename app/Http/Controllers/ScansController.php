@@ -126,7 +126,7 @@ class ScansController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $idate()
      * @return \Illuminate\Http\Response
      */
     public function destroy(Scan $scan)
@@ -140,7 +140,6 @@ class ScansController extends Controller
 
     public function selfdestruct(Scan $scan)
     {
-        $scan->comparisonscans()->delete();
         $scan->comparisons()->delete();
         $scan->districts()->detach();
         $scan->delete();
