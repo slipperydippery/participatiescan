@@ -21,6 +21,9 @@
   },
   "dependencies": {
     "@lassehaslev/vue-confirm": "^1.1.1",
-    "vue-on-click-outside": "^1.0.3"
+    "moment": "^2.20.1",
+    "vue-momentjs": "^0.1.1",
+    "vue-on-click-outside": "^1.0.3",
+    "vuejs-datepicker": "^0.9.26"
   }
 }

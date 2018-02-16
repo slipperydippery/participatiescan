@@ -23,6 +23,7 @@ Route::get('/scan/{scan}/algemeenbeeld', 'ScanPagesController@algemeenbeeld')->n
 Route::get('/scan/{scan}/algemeenbeeldresultaten', 'ScanPagesController@algemeenbeeldresultaten')->name('scan.algemeenbeeldresultaten');
 Route::get('/scan/{scan}/showscan', 'ScanPagesController@showscan')->name('scan.showscan');
 Route::get('/scan/{scan}/showmeasures', 'ScanPagesController@showmeasures')->name('scan.showmeasures');
+Route::get('/scan/{scan}/calendar', 'ScanPagesController@calendar')->name('scan.calendar');
 Route::get('/scan/{scan}/complete', 'ScanPagesController@scancomplete')->name('scan.complete');
 Route::get('/scan/{scan}/emailresults', 'ScanPagesController@emailresults')->name('scan.emailresults');
 Route::get('/scan/{scan}/resultsmailed', 'ScanPagesController@resultsmailed')->name('scan.resultsmailed');

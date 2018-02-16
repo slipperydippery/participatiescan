@@ -7,6 +7,7 @@ use App\User;
 use App\Scanmodel;
 use App\Instrument;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Jobs\SendScancompleteEmail;
 use Illuminate\Support\Facades\Auth;
 
@@ -83,6 +84,18 @@ class ScanPagesController extends Controller
         $scanmodel = $scan->scanmodel->with('themes.questions')->first();
         $scan = Scan::with('user', 'measures.users')->findOrFail($scan->id);
         return view('scan.measures', compact('scan', 'scanmodel'));
+    }
+
+    public function calendar(Scan $scan)
+    {   
+
+        if((! count($scan->group)) || (! Auth::user() == $scan->group->user )){
+            return view('scan.complete', compact('scan'));
+        }
+        if(count($scan->scandate)){
+            $scan = Scan::with('scandate')->find($scan->id);
+        } 
+        return view('scan.calendar', compact('scan', 'scandate'));
     }
 
     public function scancomplete(Scan $scan)

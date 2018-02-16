@@ -141,7 +141,8 @@
                 if(store.activetheme < 3) {
                     store.activetheme ++;
                 } else {
-                    window.location.href = '/scan/' + store.scan.id + '/complete';
+                    window.location.href = '/scan/' + store.scan.id + '/calendar';
+                    // window.location.href = '/scan/' + store.scan.id + '/complete';
                 } 
                 this.storeScan();
             },

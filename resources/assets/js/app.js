@@ -83,7 +83,6 @@ Vue.component('results-container', require('./components/ResultsContainer.vue'))
 Vue.component('algemeenbeeld-section', require('./components/AlgemeenbeeldSection.vue'));
 
 Vue.component('algemeenbeeld', require('./components/Algemeenbeeld.vue'));
-Vue.component('algemeenbeeldresultaten', require('./components/Algemeenbeeldresultaten.vue'));
 
 Vue.component('groupmanager', require('./components/Groupmanager.vue'));
 Vue.component('comparemanager', require('./components/Comparemanager.vue'));
@@ -103,15 +102,24 @@ Vue.component('praktijkvoorbeelds', require('./components/Praktijkvoorbeelds.vue
 Vue.component('pdfs', require('./components/Pdfs.vue'));
 Vue.component('links', require('./components/Links.vue'));
 
+Vue.component('dateholder', require('./components/Dateholder.vue'));
+
+import Datepicker from 'vuejs-datepicker';
+
+Vue.use(Datepicker);
+
+ 
 const app = new Vue({
     el: '#app',
+    components: {
+        Datepicker
+    },
     data: {
 		pageboolean: false,
 		showdeletescan: false,
     }
 
 });
-
 
 
 

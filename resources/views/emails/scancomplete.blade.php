@@ -7,4 +7,10 @@
 	@endif
 @endforeach
 
+@if(count($scan->scandate))
+	<p>Op {{ $scan->scandate->date_readable }} is een bijeenkomst gepland om de uitgevoerde actiepunten om te zetten naar een werkagenda. </p>
+@else
+	<p>Er is nog geen datum gepland om de uitgevoerde actiepunten om te zetten naar een werkagenda.</p>
+@endif
+
 <p>Je kunt de scan natuurlijk ook bekijken via jouw account.</p>

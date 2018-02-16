@@ -42,6 +42,7 @@ Route::post('/scan/{scan}/answers/{answer}', 'ApiScansController@postanswer')->m
 Route::post('/answer/{answer}', 'ApiAnswersController@update')->middleware('auth:api');
 Route::get('/scan/{scan}/theme/{theme}/questions', 'ApiScansController@indexquestions')->middleware('auth:api');
 Route::get('/scan/{scan}/user/', 'ApiScansController@getuser')->middleware('auth:api');
+Route::post('/scan/{scan}/scandate', 'ApiScandateController@update')->middleware('auth:api');
 
 Route::resource('measure', 'ApiMeasuresController')->middleware('auth:api');
 Route::resource('district', 'ApiDistrictsController')->middleware('auth:api');

@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+clet mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------

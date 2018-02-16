@@ -78,6 +78,11 @@ class Scan extends Model
         return $this->hasMany('App\Comparison');
     }
 
+    public function scandate()
+    {
+        return $this->hasOne('App\Scandate');
+    }
+
     public static function registerWithGroup(User $user, Group $group, $attributes)
     {
         $scan = new Scan($attributes);
