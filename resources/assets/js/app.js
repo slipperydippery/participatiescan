@@ -29,7 +29,7 @@ export let store = {
 			 { "id": 13, "answer": null},
 			 { "id": 14, "answer": null},
 			 { "id": 15, "answer": null},
-		]
+		],
 	},
     activetheme: 1,
     activequestion: 0,
@@ -83,6 +83,7 @@ Vue.component('results-container', require('./components/ResultsContainer.vue'))
 Vue.component('algemeenbeeld-section', require('./components/AlgemeenbeeldSection.vue'));
 
 Vue.component('algemeenbeeld', require('./components/Algemeenbeeld.vue'));
+Vue.component('algemeenbeeldresultaten', require('./components/Algemeenbeeldresultaten.vue'));
 
 Vue.component('groupmanager', require('./components/Groupmanager.vue'));
 Vue.component('comparemanager', require('./components/Comparemanager.vue'));
