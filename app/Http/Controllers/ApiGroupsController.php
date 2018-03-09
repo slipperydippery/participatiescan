@@ -10,6 +10,7 @@ use App\District;
 use App\Scanmodel;
 use App\Districtmodel;
 use Illuminate\Http\Request;
+use App\Jobs\SendGroupremovedEmail;
 use Illuminate\Support\Facades\Auth;
 
 class ApiGroupsController extends Controller
@@ -143,8 +144,14 @@ class ApiGroupsController extends Controller
 
     public function removescan(Group $group, Scan $scan)
     {
-        $scan->group()->dissociate();
-        $scan->save();
+        // $scan->group()->dissociate();
+        // $scan->save();
+
+        $user = $scan->user;
+        $owner = $group->user;
+
+        dispatch(new SendGroupremovedEmail($user, $group, $owner));
+
         return $group;
     }
 }

@@ -74,6 +74,7 @@
 			<div class="confirm--container" v-if="confirmdeleteuserbox" v-on-click-outside="canceldeleteuser"> 
 				<div class="confirm">
 					<p>Weet je zeker dat je <strong>{{ confirmscan.user.name }}</strong> uit de groep wilt verwijderen?</p>
+					<p>Zo ja, dan ontvangt {{ confirmscan.user.name }} een mail hierover met de mogelijkheid om contact op te nemen.</p>
 					<button @click="confirmdeleteuser">Ja</button>
 					<button @click="canceldeleteuser" class="btn--delete">Nee</button>
 				</div>

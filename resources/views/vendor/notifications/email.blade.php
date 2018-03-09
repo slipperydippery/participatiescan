@@ -45,7 +45,7 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-Regards,<br>{{ config('app.name') }}
+Vriendelijke groeten,<br> de Participatiescan
 @endif
 
 {{-- Subcopy --}}
