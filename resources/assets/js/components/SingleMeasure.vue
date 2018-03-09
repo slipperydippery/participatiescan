@@ -29,7 +29,8 @@
                         </textarea>
                     </div>
                 </div>
-                <div class="row resultstable--row" v-if="store.isgroup">
+
+                <div class="row resultstable--row" v-if="store.isgroup && (! isntOwner)">
                     <div class="col-sm-2">
                         Trekker
                     </div>
@@ -47,6 +48,28 @@
                             v-for="user in passiveusers" 
                             @click="addUser(user)"
                             class="clickable selectable selectable--passive"
+                        > 
+                            {{ user.name }} 
+                        </span><br>    
+                    </div>
+                </div>
+
+                <div class="row resultstable--row" v-if="store.isgroup && isntOwner">
+                    <div class="col-sm-2">
+                        Trekker
+                    </div>
+                    <div class="col-sm-5">
+                        <span 
+                            v-for="user in store.group.owner.measures[this.measure].users" 
+                            class=" selectable selectable--active"
+                        > 
+                            {{ user.name }} 
+                        </span>
+                    </div>
+                    <div class="col-sm-5">
+                        <span 
+                            v-for="user in passiveusers" 
+                            class=" selectable selectable--passive"
                         > 
                             {{ user.name }} 
                         </span><br>    
