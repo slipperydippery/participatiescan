@@ -7,10 +7,16 @@
 		$date_readable = false;
 	?>
 
-	@if(count($scan->scandate))
+	@if($scan->scandate)
 		<?php 
 			$date_readable = $scan->scandate 
 		?>
+	@endif
+		
+	@if($scan->scandate)
+		<p class="scandate">op {{ $scan->scandate->date_readable }} is een bijeenkomst gepland om de uitgevoerde actiepunten om te zetten naar een werkagenda </p>
+	@else
+		<p class="scandate">Er is nog geen datum gepland om de uitgevoerde actiepunten om te zetten naar een werkagenda</p>
 	@endif
 
 	<results-container
@@ -21,10 +27,5 @@
 	>
 	</results-container>
 
-	@if(count($scan->scandate))
-		<p>op {{ $scan->scandate->date_readable }} is een bijeenkomst gepland om de uitgevoerde actiepunten om te zetten naar een werkagenda </p>
-	@else
-		<p>Er is nog geen datum gepland om de uitgevoerde actiepunten om te zetten naar een werkagenda</p>
-	@endif
 
 @endsection
