@@ -7,14 +7,9 @@
 		$date_readable = false;
 	?>
 
-	@if($scan->scandate)
-		<?php 
-			$date_readable = $scan->scandate 
-		?>
-	@endif
 		
-	@if($scan->scandate)
-		<p class="scandate">op {{ $scan->scandate->date_readable }} is een bijeenkomst gepland om de uitgevoerde actiepunten om te zetten naar een werkagenda </p>
+	@if($scan->followup)
+		<p class="scandate">op {{ $scan->followup->date }} om {{ $scan->followup->time }} is een bijeenkomst gepland om de uitgevoerde actiepunten om te zetten naar een werkagenda </p>
 	@else
 		<p class="scandate">Er is nog geen datum gepland om de uitgevoerde actiepunten om te zetten naar een werkagenda</p>
 	@endif

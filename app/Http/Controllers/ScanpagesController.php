@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Scan;
 use App\User;
+use App\Followup;
 use App\Scanmodel;
 use App\Instrument;
 use Illuminate\Http\Request;
@@ -135,5 +136,22 @@ class ScanPagesController extends Controller
             $measurescan = $scan->group->owner;
         }
         return view('scan.measureresults', compact('scan', 'measurescan'));
+    }
+
+    public function commitdatetime(Request $request, Scan $scan)
+    {
+        if($scan->followup){
+            $scan->followup->date = $request->date;
+            $scan->followup->time = $request->time;
+            $scan->followup->save();
+            return redirect()->route('scan.complete', $scan);
+        }
+        $followup = new Followup([
+            'date' => $request->date,
+            'time' => $request->time,
+            'scan_id' => $scan->id
+        ]);
+        $followup->save();
+        return redirect()->route('scan.complete', $scan);
     }
 }

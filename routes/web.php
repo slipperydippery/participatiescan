@@ -29,6 +29,7 @@ Route::get('/scan/{scan}/emailresults', 'ScanPagesController@emailresults')->nam
 Route::get('/scan/{scan}/resultsmailed', 'ScanPagesController@resultsmailed')->name('scan.resultsmailed');
 Route::get('/scan/{scan}/results', 'ScanPagesController@results')->name('scan.results');
 Route::get('/scan/{scan}/measureresults', 'ScanPagesController@measureresults')->name('scan.measureresults');
+Route::post('/scan/{scan}/commitdatetime', 'ScanPagesController@commitdatetime')->name('scan.commitdatetime');
 
 // PagesController
 Route::get('/', 'PagesController@welcome')->name('welcome');

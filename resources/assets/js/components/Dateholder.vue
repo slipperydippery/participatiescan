@@ -13,11 +13,11 @@
 		</div>
 
 		<div class="row" >
-            <div class="col-sm-12" v-if="isntOwner">
+            <div class="col-sm-12" v-if="! isntOwner">
                 <button @click="logdate">bevestig</button>
                 <button @click="slaover">sla over</button>
             </div>
-            <div class="col-sm-12" v-if="! isntOwner">
+            <div class="col-sm-12" v-else>
                 <button @click="slaover">ok</button>
             </div>
 		</div>
@@ -57,10 +57,10 @@
 
         computed: {
             isntOwner: function() {
-                if(! this.workscan.isgroup) {
+                if(! this.workscan.group_id) {
                     return false;
                 } else {
-                    if(this.workscan.group.owner.id == this.workscan.id) {
+                    if(this.workscan.group_id == this.workscan.id) {
                         return false;
                     }
                     return true;

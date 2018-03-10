@@ -136,8 +136,6 @@
             
             @yield('content')
 
-
-
         </div>
     </div>
 
@@ -152,5 +150,7 @@
     
     <script src="https://vjs.zencdn.net/5.17.0/video.js"></script>        
     <script src="{{ asset('js/app.js') }}"></script>
+
+    @yield('additional-scripts')
 </body>
 </html>

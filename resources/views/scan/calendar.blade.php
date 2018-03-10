@@ -9,9 +9,86 @@
     	</div>
     </div>
 
-	<dateholder
-		:workscan=" {{ $scan }} "
-	>
-	</dateholder>
+    {!! Form::open(['route' => ['scan.commitdatetime', $scan->id]]) !!}
+        <div class="col-sm-8 date__container">
+           <label for="datepicker"><h4>
+            Plan een vervolgdatum voor het maken van de werkagenda. </h4></label>
+            <div class="col-sm-6 ">
+                <input id="date" class="hidden" name="date" type="text" placeholder="Choose a date">
+            </div>
+            <div class="col-sm-6 ">
+                <!-- Tijd Form Input -->
+                <div class="form-group">
+                    <input id="time" class="hidden" type="time" name="time">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-12 thema-submit-container">
+            <!-- Add Submit Field -->
+            <div class="form-group">
+                {!! Form::submit('Sla datum op', ['class' => 'btn']) !!}
+                <a href=" {{ URL::route('scan.complete', $scan) }}"  class="btn" > Overslaan</a>
+            </div>
+            
+            {{-- <a class="button thema-submit" href="{{ URL::route('scans.actiesmailen', [$scan]) }}">Verbeteracties Mailen</a><br> --}}
+        </div>  
+    {!! Form::close() !!}
+
 
 @endsection
+
+@section('additional-scripts')    
+    <script src="{{ URL::asset('/js/picker.js') }}"></script>
+    <script src="{{ URL::asset('/js/picker.date.js') }}"></script>
+    <script src="{{ URL::asset('/js/picker.time.js') }}"></script>
+
+    <script>
+      $(function() {
+        // Enable Pickadate on an input field
+        $('#time').pickatime({
+            formatSubmit: 'HH:i',
+            hiddenName: true
+        });
+        $('#date').pickadate({
+            monthsFull: [ 'januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december' ],
+            monthsShort: [ 'jan', 'feb', 'maa', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec' ],
+            weekdaysFull: [ 'zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag' ],
+            weekdaysShort: [ 'zo', 'ma', 'di', 'wo', 'do', 'vr', 'za' ],
+            formatSubmit: 'yyyy/mm/dd',
+            hiddenName: true,
+            today: '',
+            clear: '',
+            close: ''
+        });
+      });   
+    </script>
+
+
+    <script>
+        function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10)
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                timer = 0;
+            }
+        }, 1000);
+    }
+
+    window.onload = function () {
+        var fifteenMinutes = 60 * 15,
+            display = document.querySelector('#time');
+        startTimer(fifteenMinutes, display);
+    };
+    </script>
+
+@stop
