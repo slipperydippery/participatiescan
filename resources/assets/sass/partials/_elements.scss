@@ -1,3 +1,14 @@
+.infoblock--container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;	
+	.infoblock--colcontainer {
+		.infoblock {
+			height: 90%;
+		}
+	}
+}
+
 .infoblock {
 	position: relative;
 	margin: 2rem 0;
@@ -66,6 +77,12 @@
 	}
 	.close:hover {
 		opacity: 1;
+	}
+
+	span.infoblock--name {
+		// display: inline-block;
+		// height: 1rem;
+		// overflow: hidden;
 	}
 }
 

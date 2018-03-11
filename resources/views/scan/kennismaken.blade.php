@@ -11,8 +11,8 @@
 </div>
 <div class="row content--page">
 	<div class="col-sm-12">
-        <div class="row">
-                <div class="col-sm-2">
+        <div class="row infoblock--container">
+                <div class="col-sm-2 infoblock--colcontainer">
                     <div class="infoblock">
                             <span class="beheerder">beheerder</span>
                         @if($group->owner->user->isOnline())
@@ -22,15 +22,15 @@
                         @endif
                         <img src="/img/user.svg" alt="">
                         <div class="infoblock--padded">
-                            <span>{{ $group->owner->user->name }}</span>
-                            <span class="center"><strong> {{ $group->owner->instantie->title }} </strong></span>
+                            <span class="infoblock--name">{{ $group->owner->user->name }}</span>
+                            <span class="center infoblock--instantie"><strong> {{ $group->owner->instantie->title }} </strong></span>
                         </div>
                     </div>
                 </div>
 
     		@foreach($scan->group->scans as $thisscan)
                  @if($thisscan->id != $group->owner->id)
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 infoblock--colcontainer">
                         <div class="infoblock">
                             @if($thisscan->user->isOnline())
                                 <span class="logged logged--in">ingelogd</span>
@@ -39,8 +39,8 @@
                             @endif
                             <img src="/img/user.svg" alt="">
                             <div class="infoblock--padded">
-                                <span>{{ $thisscan->user->name }}</span>
-                                <span class="center"><strong> {{ $thisscan->instantie->title }} </strong></span>
+                                <span class="infoblock--name">{{ $thisscan->user->name }}</span>
+                                <span class="center infoblock--instantie"><strong> {{ $thisscan->instantie->title }} </strong></span>
                             </div>
                         </div>
                     </div>
