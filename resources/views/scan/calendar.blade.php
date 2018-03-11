@@ -9,34 +9,43 @@
     	</div>
     </div>
 
-    {!! Form::open(['route' => ['scan.commitdatetime', $scan->id]]) !!}
-        <div class="col-sm-8 date__container">
-           <label for="datepicker"><h4>
-            Plan een vervolgdatum voor het maken van de werkagenda. </h4></label>
-            <div class="col-sm-6 ">
-                <input id="date" class="hidden" name="date" type="text" placeholder="Choose a date">
-            </div>
-            <div class="col-sm-6 ">
-                <!-- Tijd Form Input -->
-                <div class="form-group">
-                    <input id="time" class="hidden" type="time" name="time">
+    @if($scan->followup)
+        <p  class="scandate">Er is een vervolgafspraak gepland op: {{ $scan->followup->date }} om {{ $scan->followup->time }}.</p>
+    @else
+        <p  class="scandate">Er is nog geen vervolgafspraak gepland</p>
+    @endif
+
+    @if($scan->id == $scan->group_id)
+        {!! Form::open(['route' => ['scan.commitdatetime', $scan->id]]) !!}
+            <div class="col-sm-8 date__container">
+                <div class="col-sm-12 ">
+                    @if($scan->followup)
+                       <label for="datepicker"><h4> Kies een andere daum: </h4></label>
+                   @else
+                       <label for="datepicker"><h4> Plan een vervolgdatum voor het maken van de werkagenda. </h4></label>
+                   @endif
+               </div>
+                <div class="col-sm-6 ">
+                    <input id="date" class="hidden" name="date" type="text" placeholder="Choose a date">
                 </div>
+                <div class="col-sm-6 ">
+                    <!-- Tijd Form Input -->
+                    <div class="form-group">
+                        <input id="time" class="hidden" type="time" name="time">
+                    </div>
+                </div>
+
             </div>
 
-        </div>
-
-        <div class="col-sm-12 thema-submit-container">
-            <!-- Add Submit Field -->
-            <div class="form-group">
-                {!! Form::submit('Sla datum op', ['class' => 'btn']) !!}
-                <a href=" {{ URL::route('scan.complete', $scan) }}"  class="btn" > Overslaan</a>
-            </div>
-            
-            {{-- <a class="button thema-submit" href="{{ URL::route('scans.actiesmailen', [$scan]) }}">Verbeteracties Mailen</a><br> --}}
-        </div>  
-    {!! Form::close() !!}
-
-
+            <div class="col-sm-12 thema-submit-container">
+                <!-- Add Submit Field -->
+                <div class="form-group">
+                    {!! Form::submit('Sla datum op', ['class' => 'btn']) !!}
+                    <a href=" {{ URL::route('scan.complete', $scan) }}"  class="btn" > Overslaan</a>
+                </div>
+            </div>  
+        {!! Form::close() !!}
+    @endif
 @endsection
 
 @section('additional-scripts')    
@@ -58,14 +67,10 @@
             weekdaysShort: [ 'zo', 'ma', 'di', 'wo', 'do', 'vr', 'za' ],
             formatSubmit: 'yyyy/mm/dd',
             hiddenName: true,
-            today: '',
-            clear: '',
             close: ''
         });
       });   
     </script>
-
-
     <script>
         function startTimer(duration, display) {
         var timer = duration, minutes, seconds;
