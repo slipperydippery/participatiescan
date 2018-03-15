@@ -41,6 +41,13 @@
         mounted() {
             this.getDashmessages();
             this.getGroups();
+            window.Echo.private('dashmessages').listen('DashmessageUpdate', e => {
+                this.dashmessages.push(e.dashmessage);
+                // this.getDashmessages();
+            });
+            window.Echo.private('dashmessages.' + this.user.id).listen('GrouprequestCreated', e => {
+                this.getGroups();
+            })
         },
 
         methods: {  
@@ -83,6 +90,7 @@
                 home.groups.forEach(function(group){
                     axios.get('/api/grouprequest/' + group.id)
                         .then(function(response){
+                            home.grouprequests = [];
                             response.data.forEach(function(group){
                                 home.grouprequests.push(group);
                             })

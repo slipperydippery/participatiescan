@@ -9,7 +9,10 @@ use App\Theme;
 use App\Scanmodel;
 use App\Grouprequest;
 use Illuminate\Http\Request;
+use App\Events\DashmessageUpdate;
+use App\Events\GrouprequestCreated;
 use App\Jobs\SendGrouprequestEmail;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
 class ApiScansController extends Controller
@@ -63,14 +66,15 @@ class ApiScansController extends Controller
             $scan = Scan::register($user, $request->all());
         }
 
-        $grouprequest =  false;
+        // $grouprequest =  false;
         if($request->isgroup) {
-            $grouprequest = $group;
-            Grouprequest::create([
+            // $grouprequest = $group;
+            $grouprequest = Grouprequest::create([
                 'group_id' => $group->id,
                 'scan_id' => $scan->id,
             ]);
             $owner = $group->owner->user;
+            GrouprequestCreated::dispatch($grouprequest, $group->owner->user->id);
             dispatch(new SendGrouprequestEmail($user, $group, $owner));
         }
         return $scan;

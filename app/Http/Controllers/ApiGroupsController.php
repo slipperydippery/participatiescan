@@ -10,6 +10,8 @@ use App\District;
 use App\Scanmodel;
 use App\Districtmodel;
 use Illuminate\Http\Request;
+use App\Events\GroupscoresUpdated;
+use App\Events\GrouprequestCreated;
 use App\Jobs\SendGroupremovedEmail;
 use Illuminate\Support\Facades\Auth;
 
@@ -154,4 +156,11 @@ class ApiGroupsController extends Controller
 
         return $group;
     }
+
+    public function broadcastupdate(Group $group)
+    {
+        GroupscoresUpdated::dispatch($group->id);
+        return $group->id;
+    }
 }
+    

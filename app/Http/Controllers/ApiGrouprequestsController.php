@@ -8,6 +8,7 @@ use App\District;
 use App\Dashmessage;
 use App\Grouprequest;
 use Illuminate\Http\Request;
+use App\Events\DashmessageUpdate;
 use App\Jobs\SendGroupdeniedEmail;
 use App\Jobs\SendGrouprequestEmail;
 use App\Jobs\SendGroupacceptedEmail;
@@ -29,7 +30,13 @@ class ApiGrouprequestsController extends Controller
         $group->scans()->save($scan);
         $grouprequest->delete();
         $user = $scan->user;
-        
+
+        $dashmessage = Dashmessage::create([
+            'message' => 'Je aanvraag om mee te doen aan de groep <i>' . $group->title . '</i> geaccepteerd!.',
+            'user_id' =>  $scan->user->id
+        ]); 
+        DashmessageUpdate::dispatch($dashmessage);
+
         dispatch(new SendGroupacceptedEmail($user, $group));
 
         return $grouprequest;
@@ -39,10 +46,11 @@ class ApiGrouprequestsController extends Controller
     {
         $scan = Scan::findOrFail($grouprequest->scan_id);
         $group = Group::findOrFail($grouprequest->group_id);
-        Dashmessage::create([
-            'message' => 'Helaas is je uitnodiging om mee te doen aan de groep <i>' . $group->title . '</i> geweigerd.',
+        $dashmessage = Dashmessage::create([
+            'message' => 'Helaas is je aanvraag om mee te doen aan de groep <i>' . $group->title . '</i> geweigerd.',
             'user_id' =>  $scan->user->id
         ]);        
+        DashmessageUpdate::dispatch($dashmessage);
 
         $user = $scan->user;
 

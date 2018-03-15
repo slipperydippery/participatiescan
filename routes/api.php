@@ -15,6 +15,7 @@ Route::post('/group/{group}/updatedistricts', 'ApiGroupsController@updatedistric
 // Route::resource('group.scan', 'ApiGroupScansController')->middleware('auth:api');
 Route::post('/group/{group}/storescan', 'ApiGroupsController@storescan')->middleware('auth:api');
 Route::get('/group/{group}/removescan/{scan}', 'ApiGroupsController@removescan')->middleware('auth:api');
+Route::get('/group/{group}/broadcastupdate', 'ApiGroupsController@broadcastupdate')->middleware('auth:api');
 
 // Route::resource('group', 'ApiGroupsController')->middleware('auth:api');
 Route::post('/group', 'ApiGroupsController@store')->middleware('auth:api');

@@ -1,5 +1,7 @@
 <?php
 
+use App\Group;
+
 /*
 |--------------------------------------------------------------------------
 | Broadcast Channels
@@ -13,4 +15,18 @@
 
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
+});
+
+Broadcast::channel('dashmessages.{id}', function ($user, $id) {
+    return (int) $user->id === (int) $id;
+});
+
+Broadcast::channel('groupscores.{group}', function($user, Group $group) {
+	$canAccess = false;
+	foreach($group->scans as $thisscan) {
+	    if( (int) $thisscan->user->id === (int) $user->id) {
+	        $canAccess = true;
+	    }
+	}
+	return $canAccess;
 });

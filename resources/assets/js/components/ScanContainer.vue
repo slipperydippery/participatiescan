@@ -80,6 +80,12 @@
             if(store.scan.group_id) {
                 store.isgroup = true;
                 this.getGroup(this.workscan.group_id);
+                console.log('trying to listen to groupscores.' + this.workscan.group_id);
+                window.Echo.private('groupscores.' + this.workscan.group_id).listen('GroupscoresUpdated', e => {
+                    // this.dashmessages.push(e.dashmessage);
+                    console.log('listening to groupscores.' + this.workscan.group_id);
+                    this.getScan();
+                });
             }
             this.$on('getscan', function(value){
                 this.getScan();
@@ -93,9 +99,10 @@
             this.$on('getgroup', function(value){
                 this.getGroup(store.group.id);
             });
-            this.$on('updateHintsModal', function(value){
+            this.$on('updateAssets', function(value){
                 this.updateHintsModal();
-            })
+                this.broadcastUpdate();
+            });
         },
 
         ready() {   
@@ -106,6 +113,7 @@
 
         methods: {
             getScan: function() {
+                console.log('getting scan');
                 if(store.loggedin) {
                     var home = this;
                     axios.get('/api/scan/' + home.workscan.id )
@@ -183,6 +191,7 @@
                 }
                 this.updateHintsModal();
                 this.storeScan();
+                this.broadcastUpdate();
             },
 
             previousQuestion: function () {
@@ -196,6 +205,7 @@
                 }
                 this.storeScan();
                 this.updateHintsModal();
+                this.broadcastUpdate();
             },
 
             updateHintsModal: function () {
@@ -236,6 +246,17 @@
                     } )
                     .catch( e => {
                         this.errors.push( e )
+                    })
+                }
+            },
+
+            broadcastUpdate: function() {
+                if(store.isgroup) {
+                    console.log('broadcasting update');
+                    axios.get('/api/group/' + store.group.id + '/broadcastupdate')
+                    .then()
+                    .catch(function(error){
+                        console.log(error)
                     })
                 }
             },

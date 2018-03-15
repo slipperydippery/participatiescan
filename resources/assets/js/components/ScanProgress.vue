@@ -161,13 +161,13 @@
             gotoQuestion: function(questionid) {
                 this.store.activetheme = Math.ceil(questionid / 5);
                 this.store.activequestion = (questionid - 1) % 5 + 1;
-                this.$parent.$emit('updateHintsModal');
+                this.$parent.$emit('updateAssets');
             },
 
             gotoTheme: function (themeid) {
                 this.store.activequestion = 0;
                 this.store.activetheme = themeid;
-                this.$parent.$emit('updateHintsModal');
+                this.$parent.$emit('updateAssets');
             },
 
             gotoThemeResults: function (themeid) {
@@ -178,7 +178,7 @@
                 } else {
                     this.$parent.$emit('getscan');
                 }
-                this.$parent.$emit('updateHintsModal');
+                this.$parent.$emit('updateAssets');
             },
 
             gotoThemeMeasures: function (themeid) {
@@ -189,7 +189,7 @@
                 } else {
                     this.$parent.$emit('getscan');
                 }
-                this.$parent.$emit('updateHintsModal');
+                this.$parent.$emit('updateAssets');
             },
 
             isActiveQuestion: function(questionid) {
