@@ -41,7 +41,7 @@
         mounted() {
             this.getDashmessages();
             this.getGroups();
-            window.Echo.private('dashmessages').listen('DashmessageUpdate', e => {
+            window.Echo.private('dashmessages.' + this.user.id).listen('DashmessageUpdate', e => {
                 this.dashmessages.push(e.dashmessage);
                 // this.getDashmessages();
             });

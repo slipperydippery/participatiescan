@@ -15,15 +15,17 @@ class DashmessageUpdate implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $dashmessage;
+    public $user_id;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($dashmessage)
+    public function __construct($dashmessage, $user_id)
     {
         $this->dashmessage = $dashmessage;
+        $this->user_id = $user_id;
     }
 
     /**
@@ -33,6 +35,6 @@ class DashmessageUpdate implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('dashmessages');
+        return new PrivateChannel('dashmessages.' . $this->user_id);
     }
 }

@@ -29,13 +29,13 @@ class ApiGrouprequestsController extends Controller
         $group = Group::findOrFail($grouprequest->group_id);
         $group->scans()->save($scan);
         $grouprequest->delete();
-        $user = $scan->user;
+        $user_id = $scan->user->id;
 
         $dashmessage = Dashmessage::create([
             'message' => 'Je aanvraag om mee te doen aan de groep <i>' . $group->title . '</i> geaccepteerd!.',
-            'user_id' =>  $scan->user->id
+            'user_id' =>  $user_id,
         ]); 
-        DashmessageUpdate::dispatch($dashmessage);
+        DashmessageUpdate::dispatch($dashmessage, $user_id);
 
         dispatch(new SendGroupacceptedEmail($user, $group));
 
@@ -46,11 +46,12 @@ class ApiGrouprequestsController extends Controller
     {
         $scan = Scan::findOrFail($grouprequest->scan_id);
         $group = Group::findOrFail($grouprequest->group_id);
+        $user_id = $scan->user->id;
         $dashmessage = Dashmessage::create([
             'message' => 'Helaas is je aanvraag om mee te doen aan de groep <i>' . $group->title . '</i> geweigerd.',
-            'user_id' =>  $scan->user->id
+            'user_id' =>  $user_id,
         ]);        
-        DashmessageUpdate::dispatch($dashmessage);
+        DashmessageUpdate::dispatch($dashmessage, $user_id);
 
         $user = $scan->user;
 
