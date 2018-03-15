@@ -10,6 +10,7 @@ use App\Instrument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Jobs\SendScancompleteEmail;
+use App\Events\AlgemeenbeeldUpdated;
 use Illuminate\Support\Facades\Auth;
 
 class ScanPagesController extends Controller
@@ -70,6 +71,9 @@ class ScanPagesController extends Controller
     public function algemeenbeeldresultaten(Scan $scan)
     {
         $scanmodel = $scan->scanmodel->with('themes.questions')->first();
+        if($scan->group_id) {
+            AlgemeenbeeldUpdated::dispatch($scan->group_id);
+        }
         return view('scan.algemeenbeeldresultaten', compact('scan', 'scanmodel'));
     }
 

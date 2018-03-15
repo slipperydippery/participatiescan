@@ -62,6 +62,9 @@
             if(store.scan.group_id) {
                 store.isgroup = true;
                 this.getGroup(this.workscan.group_id);
+                window.Echo.private('groupscores.' + this.workscan.group_id).listen('AlgemeenbeeldUpdated', e => {
+                    this.getGroup(this.workscan.group_id);
+                });
             };
         },
 

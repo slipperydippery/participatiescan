@@ -80,10 +80,7 @@
             if(store.scan.group_id) {
                 store.isgroup = true;
                 this.getGroup(this.workscan.group_id);
-                console.log('trying to listen to groupscores.' + this.workscan.group_id);
                 window.Echo.private('groupscores.' + this.workscan.group_id).listen('GroupscoresUpdated', e => {
-                    // this.dashmessages.push(e.dashmessage);
-                    console.log('listening to groupscores.' + this.workscan.group_id);
                     this.getScan();
                 });
             }

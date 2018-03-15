@@ -88,7 +88,7 @@ class ApiScansController extends Controller
         $scan->algemeenbeeld = $request->scan['algemeenbeeld'];
 		$scan->group_id = $request->scan['group_id'];
 		$scan->save();
-		return $request;	
+		return $request;
 	}
 
     public function indexthemes(Scan $scan)
