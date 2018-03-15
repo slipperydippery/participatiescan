@@ -45,6 +45,8 @@
                 </div>
             </div>  
         {!! Form::close() !!}
+    @else
+        <a href=" {{ URL::route('scan.complete', $scan) }}"  class="btn" >Rond de scan af</a>
     @endif
 @endsection
 
