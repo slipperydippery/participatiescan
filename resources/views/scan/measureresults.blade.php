@@ -9,11 +9,19 @@
     	</div>
     </div>
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12">    
+            @if($scan->followup)
+                <p class="scandate">op {{ $scan->followup->date }} om {{ $scan->followup->time }} is een bijeenkomst gepland om de uitgevoerde actiepunten om te zetten naar een werkagenda </p>
+            @else
+                <p class="scandate">Er is nog geen datum gepland om de uitgevoerde actiepunten om te zetten naar een werkagenda</p>
+            @endif
+
             @foreach($measurescan->measures as $measure)
                 @if($measure->active)
                     <div class="infoblock">
                         <h4> {{ $measure->question->theme->title }}: {{$measure->question->title}}</h4>
+                        <h6> TREKKER: {{ $measure->users->first()->name }} </h6>
+                        <h6> ACTIEPUNT: </h6>
                         <span> {{ $measure->measure }} </span>
                     </div>
                 @endif
