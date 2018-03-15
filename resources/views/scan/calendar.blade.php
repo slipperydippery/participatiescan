@@ -15,7 +15,7 @@
         <p  class="scandate">Er is nog geen vervolgafspraak gepland</p>
     @endif
 
-    @if($scan->id == $scan->group_id)
+    @if($scan->id == $scan->group->owner->id)
         {!! Form::open(['route' => ['scan.commitdatetime', $scan->id]]) !!}
             <div class="col-sm-8 date__container">
                 <div class="col-sm-12 ">
