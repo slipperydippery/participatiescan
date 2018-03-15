@@ -39,7 +39,7 @@ class ApiGrouprequestsController extends Controller
 
         dispatch(new SendGroupacceptedEmail($user, $group));
 
-        return $grouprequest;
+        return 'accepted';
     }
 
     public function deny(Grouprequest $grouprequest)
@@ -57,6 +57,8 @@ class ApiGrouprequestsController extends Controller
 
         dispatch(new SendGroupdeniedEmail($user, $group));
         $grouprequest->delete();
+
+        return 'denied';
     }
 
 }
