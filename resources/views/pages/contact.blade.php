@@ -24,7 +24,7 @@
                 <p>Ingrado: Carry Roozemond (c.roozemond@ingrado.nl)</p>
                 <p>Lecso: Marc Cantrijn (m.cantrijn@lecso.nl)</p>
                 <p>UWV: Marianne Zoetmulder (marianne.zoetmulder@uwv.nl)</p>
-                <p>MEE NL: Walraad van Daalen (w.vandalen@meegroningen.nl)</p>
+                <p>MEE NL: Petra de Jong (p.d.jong@mee.nl)</p>
                 <p>VOBC: Erie Merkus (e.merkus@vobc.nu)</p>
                 <p>S-BB: Renske Hamstra (r.hamstra@s-bb.nl)</p>
                 <p>MBO Raad: Karin Lukassen (k.lukassen@mboraad.nl)</p>
