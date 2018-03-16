@@ -144,6 +144,10 @@ class ScanPagesController extends Controller
 
     public function commitdatetime(Request $request, Scan $scan)
     {
+        request()->validate([
+            'date' => 'required|date',
+            'time' => 'required',
+        ]);
         if($scan->followup){
             $scan->followup->date = $request->date;
             $scan->followup->time = $request->time;

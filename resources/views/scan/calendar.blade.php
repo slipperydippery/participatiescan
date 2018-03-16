@@ -25,10 +25,21 @@
                        <label for="datepicker"><h4> Plan een vervolgdatum voor het maken van de werkagenda. </h4></label>
                    @endif
                </div>
+            
                 <div class="col-sm-6 ">
+                    @if ($errors->has('date'))
+                         <div class="alert alert-danger">
+                            <strong> Incompleet: </strong>Datum is verplicht
+                         </div>
+                    @endif
                     <input id="date" class="hidden" name="date" type="text" placeholder="Choose a date">
                 </div>
                 <div class="col-sm-6 ">
+                   @if ($errors->has('time'))
+                        <div class="alert alert-danger">
+                           <strong> Incompleet: </strong>Tijd is verplicht
+                        </div>
+                   @endif
                     <!-- Tijd Form Input -->
                     <div class="form-group">
                         <input id="time" class="hidden" type="time" name="time">

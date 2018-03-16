@@ -89,7 +89,6 @@ class ApiMeasuresController extends Controller
 
     public function adduser(Measure $measure, User $user)
     {
-        // return $user;
         $measure->users()->sync([$user->id]);
         return $measure;
     }
