@@ -37,7 +37,7 @@ class ApiGrouprequestsController extends Controller
         ]); 
         DashmessageUpdate::dispatch($dashmessage, $user_id);
 
-        dispatch(new SendGroupacceptedEmail($user, $group));
+        dispatch(new SendGroupacceptedEmail($scan->user, $group));
 
         return 'accepted';
     }
