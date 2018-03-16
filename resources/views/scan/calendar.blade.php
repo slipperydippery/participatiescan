@@ -40,8 +40,12 @@
             <div class="col-sm-12 thema-submit-container">
                 <!-- Add Submit Field -->
                 <div class="form-group">
-                    {!! Form::submit('Sla datum op', ['class' => 'btn']) !!}
-                    <a href=" {{ URL::route('scan.complete', $scan) }}"  class="btn" > Overslaan</a>
+                    {!! Form::submit('Datum opslaan', ['class' => 'btn']) !!}
+                    @if($scan->followup)
+                        <a href=" {{ URL::route('scan.complete', $scan) }}"  class="btn btn--secondary" > Geen nieuwe datum opslaan</a>
+                   @else
+                        <a href=" {{ URL::route('scan.complete', $scan) }}"  class="btn btn--secondary" > Geen datum opslaan</a>
+                   @endif
                 </div>
             </div>  
         {!! Form::close() !!}
