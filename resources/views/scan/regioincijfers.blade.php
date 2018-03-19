@@ -20,7 +20,7 @@
     <div class="row">
     	<div class="col-md-12">
             <h2 class="page--title"> Uw regio in cijfers </h2>
-            @if(count($scan->group))
+            @if($scan->group)
                 <span class="page--clarification">Selecteer een arbeidsregio om te zien hoe verschillende factoren de NEET-rate beinvloeden. Bespreek met elkaar wat jullie opvalt. Als er geen kaart verschijnt, volg dan <a href="https://monitoraoj.nl/arbeidsregio1" target="_blank">deze link</a>.</span>
             @else
         		<span class="page--clarification">Selecteer een arbeidsregio om te zien hoe verschillende factoren de NEET-rate beinvloeden. Als er geen kaart verschijnt, volg dan <a href="https://monitoraoj.nl/arbeidsregio1" target="_blank">deze link</a>.</span>
@@ -38,7 +38,7 @@
     	</div>
     </div>
     <div class="prev-next-nav">
-        @if(count($scan->group))
+        @if($scan->group)
             <a href=" {{ route('scan.kennismaken', $scan) }} " class="btn prev-next-nav--prev">
                 << vorige scherm
             </a>

@@ -49,7 +49,7 @@ class ScanPagesController extends Controller
     public function kennismaken(Scan $scan)
     {
         $group = $scan->group;
-    	if(Auth::check() && count($scan->group)) {
+    	if(Auth::check() && $scan->group) {
     		return view('scan.kennismaken', compact('scan', 'group'));
     	} else {
     		return redirect()->route('scan.regioincijfers', $scan);
@@ -89,10 +89,10 @@ class ScanPagesController extends Controller
     public function calendar(Scan $scan)
     {   
 
-        if((! count($scan->group)) || (! Auth::user() == $scan->group->user )){
+        if((! $scan->group) || (! Auth::user() == $scan->group->user )){
             return view('scan.complete', compact('scan'));
         }
-        if(count($scan->scandate)){
+        if($scan->scandate){
             $scan = Scan::with('scandate')->find($scan->id);
         } 
         return view('scan.calendar', compact('scan', 'scandate'));
@@ -106,7 +106,7 @@ class ScanPagesController extends Controller
     public function emailresults(Scan $scan)
     {
         $user = Auth::user();   
-        if(count($scan->group)){
+        if($scan->group){
             $mailscan = $scan->group->owner;
         } else {
             $mailscan = $scan;
@@ -131,7 +131,7 @@ class ScanPagesController extends Controller
     public function measureresults(Scan $scan)
     {
         $measurescan = $scan;
-        if(count($scan->group)){
+        if($scan->group){
             $measurescan = $scan->group->owner;
         }
         return view('scan.measureresults', compact('scan', 'measurescan'));

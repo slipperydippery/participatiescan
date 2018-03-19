@@ -113,7 +113,7 @@
         <div class="container container--page">
             <div class="row">
                 <div class="col-md-12">
-                    @if(count($scan->group))
+                    @if($scan->group)
                         <span class="breadcrumb"> 
                             Arbeidsmarktregios: 
                             @foreach($scan->group->owner->districts as $district)
