@@ -40,4 +40,5 @@ Route::get('/instructiefilms', 'PagesController@instructiefilms')->name('instruc
 Route::get('/pmonitor', 'PagesController@pmonitor')->name('pmonitor');
 Route::get('/grouprequested', 'PagesController@grouprequested')->name('grouprequested');
 Route::get('/contact', 'PagesController@contact')->name('contact');
+Route::get('/overzichtresultaten', 'AdminpagesController@overzichtresultaten')->name('overzichtresultaten')->middleware('auth');
 

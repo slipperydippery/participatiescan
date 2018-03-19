@@ -10,7 +10,7 @@ class Instantie extends Model
     	'scanmodel_id', 'title', 'description'
     ];
 
-    public function scan()
+    public function scans()
     {
     	return $this->hasMany('App\Scan');
     }

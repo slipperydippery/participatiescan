@@ -3,11 +3,20 @@
 @foreach($scan->measures as $measure)
 	@if($measure->active)
 		<h3>{{ $measure->question->theme->title }}: {{ $measure->question->title }}</h3>
-		<p>{{ $measure->measure }}</p>
+		@php
+		    $name = 'Er is geen trekker geslecteerd';
+		    if($measure->users->first()){
+		        $name = $measure->users->first()->name;
+		    }
+		@endphp
+		<h6> TREKKER: {{ $name }} </h6>
+		<h6> ACTIEPUNT: </h6>
+		<span> {{ $measure->measure }} </span>
 	@endif
+
 @endforeach
 
-@if(count($scan->scandate))
+@if($scan->scandate)
 	<p>Op {{ $scan->followup->date }} om {{ $scan->followup->time }} is een bijeenkomst gepland om de uitgevoerde actiepunten om te zetten naar een werkagenda. </p>
 @else
 	<p>Er is nog geen datum gepland om de uitgevoerde actiepunten om te zetten naar een werkagenda.</p>
