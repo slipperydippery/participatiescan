@@ -20,7 +20,7 @@
             @guest
                 <span class="page--clarification">Bekijk de introductiefilm over wat en waarvoor de Participatiescan is. Of ga door naar het volgende scherm, als je de film of de sessiedeelnemers de film al hebben gezien. Tijdens een sessie kan de film gezamenlijk worden bekeken op het plenaire scherm. Klik <a href="https://www.youtube.com/watch?v=oOSoBnCPHlk">hier</a> als de video niet verschijnt.</span>
             @else
-                @if(count($scan->group))
+                @if($scan->group)
                     <span class="page--clarification">Bekijk de introductiefilm over het uitvoeren van de participatiescan of ga door naar het volgende scherm. We adviseren de film op een gezamenlijk scherm te bekijken. Klik <a href="https://www.youtube.com/watch?v=oOSoBnCPHlk">hier</a> als de video niet verschijnt. </span>
                 @else
                     <span class="page--clarification">Bekijk de introductiefilm over het uitvoeren van de participatiescan of ga door naar het volgende scherm. Klik <a href="https://www.youtube.com/watch?v=oOSoBnCPHlk">hier</a> als de video niet verschijnt. </span>

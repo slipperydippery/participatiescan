@@ -18,7 +18,7 @@
     	<div class="col-md-12">
     		<h2 class="page--title"> Algemeen beeld resultaten</h2>
 
-            @if(count($scan->group))
+            @if($scan->group)
                 <span class="page--clarification"> Niet om te bespreken, maar wel om alvast met elkaar te delen: wat is ons gevoel bij hoe we het in algemene zin doen in onze regio? </span>
             @elseif(Auth::guest())
                 <span class="page--clarification"> Met een account kun je hier de score zien die je hebt ingevuld en jouw antwoord vergelijken met de groep of andere individuele scans. </span>

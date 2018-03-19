@@ -17,9 +17,9 @@
         </div>
         <div class="row content--page">
             <div class="col-sm-12">
-                <iframe scrolling="no" 
+                <iframe
                     src="https://monitoraoj.nl/arbeidsregio1/#primary" 
-                    style="border: 0px none; height: 763px; width: 1180px;"
+                    style="border: 0px none; height: 763px; width: 1200px;"
                     class="iframe--monitor"
                 > 
                 </iframe>

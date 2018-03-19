@@ -20,7 +20,13 @@
                 @if($measure->active)
                     <div class="infoblock">
                         <h4> {{ $measure->question->theme->title }}: {{$measure->question->title}}</h4>
-                        <h6> TREKKER: {{ $measure->users->first()->name }} </h6>
+                        @php
+                            $name = 'Er is geen trekker geslecteerd';
+                            if($measure->users->first()){
+                                $name = $measure->users->first()->name;
+                            }
+                        @endphp
+                        <h6> TREKKER: {{ $name }} </h6>
                         <h6> ACTIEPUNT: </h6>
                         <span> {{ $measure->measure }} </span>
                     </div>

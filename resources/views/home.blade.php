@@ -58,7 +58,7 @@
                 <div class="dashboard--item--head">Mijn scans</div>
                 <div class="dashboard--item--body autoscroll">
                     @foreach($user->scans as $scan)
-                        @if(! count($scan->owns))
+                        @if(! $scan->owns)
                             <?php 
                                 $answercount = 0;
                                 foreach($scan->answers as $answer) {
@@ -70,7 +70,7 @@
                             <div class="col-sm-12">
                                 <div class="row no-overflow">
                                     <div class="col-sm-8">
-                                        @if(count($scan->group))
+                                        @if($scan->group)
                                             <a href=" {{ route('scan.show', $scan) }} "> {{ $scan->group->owner->title }}</a> 
                                         @else
                                             <a href=" {{ route('scan.show', $scan) }} "> {{ $scan->title }}</a> 
@@ -78,10 +78,10 @@
                                     </div>
                                     <div class="col-sm-2" title=" <?= $answercount; ?> van de 15 vragen zijn beantwoord  "> <?= $answercount; ?>/15 </div>
                                     <div class="col-sm-2 rowicons"> 
-                                        @if(count($scan->group))
+                                        @if($scan->group)
                                             <img src="/img/group.svg" title="Deze scan is onderdeel van groep '{{ $scan->group->title }}'" class="rowicon">
                                         @endif
-                                        @if(count($scan->grouprequest))
+                                        @if($scan->grouprequest)
                                             <img src="/img/grouppending.svg" title="Een verzoek is naar group '{{ $scan->grouprequest->group->title }}' verzonden" class="rowicon">
                                         @endif
                                         
