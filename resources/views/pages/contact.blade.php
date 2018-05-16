@@ -29,7 +29,10 @@
                 <p>S-BB: Renske Hamstra (r.hamstra@s-bb.nl)</p>
                 <p>MBO Raad: Karin Lukassen (k.lukassen@mboraad.nl)</p>
                 <p>VO Raad: Jessica Tissink (jessicatissink@vo-raad.nl)</p>
-                <p>VNG: pm</p>
+                <p>VNG: Astrid Jansen (astrid.jansen@vng.nl)</p>
+                <p>LCR: Else Roetering (e.roetering@lcr-suwi.nl)</p>
+                <p>Jeugdzorg Nederland: Hans Spigt (hans.spigt@jeugdzorgnederland.nl)</p>
+                <p>Cedris: Desiree Curfs (d.curfs@stroomopwaarts.nl)</p>
             </div>
         </div>
     </div>
