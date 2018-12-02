@@ -13,7 +13,9 @@
         "laravel/passport": "^4.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
-        "pusher/pusher-php-server": "^3.0"
+        "nao-pon/flysystem-google-drive": "~1.1",
+        "pusher/pusher-php-server": "^3.0",
+        "spatie/laravel-backup": "^5.11"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
