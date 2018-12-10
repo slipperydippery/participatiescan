@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Scan;
 use App\User;
 use App\Group;
@@ -30,5 +31,11 @@ class AdminpagesController extends Controller
     	        ->paginate(50);
     	return view('admin.overzichtresultaten', compact('users', 'scans', 'groups', 'instanties', 'questions', 'districts'));
 
+    }
+
+    public function loginasuser(User $user)
+    {
+        Auth::loginUsingId($user->id);
+        return redirect()->back();
     }
 }
