@@ -38,4 +38,13 @@ class AdminpagesController extends Controller
         Auth::loginUsingId($user->id);
         return redirect()->back();
     }
+
+    public function getemails()
+    {
+        $emails = '';
+        foreach(User::get() as $user) {
+            $emails .= $user->email . '; ';
+        }
+        return $emails;
+    }
 }
