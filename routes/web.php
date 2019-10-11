@@ -40,6 +40,9 @@ Route::get('/instructiefilms', 'PagesController@instructiefilms')->name('instruc
 Route::get('/pmonitor', 'PagesController@pmonitor')->name('pmonitor');
 Route::get('/grouprequested', 'PagesController@grouprequested')->name('grouprequested');
 Route::get('/contact', 'PagesController@contact')->name('contact');
-Route::get('/overzichtresultaten', 'AdminpagesController@overzichtresultaten')->name('overzichtresultaten')->middleware('auth');
+
+// Admin
+Route::get('/admin/getemails', 'AdminpagesController@getemails')->name('getemails')->middleware('auth');
 Route::get('/admin/loginasuser/{user}', 'AdminpagesController@loginasuser')->name('loginasuser')->middleware('auth');
+Route::get('/overzichtresultaten', 'AdminpagesController@overzichtresultaten')->name('overzichtresultaten')->middleware('auth');
 
