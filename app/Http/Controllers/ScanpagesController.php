@@ -100,7 +100,7 @@ class ScanPagesController extends Controller
         if($scan->scandate){
             $scan = Scan::with('scandate')->find($scan->id);
         } 
-        return view('scan.calendar', compact('scan', 'scandate'));
+        return view('scan.calendar', compact('scan'));
     }
 
     public function scancomplete(Scan $scan)
